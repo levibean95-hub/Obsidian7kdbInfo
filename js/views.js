@@ -26,6 +26,15 @@ export function switchView(view) {
         adventView.classList.remove('active');
         teamBuilderView.classList.remove('active');
         setCurrentView('detail');
+        
+        // Remove team builder URL parameters when switching away from team builder
+        const urlDetail = new URL(window.location.href);
+        if (urlDetail.searchParams.has('teams') || urlDetail.searchParams.has('subject')) {
+            urlDetail.searchParams.delete('teams');
+            urlDetail.searchParams.delete('subject');
+            window.history.replaceState({}, '', urlDetail.pathname + urlDetail.hash);
+        }
+        
         // Scroll to top when entering detail view
         window.scrollTo(0, 0);
     } else if (view === 'advent') {
@@ -34,6 +43,15 @@ export function switchView(view) {
         adventView.classList.add('active');
         teamBuilderView.classList.remove('active');
         setCurrentView('advent');
+        
+        // Remove team builder URL parameters when switching away from team builder
+        const urlAdvent = new URL(window.location.href);
+        if (urlAdvent.searchParams.has('teams') || urlAdvent.searchParams.has('subject')) {
+            urlAdvent.searchParams.delete('teams');
+            urlAdvent.searchParams.delete('subject');
+            window.history.replaceState({}, '', urlAdvent.pathname + urlAdvent.hash);
+        }
+        
         // Restore scroll position when returning to advent view
         setTimeout(() => {
             window.scrollTo(0, savedAdventScrollPosition);
@@ -52,6 +70,15 @@ export function switchView(view) {
         teamBuilderView.classList.remove('active');
         gridView.classList.add('active');
         setCurrentView('grid');
+        
+        // Remove team builder URL parameters when switching away from team builder
+        const url = new URL(window.location.href);
+        if (url.searchParams.has('teams') || url.searchParams.has('subject')) {
+            url.searchParams.delete('teams');
+            url.searchParams.delete('subject');
+            window.history.replaceState({}, '', url.pathname + url.hash);
+        }
+        
         // Restore scroll position when returning to grid view
         setTimeout(() => {
             window.scrollTo(0, savedScrollPosition);

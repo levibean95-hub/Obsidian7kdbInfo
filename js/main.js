@@ -83,7 +83,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 // Invalid hero in URL, clear the hash
                 history.replaceState({}, '', window.location.pathname);
+                // Ensure grid view is shown
+                switchView('grid');
             }
+        } else {
+            // No URL parameters or hash - ensure grid view is shown (default)
+            switchView('grid');
         }
     }
 

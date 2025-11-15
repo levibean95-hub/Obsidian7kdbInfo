@@ -277,25 +277,40 @@ function renderHeroPool() {
             poolGrid.appendChild(card);
         });
     } else {
-        // Filter heroes based on search query, type, and effect
+        // Get all heroes currently placed in teams
+        const placedHeroes = new Set();
+        teams.forEach(team => {
+            team.slots.forEach(heroName => {
+                if (heroName) {
+                    placedHeroes.add(heroName);
+                }
+            });
+        });
+
+        // Filter heroes based on search query, type, effect, and availability
         const filteredHeroes = heroes.filter(hero => {
+            // Filter out already placed heroes
+            if (placedHeroes.has(hero)) {
+                return false;
+            }
+
             // Filter by search query
             const matchesSearch = hero.toLowerCase().includes(searchQuery.toLowerCase());
-            
+
             // Filter by type
             let matchesType = true;
             if (selectedType) {
                 const data = heroData[hero];
                 matchesType = data && data.type === selectedType;
             }
-            
+
             // Filter by effect
             let matchesEffect = true;
             if (selectedEffect) {
                 const data = heroData[hero];
                 matchesEffect = data && data.effects && data.effects.includes(selectedEffect);
             }
-            
+
             return matchesSearch && matchesType && matchesEffect;
         });
 
@@ -532,6 +547,7 @@ function createTeamElement(team, teamIndex) {
     // Team slots (5 positions)
     const teamSlots = document.createElement('div');
     teamSlots.className = 'team-slots';
+    teamSlots.dataset.formation = team.formationType || 'basic';
 
     for (let i = 0; i < 5; i++) {
         const row = getRowForFormation(team.formationType || 'basic', i);
@@ -539,7 +555,17 @@ function createTeamElement(team, teamIndex) {
         teamSlots.appendChild(slot);
     }
 
-    // Pet slot and bottom controls container
+    // Pet slot - create two instances (one for mobile grid, one for desktop bottom)
+    const petSlotMobile = createPetSlot(teamIndex, team.pet || null);
+    const petSlotDesktop = createPetSlot(teamIndex, team.pet || null);
+
+    // Add mobile-specific pet wrapper for grid positioning
+    const petGridWrapper = document.createElement('div');
+    petGridWrapper.className = 'team-pet-grid-slot';
+    petGridWrapper.appendChild(petSlotMobile);
+    teamSlots.appendChild(petGridWrapper);
+
+    // Pet slot and bottom controls container (for desktop)
     const bottomContainer = document.createElement('div');
     bottomContainer.className = 'team-bottom-container';
 
@@ -548,15 +574,12 @@ function createTeamElement(team, teamIndex) {
     resetSkillsBtnBottom.className = 'team-reset-skills-container';
     resetSkillsBtnBottom.appendChild(resetSkillsBtn);
 
-    // Pet slot (center)
-    const petSlot = createPetSlot(teamIndex, team.pet || null);
-
     // Empty spacer (bottom right) to balance layout
     const spacer = document.createElement('div');
     spacer.className = 'team-bottom-spacer';
 
     bottomContainer.appendChild(resetSkillsBtnBottom);
-    bottomContainer.appendChild(petSlot);
+    bottomContainer.appendChild(petSlotDesktop);
     bottomContainer.appendChild(spacer);
 
     teamWrapper.appendChild(teamHeader);
@@ -570,11 +593,40 @@ function createTeamElement(team, teamIndex) {
 function createPetSlot(teamIndex, petName) {
     const petContainer = document.createElement('div');
     petContainer.className = 'team-pet-container';
-    
+
+    // Pet dropdown selector
+    const petDropdown = document.createElement('select');
+    petDropdown.className = 'team-pet-select';
+    petDropdown.title = 'Select Pet';
+
+    // Add "None" option
+    const noneOption = document.createElement('option');
+    noneOption.value = '';
+    noneOption.textContent = 'None';
+    petDropdown.appendChild(noneOption);
+
+    // Add pet options
+    PETS.forEach(pet => {
+        const option = document.createElement('option');
+        option.value = pet;
+        option.textContent = pet;
+        petDropdown.appendChild(option);
+    });
+
+    // Set current value
+    petDropdown.value = petName || '';
+
+    // Add event listener
+    petDropdown.addEventListener('change', (e) => {
+        teams[teamIndex].pet = e.target.value || null;
+        renderTeams();
+        updateUrl();
+    });
+
     const petSlot = document.createElement('div');
     petSlot.className = 'team-pet-slot';
     petSlot.dataset.teamIndex = teamIndex;
-    
+
     if (petName) {
         const petCard = createPetSlotCard(petName, teamIndex);
         petSlot.appendChild(petCard);
@@ -582,7 +634,7 @@ function createPetSlot(teamIndex, petName) {
         petSlot.classList.add('empty-pet-slot');
         petSlot.textContent = 'Drop Pet Here';
     }
-    
+
     // Drop event listeners
     petSlot.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -591,15 +643,15 @@ function createPetSlot(teamIndex, petName) {
             petSlot.classList.add('drag-over');
         }
     });
-    
+
     petSlot.addEventListener('dragleave', () => {
         petSlot.classList.remove('drag-over');
     });
-    
+
     petSlot.addEventListener('drop', (e) => {
         e.preventDefault();
         petSlot.classList.remove('drag-over');
-        
+
         if (draggedHero && draggedHero.startsWith('pet:')) {
             const pet = draggedHero.replace('pet:', '');
             teams[teamIndex].pet = pet;
@@ -607,7 +659,8 @@ function createPetSlot(teamIndex, petName) {
             updateUrl();
         }
     });
-    
+
+    petContainer.appendChild(petDropdown);
     petContainer.appendChild(petSlot);
     return petContainer;
 }
@@ -629,11 +682,7 @@ function createPetSlotCard(petName, teamIndex) {
         img.src = petPath;
     }
     img.alt = petName;
-    
-    const name = document.createElement('div');
-    name.className = 'team-pet-name';
-    name.textContent = petName;
-    
+
     const removeBtn = document.createElement('button');
     removeBtn.className = 'remove-pet-btn';
     removeBtn.innerHTML = '&times;';
@@ -644,10 +693,9 @@ function createPetSlotCard(petName, teamIndex) {
         renderTeams();
         updateUrl();
     });
-    
+
     imageContainer.appendChild(img);
     card.appendChild(imageContainer);
-    card.appendChild(name);
     card.appendChild(removeBtn);
     
     // Drag event listeners
@@ -667,6 +715,251 @@ function createPetSlotCard(petName, teamIndex) {
 }
 
 // Create a team slot
+// Create hero selector dropdown for team slot
+function createHeroSelector(teamIndex, slotIndex, currentHero) {
+    const selectorContainer = document.createElement('div');
+    selectorContainer.className = 'hero-selector-container';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'hero-selector-input';
+    input.placeholder = 'Search hero...';
+    input.value = currentHero || '';
+    input.autocomplete = 'off';
+    
+    let dropdown = null;
+    
+    // Function to create dropdown
+    const createDropdown = () => {
+        if (dropdown && dropdown.parentNode) {
+            return; // Dropdown already exists
+        }
+        
+        dropdown = document.createElement('div');
+        dropdown.className = 'hero-selector-dropdown';
+        dropdown.id = `hero-dropdown-${teamIndex}-${slotIndex}`;
+        selectorContainer.appendChild(dropdown);
+        
+        // Handle clicking on dropdown options
+        dropdown.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // Prevent input blur
+            const option = e.target.closest('.hero-selector-option');
+            if (option && option.dataset.hero) {
+                handleHeroSelection(option.dataset.hero);
+            }
+        });
+        
+        // Also handle click for touch devices
+        dropdown.addEventListener('click', (e) => {
+            const option = e.target.closest('.hero-selector-option');
+            if (option && option.dataset.hero) {
+                e.stopPropagation();
+                handleHeroSelection(option.dataset.hero);
+            }
+        });
+    };
+    
+    // Function to remove dropdown
+    const removeDropdown = () => {
+        if (dropdown && dropdown.parentNode) {
+            dropdown.remove();
+            dropdown = null;
+        }
+    };
+    
+    // Function to populate dropdown with filtered heroes
+    const populateDropdownOptions = (searchTerm = '') => {
+        if (!dropdown) {
+            createDropdown();
+        }
+        
+        dropdown.innerHTML = '';
+        const term = searchTerm.toLowerCase().trim();
+        
+        const filteredHeroes = heroes.filter(hero => 
+            !term || hero.toLowerCase().includes(term)
+        );
+        
+        if (filteredHeroes.length === 0) {
+            const emptyOption = document.createElement('div');
+            emptyOption.className = 'hero-selector-option empty';
+            emptyOption.textContent = 'No heroes found';
+            dropdown.appendChild(emptyOption);
+        } else {
+            filteredHeroes.forEach(hero => {
+                const option = document.createElement('div');
+                option.className = 'hero-selector-option';
+                option.textContent = hero;
+                option.dataset.hero = hero;
+                dropdown.appendChild(option);
+            });
+        }
+    };
+    
+    // Function to show dropdown
+    const showDropdown = () => {
+        if (!dropdown) {
+            createDropdown();
+        }
+        populateDropdownOptions(input.value);
+        dropdown.classList.add('show');
+    };
+    
+    // Function to handle hero selection
+    const handleHeroSelection = (heroName) => {
+        if (!heroName || !heroes.includes(heroName)) {
+            // Clear hero if empty or invalid
+            teams[teamIndex].slots[slotIndex] = null;
+            if (teams[teamIndex].tiers) {
+                teams[teamIndex].tiers[slotIndex] = 0;
+            }
+            if (teams[teamIndex].gearSets) {
+                teams[teamIndex].gearSets[slotIndex] = null;
+            }
+            if (teams[teamIndex].skillOrders) {
+                teams[teamIndex].skillOrders[slotIndex] = [];
+            }
+            input.value = '';
+            removeDropdown();
+            // Show the selector container when hero is cleared
+            selectorContainer.style.display = '';
+            renderTeams();
+            updateUrl();
+            return;
+        }
+        
+        // Initialize arrays if needed
+        if (!teams[teamIndex].tiers) {
+            teams[teamIndex].tiers = [0, 0, 0, 0, 0];
+        }
+        if (!teams[teamIndex].gearSets) {
+            teams[teamIndex].gearSets = [null, null, null, null, null];
+        }
+        if (!teams[teamIndex].skillOrders) {
+            teams[teamIndex].skillOrders = [[], [], [], [], []];
+        }
+        
+        // Set hero
+        teams[teamIndex].slots[slotIndex] = heroName;
+        if (teams[teamIndex].tiers[slotIndex] === undefined) {
+            teams[teamIndex].tiers[slotIndex] = 0;
+        }
+        if (teams[teamIndex].gearSets[slotIndex] === undefined) {
+            teams[teamIndex].gearSets[slotIndex] = null;
+        }
+        if (teams[teamIndex].skillOrders[slotIndex] === undefined) {
+            teams[teamIndex].skillOrders[slotIndex] = [];
+        }
+        
+        input.value = heroName;
+        removeDropdown(); // Remove dropdown completely when hero is selected
+        // Hide the entire selector container when hero is selected
+        selectorContainer.style.display = 'none';
+        renderTeams();
+        updateUrl();
+    };
+    
+    // Show dropdown when input is focused or clicked
+    const openDropdown = () => {
+        showDropdown();
+    };
+    
+    input.addEventListener('focus', () => {
+        openDropdown();
+    });
+    
+    input.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openDropdown();
+    });
+    
+    // Filter options as user types
+    input.addEventListener('input', (e) => {
+        const searchTerm = e.target.value;
+        if (dropdown) {
+            populateDropdownOptions(searchTerm);
+            dropdown.classList.add('show');
+        } else {
+            showDropdown();
+            populateDropdownOptions(searchTerm);
+        }
+    });
+    
+    // Handle Enter key press
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const value = input.value.trim();
+            // Try to find exact match first
+            if (heroes.includes(value)) {
+                handleHeroSelection(value);
+            } else {
+                // Try to find partial match (case-insensitive)
+                const match = heroes.find(h => h.toLowerCase().startsWith(value.toLowerCase()));
+                if (match) {
+                    handleHeroSelection(match);
+                } else {
+                    // Invalid hero name, reset to current hero
+                    input.value = currentHero || '';
+                    removeDropdown();
+                }
+            }
+        } else if (e.key === 'Escape') {
+            removeDropdown();
+            input.blur();
+        }
+    });
+    
+    // Handle input blur - validate selection
+    input.addEventListener('blur', (e) => {
+        // Use setTimeout to allow click events on dropdown to fire first
+        setTimeout(() => {
+            const selectedHero = input.value.trim();
+            if (selectedHero && !heroes.includes(selectedHero)) {
+                // Try to find partial match (case-insensitive)
+                const match = heroes.find(h => h.toLowerCase().startsWith(selectedHero.toLowerCase()));
+                if (match) {
+                    handleHeroSelection(match);
+                } else {
+                    // Invalid hero name, reset to current hero
+                    input.value = currentHero || '';
+                    removeDropdown();
+                }
+            } else if (!selectedHero) {
+                removeDropdown();
+            } else if (selectedHero && heroes.includes(selectedHero)) {
+                // Valid hero selected, remove dropdown
+                removeDropdown();
+            }
+        }, 200);
+    });
+    
+    // Close dropdown when clicking outside
+    const handleOutsideClick = (e) => {
+        if (!selectorContainer.contains(e.target)) {
+            removeDropdown();
+        }
+    };
+    
+    // Use capture phase to ensure we catch the click
+    document.addEventListener('click', handleOutsideClick, true);
+    
+    selectorContainer.setAttribute('data-team', teamIndex);
+    selectorContainer.setAttribute('data-slot', slotIndex);
+    selectorContainer.appendChild(input);
+    
+    // Hide the entire selector container if hero is already selected
+    if (currentHero) {
+        selectorContainer.style.display = 'none';
+    } else {
+        // Only create dropdown initially if no hero is selected
+        createDropdown();
+        populateDropdownOptions();
+    }
+    
+    return selectorContainer;
+}
+
 function createTeamSlot(teamIndex, slotIndex, heroName, row, tier, gearSet, skillOrder) {
     const slot = document.createElement('div');
     slot.className = `team-slot team-slot-${row}`;
@@ -678,8 +971,11 @@ function createTeamSlot(teamIndex, slotIndex, heroName, row, tier, gearSet, skil
         slot.appendChild(heroCard);
     } else {
         slot.classList.add('empty-slot');
-        slot.textContent = 'Drop Hero Here';
     }
+    
+    // Add hero selector dropdown (always visible for easy access)
+    const heroSelector = createHeroSelector(teamIndex, slotIndex, heroName);
+    slot.appendChild(heroSelector);
 
     // Drop event listeners
     slot.addEventListener('dragover', (e) => {
@@ -1140,6 +1436,12 @@ function parseImportString(importString) {
 
 // Update URL with current state
 function updateUrl() {
+    // Only update URL if team builder view is active
+    const teamBuilderView = document.getElementById('team-builder-view');
+    if (!teamBuilderView || !teamBuilderView.classList.contains('active')) {
+        return;
+    }
+    
     const importString = generateImportString();
     const url = new URL(window.location.href);
     
