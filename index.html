@@ -19,6 +19,7 @@
                     <a class="pill-link wip-pill" href="speed-gearing.html">Speed Gearing Guide <span class="wip-badge">WORK IN PROGRESS</span></a>
                     <a class="pill-link" href="wish-list.html">Wish List Tier List</a>
                     <a class="pill-link wip-pill" href="#" id="advent-teams-link">Advent Teams <span class="wip-badge">WORK IN PROGRESS</span></a>
+                    <a class="pill-link" href="#" id="team-builder-link">Team Builder</a>
                 </div>
                 <div class="filters-container">
                     <div class="search-container">
@@ -168,6 +169,66 @@
                 <div class="advent-bosses-container" id="advent-bosses-container">
                     <!-- Boss sections will be dynamically generated here -->
                     <!-- Each boss has: Boss name, Team 1, Team 2, Replacements section -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Builder View -->
+        <div id="team-builder-view" class="view">
+            <div class="team-builder-content">
+                <div class="team-builder-header">
+                    <button class="back-button" id="team-builder-back-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Heroes
+                    </button>
+                    <h1 class="team-builder-title">Team Builder</h1>
+                </div>
+
+                <div class="team-builder-main">
+                    <!-- Left Sidebar: Hero Pool -->
+                    <div class="team-builder-sidebar">
+                        <h2 class="sidebar-title">Hero Pool</h2>
+                        <div class="hero-pool-search">
+                            <input type="text" id="team-builder-search" placeholder="Search heroes..." class="team-builder-search-input">
+                        </div>
+                        <div class="hero-pool-grid" id="hero-pool-grid">
+                            <!-- Hero cards will be dynamically generated here -->
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Teams -->
+                    <div class="team-builder-teams-section">
+                        <div class="team-builder-controls">
+                            <div class="import-export-section">
+                                <div class="export-section">
+                                    <button id="generate-import-btn" class="btn-primary">Generate Import String</button>
+                                    <div class="import-string-display">
+                                        <textarea id="import-string-output" readonly class="import-string-textarea"></textarea>
+                                        <button id="copy-import-btn" class="btn-secondary">Copy</button>
+                                    </div>
+                                </div>
+                                <div class="import-section">
+                                    <input type="text" id="import-string-input" placeholder="Paste import string here..." class="import-string-input">
+                                    <button id="import-btn" class="btn-primary">Import</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="teams-container" id="teams-container">
+                            <!-- Teams will be dynamically generated here -->
+                        </div>
+
+                        <div class="team-actions">
+                            <button id="add-team-btn" class="btn-add-team">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                                Add Team
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

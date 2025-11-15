@@ -18,11 +18,13 @@ export function switchView(view) {
     const gridView = document.getElementById('hero-grid-view');
     const detailView = document.getElementById('hero-detail-view');
     const adventView = document.getElementById('advent-teams-view');
+    const teamBuilderView = document.getElementById('team-builder-view');
 
     if (view === 'detail') {
         gridView.classList.remove('active');
         detailView.classList.add('active');
         adventView.classList.remove('active');
+        teamBuilderView.classList.remove('active');
         setCurrentView('detail');
         // Scroll to top when entering detail view
         window.scrollTo(0, 0);
@@ -30,14 +32,24 @@ export function switchView(view) {
         gridView.classList.remove('active');
         detailView.classList.remove('active');
         adventView.classList.add('active');
+        teamBuilderView.classList.remove('active');
         setCurrentView('advent');
         // Restore scroll position when returning to advent view
         setTimeout(() => {
             window.scrollTo(0, savedAdventScrollPosition);
         }, 0);
+    } else if (view === 'teambuilder') {
+        gridView.classList.remove('active');
+        detailView.classList.remove('active');
+        adventView.classList.remove('active');
+        teamBuilderView.classList.add('active');
+        setCurrentView('teambuilder');
+        // Scroll to top when entering team builder view
+        window.scrollTo(0, 0);
     } else {
         detailView.classList.remove('active');
         adventView.classList.remove('active');
+        teamBuilderView.classList.remove('active');
         gridView.classList.add('active');
         setCurrentView('grid');
         // Restore scroll position when returning to grid view
@@ -95,6 +107,21 @@ export function setupEventListeners() {
         switchView('advent');
     });
 
+    // Team Builder link
+    document.getElementById('team-builder-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        // Save current scroll position before navigating
+        setSavedScrollPosition(window.pageYOffset || document.documentElement.scrollTop);
+        switchView('teambuilder');
+    });
+
+    // Team Builder back button
+    document.getElementById('team-builder-back-button').addEventListener('click', () => {
+        // Clear the URL hash
+        history.pushState({}, '', window.location.pathname);
+        switchView('grid');
+    });
+
     // Searchable effect filter
     setupEffectFilterListeners();
 
@@ -108,7 +135,7 @@ export function setupEventListeners() {
     document.addEventListener('keydown', (e) => {
         // Press Escape to go back or close dropdowns
         if (e.key === 'Escape') {
-            if (currentView === 'detail' || currentView === 'advent') {
+            if (currentView === 'detail' || currentView === 'advent' || currentView === 'teambuilder') {
                 // Clear hash and go back
                 history.pushState({}, '', window.location.pathname);
                 switchView('grid');

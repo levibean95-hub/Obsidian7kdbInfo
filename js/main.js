@@ -9,6 +9,7 @@ import { populateEffectFilter, populateTargetFilter } from './filters.js';
 import { populateAdventTeams } from './advent-teams.js';
 import { setupEventListeners, switchView } from './views.js';
 import { showHeroDetail } from './hero-detail.js';
+import { initializeTeamBuilder } from './team-builder.js';
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', async () => {
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     populateEffectFilter();
     populateTargetFilter();
     populateAdventTeams();
+    initializeTeamBuilder();
     setupEventListeners();
 
     // Setup search listener (must be after setupEventListeners)

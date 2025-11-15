@@ -3064,3 +3064,493 @@ body::after {
         font-size: 0.75rem;
     }
 }
+
+/* ============================================
+   TEAM BUILDER STYLES
+   ============================================ */
+
+.team-builder-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.team-builder-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.team-builder-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent-amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    filter: drop-shadow(0 3px 15px rgba(121, 82, 179, 0.4)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+}
+
+.team-builder-main {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Hero Pool Sidebar */
+.team-builder-sidebar {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-obsidian);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-pool-search {
+    margin-bottom: 1rem;
+}
+
+.team-builder-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.team-builder-search-input:focus {
+    outline: none;
+    border-color: var(--accent-obsidian);
+    box-shadow: 0 0 0 3px rgba(197, 163, 255, 0.2);
+}
+
+.hero-pool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.75rem;
+}
+
+.hero-pool-card {
+    position: relative;
+    cursor: grab;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(10, 8, 16, 0.6);
+    border: 2px solid transparent;
+}
+
+.hero-pool-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-obsidian);
+    box-shadow: 0 4px 12px rgba(147, 112, 219, 0.3);
+}
+
+.hero-pool-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.hero-pool-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.hero-pool-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-pool-name {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+    text-align: center;
+    color: var(--text-primary);
+    font-weight: 600;
+    background: rgba(10, 8, 16, 0.8);
+    line-height: 1.2;
+}
+
+.type-icon-badge-small {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.type-icon-badge-small img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.rarity-badge-small {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 0.6rem;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 800;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Teams Section */
+.team-builder-teams-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.team-builder-controls {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+}
+
+.import-export-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.export-section,
+.import-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.import-string-display {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.import-string-textarea {
+    flex: 1;
+    padding: 0.75rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.import-string-input {
+    flex: 1;
+    padding: 0.75rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+}
+
+.import-string-input:focus {
+    outline: none;
+    border-color: var(--accent-obsidian);
+    box-shadow: 0 0 0 3px rgba(197, 163, 255, 0.2);
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.2), rgba(121, 82, 179, 0.15));
+    border: 2px solid var(--accent-primary);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.3), rgba(121, 82, 179, 0.25));
+    border-color: var(--accent-obsidian);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(147, 112, 219, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(145deg, rgba(10, 8, 16, 0.8), rgba(15, 10, 22, 0.8));
+    border-color: var(--border-color);
+}
+
+.import-section {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.import-section .import-string-input {
+    flex: 1;
+}
+
+/* Teams Container */
+.teams-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.team-wrapper {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+}
+
+.team-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.team-name-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.team-name-input:focus {
+    outline: none;
+    border-color: var(--accent-obsidian);
+    box-shadow: 0 0 0 3px rgba(197, 163, 255, 0.2);
+}
+
+.btn-remove-team {
+    width: 36px;
+    height: 36px;
+    background: rgba(239, 68, 68, 0.2);
+    border: 2px solid var(--accent-red);
+    border-radius: 8px;
+    color: var(--accent-red);
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.btn-remove-team:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.1);
+}
+
+.team-slots {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.team-slot {
+    min-height: 180px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 8, 16, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.team-slot.empty-slot {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.team-slot.drag-over {
+    border-color: var(--accent-obsidian);
+    background: rgba(197, 163, 255, 0.1);
+    border-style: solid;
+    transform: scale(1.05);
+}
+
+.team-slot-hero {
+    width: 100%;
+    position: relative;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.team-slot-hero.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.team-slot-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+}
+
+.team-slot-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-slot-hero-name {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.remove-hero-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(239, 68, 68, 0.9);
+    border: 2px solid var(--accent-red);
+    border-radius: 50%;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.remove-hero-btn:hover {
+    transform: scale(1.2);
+    background: var(--accent-red);
+}
+
+.team-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn-add-team {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.2), rgba(121, 82, 179, 0.15));
+    border: 2px solid var(--accent-primary);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+}
+
+.btn-add-team:hover {
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.3), rgba(121, 82, 179, 0.25));
+    border-color: var(--accent-obsidian);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(147, 112, 219, 0.4);
+}
+
+/* Responsive Design for Team Builder */
+@media (max-width: 1200px) {
+    .team-builder-main {
+        grid-template-columns: 300px 1fr;
+    }
+}
+
+@media (max-width: 968px) {
+    .team-builder-main {
+        grid-template-columns: 1fr;
+    }
+
+    .team-builder-sidebar {
+        position: static;
+        max-height: none;
+    }
+
+    .team-slots {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .team-slots {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-pool-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+
+    .import-section {
+        flex-direction: column;
+    }
+}
