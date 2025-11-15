@@ -4671,28 +4671,28 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         background: rgba(255, 215, 0, 0.05);
     }
 
-    /* Position pet based on formation type */
-    /* Basic (2F, 3B): Pet next to 3rd back hero (row 3, col 2) */
+    /* Position pet at bottom based on formation type */
+    /* Basic (2F, 3B): More back heroes, pet on bottom left */
     .team-slots[data-formation="basic"] .team-pet-grid-slot {
-        grid-column: 2;
-        grid-row: 3;
+        grid-column: 1;
+        grid-row: 4;
     }
 
-    /* Balanced (3F, 2B): Pet next to 2nd back hero (row 2, col 2) */
+    /* Balanced (3F, 2B): More front heroes, pet on bottom right */
     .team-slots[data-formation="balanced"] .team-pet-grid-slot {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    /* Attack (1F, 4B): Pet next to 4th back hero (row 4, col 2) */
-    .team-slots[data-formation="attack"] .team-pet-grid-slot {
         grid-column: 2;
         grid-row: 4;
     }
 
-    /* Protective (4F, 1B): Pet next to 4th front hero (row 4, col 1) */
-    .team-slots[data-formation="protective"] .team-pet-grid-slot {
+    /* Attack (1F, 4B): More back heroes, pet on bottom left */
+    .team-slots[data-formation="attack"] .team-pet-grid-slot {
         grid-column: 1;
+        grid-row: 4;
+    }
+
+    /* Protective (4F, 1B): More front heroes, pet on bottom right */
+    .team-slots[data-formation="protective"] .team-pet-grid-slot {
+        grid-column: 2;
         grid-row: 4;
     }
 
@@ -4772,6 +4772,74 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         transform: none !important;
         background: rgba(100, 100, 255, 0.15);
         border-color: rgba(100, 100, 255, 0.3);
+    }
+
+    /* Explicit positioning for Basic formation: slots 2,4 front (right), slots 1,3,5 back (left) */
+    .team-slots[data-formation="basic"] .team-slot:nth-child(1) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="basic"] .team-slot:nth-child(2) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="basic"] .team-slot:nth-child(3) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="basic"] .team-slot:nth-child(4) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="basic"] .team-slot:nth-child(5) {
+        grid-row: 3;
+    }
+
+    /* Explicit positioning for Balanced formation: slots 1,3,5 front (right), slots 2,4 back (left) */
+    .team-slots[data-formation="balanced"] .team-slot:nth-child(1) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="balanced"] .team-slot:nth-child(2) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="balanced"] .team-slot:nth-child(3) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="balanced"] .team-slot:nth-child(4) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="balanced"] .team-slot:nth-child(5) {
+        grid-row: 3;
+    }
+
+    /* Explicit positioning for Attack formation: slot 3 front (right), slots 1,2,4,5 back (left) */
+    .team-slots[data-formation="attack"] .team-slot:nth-child(1) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="attack"] .team-slot:nth-child(2) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="attack"] .team-slot:nth-child(3) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="attack"] .team-slot:nth-child(4) {
+        grid-row: 3;
+    }
+    .team-slots[data-formation="attack"] .team-slot:nth-child(5) {
+        grid-row: 4;
+    }
+
+    /* Explicit positioning for Protective formation: slots 1,2,4,5 front (right), slot 3 back (left) */
+    .team-slots[data-formation="protective"] .team-slot:nth-child(1) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="protective"] .team-slot:nth-child(2) {
+        grid-row: 1;
+    }
+    .team-slots[data-formation="protective"] .team-slot:nth-child(3) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="protective"] .team-slot:nth-child(4) {
+        grid-row: 2;
+    }
+    .team-slots[data-formation="protective"] .team-slot:nth-child(5) {
+        grid-row: 3;
     }
 
     .team-slot {
