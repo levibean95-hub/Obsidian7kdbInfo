@@ -1,119 +1,103 @@
-# 7 Knights Rebirth - Hero Database
+# 7K RE:BIRTH OBSIDIAN INFO DUMP
 
-A mobile-responsive static web application that serves as a comprehensive hero database for "7 Knights Rebirth" game. The application displays hero portraits in a grid view and shows detailed hero information including gear recommendations, effects, and team compositions.
+A modern hero database web application for "7 Knights Rebirth" game, built with Vite, React, TypeScript, Tailwind CSS 4, and TanStack Router.
 
-## Features
+## Tech Stack
 
-- **Hero Database**: Browse all heroes with filtering by type, effects, and target
-- **Detailed Hero Pages**: View comprehensive hero information including:
-  - Gear recommendations (PvE and PvP, T0 and T6)
-  - Hero effects and abilities
-  - Skill enhancement priorities
-  - Tips and important information
-- **Advent Teams**: View team compositions for Advent boss content
-- **Search Functionality**: Quickly find specific heroes
-- **Effect Filtering**: Filter heroes by their effects
-- **Mobile Responsive**: Works perfectly on both desktop and mobile devices
+- **Vite** - Build tool and dev server
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Tailwind CSS 4** - Styling with CSS-based configuration
+- **TanStack Router** - File-based routing
+- **pnpm** - Package manager
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm (install via `npm install -g pnpm`)
+
+### Installation
+
+1. Install dependencies:
+```bash
+pnpm install
+```
+
+2. Start the development server:
+```bash
+pnpm dev
+```
+
+The app will be available at `http://localhost:3000`
+
+### Building for Production
+
+```bash
+pnpm build
+```
+
+The built files will be in the `dist` directory.
+
+### Preview Production Build
+
+```bash
+pnpm preview
+```
 
 ## Project Structure
 
 ```
-├── index.html              # Main HTML structure
-├── styles.css              # Global styles and dark theme
-├── js/                     # Modular JavaScript (ES6 modules)
-│   ├── main.js            # Application entry point
-│   ├── constants.js       # Configuration constants
-│   ├── state.js           # State management
-│   ├── data-loader.js     # JSON data loading
-│   ├── filters.js         # Search and filter logic
-│   ├── hero-grid.js       # Grid view rendering
-│   ├── hero-detail.js     # Hero detail view
-│   ├── gear-builder.js    # Gear section rendering
-│   ├── advent-teams.js    # Advent teams view
-│   ├── views.js           # View switching
-│   └── utils.js           # Utility functions
-├── data/                   # JSON data files
-│   ├── hero-data.json     # Complete hero data
-│   └── advent-teams-data.json # Advent team compositions
-├── Hero Portraits/         # Hero portrait images
-├── Hero Models BGL/        # Full hero model images
-├── Gear Sets Photos/       # Gear set images
-├── Type Icons/             # Type icon images
-├── Pet Icons/             # Pet icon images
-└── .cursorrules           # Cursor AI rules and guidelines
+src/
+├── components/          # React components
+│   ├── HeroGrid.tsx    # Main hero grid view
+│   ├── HeroDetail.tsx  # Hero detail page
+│   ├── AdventTeams.tsx # Advent teams view
+│   └── TeamBuilder.tsx # Team builder view
+├── routes/             # TanStack Router routes (file-based)
+├── hooks/              # React hooks
+├── lib/                # Utility libraries
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+├── constants.ts        # Application constants
+└── index.css           # Tailwind CSS 4 styles and theme
+
+data/                   # JSON data files
+├── hero-data.json      # Hero data
+└── advent-teams-data.json # Advent team data
 ```
 
-## How to Use
+## Features
 
-1. Open `index.html` in any modern web browser
-2. Browse all heroes or use the search bar to find specific ones
-3. Filter by type using the type icons (Attack, Magic, Defense, Support, Universal)
-4. Filter by effects or target using the dropdown filters
-5. Click on any hero card to view detailed information
-6. Navigate to Advent Teams to view team compositions
+- **Hero Grid View**: Browse all heroes with filtering by type, effects, and target
+- **Hero Detail View**: View detailed hero information including gear, skills, and tips
+- **Advent Teams**: View team compositions for advent bosses
+- **Team Builder**: Build and share team compositions (coming soon)
+- **Mobile Responsive**: Fully responsive design for mobile and desktop
 
-## Adding or Updating Heroes
+## Tailwind CSS 4
 
-The application is **fully data-driven**. To add or update hero information:
+This project uses Tailwind CSS 4 with CSS-based configuration. Custom colors, fonts, and shadows are defined in `src/index.css` using the `@theme` directive.
 
-1. **Edit `data/hero-data.json`** directly with the hero data
-2. **Refresh the browser** to see changes
+## Routing
 
-No code changes are needed for most heroes! The JSON file contains all fields:
-- Meta information (role, type, rarity, etc.)
-- Effects array
-- Gear configurations (PvE and PvP, T0 and T6)
-- Skill enhancement priority
-- Tips and important information
+Routes are defined using TanStack Router's file-based routing system:
+- `/` - Hero grid view
+- `/hero/$heroName` - Hero detail view
+- `/advent` - Advent teams view
+- `/teambuilder` - Team builder view
 
-### Adding a New Hero
+## Data
 
-1. **Add hero portrait** to `Hero Portraits/` folder (filename: `HeroName.png`)
-2. **Add hero name** to `heroes` array in `js/constants.js` (in correct rarity section)
-3. **Add hero data** to `data/hero-data.json` with all required fields
-4. **Refresh browser** to see the new hero
+Hero data is stored in `data/hero-data.json` and is automatically loaded on app initialization. The application is fully data-driven - update the JSON files to see changes reflected immediately.
 
-See `.cursorrules` for detailed documentation on data structure and conventions.
+## Development
 
-## Technical Details
-
-- **Pure Static Site**: No build step or dependencies required
-- **ES6 Modules**: Modern JavaScript module system
-- **Responsive Design**: Mobile-first approach with adaptive layouts
-- **Dark Theme**: Modern glassmorphism design with smooth animations
-- **Data-Driven**: All content stored in JSON files for easy updates
-
-## Deployment
-
-This is a pure static site that can be deployed to any static hosting service:
-
-- **Netlify**: Already configured (see `netlify.toml`)
-- **GitHub Pages**: Just push to repository
-- **Vercel**: Automatic detection
-- **Any static host**: Upload all files
-
-To deploy to Netlify:
-```bash
-netlify deploy --prod
-```
-
-## Browser Compatibility
-
-Works on all modern browsers:
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile, etc.)
-
-## Development Guidelines
-
-See `.cursorrules` for comprehensive development guidelines, including:
-- Architecture overview
-- Data structure conventions
-- Adding heroes and teams
-- Gear set naming conventions
-- Code style guidelines
+- Type checking: `pnpm type-check`
+- Build: `pnpm build`
+- Dev server: `pnpm dev`
 
 ## License
 
-This project is for personal/community use related to the 7 Knights Rebirth game.
+MIT

@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  /* Background colors */
+  --color-bg-primary: #050509;
+  --color-bg-secondary: #0a0a12;
+  --color-bg-tertiary: #12121d;
+  --color-bg-card: rgba(18, 12, 28, 0.95);
+  --color-bg-card-dark: rgba(15, 10, 22, 0.98);
+
+  /* Accent colors */
+  --color-accent-primary: #9370db;
+  --color-accent-secondary: #7952b3;
+  --color-accent-tertiary: #a98cd4;
+  --color-accent-obsidian: #c5a3ff;
+  --color-accent-gold: #ffd700;
+  --color-accent-gold-dark: #ffb700;
+  --color-accent-amber: #ffcc00;
+  --color-accent-purple: #9370db;
+  --color-accent-pink: #e91e63;
+  --color-accent-blue: #4169e1;
+  --color-accent-red: #ef4444;
+
+  /* Text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e8dff5;
+  --color-text-tertiary: #b8a8d1;
+
+  /* Border colors */
+  --color-border: rgba(147, 112, 219, 0.4);
+  --color-border-glow: rgba(255, 215, 0, 0.8);
+
+  /* Font family */
+  --font-family-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Shadows */
+  --shadow-primary: 0 4px 20px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(147, 112, 219, 0.3);
+  --shadow-secondary: 0 6px 30px rgba(0, 0, 0, 0.95),
+    0 0 40px rgba(255, 215, 0, 0.5);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(197, 163, 255, 0.2);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .rarity-l\+\+ {
+    background-color: var(--color-accent-gold);
+    color: #000;
+  }
+
+  .rarity-l\+ {
+    background-color: var(--color-accent-purple);
+    color: var(--color-text-primary);
+  }
+
+  .rarity-l {
+    background-color: var(--color-accent-blue);
+    color: var(--color-text-primary);
+  }
+
+  .rarity-rare {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+}
