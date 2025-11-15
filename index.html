@@ -193,6 +193,48 @@
                         <div class="hero-pool-search">
                             <input type="text" id="team-builder-search" placeholder="Search heroes..." class="team-builder-search-input">
                         </div>
+                        <div class="team-builder-filters">
+                            <div class="team-builder-type-filter">
+                                <div class="type-button-group">
+                                    <button class="type-filter-button active" data-type="" title="All Types">
+                                        <span class="type-icon-all">All</span>
+                                    </button>
+                                    <button class="type-filter-button" data-type="Attack" title="Attack">
+                                        <img src="Type Icons/type_1_attack.png" alt="Attack" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Magic" title="Magic">
+                                        <img src="Type Icons/type_2_magic.png" alt="Magic" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Defense" title="Defense">
+                                        <img src="Type Icons/type_3_defense.png" alt="Defense" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Support" title="Support">
+                                        <img src="Type Icons/type_4_support.png" alt="Support" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Universal" title="Universal">
+                                        <img src="Type Icons/type_5_universal.png" alt="Universal" class="type-icon">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="team-builder-effect-filter">
+                                <div class="custom-select-wrapper">
+                                    <input type="text" id="team-builder-effect-search" class="effect-search-input" placeholder="Filter by Effect..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="team-builder-effect-dropdown" aria-haspopup="listbox">
+                                    <div class="effect-dropdown" id="team-builder-effect-dropdown" role="listbox" aria-label="Effect options">
+                                        <div class="effect-option" data-value="" role="option">All Effects</div>
+                                        <!-- Effect options will be dynamically generated -->
+                                    </div>
+                                    <button class="clear-effect-btn" id="team-builder-clear-effect-btn" style="display: none;" title="Clear filter" aria-label="Clear effect filter">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-builder-mode-toggle">
+                            <button id="toggle-hero-mode" class="mode-toggle-btn active" data-mode="heroes">
+                                Heroes
+                            </button>
+                            <button id="toggle-pet-mode" class="mode-toggle-btn" data-mode="pets">
+                                Pets
+                            </button>
+                        </div>
                         <div class="hero-pool-grid" id="hero-pool-grid">
                             <!-- Hero cards will be dynamically generated here -->
                         </div>
@@ -201,17 +243,23 @@
                     <!-- Right Side: Teams -->
                     <div class="team-builder-teams-section">
                         <div class="team-builder-controls">
+                            <div class="team-builder-subject-section">
+                                <label for="team-builder-subject" class="subject-label">Subject/Description:</label>
+                                <input type="text" id="team-builder-subject" placeholder="e.g., PvP Teams, Advent Boss Teams..." class="team-builder-subject-input">
+                            </div>
                             <div class="import-export-section">
-                                <div class="export-section">
-                                    <button id="generate-import-btn" class="btn-primary">Generate Import String</button>
-                                    <div class="import-string-display">
-                                        <textarea id="import-string-output" readonly class="import-string-textarea"></textarea>
-                                        <button id="copy-import-btn" class="btn-secondary">Copy</button>
-                                    </div>
+                                <div class="share-section">
+                                    <button id="share-url-btn" class="btn-primary">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                        </svg>
+                                        Share URL
+                                    </button>
                                 </div>
-                                <div class="import-section">
-                                    <input type="text" id="import-string-input" placeholder="Paste import string here..." class="import-string-input">
-                                    <button id="import-btn" class="btn-primary">Import</button>
+                                <div class="clear-all-section">
+                                    <button id="clear-all-teams-btn" class="btn-secondary">
+                                        Clear All Teams
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -59,22 +59,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderHeroGrid();
     });
 
-    // Check for URL hash and show hero if specified
-    const hash = window.location.hash.substring(1); // Remove the # symbol
-    if (hash) {
-        // Decode URI component in case hero name has spaces
-        const heroName = decodeURIComponent(hash);
-        if (heroes.includes(heroName)) {
-            // Set history state for proper back button behavior
-            history.replaceState({ hero: heroName }, '', `#${encodeURIComponent(heroName)}`);
-            // Use setTimeout to ensure DOM is fully ready
-            setTimeout(() => {
-                showHeroDetail(heroName);
-                switchView('detail');
-            }, 100);
-        } else {
-            // Invalid hero in URL, clear the hash
-            history.replaceState({}, '', window.location.pathname);
+    // Check for URL query parameters (team builder)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('teams')) {
+        // Switch to team builder view if teams parameter exists
+        setTimeout(() => {
+            switchView('teambuilder');
+        }, 100);
+    } else {
+        // Check for URL hash and show hero if specified
+        const hash = window.location.hash.substring(1); // Remove the # symbol
+        if (hash) {
+            // Decode URI component in case hero name has spaces
+            const heroName = decodeURIComponent(hash);
+            if (heroes.includes(heroName)) {
+                // Set history state for proper back button behavior
+                history.replaceState({ hero: heroName }, '', `#${encodeURIComponent(heroName)}`);
+                // Use setTimeout to ensure DOM is fully ready
+                setTimeout(() => {
+                    showHeroDetail(heroName);
+                    switchView('detail');
+                }, 100);
+            } else {
+                // Invalid hero in URL, clear the hash
+                history.replaceState({}, '', window.location.pathname);
+            }
         }
     }
 
