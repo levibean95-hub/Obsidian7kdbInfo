@@ -1,5 +1,5 @@
-// Wish List Tier List - Auto-generated from hero_data files
-// DO NOT EDIT MANUALLY - Run generate_wishlist_data.py to update
+// Wish List Tier List
+// Edit this file directly to update wish list priorities
 
 const WISH_LIST_DATA = {
     "Ace": {

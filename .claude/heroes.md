@@ -20,9 +20,9 @@ The application maintains state in `js/state.js` module with exported getter/set
 The application includes a searchable effect filter system that allows users to filter heroes by their effects:
 
 **Data Source:**
-- Hero effects are stored in `data/hero-data.json` (generated from `hero_data/*.txt` files)
+- Hero effects are stored in `data/hero-data.json`
 - Data is loaded asynchronously via `js/data-loader.js` module
-- Run `python sync_hero_data.py` after updating hero_data files to regenerate the JSON
+- Edit `data/hero-data.json` directly to update hero data
 
 **Searchable Dropdown:**
 - Custom searchable dropdown (not a native `<select>`) for better UX
@@ -39,7 +39,7 @@ The application includes a searchable effect filter system that allows users to 
 - `selectEffect(value, displayText)` - Handles effect selection and hero filtering (js/filters.js)
 
 **Updating Hero Data:**
-When effects are added/updated in `hero_data/*.txt` files, run `python sync_hero_data.py` to regenerate `data/hero-data.json`. The sync script automatically parses all fields from the text files and updates the JSON data.
+Edit `data/hero-data.json` directly to add or update hero effects. The changes will be reflected immediately when you refresh the browser.
 
 ## Gear Set Photos and Card-Based Layout
 
@@ -90,17 +90,16 @@ When adding a brand new hero to the database:
 - Names with spaces are supported (e.g., "Bi Dam", "Yu Shin")
 - Place in correct rarity section (L++, L+, L, or Rare)
 
-**Step 3: Create Hero Data File**
-- Create new text file in `hero_data/` folder (e.g., `hero_data/Nia.txt`)
-- Use the template format shown in "Updating Hero Data" section above
-- Fill in all sections: META INFORMATION, EFFECTS, GEAR PVE, GEAR PVP, SKILL ENHANCE PRIORITY, TIPS/IMPORTANT INFO
+**Step 3: Add Hero Data**
+- Add hero entry to `data/hero-data.json` with all required fields:
+  - name, role, primary_content, target_transcendence, wishlist_priority, type, target_number, rarity
+  - effects (array)
+  - gear_pve (object with t0 and t6 arrays)
+  - gear_pvp (object with t0 and t6 arrays)
+  - skill_enhance_priority (string)
+  - tips (string)
 
-**Step 4: Run Sync Script**
-```bash
-python sync_hero_data.py
-```
-
-**Step 5: Verify**
+**Step 4: Verify**
 - Refresh browser and check that hero card appears in grid
 - Click hero card and verify all data displays correctly
 - No code changes needed in `js/gear-builder.js` or `js/hero-detail.js` (data displays automatically!)
@@ -142,100 +141,68 @@ The app will automatically generate cards and detail pages for all heroes in the
 
 ## Updating Hero Data
 
-**The application is now DATA-DRIVEN!** Hero data is automatically displayed from `data/hero-data.json`, which is generated from `hero_data/*.txt` files.
+**The application is DATA-DRIVEN!** Hero data is automatically displayed from `data/hero-data.json`. Edit the JSON file directly to update hero information.
 
 ### Workflow for Updating Existing Heroes
 
-**Step 1: Edit the Hero Data File**
+**Step 1: Edit `data/hero-data.json`**
 
-Update the hero's text file in `hero_data/HeroName.txt` with all relevant information:
+Find the hero entry and update the relevant fields. Example structure:
 
-```
-=====================================
-HERO: Hero Name
-=====================================
-
---- META INFORMATION ---
-Role: Support, DPS, Tank, etc.
-Primary content used in: Arena, GvG, Total War, etc.
-Target transcendence: T0, T0-T6, etc.
-Wish list priority: High, Medium, Low, N/A
-Rarity: L++, L+, L, Rare
-Type: Attack, Magic, Defense, Support, Universal
-Target Number: All Enemies, Single Enemy, etc.
-
---- EFFECTS ---
-Effect Name 1
-Effect Name 2
-Effect Name 3
-
---- GEAR PVE ---
-## T0 Gear Sets
-
-Gear Set 1:
-Name: Gatekeeper Physical
-Main Stats: Max HP % (weapons), Block Rate (armors)
-Required Stat Thresholds: 100% Block Rate
-Sub Stat Priority: Block Rate, Max HP
-
-Gear Set 2:
-Name: Spellweaver Physical
-Main Stats: All Attack %
-Required Stat Thresholds: N/A
-Sub Stat Priority: Attack
-
-## T6 Gear Sets
-
-Gear Set 1:
-Name: Vanguard Physical
-Main Stats: All Attack %
-Required Stat Thresholds: N/A
-Sub Stat Priority: Attack
-
---- GEAR PVP ---
-## T0 Gear Sets
-
-Gear Set 1:
-Name: Full Speed
-Main Stats: N/A
-Required Stat Thresholds: Speed
-Sub Stat Priority: Speed
-
-## T6 Gear Sets
-
-Gear Set 1:
-Name: Full Speed
-Main Stats: N/A
-Required Stat Thresholds: Speed
-Sub Stat Priority: Speed
-
---- SKILL ENHANCE PRIORITY ---
-S1, S2, or S1 > S2, etc.
-
---- TIPS/IMPORTANT INFO ---
-Your tips and important information about the hero go here.
-Can span multiple lines.
+```json
+{
+  "HeroName": {
+    "name": "Hero Name",
+    "role": "Support, DPS, Tank, etc.",
+    "primary_content": "Arena, GvG, Total War, etc.",
+    "target_transcendence": "T0, T0-T6, etc.",
+    "wishlist_priority": "High, Medium, Low, N/A",
+    "type": "Attack, Magic, Defense, Support, Universal",
+    "target_number": "All Enemies, Single Enemy, etc.",
+    "rarity": "L++, L+, L, Rare",
+    "effects": [
+      "Effect Name 1",
+      "Effect Name 2",
+      "Effect Name 3"
+    ],
+    "gear_pve": {
+      "t0": [
+        {
+          "name": "Gatekeeper Physical",
+          "main_stats": "Max HP % (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "100% Block Rate",
+          "sub_stat_priority": "Block Rate, Max HP"
+        }
+      ],
+      "t6": [
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": "Attack"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "t0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        }
+      ],
+      "t6": []
+    },
+    "skill_enhance_priority": "S1, S2, or S1 > S2, etc.",
+    "tips": "Your tips and important information about the hero go here. Can span multiple lines."
+  }
+}
 ```
 
-**Step 2: Run the Sync Script**
+**Step 2: Verify the Changes**
 
-After updating the text file, run:
-```bash
-python sync_hero_data.py
-```
-
-This script will:
-- Parse ALL fields from `hero_data/*.txt` files
-- Extract: Role, Primary content, Target transcendence, Wishlist priority, Type, Target Number, Rarity
-- Extract: All effects from the EFFECTS section
-- Extract: Gear configurations (PvE and PvP with T0/T6 sections)
-- Extract: Skill enhance priority
-- Extract: Tips/Important Info
-- Generate/update `data/hero-data.json` with complete data
-
-**Step 3: Verify the Changes**
-
-Open the hero's detail page in your browser and verify:
+Refresh your browser and open the hero's detail page to verify:
 - Effects list is populated
 - Meta information (Role, Primary content, etc.) appears under hero name
 - Gear sections display T0 and T6 configurations
@@ -309,10 +276,10 @@ Each hero detail page includes the following sections:
 
 ### Hero Data Files
 
-Individual hero data is stored in the `hero_data/` folder as separate text files (e.g., `Ace.txt`, `Alice.txt`). Each file contains placeholder sections that should be filled with hero-specific information. When updating hero pages:
-- Read the corresponding text file from `hero_data/`
-- Parse the sections and populate them into the hero detail view
-- Handle gear set images from `Gear Sets Photos/` folder when specified in the data files
+Hero data is stored in `data/hero-data.json` as a single JSON file. Each hero entry contains all the information needed to display the hero detail page. When updating hero pages:
+- Edit the hero entry in `data/hero-data.json`
+- The application automatically displays all fields from the JSON
+- Handle gear set images from `Gear Sets Photos/` folder when specified in the gear data
 
 ### Gear Set Photo Naming Convention
 

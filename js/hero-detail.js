@@ -109,7 +109,7 @@ export function updateHeroMetaInformation(heroName) {
     }
 
     // Legacy hardcoded fallback (only used if JSON data is missing)
-    // This preserves existing data for heroes not yet synced from .txt files
+    // This preserves existing data for heroes not yet added to hero-data.json
     if (!data || !data.role) {
         updateLegacyMetaInformation(heroName);
     }

@@ -8,22 +8,28 @@ The Advent Teams page displays team compositions for game mode content. Teams ar
 
 ## Team Data Structure
 
-Teams are stored in the `ADVENT_TEAMS_DATA` object in `script.js` (around line 1043). The structure is organized by boss name, with each boss containing an array of teams.
+Teams are stored in `data/advent-teams-data.json`. The structure is organized by boss name, with each boss containing an array of teams.
 
 **Basic Structure:**
-```javascript
-const ADVENT_TEAMS_DATA = {
-    'Boss Name': {
-        teams: [
-            {
-                name: 'Team Name',
-                formationType: 'basic', // or 'balanced', 'attack', 'protective'
-                heroes: [ /* hero objects */ ],
-                skills: [ /* skill objects */ ]
-            }
+```json
+{
+  "Boss Name": {
+    "teams": [
+      {
+        "name": "Team Name",
+        "formationType": "basic",
+        "heroes": [
+          { "name": "Hero1", "position": 1, "row": "back" },
+          { "name": "Hero2", "position": 2, "row": "front" }
+        ],
+        "skills": [
+          { "hero": "Hero1", "s1": 1, "s2": null },
+          { "hero": "Hero2", "s1": 2, "s2": 3 }
         ]
-    }
-};
+      }
+    ]
+  }
+}
 ```
 
 ## Formation Types and Positioning
@@ -51,13 +57,13 @@ Each hero in the `heroes` array requires:
 - `row`: Either `'front'` or `'back'` (determines visual positioning)
 
 **Example:**
-```javascript
-heroes: [
-    { name: 'Lina', position: 1, row: 'back' },
-    { name: 'Daisy', position: 2, row: 'front' },
-    { name: 'Ruri', position: 3, row: 'back' },
-    { name: 'Miho', position: 4, row: 'front' },
-    { name: 'Biscuit', position: 5, row: 'back' }
+```json
+"heroes": [
+  { "name": "Lina", "position": 1, "row": "back" },
+  { "name": "Daisy", "position": 2, "row": "front" },
+  { "name": "Ruri", "position": 3, "row": "back" },
+  { "name": "Miho", "position": 4, "row": "front" },
+  { "name": "Biscuit", "position": 5, "row": "back" }
 ]
 ```
 
@@ -73,13 +79,13 @@ Each hero in the `skills` array can have two skills (S1 and S2):
 - `s2`: Top skill execution order (number) or `null` if not used
 
 **Skill Order Example:**
-```javascript
-skills: [
-    { hero: 'Lina', s1: 3, s2: null },      // S1 executes 3rd
-    { hero: 'Daisy', s1: 4, s2: null },     // S1 executes 4th
-    { hero: 'Ruri', s1: 5, s2: 6 },         // S1 executes 5th, S2 executes 6th
-    { hero: 'Miho', s1: 7, s2: 2 },         // S1 executes 7th, S2 executes 2nd
-    { hero: 'Biscuit', s1: null, s2: 1 }    // S2 executes 1st
+```json
+"skills": [
+  { "hero": "Lina", "s1": 3, "s2": null },
+  { "hero": "Daisy", "s1": 4, "s2": null },
+  { "hero": "Ruri", "s1": 5, "s2": 6 },
+  { "hero": "Miho", "s1": 7, "s2": 2 },
+  { "hero": "Biscuit", "s1": null, "s2": 1 }
 ]
 ```
 
@@ -177,33 +183,33 @@ skills: [
 
 ## Complete Working Example
 
-Here's a complete example showing how to add a new boss with a team:
+Here's a complete example showing how to add a new boss with a team in `data/advent-teams-data.json`:
 
-```javascript
-const ADVENT_TEAMS_DATA = {
-    'Teo': {
-        teams: [
-            {
-                name: 'Speed Team',
-                formationType: 'balanced',
-                heroes: [
-                    { name: 'Kris', position: 1, row: 'front' },
-                    { name: 'Knox', position: 2, row: 'back' },
-                    { name: 'May', position: 3, row: 'front' },
-                    { name: 'Shane', position: 4, row: 'back' },
-                    { name: 'Lina', position: 5, row: 'front' }
-                ],
-                skills: [
-                    { hero: 'Kris', s1: 2, s2: null },
-                    { hero: 'Knox', s1: 5, s2: null },
-                    { hero: 'May', s1: 1, s2: 4 },
-                    { hero: 'Shane', s1: 3, s2: 6 },
-                    { hero: 'Lina', s1: null, s2: 7 }
-                ]
-            }
+```json
+{
+  "Teo": {
+    "teams": [
+      {
+        "name": "Speed Team",
+        "formationType": "balanced",
+        "heroes": [
+          { "name": "Kris", "position": 1, "row": "front" },
+          { "name": "Knox", "position": 2, "row": "back" },
+          { "name": "May", "position": 3, "row": "front" },
+          { "name": "Shane", "position": 4, "row": "back" },
+          { "name": "Lina", "position": 5, "row": "front" }
+        ],
+        "skills": [
+          { "hero": "Kris", "s1": 2, "s2": null },
+          { "hero": "Knox", "s1": 5, "s2": null },
+          { "hero": "May", "s1": 1, "s2": 4 },
+          { "hero": "Shane", "s1": 3, "s2": 6 },
+          { "hero": "Lina", "s1": null, "s2": 7 }
         ]
-    }
-};
+      }
+    ]
+  }
+}
 ```
 
 **Skill Execution Order in Example:**
@@ -235,16 +241,21 @@ cp "Downloaded Hero Portraits/Lina.png" "Hero Portraits/Lina.png"
 
 To add a new boss or content type:
 
-1. **Add to ADVENT_TEAMS_DATA:**
-```javascript
-const ADVENT_TEAMS_DATA = {
-    'Existing Boss': { /* ... */ },
-    'New Boss Name': {
-        teams: [
-            // Add team(s) here using templates above
-        ]
-    }
-};
+1. **Edit `data/advent-teams-data.json`:**
+```json
+{
+  "Existing Boss": { /* ... */ },
+  "New Boss Name": {
+    "teams": [
+      {
+        "name": "Team Name",
+        "formationType": "basic",
+        "heroes": [ /* hero objects */ ],
+        "skills": [ /* skill objects */ ]
+      }
+    ]
+  }
+}
 ```
 
 2. **The page will automatically:**

@@ -33,27 +33,32 @@ This encoding is essential for web hosting compatibility.
 
 ## Data-Driven Architecture
 
-**CRITICAL**: This application is now FULLY DATA-DRIVEN. Hero data is stored in `hero_data/*.txt` files and automatically displayed on the website.
+**CRITICAL**: This application is now FULLY DATA-DRIVEN. Hero data is stored in `data/hero-data.json` and automatically displayed on the website.
 
 ### Updating Hero Data Workflow
 
-1. **Edit** the hero's text file in `hero_data/HeroName.txt`
-2. **Run** `python sync_hero_data.py` to regenerate `data/hero-data.json`
-3. **Refresh** browser to see changes
+1. **Edit** `data/hero-data.json` to add or modify hero data
+2. **Refresh** browser to see changes
 
-**No code changes needed!** The sync script parses ALL fields (effects, metadata, gear configs, tips) and the website automatically displays them.
+**No code changes needed!** The JSON file contains ALL fields (effects, metadata, gear configs, tips) and the website automatically displays them.
 
-### What the Sync Script Does
+### Hero Data Structure
 
-`sync_hero_data.py` parses these fields from each `hero_data/*.txt` file:
-- **Meta Information**: Role, Primary content, Target transcendence, Wishlist priority, Type, Target Number, Rarity
-- **Effects**: All effects listed in the EFFECTS section
-- **Gear PvE**: T0 and T6 gear set configurations
-- **Gear PvP**: T0 and T6 gear set configurations
-- **Skill Enhance Priority**: Recommended skill enhancement order
-- **Tips/Important Info**: Additional hero information
+Each hero in `data/hero-data.json` has these fields:
+- **Meta Information**: name, role, primary_content, target_transcendence, wishlist_priority, type, target_number, rarity
+- **Effects**: Array of effect strings for filtering
+- **Gear PvE**: T0 and T6 gear set configurations (arrays of gear objects)
+- **Gear PvP**: T0 and T6 gear set configurations (arrays of gear objects)
+- **Skill Enhance Priority**: Recommended skill enhancement order (string)
+- **Tips/Important Info**: Additional hero information (string)
 
-All this data is stored in `data/hero-data.json` and automatically displayed on hero detail pages.
+Each gear object contains:
+- `name`: Gear set name
+- `main_stats`: Main stat requirements
+- `required_stat_thresholds`: Threshold requirements
+- `sub_stat_priority`: Priority stats
+
+All this data is automatically displayed on hero detail pages.
 
 ### When Code Changes ARE Needed
 
@@ -61,7 +66,7 @@ Code changes in `js/gear-builder.js` are ONLY needed for:
 - Heroes requiring custom formatting or layout (e.g., Amelia, Ace with special notes)
 - Heroes with complex gear requirements not fitting the standard format
 
-For 90% of heroes, just update the text file and run the sync script!
+For 90% of heroes, just update the JSON and refresh!
 
 ## Modular Architecture
 
@@ -99,19 +104,17 @@ js/                 - Modular JavaScript files (ES6 modules)
   ├── advent-teams.js - Advent teams view
   └── views.js      - View switching and navigation
 data/               - JSON data files
-  ├── hero-data.json - Complete hero data (effects, metadata, gear configs, tips) - auto-generated from hero_data/*.txt
+  ├── hero-data.json - Complete hero data (effects, metadata, gear configs, tips)
   └── advent-teams-data.json - Advent team compositions
 Hero Portraits/     - Portrait images for grid view cards
 Hero Models BGL/    - Full model images for detail view
 Gear Sets Photos/   - Gear set images for hero detail pages
-hero_data/          - Individual text files containing hero information to be populated
-sync_hero_data.py   - Script to sync hero_data/*.txt files to data/hero-data.json
 DEPLOYMENT.md       - User-facing deployment guide (NOT for Claude's reference)
 .claude/            - Feature-specific documentation (see below)
 ```
 
 **Important Files:**
-- `sync_hero_data.py` - Run this after updating hero_data files: `python sync_hero_data.py`
+- `data/hero-data.json` - Edit this file directly to update hero information
 - `js/` folder - All JavaScript is now modular using ES6 modules
 - `data/` folder - Hero and advent team data stored as JSON files
 
@@ -121,12 +124,11 @@ This project uses **modular documentation**. ALWAYS read the appropriate special
 
 ### Read `.claude/heroes.md` when:
 - Adding new heroes to the database
-- Updating hero data, effects, or gear information
+- Updating hero data, effects, or gear information in `data/hero-data.json`
 - Working with hero portraits or models
 - Implementing or fixing the effects filtering system
 - Updating gear set displays or card layouts
 - Modifying hero detail pages
-- Working with `hero_data/*.txt` files
 - Questions about gear set photos or naming conventions
 
 ### Read `.claude/teams.md` when:
@@ -155,5 +157,3 @@ This project uses **modular documentation**. ALWAYS read the appropriate special
 - For quick lookups: Check `.claude/reference.md`
 
 These specialized files contain detailed instructions, examples, and critical information that is not in this core file.
-
-**Do not put python scripts in the working directory**
