@@ -4046,6 +4046,33 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     font-family: inherit;
 }
 
+/* Prevent iOS zoom on input focus - must be at least 16px */
+@media (max-width: 768px) {
+    .hero-selector-input {
+        font-size: 16px;
+    }
+    
+    .team-slot:has(.team-slot-hero) .hero-selector-input {
+        font-size: 16px;
+    }
+    
+    .team-name-input {
+        font-size: 16px;
+    }
+    
+    .team-formation-select {
+        font-size: 16px;
+    }
+    
+    .team-pet-select {
+        font-size: 16px;
+    }
+    
+    .team-builder-effect-filter .effect-search-input {
+        font-size: 16px;
+    }
+}
+
 .hero-selector-input::placeholder {
     color: var(--text-tertiary);
     opacity: 0.7;
