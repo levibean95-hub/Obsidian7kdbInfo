@@ -57,6 +57,7 @@ let selectedType = '';
 let selectedEffect = '';
 let subject = '';
 let draggedHero = null;
+let selectedHero = null; // Track clicked hero/pet for click-to-place
 let showPets = false; // Toggle between heroes and pets
 
 // Initialize Team Builder
@@ -361,6 +362,21 @@ function createDraggablePetCard(petName) {
         draggedHero = null;
     });
     
+    // Click-to-select handler
+    card.addEventListener('click', (e) => {
+        // Don't select if dragging
+        if (draggedHero) return;
+        
+        // Clear previous selection
+        document.querySelectorAll('.hero-pool-card.selected').forEach(c => {
+            c.classList.remove('selected');
+        });
+        
+        // Set new selection
+        selectedHero = `pet:${petName}`;
+        card.classList.add('selected');
+    });
+    
     return card;
 }
 
@@ -419,6 +435,24 @@ function createDraggableHeroCard(heroName) {
     card.addEventListener('dragend', () => {
         card.classList.remove('dragging');
         draggedHero = null;
+    });
+    
+    // Click-to-select handler
+    card.addEventListener('click', (e) => {
+        // Don't select if dragging
+        if (draggedHero) return;
+        
+        // Clear previous selection
+        document.querySelectorAll('.hero-pool-card.selected').forEach(c => {
+            c.classList.remove('selected');
+        });
+        document.querySelectorAll('.pet-pool-card.selected').forEach(c => {
+            c.classList.remove('selected');
+        });
+        
+        // Set new selection
+        selectedHero = heroName;
+        card.classList.add('selected');
     });
 
     return card;
@@ -646,6 +680,31 @@ function createPetSlot(teamIndex, petName) {
 
     petSlot.addEventListener('dragleave', () => {
         petSlot.classList.remove('drag-over');
+    });
+
+    // Click-to-place handler for pet slot
+    petSlot.addEventListener('click', (e) => {
+        // Don't handle if clicking on pet card
+        if (e.target.closest('.team-pet-card')) {
+            return;
+        }
+        
+        if (selectedHero && selectedHero.startsWith('pet:')) {
+            const pet = selectedHero.replace('pet:', '');
+            teams[teamIndex].pet = pet;
+            
+            // Clear selection
+            selectedHero = null;
+            document.querySelectorAll('.hero-pool-card.selected').forEach(c => {
+                c.classList.remove('selected');
+            });
+            document.querySelectorAll('.pet-pool-card.selected').forEach(c => {
+                c.classList.remove('selected');
+            });
+            
+            renderTeams();
+            updateUrl();
+        }
     });
 
     petSlot.addEventListener('drop', (e) => {
@@ -986,6 +1045,60 @@ function createTeamSlot(teamIndex, slotIndex, heroName, row, tier, gearSet, skil
 
     slot.addEventListener('dragleave', () => {
         slot.classList.remove('drag-over');
+    });
+
+    // Click-to-place handler
+    slot.addEventListener('click', (e) => {
+        // Don't handle if clicking on hero card or selector
+        if (e.target.closest('.team-slot-hero') || e.target.closest('.hero-selector-container')) {
+            return;
+        }
+        
+        if (selectedHero) {
+            if (selectedHero.startsWith('pet:')) {
+                // Pets go to pet slot, not hero slots
+                return;
+            }
+            
+            // Place selected hero
+            const heroName = selectedHero;
+            teams[teamIndex].slots[slotIndex] = heroName;
+            
+            // Initialize arrays if needed
+            if (!teams[teamIndex].tiers) {
+                teams[teamIndex].tiers = [0, 0, 0, 0, 0];
+            }
+            if (teams[teamIndex].tiers[slotIndex] === undefined) {
+                teams[teamIndex].tiers[slotIndex] = 0;
+            }
+            if (!teams[teamIndex].gearSets) {
+                teams[teamIndex].gearSets = [null, null, null, null, null];
+            }
+            if (teams[teamIndex].gearSets[slotIndex] === undefined) {
+                teams[teamIndex].gearSets[slotIndex] = null;
+            }
+            if (!teams[teamIndex].skillOrders) {
+                teams[teamIndex].skillOrders = [[], [], [], [], []];
+            }
+            if (teams[teamIndex].skillOrders[slotIndex] === undefined) {
+                teams[teamIndex].skillOrders[slotIndex] = [];
+            }
+            
+            // Clear selection
+            selectedHero = null;
+            document.querySelectorAll('.hero-pool-card.selected').forEach(c => {
+                c.classList.remove('selected');
+            });
+            document.querySelectorAll('.pet-pool-card.selected').forEach(c => {
+                c.classList.remove('selected');
+            });
+            
+            // Re-render to update row positioning
+            const currentRow = getRowForFormation(teams[teamIndex].formationType || 'basic', slotIndex);
+            slot.className = `team-slot team-slot-${currentRow}`;
+            renderTeams();
+            updateUrl();
+        }
     });
 
     slot.addEventListener('drop', (e) => {
@@ -1461,6 +1574,34 @@ function updateUrl() {
 
 // Setup event listeners
 function setupEventListeners() {
+    // Clear selection when clicking outside hero/pet cards and slots
+    document.addEventListener('click', (e) => {
+        // Don't clear if clicking on hero/pet cards or slots
+        if (e.target.closest('.hero-pool-card') || 
+            e.target.closest('.team-slot') || 
+            e.target.closest('.team-pet-slot')) {
+            return;
+        }
+        
+        // Clear selection
+        if (selectedHero) {
+            selectedHero = null;
+            document.querySelectorAll('.hero-pool-card.selected').forEach(c => {
+                c.classList.remove('selected');
+            });
+        }
+    });
+    
+    // Clear selection on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && selectedHero) {
+            selectedHero = null;
+            document.querySelectorAll('.hero-pool-card.selected').forEach(c => {
+                c.classList.remove('selected');
+            });
+        }
+    });
+    
     // Search input
     const searchInput = document.getElementById('team-builder-search');
     if (searchInput) {

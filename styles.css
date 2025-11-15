@@ -1435,9 +1435,42 @@ body::after {
         padding: 1rem;
     }
 
+    .hero-card {
+        /* Optimize card spacing */
+        border-radius: 12px;
+    }
+
+    .hero-image-container {
+        /* Reduce image container height slightly */
+        padding-top: 95%;
+    }
+
+    .rarity-badge {
+        /* Smaller badge on mobile */
+        padding: 4px 6px;
+        min-width: 28px;
+        min-height: 18px;
+        font-size: 9px;
+        border-radius: 0 10px 0 12px;
+    }
+
+    .type-icon-badge {
+        /* Smaller type badge on mobile */
+        padding: 4px;
+        min-width: 28px;
+        min-height: 20px;
+        border-radius: 0 0 0 10px;
+    }
+
+    .type-icon-badge img {
+        width: 16px;
+        height: 16px;
+    }
+
     .hero-name {
-        font-size: 1rem;
-        padding: 1rem;
+        font-size: 0.85rem;
+        padding: 0.6rem 0.5rem;
+        line-height: 1.2;
     }
 
     .hero-portrait-card {
@@ -3078,9 +3111,9 @@ body::after {
 .team-builder-content {
     max-width: 1800px;
     margin: 0 auto;
-    padding: 2rem;
-    min-width: 320px;
-    overflow-x: hidden;
+    padding: 1rem;
+    min-width: 1100px;
+    overflow-x: auto;
 }
 
 .team-builder-header {
@@ -3101,11 +3134,11 @@ body::after {
 
 .team-builder-main {
     display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 2rem;
+    grid-template-columns: 300px 1fr;
+    gap: 1rem;
     align-items: start;
     width: 100%;
-    min-width: 0;
+    min-width: 1100px;
 }
 
 /* Hero Pool Sidebar */
@@ -3320,6 +3353,19 @@ body::after {
 .hero-pool-card.dragging {
     opacity: 0.5;
     cursor: grabbing;
+}
+
+.hero-pool-card.selected {
+    border-color: var(--accent-amber);
+    background: rgba(255, 204, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5), 0 4px 12px rgba(147, 112, 219, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    z-index: 10;
+}
+
+.hero-pool-card.selected:hover {
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 25px rgba(255, 204, 0, 0.6), 0 4px 12px rgba(147, 112, 219, 0.4);
 }
 
 .hero-pool-image-container {
@@ -3553,15 +3599,15 @@ body::after {
 .teams-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.6rem;
     width: 100%;
-    min-width: 0;
+    min-width: 700px;
 }
 
 .team-wrapper {
     background: var(--bg-card);
-    border-radius: 12px;
-    padding: 1rem;
+    border-radius: 8px;
+    padding: 0.6rem;
     border: 2px solid var(--border-color);
     box-shadow: var(--shadow-card);
     overflow: hidden;
@@ -3572,8 +3618,8 @@ body::after {
 .team-header {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
     flex-wrap: wrap;
     position: relative;
     z-index: 1;
@@ -3583,52 +3629,59 @@ body::after {
 .team-header-left {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
+    gap: 0.3rem;
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 45%;
 }
 
 .team-header-center {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
+    flex-shrink: 0;
+    margin: 0 0.3rem;
 }
 
 .team-header-right {
     display: flex;
     align-items: center;
+    gap: 0.3rem;
     flex-shrink: 0;
 }
 
 .team-name-input {
     flex: 0 1 auto;
-    max-width: 180px;
-    min-width: 100px;
-    padding: 0.4rem 0.6rem;
+    max-width: 120px;
+    min-width: 80px;
+    padding: 0.3rem 0.5rem;
     background: rgba(10, 8, 16, 0.8);
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 5px;
     color: var(--text-primary);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     transition: all 0.3s ease;
     box-sizing: border-box;
+    flex-shrink: 1;
 }
 
 .team-formation-select {
-    padding: 0.5rem 0.75rem;
+    padding: 0.35rem 0.6rem;
     background: rgba(10, 8, 16, 0.8);
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 5px;
     color: var(--text-primary);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 140px;
-    max-width: 100%;
+    min-width: 110px;
+    max-width: 150px;
+    width: 100%;
     box-sizing: border-box;
+    flex-shrink: 1;
 }
 
 .team-formation-select:focus {
@@ -3648,12 +3701,12 @@ body::after {
 }
 
 .btn-clear-team {
-    padding: 0.4rem 0.75rem;
+    padding: 0.3rem 0.6rem;
     background: rgba(100, 100, 100, 0.2);
     border: 2px solid var(--accent-red);
-    border-radius: 6px;
+    border-radius: 5px;
     color: var(--text-primary);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -3669,12 +3722,12 @@ body::after {
 }
 
 .btn-reset-skills {
-    padding: 0.4rem 0.75rem;
+    padding: 0.3rem 0.6rem;
     background: rgba(100, 100, 150, 0.2);
     border: 2px solid var(--accent-obsidian);
-    border-radius: 6px;
+    border-radius: 5px;
     color: var(--text-primary);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -3715,21 +3768,22 @@ body::after {
 .team-slots {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
     margin: 0;
     padding: 0;
-    margin-top: 50px;
-    min-width: 0;
+    margin-top: 60px;
+    min-width: 700px;
     box-sizing: border-box;
 }
 
 .team-slot {
-    height: 280px;
-    min-width: 0;
+    height: 273px;
+    min-width: 130px;
+    min-height: 273px;
     border: 2px dashed var(--border-color);
-    border-radius: 8px;
-    padding: 0.4rem;
+    border-radius: 6px;
+    padding: 0.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3737,7 +3791,7 @@ body::after {
     background: rgba(10, 8, 16, 0.4);
     transition: all 0.3s ease;
     position: relative;
-    margin: 5px 0;
+    margin: 3px 0;
     overflow: visible;
 }
 
@@ -3777,6 +3831,29 @@ body::after {
     box-shadow: 0 0 20px rgba(197, 163, 255, 0.4);
 }
 
+/* Visual feedback when a hero is selected and hovering over slot */
+body:has(.hero-pool-card.selected) .team-slot.empty-slot {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body:has(.hero-pool-card.selected) .team-slot.empty-slot:hover {
+    border-color: var(--accent-amber);
+    background: rgba(255, 204, 0, 0.1);
+    border-style: dashed;
+    border-width: 2px;
+}
+
+body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:hover {
+    border-color: var(--accent-amber);
+    background: rgba(255, 204, 0, 0.1);
+}
+
 .team-slot-hero {
     width: 100%;
     height: 100%;
@@ -3798,13 +3875,15 @@ body::after {
     position: relative;
     width: 100%;
     max-width: 100%;
+    min-width: 100px;
+    min-height: 118px;
     flex: 0 0 auto;
     aspect-ratio: 0.85;
     overflow: hidden;
     background:
         var(--portrait-backdrop-soft),
         var(--portrait-backdrop-dark);
-    border-radius: 12px 12px 0 0;
+    border-radius: 8px 8px 0 0;
     border-bottom: 1px solid var(--card-border-soft);
     isolation: isolate;
     margin: 0 auto;
@@ -3825,25 +3904,26 @@ body::after {
 }
 
 .team-slot-hero-name {
-    margin-top: 0.2rem;
-    font-size: 0.7rem;
+    margin-top: 0.1rem;
+    font-size: 0.6rem;
     font-weight: 700;
     color: var(--text-primary);
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.1;
     flex-shrink: 0;
+    min-width: 90px;
 }
 
 .tier-stars-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.15rem;
-    margin-top: 0.2rem;
+    gap: 0.1rem;
+    margin-top: 0.1rem;
     flex-wrap: nowrap;
     width: 100%;
     flex-shrink: 0;
-    padding: 0 0.2rem 0 18px;
+    padding: 0 0.15rem 0 16px;
     position: relative;
 }
 
@@ -3859,7 +3939,7 @@ body::after {
     background: transparent;
     border: none;
     color: var(--accent-gold);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     cursor: pointer;
     padding: 0;
     margin: 0;
@@ -3867,7 +3947,7 @@ body::after {
     transition: all 0.2s ease;
     filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
     flex-shrink: 0;
-    min-width: 0.7rem;
+    min-width: 0.6rem;
 }
 
 .tier-star:hover {
@@ -3955,12 +4035,12 @@ body::after {
 
 .hero-selector-input {
     width: 100%;
-    padding: 0.4rem 0.5rem;
+    padding: 0.3rem 0.4rem;
     background: rgba(10, 8, 16, 0.9);
     border: 1px solid var(--border-color);
     border-radius: 4px;
     color: var(--text-primary);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     transition: all 0.2s ease;
     font-family: inherit;
@@ -4082,32 +4162,45 @@ body::after {
 
 .skill-order-container {
     width: 100%;
-    margin-top: 0.4rem;
+    min-width: 100px;
+    max-width: 100%;
+    margin-top: 0.5rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
+    gap: 0;
     flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
 }
 
 .skill-boxes {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    width: 60px;
+    gap: 0.25rem;
+    width: 45px;
+    max-width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
 
 .skill-box {
-    min-width: 60px;
-    width: 60px;
-    height: 36px;
+    min-width: 45px;
+    width: 45px;
+    max-width: 100%;
+    min-height: 26px;
+    height: 26px;
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 4px;
     background: rgba(10, 8, 16, 0.8);
     color: var(--text-primary);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 700;
     display: flex;
+    flex-shrink: 0;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -4193,11 +4286,12 @@ body::after {
     display: flex;
     align-items: center;
     flex: 1;
+    margin-top: 0.75rem;
 }
 
 .team-pet-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     flex: 1;
@@ -4215,6 +4309,7 @@ body::after {
     cursor: pointer;
     transition: all 0.3s ease;
     min-width: 120px;
+    order: 2;
 }
 
 .team-pet-select:hover {
@@ -4248,6 +4343,7 @@ body::after {
     position: relative;
     margin: 0 auto;
     transition: all 0.3s ease;
+    order: 1;
 }
 
 .team-pet-slot.empty-pet-slot {
@@ -4388,19 +4484,38 @@ body::after {
 }
 
 @media (max-width: 1200px) {
-    .team-builder-main {
-        grid-template-columns: 280px 1fr;
-        gap: 1rem;
+    .team-builder-content {
+        min-width: 1000px;
+        padding: 1rem;
     }
 
-    .team-builder-content {
-        padding: 1.5rem;
+    .team-builder-main {
+        grid-template-columns: 280px 1fr;
+        gap: 0.75rem;
+        min-width: 1000px;
+    }
+
+    .teams-container {
+        min-width: 650px;
+    }
+
+    .team-slots {
+        min-width: 650px;
     }
 }
 
 @media (max-width: 1100px) {
+    .team-builder-content {
+        min-width: 950px;
+    }
+
     .teams-container {
         grid-template-columns: 1fr;
+        min-width: 650px;
+    }
+
+    .team-slots {
+        min-width: 650px;
     }
 }
 
@@ -4412,9 +4527,15 @@ body::after {
 }
 
 @media (max-width: 968px) {
+    .team-builder-content {
+        min-width: 320px;
+        overflow-x: hidden;
+    }
+
     .team-builder-main {
         grid-template-columns: 1fr;
         gap: 1rem;
+        min-width: 0;
     }
 
     .team-builder-sidebar {
@@ -4423,12 +4544,14 @@ body::after {
 
     .teams-container {
         grid-template-columns: 1fr;
+        min-width: 0;
     }
 
     .team-slots {
         grid-template-columns: repeat(5, 1fr);
         gap: 0.5rem;
         width: 100%;
+        min-width: 0;
     }
 
     .team-slot {
@@ -4479,8 +4602,18 @@ body::after {
 }
 
 @media (max-width: 640px) {
+    .team-builder-content {
+        min-width: 320px;
+        overflow-x: hidden;
+    }
+
+    .team-builder-main {
+        min-width: 0;
+    }
+
     .teams-container {
         grid-template-columns: 1fr;
+        min-width: 0;
     }
 
     /* Mobile formation: Back row (LEFT) | Front row (RIGHT) */
@@ -4490,6 +4623,7 @@ body::after {
         grid-auto-rows: auto;
         gap: 0.4rem;
         margin-top: 30px;
+        min-width: 0;
         align-items: start;
         position: relative;
     }
@@ -4615,8 +4749,8 @@ body::after {
 
     .team-slot {
         height: auto;
-        min-height: 110px;
-        max-height: 140px;
+        min-height: 140px;
+        max-height: 180px;
         width: 100%;
         padding: 0.25rem;
         position: relative;
@@ -4642,31 +4776,66 @@ body::after {
 
     .team-slot-hero {
         position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    /* Reorder elements on mobile: gear top, skills left, image+name+stars right column */
+    .team-slot-gear-container {
+        order: 0;
+        margin-top: 0;
+        width: 100%;
     }
 
     .team-slot-image-container {
-        max-height: 60px;
-        height: 60px;
+        order: 1;
+        height: 80px;
+        max-height: 80px;
         flex-shrink: 0;
         width: 60%;
-        float: right;
-        margin-left: 0.3rem;
+        margin-right: 0.3rem;
+        margin-left: auto;
+        margin-bottom: 0;
+    }
+
+    .team-slot-hero-name {
+        order: 2;
+        font-size: 0.6rem;
+        margin-top: 0;
+        width: 60%;
+        margin-right: 0.3rem;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    .tier-stars-container {
+        order: 3;
+        margin-top: 0;
+        gap: 0.05rem;
+        padding: 0 0.1rem 0 11px;
+        flex-wrap: nowrap;
+        width: 60%;
+        margin-right: 0.3rem;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
     }
 
     .skill-order-container {
-        float: left;
-        width: calc(40% - 0.3rem);
+        order: 0;
+        width: calc(54% - 0.3rem);
         margin-top: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 60px;
-    }
-
-    .team-slot-hero-name {
-        font-size: 0.6rem;
-        margin-top: 0.1rem;
-        clear: both;
+        height: 80px;
+        flex-shrink: 0;
+        position: absolute;
+        left: 0.25rem;
+        top: calc(0.25rem + 1.5rem + 0.6rem);
+        z-index: 1;
     }
 
     .team-slot-gear-select {
@@ -4675,26 +4844,13 @@ body::after {
         margin-top: 0;
     }
 
-    .team-slot-gear-container {
-        margin-top: 0;
-        order: -1;
-    }
-
-    .tier-stars-container {
-        margin-top: 0.1rem;
-        gap: 0.05rem;
-        padding: 0 0.1rem 0 11px;
-        clear: both;
-        flex-wrap: nowrap;
-    }
-
     .tier-stars-group {
         gap: 0.05rem;
     }
 
     .tier-star {
-        font-size: 0.48rem;
-        min-width: 0.48rem;
+        font-size: 0.65rem;
+        min-width: 0.65rem;
     }
 
     .tier-clear-btn {
