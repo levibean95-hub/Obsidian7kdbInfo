@@ -1,0 +1,136 @@
+=====================================
+HERO: Mercure
+=====================================
+
+--- META INFORMATION ---
+Role: DPS
+Primary content used in: Nightmare, Arena, Total War, GvG
+Target transcendence: T0-T6
+Wish list priority: High
+Rarity: L+
+Type: Magic
+Target Number: All Enemies
+
+--- EFFECTS ---
+Effect Resist Reduction
+Incoming Healing Reduction
+Stun
+Blessing
+Barrier
+Magic Reflux
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Spellweaver Physical
+Main Stats: All Attack %
+Required Stat Thresholds: None, just go for all attack
+Sub Stat Priority: All Attack %
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Full Speed
+Main Stats: All Attack %
+Required Stat Thresholds: Speed, then stack all attack as high as you can
+Sub Stat Priority: Speed, All Attack %
+
+Gear Set 2:
+Name: Spellweaver Physical
+Main Stats: All Attack %
+Required Stat Thresholds: Push for as much speed as possible
+Sub Stat Priority: Speed, All Attack %
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+All good but prio passive
+
+--- TIPS/IMPORTANT INFO ---
+Really good in most content. Magic reflux spreads a lot faster when u get him T2 and T6, as well as with spellweaver set.
+Strong with platin in arena cause platin can solo tank and does a lot of aoe damage proccing magic reflux often
+Dont even think about playing him without 3 mages on the team
+Premier nightmare and tower pusher

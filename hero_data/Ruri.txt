@@ -1,0 +1,131 @@
+=====================================
+HERO: Ruri
+=====================================
+
+--- META INFORMATION ---
+Role: DPS
+Primary content used in: Castle Rush, Advent
+Target transcendence: T0-T6
+Wish list priority: Very High
+Rarity: L
+Type: Magic
+Target Number: 3 Enemies
+
+--- EFFECTS ---
+Weakness Hit Chance Boost
+Magic Damage Boost
+Heal
+Ignore Defense
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Avenger Magic
+Main Stats: Crit Rate, Attack % (armors)
+Required Stat Thresholds: 7% weakness (if T2), 46% weakness if not T2, 100% crit rate
+Sub Stat Priority: Crit Rate, Crit Damange, Attack %, Weakness Hit (if not T2)
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+S1, S2, Passive
+
+--- TIPS/IMPORTANT INFO ---
+Her portrait art, model, and animations are really stupid. Need to buy skin to cover it.

@@ -1,0 +1,26 @@
+# Netlify configuration for 7K Gearing static site
+
+[build]
+  # No build command needed - this is a static site
+  publish = "."
+
+[[headers]]
+  # Apply headers to all routes
+  for = "/*"
+  [headers.values]
+    # Enable CORS for ES6 modules
+    Access-Control-Allow-Origin = "*"
+    # Cache static assets
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  # Cache JS modules for shorter time to avoid stale cache issues
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+[[headers]]
+  # Cache JSON data for shorter time
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"

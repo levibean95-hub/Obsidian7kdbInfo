@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr:*)",
+      "Bash(python sync_hero_data.py:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

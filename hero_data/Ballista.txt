@@ -1,0 +1,131 @@
+=====================================
+HERO: Ballista
+=====================================
+
+--- META INFORMATION ---
+Role: Fodder
+Primary content used in: None
+Target transcendence: None
+Wish list priority: Do not
+Rarity: L
+Type: Attack
+Target Number: 3 Enemies
+
+--- EFFECTS ---
+Fixed Damage
+Damage Nullification
+Follow-Up Attack
+Pierce
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+
+
+--- TIPS/IMPORTANT INFO ---
+Fodder

@@ -1,0 +1,46 @@
+=====================================
+HERO: Elysia
+=====================================
+
+--- META INFORMATION ---
+Role: Support/Utility
+Primary content used in: Arena, Total War, GvG, Nightmare
+Target transcendence: T0-T2
+Wish list priority: High
+Rarity: L+
+Type: Universal
+Target Number: All Enemies
+
+--- EFFECTS ---
+Defense Reduction
+Debuff Removal
+Barrier
+Damage Immunity
+Silence
+Buff Duration Reduction
+Increased Miss Chance
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Orchestrator Physical
+Main Stats: Anything
+Required Stat Thresholds: 100% Effect Resist
+Sub Stat Priority: Effect Resist
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Orchestrator Physical
+Main Stats: Anything
+Required Stat Thresholds: As much speed and effect resist as possible
+Sub Stat Priority: Speed, Effect Resist
+
+--- SKILL ENHANCE PRIORITY ---
+S1, S2, Passive are all good
+
+--- TIPS/IMPORTANT INFO ---
+Really broken utility character. Cleanses allies and silences enemies. Extremely sticky, especially when T2 with orchestrator set.

@@ -1,0 +1,138 @@
+=====================================
+HERO: Fai
+=====================================
+
+--- META INFORMATION ---
+Role: Dps, Support, Debuffs
+Primary content used in: Arena, Nightmare, Total War, GvG
+Target transcendence: T0 (T6 goes crazy but lets be real here)
+Wish list priority: N/A
+Rarity: L++
+Type: Attack
+Target Number: All Enemies
+
+--- EFFECTS ---
+Max HP-Based Damage
+Defense Reduction
+Physical Vulnerability
+Burn
+Buff Removal
+Revive
+Barrier
+Execution
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Avenger Physical
+Main Stats: All Attack %
+Required Stat Thresholds: None
+Sub Stat Priority: All Attack %
+
+Gear Set 2:
+Name: Vanguard Physical
+Main Stats: All Attack %
+Required Stat Thresholds: None
+Sub Stat Priority: All Attack %
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Full Speed
+Main Stats: N/a
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed
+
+Gear Set 2:
+Name: Vanguard Physical
+Main Stats: All Attack %
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed, All Attack %
+
+Gear Set 3:
+Name: Bounty Tracker Physical
+Main Stats: Weakness Hit Chance, All Attack %
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed, Weakness HIt Chance, All Attack %
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+S1 > Passive
+
+--- TIPS/IMPORTANT INFO ---
+Can use for power up dungeons before u have strong shane/Espada
+Passive phys vulnerability + S1 upgrade for defense down is a powerful combo to make your hitters like Kyle go crazy
+Weakness hit set is playable because she will more often target low hp targets with her execute
+Dont underestimate the burn, it does alot of damage

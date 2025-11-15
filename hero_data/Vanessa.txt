@@ -1,0 +1,136 @@
+=====================================
+HERO: Vanessa
+=====================================
+
+--- META INFORMATION ---
+Role: Support, Buffs, Debuffs
+Primary content used in: GvG, Arena, Total War,
+Target transcendence: T0-T6
+Wish list priority: Very High (High is you are looking for the best utility unit in the game, the higher transcendence the more utility)
+Rarity: L+
+Type: Magic
+Target Number: 4 Enemies
+
+--- EFFECTS ---
+Defense Reduction
+Magic Vulnerability
+Petrify
+Buff Removal
+Damage Immunity
+Pierce
+Cooldown Increase
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1: Utility Effect Hit
+Name: Spellweaver Magic
+Main Stats: Effect Hit Rate
+Required Stat Thresholds: Effect Hit Rate
+Sub Stat Priority: Effect Resistance, Max HP%, Block Rate % 
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Spell Weaver Magic
+Main Stats: Effect Hit Rate
+Required Stat Thresholds:
+Sub Stat Priority: Speed
+
+Gear Set 2:
+Name: Full Speed
+Main Stats: Full Speed
+Required Stat Thresholds: Full Speed
+Sub Stat Priority: Full Speed
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+
+Skill 1, Skill 2, Passive (ALL GOOD)
+
+--- TIPS/IMPORTANT INFO ---
+
+Sandstorm sits at (%70-%80) chance to inflict a skill cooldown increase. This is the highest "CC" ability in the game and Spellweaver set increases probability to (%80-%90). Skill cooldown increase in PvP is an amazing opener as landing any can mess up the enemies queued skills. This unit is very good for magic team compositions and can even be used in some physical teams since her passive gives (%20-%24) defense down.

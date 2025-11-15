@@ -1,0 +1,134 @@
+=====================================
+HERO: Lina
+=====================================
+
+--- META INFORMATION ---
+Role: Healer/Buffer
+Primary content used in: Raid, Castle Rush, Nightmare, Total War, Advent
+Target transcendence: T2-T6
+Wish list priority: Very High
+Rarity: L
+Type: Support
+Target Number: Single Enemy
+
+--- EFFECTS ---
+All Damage Boost
+Crit Damage Boost
+Effect Resist Boost
+Defense Reduction
+Barrier
+Heal
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Paladin Magic
+Main Stats: Health %
+Required Stat Thresholds: None
+Sub Stat Priority: Health %, Health, Block Rate, Defense
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Gatekeeper Magic
+Main Stats: Health % (weapons), Block Rate (armors)
+Required Stat Thresholds: 100% block rate
+Sub Stat Priority: Block Rate, HP %, HP
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+All
+
+--- TIPS/IMPORTANT INFO ---
+Used in almost all content. Really good heals while also buffing your team's damage a ton.
+T6 unlocks backline defense debuff, which adds a lot of damage in content like castle rush

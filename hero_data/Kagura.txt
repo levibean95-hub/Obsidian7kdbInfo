@@ -1,0 +1,137 @@
+=====================================
+HERO: Kagura
+=====================================
+
+--- META INFORMATION ---
+Role: Support/Debuffs/CC
+Primary content used in: GvG, Arena, Total War, Nightmare
+Target transcendence: T0-T6
+Wish list priority: High
+Rarity: L+
+Type: Attack
+Target Number: All Enemies
+
+--- EFFECTS ---
+Crit Damage Boost
+Physical Damage Boost
+Physical Vulnerability
+Incoming Healing Reduction
+Petrify
+Debuff Removal
+Indomitable
+Heal
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Vanguard Physical
+Main Stats: All Attack %
+Required Stat Thresholds: None
+Sub Stat Priority: All Attack %
+
+Gear Set 2:
+Name: Spellweaver Physical
+Main Stats: All Attack %
+Required Stat Thresholds: None
+Sub Stat Priority: All Attack %
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Full Speed
+Main Stats: N/A
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed, all attack %
+
+Gear Set 2:
+Name: Assassin Physical
+Main Stats: All Attack %, Crit Rate (Weapons)
+Required Stat Thresholds: None
+Sub Stat Priority: Speed, Crit Rate, All Attack %, Crit Damage
+
+Gear Set 3:
+Name: Spellweaver Physical
+Main Stats: All Attack %
+Required Stat Thresholds: None
+Sub Stat Priority: Speed > All Attack %
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+S2
+
+--- TIPS/IMPORTANT INFO ---
+Core PvP unit for physical comp. Stickiest unit in the game
+U want Kagura to die quickly in PvP to get the cleanse off
+Feels really bad when she casts S1 in PvP, so if you build full crit at least it doest decent damage

@@ -1,0 +1,135 @@
+=====================================
+HERO: Rachel
+=====================================
+
+--- META INFORMATION ---
+Role: Debuff Support
+Primary content used in: Raid, Castle Rush, Advent Expedition 
+Target transcendence: T0-T6
+Wish list priority: Medium
+Rarity: L+
+Type: Universal
+Target Number: 3 Enemies (at T6)
+
+--- EFFECTS ---
+Weakness Hit Chance Boost
+All Attack Reduction
+Defense Reduction
+All Damage Reduction
+Physical Vulnerability
+Burn
+Revive
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Gatekeeper Physical
+Main Stats: Weakness Hit (to hit middle target in castle rush), All Attack % (armors)
+Required Stat Thresholds: 73% Weakness Hit
+Sub Stat Priority: Block Rate, Weakness Hit
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name: Gatekeeper Physical
+Main Stats: All Attack %, All Attack % (armors), Block Rate (armors)
+Required Stat Thresholds: None
+Sub Stat Priority: Block Rate, All Attack %
+
+Gear Set 2:
+Name: Avenger Physical
+Main Stats: Crit Rate, Crit Damage, All Attack % (armors)
+Required Stat Thresholds: 100% Crit Rate, as much crit damage as possible
+Sub Stat Priority: Crit Rate, Crit Damage, Attack %
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+S2, Passive
+
+--- TIPS/IMPORTANT INFO ---
+Debuffs can feel OP at times. Pairs very well with Shane for debuff counter
+T6 makes her a dps in castle rush with 3 target hit

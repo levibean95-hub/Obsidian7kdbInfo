@@ -1,0 +1,131 @@
+=====================================
+HERO: Kris
+=====================================
+
+--- META INFORMATION ---
+Role: Death
+Primary content used in: Total War, Arena, Nightmare
+Target transcendence: T0-T2
+Wish list priority: Very Low
+Rarity: L+
+Type: Universal
+Target Number: All Enemies
+
+--- EFFECTS ---
+Death
+Immortality
+Heal
+Cooldown Reset
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Spellweaver Physical
+Main Stats: Effect Hit Rate, Defense %, HP %, Block Rate (armors), Damage Reduction (Armors)
+Required Stat Thresholds: 100% Block
+Sub Stat Priority: Block Rate, Defense %, HP %, Effect Hit
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Full Speed
+Main Stats: Speed
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed
+
+Gear Set 2:
+Name: Spellweaver Physical
+Main Stats: HP %, Damage Reduction (armors), Block Rate (armors)
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed, Block Rate, HP %, Defense %
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+All are good
+
+--- TIPS/IMPORTANT INFO ---
+Death comp is not in a good spot right now. He might be better if it gets buffed, but atm its just for total war or specific nightmare levels.

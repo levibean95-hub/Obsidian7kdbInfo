@@ -1,0 +1,133 @@
+=====================================
+HERO: Daisy
+=====================================
+
+--- META INFORMATION ---
+Role: Petrify Immunity
+Primary content used in: Raid
+Target transcendence: T0-T2
+Wish list priority: Medium
+Rarity: L
+Type: Magic
+Target Number: All Enemies
+
+--- EFFECTS ---
+Max HP-Based Damage
+Magic Attack Boost
+Petrify Immunity
+Buff Removal
+Barrier
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Assassin Magic
+Main Stats: Crit Rate (weapons), All Attack % (Armor), Damage Taken Reduction (Armor)
+Required Stat Thresholds: 100% Crit Rate, 16% Damage Taken Reduction, 200% Crit Damage
+Sub Stat Priority: Crit Rate, Crit Damage, All Attack %, Max HP
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+
+
+--- TIPS/IMPORTANT INFO ---
+Really hard to find perfect gear for her to clear higher levels of Ox. Gotta find the balance between 1 shotting the ads and being tanky enough to live.
+Can occasionally be used to counter petrify in any other content (like nightmare 8-30)

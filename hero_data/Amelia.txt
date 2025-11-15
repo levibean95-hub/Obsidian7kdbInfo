@@ -1,0 +1,54 @@
+=====================================
+HERO: Amelia
+=====================================
+
+--- META INFORMATION ---
+Role: Support, Buffs, Debuffs
+Primary content used in: GvG, Arena, Total War
+Target transcendence: T0-T6
+Wish list priority: Medium
+Rarity: L
+Type: Attack
+Target Number: 3 Enemies
+
+--- EFFECTS ---
+Effect Hit Rate Boost
+Unable to Recover
+Debuff Removal
+Revive
+
+
+--- GEAR PVE ---
+Gear T0: Vanguard Physical
+
+Important Stats/Thresholds (T0): N/A
+
+Recommended Main Stats (T0): All Attack % (not that important)
+
+Gear T6: Vanguard Physical
+
+Important Stats/Thresholds (T6): N/A
+
+Recommended Main Stats (T6): All Attack % (not that important)
+
+--- GEAR PVP ---
+Gear T0: Spellweaver Physical, Speed
+
+Important Stats/Thresholds (T0): N/A
+
+Recommended Main Stats (T0): All Attack % (not that important)
+
+Gear T6: Spellweaver Physical, Vanguard Physical
+
+Important Stats/Thresholds (T6): N/A
+
+Recommended Main Stats (T6): All Attack % (not that important)
+
+--- SKILL ENHANCE PRIORITY ---
+N/A
+
+--- TIPS/IMPORTANT INFO ---
+S1 concussion is very strong when paired with multi hit heroes. Can infinitely cc 3 enemies. 
+Amelia should be squishy, as she provides a large shield and cleanse when dying
+Very strong against tank team due to HP alteration and anti-heal
+Game changer when paired with Kyle

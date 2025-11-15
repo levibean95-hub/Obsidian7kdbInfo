@@ -1,0 +1,272 @@
+/* Wish List Tier List Styles */
+
+.wish-list-view {
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+.back-nav {
+    margin-bottom: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 8px;
+    color: #818cf8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateX(-5px);
+}
+
+.subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.tier-list-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tier-section {
+    margin-bottom: 30px;
+    background: rgba(30, 30, 60, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    font-weight: bold;
+    border-bottom: 2px solid;
+}
+
+.tier-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.tier-count {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Tier Colors */
+.tier-header.very-high {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(239, 68, 68, 0.3));
+    border-bottom-color: #ef4444;
+    color: #fca5a5;
+}
+
+.tier-header.high {
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.3), rgba(249, 115, 22, 0.3));
+    border-bottom-color: #f97316;
+    color: #fdba74;
+}
+
+.tier-header.medium {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.3), rgba(250, 204, 21, 0.3));
+    border-bottom-color: #facc15;
+    color: #fde047;
+}
+
+.tier-header.low {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(74, 222, 128, 0.3));
+    border-bottom-color: #4ade80;
+    color: #86efac;
+}
+
+.tier-header.very-low {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.3));
+    border-bottom-color: #60a5fa;
+    color: #93c5fd;
+}
+
+.tier-header.do-not {
+    background: linear-gradient(135deg, rgba(107, 114, 128, 0.3), rgba(156, 163, 175, 0.3));
+    border-bottom-color: #9ca3af;
+    color: #d1d5db;
+}
+
+.tier-header.na {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.3), rgba(107, 114, 128, 0.3));
+    border-bottom-color: #6b7280;
+    color: #9ca3af;
+}
+
+.tier-heroes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px;
+    min-height: 120px;
+    align-items: flex-start;
+}
+
+.tier-heroes:empty::after {
+    content: 'No heroes in this tier';
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-card-tier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: none;
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    text-align: center;
+    outline: none;
+}
+
+.hero-card-tier:hover {
+    transform: translateY(-5px);
+}
+
+.hero-card-tier:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.8);
+    outline-offset: 4px;
+}
+
+.hero-portrait-tier {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    background: rgba(30, 30, 60, 0.5);
+    transition: all 0.3s ease;
+}
+
+.hero-card-tier:hover .hero-portrait-tier {
+    border-color: rgba(99, 102, 241, 0.8);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+}
+
+.hero-portrait-tier-missing {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.hero-info-tier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+}
+
+.hero-name-tier {
+    color: #e0e7ff;
+    font-weight: 500;
+    text-align: center;
+    font-size: 0.9rem;
+    max-width: 120px;
+    word-wrap: break-word;
+}
+
+.hero-transcendence-tier {
+    color: rgba(168, 162, 255, 0.8);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(99, 102, 241, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tier-header {
+        padding: 12px 15px;
+    }
+
+    .tier-title {
+        font-size: 1.2rem;
+    }
+
+    .tier-count {
+        font-size: 1rem;
+        padding: 4px 12px;
+    }
+
+    .tier-heroes {
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .hero-card-tier {
+        width: 100px;
+    }
+
+    .hero-portrait-tier {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hero-name-tier {
+        font-size: 0.85rem;
+        max-width: 100px;
+    }
+
+    .hero-transcendence-tier {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-card-tier {
+        width: 80px;
+    }
+
+    .hero-portrait-tier {
+        width: 80px;
+        height: 80px;
+    }
+
+    .hero-name-tier {
+        font-size: 0.8rem;
+        max-width: 80px;
+    }
+
+    .hero-transcendence-tier {
+        font-size: 0.65rem;
+        padding: 1px 5px;
+    }
+
+    .tier-heroes {
+        gap: 10px;
+        padding: 10px;
+    }
+}

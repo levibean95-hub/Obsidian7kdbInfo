@@ -1,0 +1,136 @@
+=====================================
+HERO: Platin
+=====================================
+
+--- META INFORMATION ---
+Role: Tank
+Primary content used in: Arena, GvG, Total War
+Target transcendence: T2-T6
+Wish list priority: High
+Rarity: L+
+Type: Support
+Target Number: All Enemies
+
+--- EFFECTS ---
+Defense-Based Damage
+Fixed Damage
+All Attack Reduction
+Buff Removal
+Heal
+Damage-Based Healing
+HP Alteration
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: 
+Main Stats: 
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Gatekeeper Magic
+Main Stats: Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)
+Required Stat Thresholds: 100% block rate
+Sub Stat Priority:  Block Rate, Defense %, Health %
+
+Gear Set 2:
+Name: 
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name: Gatekeeper Magic
+Main Stats: Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)
+Required Stat Thresholds: 100% block rate
+Sub Stat Priority:  Block Rate, Defense %, Health %
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+Not important but passive can be nice to have
+
+--- TIPS/IMPORTANT INFO ---
+Can play as solo front line with almost any comp in PVP
+Strong with colt in GvG
+Insanely stat hungry hero, hard to fit speed on him because he needs to be as tanky as possible

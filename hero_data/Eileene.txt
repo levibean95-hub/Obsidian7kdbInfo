@@ -1,0 +1,133 @@
+=====================================
+HERO: Eileene
+=====================================
+
+--- META INFORMATION ---
+Role: CC
+Primary content used in: Arena, GvG, Nightmare, Total War
+Target transcendence: T0-T6
+Wish list priority: Medium
+Rarity: L+
+Type: Universal
+Target Number: All Enemies
+
+--- EFFECTS ---
+Physical Attack Boost
+Shock
+Revive
+Pierce
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Spellweaver Physical
+Main Stats: N/A
+Required Stat Thresholds: None
+Sub Stat Priority: N/A
+
+Gear Set 2:
+Name: 
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Spellweaver Physical
+Main Stats: N/A
+Required Stat Thresholds: None
+Sub Stat Priority: Speed
+
+Gear Set 2:
+Name: Full Speed
+Main Stats:
+Required Stat Thresholds: Speed
+Sub Stat Priority: Speed
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+None
+
+--- TIPS/IMPORTANT INFO ---
+S2 is really strong. Multi-hit shock. Much stronger when paired with rosie but not necessary. T6 adds 10% x2 chance to hit which is very powerful.
+
+

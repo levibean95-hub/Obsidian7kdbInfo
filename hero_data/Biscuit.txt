@@ -1,0 +1,135 @@
+=====================================
+HERO: Biscuit
+=====================================
+
+--- META INFORMATION ---
+Role: Support
+Primary content used in: Raid, Castle Rush, Advent, Nightmare Pushing
+Target transcendence: T0-T6
+Wish list priority: VERY high
+Rarity: L+
+Type: Support
+Target Number: 3 Enemies
+
+--- EFFECTS ---
+Defense-Based Damage
+Weakness Hit Chance Boost
+Quintuple-Target Attack Resistance
+Increase damage to boss targets
+Defense Reduction
+Buff Removal
+
+
+--- GEAR PVE ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name: Gatekeeper Magic
+Main Stats: Defense (weapons), Block Rate (armors), Damange Reduction (armors)
+Required Stat Thresholds: None
+Sub Stat Priority: Block rate, Defense, HP
+
+Gear Set 2:
+Name: Assassin Magic
+Main Stats: Crit Rate (weapons), Defense % (armors)
+Required Stat Thresholds: 100% crit rate
+Sub Stat Priority: Crit rate, Crit damage, Defense
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- GEAR PVP ---
+## T0 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+## T6 Gear Sets
+
+Gear Set 1:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 2:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 3:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+Gear Set 4:
+Name:
+Main Stats:
+Required Stat Thresholds:
+Sub Stat Priority:
+
+--- SKILL ENHANCE PRIORITY ---
+S1 > passive > basic attack
+
+--- TIPS/IMPORTANT INFO ---
+Amazing for clearing nightmare on 3* when used in physical team with Kyle
+Used in almost all PvE content. Need speed sub stats for Ox (so Espanda goes 4th)
+Can build crit set if you're pushing damage in castle rush or advent
