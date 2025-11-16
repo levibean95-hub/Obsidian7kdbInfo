@@ -669,9 +669,13 @@ function createPetSlot(teamIndex, petName) {
     if (petName) {
         const petCard = createPetSlotCard(petName, teamIndex);
         petSlot.appendChild(petCard);
+        // On mobile (640px and below), still show dropdown when pet is selected
+        if (window.innerWidth <= 640) {
+            petContainer.appendChild(petDropdown);
+        }
     } else {
         petSlot.classList.add('empty-pet-slot');
-        petSlot.textContent = 'Drop Pet Here';
+        petSlot.appendChild(petDropdown);
     }
 
     // Drop event listeners
@@ -724,7 +728,6 @@ function createPetSlot(teamIndex, petName) {
         }
     });
 
-    petContainer.appendChild(petDropdown);
     petContainer.appendChild(petSlot);
     return petContainer;
 }
