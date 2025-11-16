@@ -187,24 +187,61 @@ function selectEffect(value, displayText) {
     renderHeroGrid();
 }
 
+// Create or get mobile overlay for dropdown dismissal
+function getOrCreateMobileOverlay() {
+    let overlay = document.getElementById('mobile-dropdown-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'mobile-dropdown-overlay';
+        overlay.className = 'mobile-dropdown-overlay';
+        document.body.appendChild(overlay);
+    }
+    return overlay;
+}
+
 // Setup effect filter listeners
 export function setupEffectFilterListeners() {
     const effectSearchInput = document.getElementById('effect-search-input');
     const effectDropdown = document.getElementById('effect-dropdown');
     const clearBtn = document.getElementById('clear-effect-btn');
+    const overlay = getOrCreateMobileOverlay();
+
     const openDropdown = () => {
         effectDropdown.classList.add('show');
         updateComboboxExpandedState(effectSearchInput, true);
+        overlay.classList.add('show');
     };
 
-    // Show dropdown when input is focused or clicked
+    const closeDropdown = () => {
+        effectDropdown.classList.remove('show');
+        updateComboboxExpandedState(effectSearchInput, false);
+        overlay.classList.remove('show');
+    };
+
+    const toggleDropdown = () => {
+        if (effectDropdown.classList.contains('show')) {
+            closeDropdown();
+        } else {
+            openDropdown();
+            filterEffectOptions(''); // Show all options
+        }
+    };
+
+    // Open dropdown on first focus
     effectSearchInput.addEventListener('focus', () => {
-        openDropdown();
-        filterEffectOptions(''); // Show all options
+        if (!effectDropdown.classList.contains('show')) {
+            openDropdown();
+            filterEffectOptions(''); // Show all options
+        }
     });
 
-    effectSearchInput.addEventListener('click', () => {
-        openDropdown();
+    // Toggle dropdown when input is clicked (for closing when already open)
+    effectSearchInput.addEventListener('mousedown', (e) => {
+        // Only toggle if already focused and dropdown is open
+        if (document.activeElement === effectSearchInput && effectDropdown.classList.contains('show')) {
+            e.preventDefault();
+            closeDropdown();
+        }
     });
 
     // Filter options as user types
@@ -220,6 +257,7 @@ export function setupEffectFilterListeners() {
         if (option) {
             const value = option.getAttribute('data-value');
             selectEffect(value, option.textContent);
+            closeDropdown();
         }
     });
 
@@ -233,9 +271,15 @@ export function setupEffectFilterListeners() {
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.effect-filter-container')) {
-            effectDropdown.classList.remove('show');
-            updateComboboxExpandedState(effectSearchInput, false);
+            closeDropdown();
         }
+    });
+
+    // Close dropdown when clicking overlay
+    overlay.addEventListener('click', closeDropdown);
+    overlay.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        closeDropdown();
     });
 }
 
@@ -333,19 +377,44 @@ export function setupTargetFilterListeners() {
     const targetSearchInput = document.getElementById('target-search-input');
     const targetDropdown = document.getElementById('target-dropdown');
     const clearBtn = document.getElementById('clear-target-btn');
+    const overlay = getOrCreateMobileOverlay();
+
     const openDropdown = () => {
         targetDropdown.classList.add('show');
         updateComboboxExpandedState(targetSearchInput, true);
+        overlay.classList.add('show');
     };
 
-    // Show dropdown when input is focused or clicked
+    const closeDropdown = () => {
+        targetDropdown.classList.remove('show');
+        updateComboboxExpandedState(targetSearchInput, false);
+        overlay.classList.remove('show');
+    };
+
+    const toggleDropdown = () => {
+        if (targetDropdown.classList.contains('show')) {
+            closeDropdown();
+        } else {
+            openDropdown();
+            filterTargetOptions(''); // Show all options
+        }
+    };
+
+    // Open dropdown on first focus
     targetSearchInput.addEventListener('focus', () => {
-        openDropdown();
-        filterTargetOptions(''); // Show all options
+        if (!targetDropdown.classList.contains('show')) {
+            openDropdown();
+            filterTargetOptions(''); // Show all options
+        }
     });
 
-    targetSearchInput.addEventListener('click', () => {
-        openDropdown();
+    // Toggle dropdown when input is clicked (for closing when already open)
+    targetSearchInput.addEventListener('mousedown', (e) => {
+        // Only toggle if already focused and dropdown is open
+        if (document.activeElement === targetSearchInput && targetDropdown.classList.contains('show')) {
+            e.preventDefault();
+            closeDropdown();
+        }
     });
 
     // Filter options as user types
@@ -361,6 +430,7 @@ export function setupTargetFilterListeners() {
         if (option) {
             const value = option.getAttribute('data-value');
             selectTarget(value, option.textContent);
+            closeDropdown();
         }
     });
 
@@ -374,8 +444,9 @@ export function setupTargetFilterListeners() {
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.target-filter-container')) {
-            targetDropdown.classList.remove('show');
-            updateComboboxExpandedState(targetSearchInput, false);
+            closeDropdown();
         }
     });
+
+    // Overlay listeners are shared, so they handle both dropdowns
 }

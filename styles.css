@@ -42,12 +42,11 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
-    overflow-x: auto;
+    overflow-x: hidden;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    min-width: fit-content;
 }
 
 /* Utility Classes */
@@ -386,10 +385,28 @@ body::after {
 }
 
 @media (max-width: 640px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+
+    .page-content {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
     .wip-disclaimer {
         font-size: 0.85rem;
         padding: 0.9rem 1.2rem;
         margin-bottom: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }
 
@@ -447,7 +464,7 @@ body::after {
     position: relative;
     flex: 1;
     min-width: 200px;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .search-container::before {
@@ -505,6 +522,10 @@ body::after {
     filter: blur(12px);
 }
 
+.effect-filter-container:focus-within {
+    z-index: 1002;
+}
+
 .effect-filter-container:focus-within::before {
     opacity: 0.8;
 }
@@ -539,6 +560,27 @@ body::after {
 
 .effect-search-input::placeholder {
     color: var(--text-tertiary);
+}
+
+/* Mobile overlay for easier dropdown dismissal */
+.mobile-dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.mobile-dropdown-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .effect-dropdown {
@@ -1714,12 +1756,15 @@ body::after {
 
     .hero-database-title {
         font-size: 1.5rem;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         margin-bottom: 0.75rem;
     }
 
     .hero-database-content-wrapper {
         padding: 1rem;
+        margin: 0 0.5rem;
+        max-width: calc(100vw - 2rem);
+        border-radius: 12px;
     }
 
     .filters-container {
@@ -5531,9 +5576,29 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         display: flex;
     }
 
-    /* Reorder mobile menu to show Hero Database first */
+    /* Reorder mobile menu: Hero Database, Advent Teams, Guild War Teams, Wish List, Team Builder, Speed Gearing Guide */
     .nav-link-main {
-        order: -1;
+        order: 1;
+    }
+
+    #nav-advent-link {
+        order: 2;
+    }
+
+    a[href="guild-war-teams.html"] {
+        order: 3;
+    }
+
+    a[href="wish-list.html"] {
+        order: 4;
+    }
+
+    #nav-teams-link {
+        order: 5;
+    }
+
+    a[href="speed-gearing.html"] {
+        order: 6;
     }
 
     .nav-link {
