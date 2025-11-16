@@ -70,8 +70,10 @@ Each hero in the `heroes` array requires:
 ## Setting Skill Priorities
 
 **CRITICAL - Skill Slot Mapping:**
-- **S1 = Bottom skill** (lower skill slot in-game)
-- **S2 = Top skill** (upper skill slot in-game)
+- **S1 = ALWAYS bottom skill** (lower skill slot in-game)
+- **S2 = ALWAYS top skill** (upper skill slot in-game)
+
+This mapping is CONSISTENT across all teams and all bosses. S1 is always the bottom skill, S2 is always the top skill.
 
 Each hero in the `skills` array can have two skills (S1 and S2):
 - `hero`: Hero name (must match name in `heroes` array)
@@ -81,15 +83,24 @@ Each hero in the `skills` array can have two skills (S1 and S2):
 **Skill Order Example:**
 ```json
 "skills": [
-  { "hero": "Lina", "s1": 3, "s2": null },
-  { "hero": "Daisy", "s1": 4, "s2": null },
-  { "hero": "Ruri", "s1": 5, "s2": 6 },
-  { "hero": "Miho", "s1": 7, "s2": 2 },
-  { "hero": "Biscuit", "s1": null, "s2": 1 }
+  { "hero": "Lina", "s1": 3, "s2": null },      // Priority 3: Lina bottom skill
+  { "hero": "Daisy", "s1": 4, "s2": null },     // Priority 4: Daisy bottom skill
+  { "hero": "Ruri", "s1": 5, "s2": 6 },         // Priority 5: Ruri bottom, Priority 6: Ruri top
+  { "hero": "Miho", "s1": 7, "s2": 2 },         // Priority 2: Miho top, Priority 7: Miho bottom
+  { "hero": "Biscuit", "s1": null, "s2": 1 }    // Priority 1: Biscuit top skill
 ]
 ```
 
-**Visual Result:** Each hero column shows two skill slots below their portrait. Numbers appear in the slots to indicate execution order. Empty slots (null values) display as dashed boxes.
+**Execution Order (by priority number):**
+1. Biscuit S2 (top skill)
+2. Miho S2 (top skill)
+3. Lina S1 (bottom skill)
+4. Daisy S1 (bottom skill)
+5. Ruri S1 (bottom skill)
+6. Ruri S2 (top skill)
+7. Miho S1 (bottom skill)
+
+**Visual Result:** Each hero column shows two skill slots below their portrait. The top slot displays S2 values, the bottom slot displays S1 values. Numbers appear in the slots to indicate execution order. Empty slots (null values) display as dashed boxes.
 
 ## Formation Templates
 
@@ -213,13 +224,15 @@ Here's a complete example showing how to add a new boss with a team in `data/adv
 ```
 
 **Skill Execution Order in Example:**
-1. May S1
-2. Kris S1
-3. Shane S1
-4. May S2
-5. Knox S1
-6. Shane S2
-7. Lina S2
+1. May S1 (bottom skill)
+2. Kris S1 (bottom skill)
+3. Shane S1 (bottom skill)
+4. May S2 (top skill)
+5. Knox S1 (bottom skill)
+6. Shane S2 (top skill)
+7. Lina S2 (top skill)
+
+**Remember:** S1 is ALWAYS bottom skill, S2 is ALWAYS top skill
 
 **Visual Layout:**
 - **Front (lowered):** Kris, May, Lina

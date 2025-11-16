@@ -253,7 +253,7 @@
                 "name": "Team 1",
                 "formationType": "protective",
                 "pet": "Windy",
-                "notes": "Cast Lina bottom skill instead of Dellons if you're taking too much damage. Have to spread debuffs because Kyle cleanses with his S1, so Shane gets consistent damage. NOTE: Shane's top skill (S2) is used at both priority 3 AND 7 - the display shows 3 in top slot and 7 in bottom slot, but both refer to Shane's top skill.",
+                "notes": "Just follow the skill order. The boss cleanses with S1 so have to cast debuffs at specific times to get the benefits for Shane.",
                 "heroes": [
                     { "name": "Lina", "position": 1, "row": "front" },
                     { "name": "Biscuit", "position": 2, "row": "front" },
@@ -262,18 +262,18 @@
                     { "name": "Dellons", "position": 5, "row": "front" }
                 ],
                 "skills": [
-                    { "hero": "Biscuit", "s1": null, "s2": 1 },
-                    { "hero": "Rachel", "s1": 2, "s2": null },
+                    { "hero": "Biscuit", "s1": 1, "s2": null },
+                    { "hero": "Rachel", "s1": null, "s2": 2 },
                     { "hero": "Shane", "s1": null, "s2": "3/7" },
-                    { "hero": "Lina", "s1": 6, "s2": 4 },
-                    { "hero": "Dellons", "s1": null, "s2": 5 }
+                    { "hero": "Dellons", "s1": null, "s2": 4 },
+                    { "hero": "Lina", "s1": 6, "s2": 5 }
                 ]
             },
             {
                 "name": "Team 2",
                 "formationType": "protective",
                 "pet": "Eirin",
-                "notes": "Just dump damage, 2nd fight. NOTE: Jupy's bottom skill (S1) is used at both priority 1 AND 4 - the display shows 1 in bottom slot, but you need to use it again at priority 4.",
+                "notes": "Just dump damage. Team is designed to passively buff Jupy. Can use Fai over Eileene.",
                 "heroes": [
                     { "name": "Yui", "position": 1, "row": "front" },
                     { "name": "Ace", "position": 2, "row": "front" },
@@ -282,11 +282,11 @@
                     { "name": "Sieg", "position": 5, "row": "front" }
                 ],
                 "skills": [
-                    { "hero": "Yui", "s1": 5, "s2": null },
-                    { "hero": "Ace", "s1": null, "s2": 2 },
-                    { "hero": "Jupy", "s1": 1, "s2": 3 },
-                    { "hero": "Eileene", "s1": null, "s2": null },
-                    { "hero": "Sieg", "s1": null, "s2": 6 }
+                    { "hero": "Yui", "s1": 2, "s2": null },
+                    { "hero": "Ace", "s1": 6, "s2": null },
+                    { "hero": "Jupy", "s1": "1/4", "s2": "3/8" },
+                    { "hero": "Eileene", "s1": 7, "s2": null },
+                    { "hero": "Sieg", "s1": null, "s2": 5 }
                 ]
             },
             {

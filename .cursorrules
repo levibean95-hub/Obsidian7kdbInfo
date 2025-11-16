@@ -274,13 +274,15 @@ Each hero in the `heroes` array requires:
 
 **Setting Skill Priorities:**
 **CRITICAL - Skill Slot Mapping:**
-- **S1 = Bottom skill** (lower skill slot in-game)
-- **S2 = Top skill** (upper skill slot in-game)
+- **S1 = Bottom skill** (lower skill slot in-game) - ALWAYS bottom, never changes
+- **S2 = Top skill** (upper skill slot in-game) - ALWAYS top, never changes
+
+**IMPORTANT**: S1 is ALWAYS the bottom skill and S2 is ALWAYS the top skill. This mapping never changes regardless of visual display or team configuration.
 
 Each hero in the `skills` array can have two skills (S1 and S2):
 - `hero`: Hero name (must match name in `heroes` array)
-- `s1`: Bottom skill execution order (number) or `null` if not used
-- `s2`: Top skill execution order (number) or `null` if not used
+- `s1`: Bottom skill execution order (number) or `null` if not used - ALWAYS represents bottom skill
+- `s2`: Top skill execution order (number) or `null` if not used - ALWAYS represents top skill
 
 **Hero Portrait Requirements:**
 **CRITICAL:** Before adding heroes to teams:

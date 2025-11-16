@@ -85,15 +85,16 @@ function createAdventHeroColumn(hero, skillData, bossName = null) {
     const slot2 = document.createElement('div');
     slot2.className = 'advent-skill-slot';
     
-    // For Kyle teams: swap what goes in each slot
+    // For Kyle teams: swap the visual display
     // Normal: slot1 (top visual) = s1 (bottom skill), slot2 (bottom visual) = s2 (top skill)
     // Kyle: slot1 (top visual) = s2 (top skill), slot2 (bottom visual) = s1 (bottom skill)
     const slot1Value = swapDisplay ? (skillData && skillData.s2) : (skillData && skillData.s1);
     const slot2Value = swapDisplay ? (skillData && skillData.s1) : (skillData && skillData.s2);
     
-    // Set slot1 content
+    // Set slot1 content (top visual slot, shows s1 - bottom skill)
     if (slot1Value) {
         slot1.textContent = slot1Value;
+        // If it's a combined format (contains "/"), add special styling
         if (typeof slot1Value === 'string' && slot1Value.includes('/')) {
             slot1.classList.add('combined-skill');
         }
@@ -102,9 +103,10 @@ function createAdventHeroColumn(hero, skillData, bossName = null) {
         slot1.classList.add('empty');
     }
     
-    // Set slot2 content
+    // Set slot2 content (bottom visual slot, shows s2 - top skill)
     if (slot2Value) {
         slot2.textContent = slot2Value;
+        // If it's a combined format (contains "/"), add special styling
         if (typeof slot2Value === 'string' && slot2Value.includes('/')) {
             slot2.classList.add('combined-skill');
         }
