@@ -4,8 +4,8 @@
 import {
     currentView, setCurrentView,
     savedScrollPosition, setSavedScrollPosition,
-    savedAdventScrollPosition,
-    previousView, referrerPage
+    savedAdventScrollPosition, setSavedAdventScrollPosition,
+    previousView, setPreviousView, referrerPage
 } from './state.js';
 import {
     setupEffectFilterListeners,
@@ -160,7 +160,14 @@ export function setupEventListeners() {
         if (referrer === 'guild-war-teams') {
             sessionStorage.removeItem('heroDetailReferrer');
             window.location.href = 'guild-war-teams.html';
+        } else if (previousView === 'advent') {
+            // If we came from advent teams, go back there
+            history.pushState({}, '', window.location.pathname + '#advent');
+            switchView('advent');
+            // Reset previousView to avoid getting stuck
+            setPreviousView('grid');
         } else {
+            // Default: go back to hero grid
             history.pushState({}, '', window.location.pathname);
             switchView('grid');
         }
