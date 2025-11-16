@@ -23,6 +23,12 @@ function updateNavActiveState(view) {
             link.classList.remove('active');
         }
     });
+    
+    // Ensure Hero Database (main page) always has the nav-link-main class
+    const heroLink = document.getElementById('nav-heroes-link');
+    if (heroLink && view === 'grid') {
+        heroLink.classList.add('nav-link-main', 'active');
+    }
 }
 
 // Switch between views
