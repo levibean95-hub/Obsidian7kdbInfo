@@ -13,6 +13,18 @@ import {
     setupTargetFilterListeners
 } from './filters.js';
 
+// Update navigation active states
+function updateNavActiveState(view) {
+    const navLinks = document.querySelectorAll('.nav-link[data-view]');
+    navLinks.forEach(link => {
+        if (link.dataset.view === view) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
 // Switch between views
 export function switchView(view) {
     const gridView = document.getElementById('hero-grid-view');
@@ -26,6 +38,7 @@ export function switchView(view) {
         adventView.classList.remove('active');
         teamBuilderView.classList.remove('active');
         setCurrentView('detail');
+        updateNavActiveState('grid'); // Hero detail is part of hero database
         
         // Remove team builder URL parameters and hash when switching away from team builder
         const urlDetail = new URL(window.location.href);
@@ -46,18 +59,20 @@ export function switchView(view) {
         adventView.classList.add('active');
         teamBuilderView.classList.remove('active');
         setCurrentView('advent');
-        
-        // Remove team builder URL parameters and hash when switching away from team builder
+        updateNavActiveState('advent');
+
+        // Set URL hash for advent view (preserve boss filter if exists)
         const urlAdvent = new URL(window.location.href);
-        if (urlAdvent.searchParams.has('teams') || urlAdvent.searchParams.has('subject') || urlAdvent.hash === '#teams') {
-            urlAdvent.searchParams.delete('teams');
-            urlAdvent.searchParams.delete('subject');
-            if (urlAdvent.hash === '#teams') {
-                urlAdvent.hash = '';
-            }
-            window.history.replaceState({}, '', urlAdvent.pathname + urlAdvent.hash);
+        urlAdvent.searchParams.delete('teams');
+        urlAdvent.searchParams.delete('subject');
+
+        // If there's no hash or it's #teams, set to #advent
+        if (!urlAdvent.hash || urlAdvent.hash === '#teams') {
+            urlAdvent.hash = '#advent';
         }
-        
+        // If hash already starts with #advent, keep it (e.g., #advent-yeonhee)
+        window.history.replaceState({}, '', urlAdvent.pathname + urlAdvent.hash);
+
         // Restore scroll position when returning to advent view
         setTimeout(() => {
             window.scrollTo(0, savedAdventScrollPosition);
@@ -68,6 +83,7 @@ export function switchView(view) {
         adventView.classList.remove('active');
         teamBuilderView.classList.add('active');
         setCurrentView('teambuilder');
+        updateNavActiveState('teambuilder');
         
         // Set clean URL route for team builder
         // Only set #teams if there are no query parameters (clean base route)
@@ -84,6 +100,7 @@ export function switchView(view) {
         teamBuilderView.classList.remove('active');
         gridView.classList.add('active');
         setCurrentView('grid');
+        updateNavActiveState('grid');
         
         // Remove team builder URL parameters and hash when switching away from team builder
         const url = new URL(window.location.href);
@@ -105,30 +122,57 @@ export function switchView(view) {
 
 // Setup event listeners
 export function setupEventListeners() {
-    // Back button (from hero detail)
-    document.getElementById('back-button').addEventListener('click', () => {
-        // If we came from an external page (like wish-list), navigate back to it
-        if (referrerPage === 'wishlist') {
-            window.location.href = 'wish-list.html';
-        } else {
-            // Clear the URL hash and go back
-            history.pushState({}, '', window.location.pathname);
-            // Otherwise, return to the previous view (grid or advent)
-            switchView(previousView === 'advent' ? 'advent' : 'grid');
-        }
-    });
-
-    // Back button (from advent teams)
-    document.getElementById('advent-back-button').addEventListener('click', () => {
-        // Clear the URL hash
+    // Global Navigation Links
+    document.getElementById('nav-heroes-link').addEventListener('click', (e) => {
+        e.preventDefault();
         history.pushState({}, '', window.location.pathname);
         switchView('grid');
+    });
+
+    document.getElementById('nav-advent-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        // Save current scroll position before navigating
+        setSavedScrollPosition(window.pageYOffset || document.documentElement.scrollTop);
+        window.history.pushState({}, '', window.location.pathname + '#advent');
+        switchView('advent');
+    });
+
+    document.getElementById('nav-teams-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        // Save current scroll position before navigating
+        setSavedScrollPosition(window.pageYOffset || document.documentElement.scrollTop);
+        window.history.pushState({}, '', window.location.pathname + '#teams');
+        switchView('teambuilder');
+    });
+
+    // Back to Heroes button in hero detail view
+    document.getElementById('back-to-heroes').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Check if user came from guild war teams page
+        const referrer = sessionStorage.getItem('heroDetailReferrer');
+        if (referrer === 'guild-war-teams') {
+            sessionStorage.removeItem('heroDetailReferrer');
+            window.location.href = 'guild-war-teams.html';
+        } else {
+            history.pushState({}, '', window.location.pathname);
+            switchView('grid');
+        }
     });
 
     // Boss filter dropdown
     document.getElementById('boss-filter').addEventListener('change', (e) => {
         const selectedBoss = e.target.value;
         const bossSections = document.querySelectorAll('.advent-boss-section');
+
+        // Update URL hash based on selected boss
+        const url = new URL(window.location.href);
+        if (selectedBoss === 'all') {
+            url.hash = '#advent';
+        } else {
+            url.hash = `#advent-${selectedBoss}`;
+        }
+        window.history.replaceState({}, '', url.pathname + url.hash);
 
         // Batch DOM changes using requestAnimationFrame for better performance
         requestAnimationFrame(() => {
@@ -143,33 +187,6 @@ export function setupEventListeners() {
         });
     });
 
-    // Advent Teams link
-    document.getElementById('advent-teams-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        // Save current scroll position before navigating
-        setSavedScrollPosition(window.pageYOffset || document.documentElement.scrollTop);
-        switchView('advent');
-    });
-
-    // Team Builder link
-    document.getElementById('team-builder-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        // Save current scroll position before navigating
-        setSavedScrollPosition(window.pageYOffset || document.documentElement.scrollTop);
-        // Navigate to clean team builder route
-        window.history.pushState({}, '', window.location.pathname + '#teams');
-        switchView('teambuilder');
-    });
-
-    // Team Builder back button
-    document.getElementById('team-builder-back-button').addEventListener('click', () => {
-        // Clear the URL hash and query params
-        const url = new URL(window.location.href);
-        url.hash = '';
-        url.search = '';
-        history.pushState({}, '', url.pathname);
-        switchView('grid');
-    });
 
     // Searchable effect filter
     setupEffectFilterListeners();
@@ -212,10 +229,40 @@ export function setupEventListeners() {
     window.addEventListener('popstate', () => {
         const hash = window.location.hash.substring(1);
         const urlParams = new URLSearchParams(window.location.search);
-        
+
         // Check for team builder route
         if (hash === 'teams' || urlParams.has('teams')) {
             switchView('teambuilder');
+        } else if (hash.startsWith('advent')) {
+            // Handle advent teams view with optional boss filter
+            switchView('advent');
+
+            // Parse boss filter from hash (e.g., #advent-yeonhee)
+            const bossMatch = hash.match(/^advent-(.+)$/);
+            const bossFilter = document.getElementById('boss-filter');
+
+            if (bossMatch && bossFilter) {
+                const bossName = bossMatch[1];
+                bossFilter.value = bossName;
+
+                // Trigger filter display update
+                const bossSections = document.querySelectorAll('.advent-boss-section');
+                requestAnimationFrame(() => {
+                    bossSections.forEach(section => {
+                        const shouldShow = section.dataset.boss === bossName;
+                        section.classList.toggle('hidden', !shouldShow);
+                    });
+                });
+            } else if (bossFilter) {
+                // Reset to show all bosses
+                bossFilter.value = 'all';
+                const bossSections = document.querySelectorAll('.advent-boss-section');
+                requestAnimationFrame(() => {
+                    bossSections.forEach(section => {
+                        section.classList.remove('hidden');
+                    });
+                });
+            }
         } else if (hash) {
             // If there's a hash, decode and show that hero
             const heroName = decodeURIComponent(hash);

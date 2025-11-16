@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wish List Tier List - Obsidian Gaming 7k</title>
+    <title>Guild War Teams - Obsidian Gaming 7k</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="wish-list.css">
 </head>
 <body>
     <!-- Global Navigation Menu -->
@@ -43,7 +42,7 @@
                     </svg>
                     <span>Team Builder</span>
                 </a>
-                <a href="wish-list.html" class="nav-link nav-link-external active">
+                <a href="wish-list.html" class="nav-link nav-link-external">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
@@ -57,7 +56,7 @@
                     <span>Speed Gearing</span>
                     <span class="wip-badge-small">WIP</span>
                 </a>
-                <a href="guild-war-teams.html" class="nav-link nav-link-external">
+                <a href="guild-war-teams.html" class="nav-link nav-link-external active">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                         <path d="M2 17l10 5 10-5"></path>
@@ -70,81 +69,44 @@
     </nav>
 
     <div id="app">
-        <div class="wish-list-view">
-            <header class="header">
-                <h1 class="title">Wish List Tier List</h1>
-                <p class="subtitle">Heroes ranked by their wish list priority</p>
-            </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1 class="page-title">Guild War Teams</h1>
+                <p class="page-subtitle">Viable 3-hero team compositions for Guild War</p>
+            </div>
 
-            <div class="tier-list-container">
-                <!-- Very High Tier -->
-                <div class="tier-section" data-tier="very-high">
-                    <div class="tier-header very-high">
-                        <h2 class="tier-title">Very High Priority</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
-
-                <!-- High Tier -->
-                <div class="tier-section" data-tier="high">
-                    <div class="tier-header high">
-                        <h2 class="tier-title">High Priority</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
-
-                <!-- Medium Tier -->
-                <div class="tier-section" data-tier="medium">
-                    <div class="tier-header medium">
-                        <h2 class="tier-title">Medium Priority</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
-
-                <!-- Low Tier -->
-                <div class="tier-section" data-tier="low">
-                    <div class="tier-header low">
-                        <h2 class="tier-title">Low Priority</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
-
-                <!-- Very Low Tier -->
-                <div class="tier-section" data-tier="very-low">
-                    <div class="tier-header very-low">
-                        <h2 class="tier-title">Very Low Priority</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
-
-                <!-- Do Not Tier -->
-                <div class="tier-section" data-tier="do-not">
-                    <div class="tier-header do-not">
-                        <h2 class="tier-title">Do Not Wish</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
-
-                <!-- N/A Tier -->
-                <div class="tier-section" data-tier="na">
-                    <div class="tier-header na">
-                        <h2 class="tier-title">N/A</h2>
-                        <span class="tier-count">0</span>
-                    </div>
-                    <div class="tier-heroes"></div>
-                </div>
+            <div class="advent-bosses-container" id="guild-war-teams-container">
+                <!-- Team cards will be dynamically generated here -->
             </div>
         </div>
     </div>
 
-    <script src="wish-list.js"></script>
-    <script>
+    <script type="module">
+        import { populateGuildWarTeams } from './js/guild-war-teams.js';
+        import { setHeroData } from './js/state.js';
+        import { loadHeroData } from './js/data-loader.js';
+
+        // Initialize the page
+        async function init() {
+            try {
+                // Load hero data first (needed for type colors)
+                const data = await loadHeroData();
+                setHeroData(data);
+
+                // Populate guild war teams
+                await populateGuildWarTeams();
+            } catch (error) {
+                console.error('Error initializing guild war teams page:', error);
+            }
+        }
+
+        // Run initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.getElementById('mobile-menu-toggle');

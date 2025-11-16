@@ -61,14 +61,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Check for URL hash first (for routing)
     const hash = window.location.hash.substring(1); // Remove the # symbol
-    
+
     // Check for team builder route (#teams)
     if (hash === 'teams') {
         // Switch to team builder view
         setTimeout(() => {
             switchView('teambuilder');
         }, 100);
-    } 
+    }
     // Check for URL query parameters (team builder with shared teams)
     else if (window.location.search.includes('teams=')) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -78,6 +78,33 @@ document.addEventListener('DOMContentLoaded', async () => {
                 switchView('teambuilder');
             }, 100);
         }
+    }
+    // Check for advent teams route (#advent or #advent-<boss>)
+    else if (hash.startsWith('advent')) {
+        // Parse boss filter from hash (e.g., #advent-yeonhee)
+        const bossMatch = hash.match(/^advent-(.+)$/);
+
+        setTimeout(() => {
+            switchView('advent');
+
+            if (bossMatch) {
+                const bossName = bossMatch[1];
+                const bossFilter = document.getElementById('boss-filter');
+
+                if (bossFilter) {
+                    bossFilter.value = bossName;
+
+                    // Trigger filter display update
+                    const bossSections = document.querySelectorAll('.advent-boss-section');
+                    requestAnimationFrame(() => {
+                        bossSections.forEach(section => {
+                            const shouldShow = section.dataset.boss === bossName;
+                            section.classList.toggle('hidden', !shouldShow);
+                        });
+                    });
+                }
+            }
+        }, 100);
     }
     // Check for hero hash
     else if (hash) {

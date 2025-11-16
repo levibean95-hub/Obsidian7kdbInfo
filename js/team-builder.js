@@ -388,6 +388,11 @@ function createDraggableHeroCard(heroName) {
     card.dataset.heroName = heroName;
 
     const heroInfo = heroData[heroName];
+
+    // Set hero type for border coloring
+    if (heroInfo && heroInfo.type) {
+        card.dataset.heroType = heroInfo.type.toLowerCase();
+    }
     const imageContainer = document.createElement('div');
     imageContainer.className = 'hero-pool-image-container';
 
@@ -1174,6 +1179,11 @@ function createTeamSlotHeroCard(heroName, teamIndex, slotIndex, gearSet, skillOr
     card.dataset.heroName = heroName;
 
     const heroInfo = heroData[heroName];
+
+    // Set hero type for border coloring
+    if (heroInfo && heroInfo.type) {
+        card.dataset.heroType = heroInfo.type.toLowerCase();
+    }
     const imageContainer = document.createElement('div');
     imageContainer.className = 'team-slot-image-container';
 
