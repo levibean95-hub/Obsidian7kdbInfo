@@ -172,39 +172,41 @@
             {
                 "name": "Team 1",
                 "formationType": "balanced",
-                "pet": "placeholder",
+                "pet": "Windy",
+                "notes": "Can swap Taka for Feng if your taka is really week. Need avenger set on both Kyle and Taka/Feng. Use Taka top when the boss is low. Otherwise u wont find time.",
                 "heroes": [
-                    { "name": "---", "position": 1, "row": "front" },
-                    { "name": "---", "position": 2, "row": "back" },
-                    { "name": "---", "position": 3, "row": "front" },
-                    { "name": "---", "position": 4, "row": "back" },
-                    { "name": "---", "position": 5, "row": "front" }
+                    { "name": "Rachel", "position": 1, "row": "front" },
+                    { "name": "Kyle", "position": 2, "row": "back" },
+                    { "name": "Biscuit", "position": 3, "row": "front" },
+                    { "name": "Taka", "position": 4, "row": "back" },
+                    { "name": "Lina", "position": 5, "row": "front" }
                 ],
                 "skills": [
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null }
+                    { "hero": "Rachel", "s1": 2, "s2": null },
+                    { "hero": "Kyle", "s1": 5, "s2": 4 },
+                    { "hero": "Biscuit", "s1": null, "s2": 1 },
+                    { "hero": "Taka", "s1": null, "s2": 3 },
+                    { "hero": "Lina", "s1": 7, "s2": 6 }
                 ]
             },
             {
                 "name": "Team 2",
                 "formationType": "protective",
-                "pet": "placeholder",
+                "pet": "Eirin",
+                "notes": "Can swap Bi Dam for Feng if you dont have Bi Dam leveled at all. Just want to dump damage on this one, usually u wont get to this round till a bit before round 50. Can also swap Fai for Dellons if u dont have her. Even Yui works. Just want to get Bi Dam/Feng buffs.",
                 "heroes": [
-                    { "name": "---", "position": 1, "row": "front" },
-                    { "name": "---", "position": 2, "row": "front" },
-                    { "name": "---", "position": 3, "row": "back" },
-                    { "name": "---", "position": 4, "row": "front" },
-                    { "name": "---", "position": 5, "row": "front" }
+                    { "name": "Kagura", "position": 1, "row": "front" },
+                    { "name": "Fai", "position": 2, "row": "front" },
+                    { "name": "Bi Dam", "position": 3, "row": "back" },
+                    { "name": "Ace", "position": 4, "row": "front" },
+                    { "name": "Eileene", "position": 5, "row": "front" }
                 ],
                 "skills": [
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null },
-                    { "hero": "---", "s1": null, "s2": null }
+                    { "hero": "Kagura", "s1": null, "s2": null },
+                    { "hero": "Fai", "s1": 5, "s2": 1 },
+                    { "hero": "Bi Dam", "s1": 4, "s2": 3 },
+                    { "hero": "Ace", "s1": 2, "s2": null },
+                    { "hero": "Eileene", "s1": 6, "s2": null }
                 ]
             },
             {
