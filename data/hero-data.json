@@ -40,7 +40,7 @@
             "T6": []
         },
         "skill_enhance_priority": "N/A",
-        "tips": "The main reason you use Ace is because of his defense down passive. He is really sticky due to guts and provides good debuffs for your team."
+        "tips": "The main reason you use Ace is because of his defense down passive. He is really sticky due to guts and provides good debuffs for your team. Ace's buff removal is powerful in GvG."
     },
     "Alice": {
         "name": "Alice",
@@ -1910,7 +1910,7 @@
                 {
                     "name": "Gatekeeper Magic",
                     "main_stats": "Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)",
-                    "required_stat_thresholds": "100% block rate",
+                    "required_stat_thresholds": "100% block rate. Aim for 42% damage reduction (at T4). Hard to hit but super capped if u can do this with 100% block. 70% is fine.",
                     "sub_stat_priority": "Block Rate, Defense %, Health %"
                 }
             ],
@@ -1923,7 +1923,7 @@
                 }
             ]
         },
-        "skill_enhance_priority": "Not important but passive can be nice to have",
+        "skill_enhance_priority": "Passive",
         "tips": "Can play as solo front line with almost any comp in PVP"
     },
     "Rachel": {
@@ -2048,7 +2048,7 @@
                 {
                     "name": "Assassin Magic",
                     "main_stats": "Crit Rate, Weakness Hit, Attack %",
-                    "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack)",
+                    "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage",
                     "sub_stat_priority": "Crit Rate, Weakness Hit, Attack %"
                 }
             ],
@@ -2059,7 +2059,7 @@
                 {
                     "name": "Assassin Magic",
                     "main_stats": "Crit Rate, Weakness Hit, Attack %",
-                    "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack)",
+                    "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage",
                     "sub_stat_priority": "Speed, Crit Rate, Weakness Hit, Attack %"
                 }
             ],
@@ -2658,9 +2658,9 @@
         "gear_pve": {
             "T0": [
                 {
-                    "name": "Assassin",
+                    "name": "Assassin Magic",
                     "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate",
+                    "required_stat_thresholds": "100% Crititcal Rate, 210%+ crit damage",
                     "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
                 },
                 {
@@ -2681,9 +2681,9 @@
         "gear_pvp": {
             "T0": [
                 {
-                    "name": "Assassin",
+                    "name": "Assassin Magic",
                     "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate",
+                    "required_stat_thresholds": "100% Crititcal Rate, 210%+ crit damage",
                     "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
                 },
                 {

@@ -390,7 +390,7 @@ export function populateHeroSections(heroName) {
     if (heroName === 'Ace') {
         // Tips and Effects section (side-by-side) - shown first
         addTipsAndEffectsSection(`
-            <p>The main reason you use Ace is because of his defense down passive. He is really sticky due to guts and provides good debuffs for your team.</p>
+            <p>The main reason you use Ace is because of his defense down passive. He is really sticky due to guts and provides good debuffs for your team. Ace's buff removal is powerful in GvG.</p>
         `, heroName);
 
         // Gear sections
@@ -1864,7 +1864,7 @@ export function populateHeroSections(heroName) {
         addHeroSection('Gear PvP', buildGearSection(
             'Gatekeeper Magic',                    // T0 Gear
             'Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)', // T0 Main Stats
-            '100% block rate',                     // T0 Required Stat Thresholds
+            '100% block rate. Aim for 42% damage reduction (at T4). Hard to hit but super capped if u can do this with 100% block. 70% is fine.',                     // T0 Required Stat Thresholds
             'Block Rate, Defense %, Health %',     // T0 Sub Stat Priority
             'Gatekeeper Magic',                    // T6 Gear
             'Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)', // T6 Main Stats
@@ -1874,7 +1874,7 @@ export function populateHeroSections(heroName) {
 
         addHeroSection('Skill Enhance Priority', `
             <div class="subsection-content" style="color: var(--text-secondary);">
-                <p>Not important but passive can be nice to have</p>
+                <p>Passive</p>
             </div>
         `);
 
@@ -1953,7 +1953,7 @@ export function populateHeroSections(heroName) {
         addHeroSection('Gear PvE', buildGearSection(
             'Assassin Magic',                           // T0 Gear
             'Crit Rate, Weakness Hit, Attack %',        // T0 Main Stats
-            '67% crit with 3850 Attack is optimal (she gets more crit based on attack)', // T0 Required Stat Thresholds
+            '67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage', // T0 Required Stat Thresholds
             'Crit Rate, Weakness Hit, Attack %',        // T0 Sub Stat Priority
             null,                                        // T6 Gear (not specified)
             null,                                        // T6 Main Stats
@@ -1964,7 +1964,7 @@ export function populateHeroSections(heroName) {
         addHeroSection('Gear PvP', buildGearSection(
             'Assassin Magic',                           // T0 Gear
             'Crit Rate, Weakness Hit, Attack %',        // T0 Main Stats
-            '67% crit with 3850 Attack is optimal (she gets more crit based on attack)', // T0 Required Stat Thresholds
+            '67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage', // T0 Required Stat Thresholds
             'Speed, Crit Rate, Weakness Hit, Attack %', // T0 Sub Stat Priority
             null,                                        // T6 Gear (not specified)
             null,                                        // T6 Main Stats
@@ -2096,7 +2096,7 @@ export function populateHeroSections(heroName) {
                     ${createGearCard(
                         'Assassin Magic',
                         'Crit Rate, Crit Damage',
-                        '100% Crititcal Rate',
+                        '100% Crititcal Rate, 210%+ crit damage',
                         'Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %'
                     )}
                     ${createGearCard(
@@ -2122,7 +2122,7 @@ export function populateHeroSections(heroName) {
                     ${createGearCard(
                         'Assassin Magic',
                         'Crit Rate, Crit Damage',
-                        '100% Crititcal Rate',
+                        '100% Crititcal Rate, 210%+ crit damage',
                         'Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %'
                     )}
                     ${createGearCard(
