@@ -27,11 +27,14 @@ export function switchView(view) {
         teamBuilderView.classList.remove('active');
         setCurrentView('detail');
         
-        // Remove team builder URL parameters when switching away from team builder
+        // Remove team builder URL parameters and hash when switching away from team builder
         const urlDetail = new URL(window.location.href);
-        if (urlDetail.searchParams.has('teams') || urlDetail.searchParams.has('subject')) {
+        if (urlDetail.searchParams.has('teams') || urlDetail.searchParams.has('subject') || urlDetail.hash === '#teams') {
             urlDetail.searchParams.delete('teams');
             urlDetail.searchParams.delete('subject');
+            if (urlDetail.hash === '#teams') {
+                urlDetail.hash = '';
+            }
             window.history.replaceState({}, '', urlDetail.pathname + urlDetail.hash);
         }
         
@@ -44,11 +47,14 @@ export function switchView(view) {
         teamBuilderView.classList.remove('active');
         setCurrentView('advent');
         
-        // Remove team builder URL parameters when switching away from team builder
+        // Remove team builder URL parameters and hash when switching away from team builder
         const urlAdvent = new URL(window.location.href);
-        if (urlAdvent.searchParams.has('teams') || urlAdvent.searchParams.has('subject')) {
+        if (urlAdvent.searchParams.has('teams') || urlAdvent.searchParams.has('subject') || urlAdvent.hash === '#teams') {
             urlAdvent.searchParams.delete('teams');
             urlAdvent.searchParams.delete('subject');
+            if (urlAdvent.hash === '#teams') {
+                urlAdvent.hash = '';
+            }
             window.history.replaceState({}, '', urlAdvent.pathname + urlAdvent.hash);
         }
         
@@ -62,6 +68,14 @@ export function switchView(view) {
         adventView.classList.remove('active');
         teamBuilderView.classList.add('active');
         setCurrentView('teambuilder');
+        
+        // Set clean URL route for team builder
+        // Only set #teams if there are no query parameters (clean base route)
+        const url = new URL(window.location.href);
+        if (!url.searchParams.has('teams')) {
+            window.history.replaceState({}, '', url.pathname + '#teams');
+        }
+        
         // Scroll to top when entering team builder view
         window.scrollTo(0, 0);
     } else {
@@ -71,11 +85,14 @@ export function switchView(view) {
         gridView.classList.add('active');
         setCurrentView('grid');
         
-        // Remove team builder URL parameters when switching away from team builder
+        // Remove team builder URL parameters and hash when switching away from team builder
         const url = new URL(window.location.href);
-        if (url.searchParams.has('teams') || url.searchParams.has('subject')) {
+        if (url.searchParams.has('teams') || url.searchParams.has('subject') || url.hash === '#teams') {
             url.searchParams.delete('teams');
             url.searchParams.delete('subject');
+            if (url.hash === '#teams') {
+                url.hash = '';
+            }
             window.history.replaceState({}, '', url.pathname + url.hash);
         }
         
@@ -139,13 +156,18 @@ export function setupEventListeners() {
         e.preventDefault();
         // Save current scroll position before navigating
         setSavedScrollPosition(window.pageYOffset || document.documentElement.scrollTop);
+        // Navigate to clean team builder route
+        window.history.pushState({}, '', window.location.pathname + '#teams');
         switchView('teambuilder');
     });
 
     // Team Builder back button
     document.getElementById('team-builder-back-button').addEventListener('click', () => {
-        // Clear the URL hash
-        history.pushState({}, '', window.location.pathname);
+        // Clear the URL hash and query params
+        const url = new URL(window.location.href);
+        url.hash = '';
+        url.search = '';
+        history.pushState({}, '', url.pathname);
         switchView('grid');
     });
 
@@ -163,8 +185,11 @@ export function setupEventListeners() {
         // Press Escape to go back or close dropdowns
         if (e.key === 'Escape') {
             if (currentView === 'detail' || currentView === 'advent' || currentView === 'teambuilder') {
-                // Clear hash and go back
-                history.pushState({}, '', window.location.pathname);
+                // Clear hash and query params, then go back
+                const url = new URL(window.location.href);
+                url.hash = '';
+                url.search = '';
+                history.pushState({}, '', url.pathname);
                 switchView('grid');
             } else {
                 const effectDropdown = document.getElementById('effect-dropdown');
@@ -186,7 +211,12 @@ export function setupEventListeners() {
     // Handle browser back/forward buttons
     window.addEventListener('popstate', () => {
         const hash = window.location.hash.substring(1);
-        if (hash) {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Check for team builder route
+        if (hash === 'teams' || urlParams.has('teams')) {
+            switchView('teambuilder');
+        } else if (hash) {
             // If there's a hash, decode and show that hero
             const heroName = decodeURIComponent(hash);
             // Import heroes to validate

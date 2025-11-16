@@ -59,37 +59,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderHeroGrid();
     });
 
-    // Check for URL query parameters (team builder)
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('teams')) {
-        // Switch to team builder view if teams parameter exists
+    // Check for URL hash first (for routing)
+    const hash = window.location.hash.substring(1); // Remove the # symbol
+    
+    // Check for team builder route (#teams)
+    if (hash === 'teams') {
+        // Switch to team builder view
         setTimeout(() => {
             switchView('teambuilder');
         }, 100);
-    } else {
-        // Check for URL hash and show hero if specified
-        const hash = window.location.hash.substring(1); // Remove the # symbol
-        if (hash) {
-            // Decode URI component in case hero name has spaces
-            const heroName = decodeURIComponent(hash);
-            if (heroes.includes(heroName)) {
-                // Set history state for proper back button behavior
-                history.replaceState({ hero: heroName }, '', `#${encodeURIComponent(heroName)}`);
-                // Use setTimeout to ensure DOM is fully ready
-                setTimeout(() => {
-                    showHeroDetail(heroName);
-                    switchView('detail');
-                }, 100);
-            } else {
-                // Invalid hero in URL, clear the hash
-                history.replaceState({}, '', window.location.pathname);
-                // Ensure grid view is shown
-                switchView('grid');
-            }
+    } 
+    // Check for URL query parameters (team builder with shared teams)
+    else if (window.location.search.includes('teams=')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('teams')) {
+            // Switch to team builder view if teams parameter exists
+            setTimeout(() => {
+                switchView('teambuilder');
+            }, 100);
+        }
+    }
+    // Check for hero hash
+    else if (hash) {
+        // Decode URI component in case hero name has spaces
+        const heroName = decodeURIComponent(hash);
+        if (heroes.includes(heroName)) {
+            // Set history state for proper back button behavior
+            history.replaceState({ hero: heroName }, '', `#${encodeURIComponent(heroName)}`);
+            // Use setTimeout to ensure DOM is fully ready
+            setTimeout(() => {
+                showHeroDetail(heroName);
+                switchView('detail');
+            }, 100);
         } else {
-            // No URL parameters or hash - ensure grid view is shown (default)
+            // Invalid hero in URL, clear the hash
+            history.replaceState({}, '', window.location.pathname);
+            // Ensure grid view is shown
             switchView('grid');
         }
+    } else {
+        // No URL parameters or hash - ensure grid view is shown (default)
+        switchView('grid');
     }
 
     console.log('Application initialized successfully');
