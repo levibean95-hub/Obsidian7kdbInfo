@@ -11,7 +11,7 @@ import { switchView } from './views.js';
 import { heroData } from './state.js';
 
 // Create advent hero column
-function createAdventHeroColumn(hero, skillData) {
+function createAdventHeroColumn(hero, skillData, bossName = null) {
     const column = document.createElement('div');
     column.className = `advent-hero-column ${hero.row || ''}`;
 
@@ -74,17 +74,48 @@ function createAdventHeroColumn(hero, skillData) {
     const skillsContainer = document.createElement('div');
     skillsContainer.className = 'advent-skills-container';
 
-    const s1Slot = document.createElement('div');
-    s1Slot.className = 'advent-skill-slot';
-    s1Slot.textContent = skillData && skillData.s1 ? skillData.s1 : 'N/A';
-    if (!skillData || !skillData.s1) s1Slot.classList.add('empty');
-    skillsContainer.appendChild(s1Slot);
-
-    const s2Slot = document.createElement('div');
-    s2Slot.className = 'advent-skill-slot';
-    s2Slot.textContent = skillData && skillData.s2 ? skillData.s2 : 'N/A';
-    if (!skillData || !skillData.s2) s2Slot.classList.add('empty');
-    skillsContainer.appendChild(s2Slot);
+    // For Kyle teams, swap visual display: 
+    // Normal: s1Slot (top visual) = s1 (bottom skill), s2Slot (bottom visual) = s2 (top skill)
+    // Kyle: Need to swap what each slot displays AND the order they appear
+    const swapDisplay = bossName === 'Kyle';
+    
+    // Create both slots
+    const slot1 = document.createElement('div');
+    slot1.className = 'advent-skill-slot';
+    const slot2 = document.createElement('div');
+    slot2.className = 'advent-skill-slot';
+    
+    // For Kyle teams: swap what goes in each slot
+    // Normal: slot1 (top visual) = s1 (bottom skill), slot2 (bottom visual) = s2 (top skill)
+    // Kyle: slot1 (top visual) = s2 (top skill), slot2 (bottom visual) = s1 (bottom skill)
+    const slot1Value = swapDisplay ? (skillData && skillData.s2) : (skillData && skillData.s1);
+    const slot2Value = swapDisplay ? (skillData && skillData.s1) : (skillData && skillData.s2);
+    
+    // Set slot1 content
+    if (slot1Value) {
+        slot1.textContent = slot1Value;
+        if (typeof slot1Value === 'string' && slot1Value.includes('/')) {
+            slot1.classList.add('combined-skill');
+        }
+    } else {
+        slot1.textContent = 'N/A';
+        slot1.classList.add('empty');
+    }
+    
+    // Set slot2 content
+    if (slot2Value) {
+        slot2.textContent = slot2Value;
+        if (typeof slot2Value === 'string' && slot2Value.includes('/')) {
+            slot2.classList.add('combined-skill');
+        }
+    } else {
+        slot2.textContent = 'N/A';
+        slot2.classList.add('empty');
+    }
+    
+    // Always append in same order: slot1 first (top), slot2 second (bottom)
+    skillsContainer.appendChild(slot1);
+    skillsContainer.appendChild(slot2);
 
     column.appendChild(skillsContainer);
 
@@ -92,7 +123,7 @@ function createAdventHeroColumn(hero, skillData) {
 }
 
 // Render a team card
-function renderTeamCard(team) {
+function renderTeamCard(team, bossName = null) {
     const card = document.createElement('div');
     card.className = 'advent-team-card';
 
@@ -132,7 +163,7 @@ function renderTeamCard(team) {
 
     // Render each hero
     team.heroes.forEach(hero => {
-        const heroColumn = createAdventHeroColumn(hero, skillMap[hero.name]);
+        const heroColumn = createAdventHeroColumn(hero, skillMap[hero.name], bossName);
         heroesContainer.appendChild(heroColumn);
     });
 
@@ -234,7 +265,7 @@ export function populateAdventTeams() {
         } else {
             // Render each team with color coding to show pairs
             validTeams.forEach((team, index) => {
-                const teamCard = renderTeamCard(team);
+                const teamCard = renderTeamCard(team, bossName);
 
                 // Color code team pairs
                 if (index < 2) {

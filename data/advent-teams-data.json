@@ -262,11 +262,11 @@
                     { "name": "Dellons", "position": 5, "row": "front" }
                 ],
                 "skills": [
-                    { "hero": "Lina", "s1": null, "s2": 6 },
-                    { "hero": "Biscuit", "s1": 1, "s2": null },
-                    { "hero": "Shane", "s1": 7, "s2": 3 },
-                    { "hero": "Rachel", "s1": 5, "s2": 2 },
-                    { "hero": "Dellons", "s1": null, "s2": 4 }
+                    { "hero": "Biscuit", "s1": null, "s2": 1 },
+                    { "hero": "Rachel", "s1": 2, "s2": null },
+                    { "hero": "Shane", "s1": null, "s2": "3/7" },
+                    { "hero": "Lina", "s1": 6, "s2": 4 },
+                    { "hero": "Dellons", "s1": null, "s2": 5 }
                 ]
             },
             {
