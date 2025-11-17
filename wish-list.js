@@ -304,9 +304,9 @@ const WISH_LIST_DATA = {
     },
     "Miho": {
         "name": "Miho",
-        "priority": "Medium",
-        "tier": "medium",
-        "transcendence": "T0-T2 (T6 is fine but T2 is the biggest)"
+        "priority": "High",
+        "tier": "high",
+        "transcendence": "T2"
     },
     "Nia": {
         "name": "Nia",
@@ -444,7 +444,7 @@ const WISH_LIST_DATA = {
         "name": "Taka",
         "priority": "High",
         "tier": "high",
-        "transcendence": "T0-T6"
+        "transcendence": "T2-T6"
     },
     "Teo": {
         "name": "Teo",

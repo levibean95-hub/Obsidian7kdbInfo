@@ -183,21 +183,61 @@ function createEmptyHeroColumn(position, formationType) {
 }
 
 /**
+ * Extracts the team number from a team name
+ * @param {string} teamName - Team name (e.g., "Team 1", "Team 1 alt", "Team 4 ALT 2")
+ * @returns {number} The team number
+ */
+function extractTeamNumber(teamName) {
+    const match = teamName.match(/Team\s+(\d+)/i);
+    return match ? parseInt(match[1]) : 0;
+}
+
+/**
+ * Gets a color for a team number
+ * @param {number} teamNumber - The team number
+ * @returns {string} Hex color code
+ */
+function getTeamColor(teamNumber) {
+    const teamColors = [
+        '#e74c3c', // Team 1 - Red
+        '#3498db', // Team 2 - Blue
+        '#2ecc71', // Team 3 - Green
+        '#f39c12', // Team 4 - Orange
+        '#9b59b6', // Team 5 - Purple
+        '#1abc9c', // Team 6 - Teal
+        '#e67e22', // Team 7 - Dark Orange
+        '#34495e'  // Team 8 - Dark Gray
+    ];
+    return teamColors[(teamNumber - 1) % teamColors.length] || '#9333ea';
+}
+
+/**
  * Renders a single guild war team card
  * @param {Object} team - Team object with heroes, skills, pet, etc.
- * @param {string} teamColor - Color class for team card (blue, green, red)
  * @returns {HTMLElement} Team card element
  */
-function renderGuildWarTeamCard(team, teamColor = '') {
+function renderGuildWarTeamCard(team) {
     const card = document.createElement('div');
-    card.className = `advent-team-card ${teamColor}`;
+    card.className = 'advent-team-card';
+
+    // Get team number and color
+    const teamNumber = extractTeamNumber(team.name);
+    const borderColor = getTeamColor(teamNumber);
+
+    // Apply colored border to card and set CSS variable for pseudo-element
+    card.style.border = `3px solid ${borderColor}`;
+    card.style.boxShadow = `0 4px 6px rgba(0, 0, 0, 0.3), 0 0 20px ${borderColor}40`;
+    card.style.setProperty('--team-color', borderColor);
 
     // Team name header
     const header = document.createElement('div');
     header.className = 'advent-team-header';
+    header.style.borderBottom = `2px solid ${borderColor}`;
 
     const title = document.createElement('h3');
     title.textContent = team.name;
+    title.style.color = borderColor;
+    title.style.textShadow = `0 0 10px ${borderColor}80`;
     header.appendChild(title);
 
     card.appendChild(header);
@@ -229,26 +269,15 @@ function renderGuildWarTeamCard(team, teamColor = '') {
         emptyMessage.style.fontSize = '1.1rem';
         heroesContainer.appendChild(emptyMessage);
     } else {
-        // Create a map of heroes by position
-        const heroMap = {};
-        team.heroes.forEach(hero => {
-            heroMap[hero.position] = hero;
+        // Render only the first 3 heroes (skip empty/N/A placeholders)
+        const validHeroes = team.heroes.filter(hero => hero.name && hero.name !== '---' && hero.name !== 'N/A');
+        const heroesToShow = validHeroes.slice(0, 3); // Limit to 3 heroes
+        
+        heroesToShow.forEach(hero => {
+            const skillData = team.skills.find(s => s.hero === hero.name) || { s1: null, s2: null };
+            const heroColumn = createGuildWarHeroColumn(hero, skillData);
+            heroesContainer.appendChild(heroColumn);
         });
-
-        // Render all 5 positions (1-5)
-        for (let pos = 1; pos <= 5; pos++) {
-            if (heroMap[pos]) {
-                // Real hero
-                const hero = heroMap[pos];
-                const skillData = team.skills.find(s => s.hero === hero.name) || { s1: null, s2: null };
-                const heroColumn = createGuildWarHeroColumn(hero, skillData);
-                heroesContainer.appendChild(heroColumn);
-            } else {
-                // Empty slot - show N/A with proper formation positioning
-                const emptyColumn = createEmptyHeroColumn(pos, team.formationType);
-                heroesContainer.appendChild(emptyColumn);
-            }
-        }
     }
 
     card.appendChild(heroesContainer);
@@ -261,6 +290,7 @@ function renderGuildWarTeamCard(team, teamColor = '') {
     // Pet container
     const petContainer = document.createElement('div');
     petContainer.className = 'advent-pet-container';
+    petContainer.style.border = `2px solid ${borderColor}`;
 
     const petIcon = document.createElement('div');
     petIcon.className = 'advent-pet-icon';
@@ -337,11 +367,9 @@ export async function populateGuildWarTeams() {
         const teamsContainer = document.createElement('div');
         teamsContainer.className = 'advent-teams-container';
 
-        // Render all teams with color coding
-        guildWarData.teams.forEach((team, index) => {
-            // Color code: even index (0,2,4...) = blue, odd index (1,3,5...) = green
-            const teamColor = index % 2 === 0 ? 'team-blue' : 'team-green';
-            const teamCard = renderGuildWarTeamCard(team, teamColor);
+        // Render all teams with color coding based on team number
+        guildWarData.teams.forEach((team) => {
+            const teamCard = renderGuildWarTeamCard(team);
             teamsContainer.appendChild(teamCard);
         });
 

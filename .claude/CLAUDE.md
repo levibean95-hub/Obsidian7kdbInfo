@@ -33,7 +33,7 @@ This encoding is essential for web hosting compatibility.
 
 ## Data-Driven Architecture
 
-**CRITICAL**: This application is now FULLY DATA-DRIVEN. Hero data is stored in `data/hero-data.json` and automatically displayed on the website.
+This application is now FULLY DATA-DRIVEN. Hero data is stored in `data/hero-data.json` and automatically displayed on the website.
 
 ### Updating Hero Data Workflow
 
@@ -66,8 +66,6 @@ Code changes in `js/gear-builder.js` are ONLY needed for:
 - Heroes requiring custom formatting or layout (e.g., Amelia, Ace with special notes)
 - Heroes with complex gear requirements not fitting the standard format
 
-For 90% of heroes, just update the JSON and refresh!
-
 ## Modular Architecture
 
 The application uses ES6 modules for better code organization and maintainability:
@@ -90,6 +88,9 @@ Data is loaded asynchronously from JSON files in the `data/` folder, eliminating
 
 ```
 index.html          - Main HTML structure with both grid and detail views
+guild-war-teams.html - Guild war teams page
+wish-list.html      - Wish list tier list page
+speed-gearing.html  - Speed gearing guide page
 styles.css          - Modern dark theme with animations and responsive design
 js/                 - Modular JavaScript files (ES6 modules)
   ├── main.js       - Application entry point and initialization
@@ -117,6 +118,20 @@ DEPLOYMENT.md       - User-facing deployment guide (NOT for Claude's reference)
 - `data/hero-data.json` - Edit this file directly to update hero information
 - `js/` folder - All JavaScript is now modular using ES6 modules
 - `data/` folder - Hero and advent team data stored as JSON files
+
+## Navigation Menu Consistency
+
+**CRITICAL**: All HTML pages must have the EXACT SAME navigation menu order. The navigation menu appears in the `<nav class="global-nav">` section of each HTML file.
+
+**Correct Navigation Order (must be consistent across ALL pages):**
+1. Wish List
+2. Speed Gearing Guide
+3. Hero Database
+4. Guild War Teams
+5. Advent Teams
+6. Team Builder
+
+When adding new pages or modifying existing pages, ALWAYS ensure the navigation menu follows this exact order. The mobile menu should also maintain this order.
 
 ## When to Read Feature-Specific Documentation
 
@@ -153,7 +168,6 @@ This project uses **modular documentation**. ALWAYS read the appropriate special
 **IMPORTANT**:
 - For hero-related work: ALWAYS read `.claude/heroes.md`
 - For team-related work: ALWAYS read `.claude/teams.md`
-- For deployment: ALWAYS read `.claude/deployment.md`
 - For quick lookups: Check `.claude/reference.md`
 
 These specialized files contain detailed instructions, examples, and critical information that is not in this core file.

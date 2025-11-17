@@ -198,14 +198,14 @@
                     { "name": "Kagura", "position": 1, "row": "front" },
                     { "name": "Fai", "position": 2, "row": "front" },
                     { "name": "Bi Dam", "position": 3, "row": "back" },
-                    { "name": "Ace", "position": 4, "row": "front" },
+                    { "name": "Elysia", "position": 4, "row": "front" },
                     { "name": "Eileene", "position": 5, "row": "front" }
                 ],
                 "skills": [
                     { "hero": "Kagura", "s1": null, "s2": null },
                     { "hero": "Fai", "s1": 5, "s2": 1 },
                     { "hero": "Bi Dam", "s1": 4, "s2": 3 },
-                    { "hero": "Ace", "s1": 2, "s2": null },
+                    { "hero": "Elysia", "s1": 2, "s2": null },
                     { "hero": "Eileene", "s1": 6, "s2": null }
                 ]
             },
@@ -278,14 +278,14 @@
                 "notes": "Just dump damage. Team is designed to passively buff Jupy. Can use Fai over Eileene.",
                 "heroes": [
                     { "name": "Yui", "position": 1, "row": "front" },
-                    { "name": "Ace", "position": 2, "row": "front" },
+                    { "name": "Elysia", "position": 2, "row": "front" },
                     { "name": "Jupy", "position": 3, "row": "back" },
                     { "name": "Eileene", "position": 4, "row": "front" },
                     { "name": "Sieg", "position": 5, "row": "front" }
                 ],
                 "skills": [
                     { "hero": "Yui", "s1": 2, "s2": null },
-                    { "hero": "Ace", "s1": 6, "s2": null },
+                    { "hero": "Elysia", "s1": 6, "s2": null },
                     { "hero": "Jupy", "s1": "1/4", "s2": "3/8" },
                     { "hero": "Eileene", "s1": 7, "s2": null },
                     { "hero": "Sieg", "s1": null, "s2": 5 }

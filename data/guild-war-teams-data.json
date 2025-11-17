@@ -84,17 +84,17 @@
       {
         "name": "Team 3 alt",
         "formationType": "protective",
-        "pet": null,
+        "pet": "Merparrow",
         "notes": "",
         "heroes": [
-          { "name": "Kyrielle", "position": 2, "row": "front" },
+          { "name": "Vanessa", "position": 2, "row": "front" },
           { "name": "Rin", "position": 3, "row": "back" },
-          { "name": "Mercure", "position": 4, "row": "front" }
+          { "name": "Juri", "position": 4, "row": "front" }
         ],
         "skills": [
-          { "hero": "Kyrielle", "s1": 3, "s2": null },
-          { "hero": "Rin", "s1": null, "s2": 1 },
-          { "hero": "Mercure", "s1": 2, "s2": null }
+          { "hero": "Vanessa", "s1": 1, "s2": null },
+          { "hero": "Juri", "s1": null, "s2": 2 },
+          { "hero": "Rin", "s1": null, "s2": 3 }
         ]
       },
       {
@@ -127,6 +127,22 @@
           { "hero": "Vanessa", "s1": 1, "s2": null },
           { "hero": "Yeonhee", "s1": null, "s2": 3 },
           { "hero": "Juri", "s1": null, "s2": 2 }
+        ]
+      },
+      {
+        "name": "Team 4 ALT 2",
+        "formationType": "protective",
+        "pet": "Yeonji",
+        "notes": "",
+        "heroes": [
+          { "name": "Vanessa", "position": 2, "row": "front" },
+          { "name": "Kyrielle", "position": 3, "row": "back" },
+          { "name": "Juri", "position": 4, "row": "front" }
+        ],
+        "skills": [
+          { "hero": "Vanessa", "s1": 1, "s2": null },
+          { "hero": "Juri", "s1": null, "s2": 2 },
+          { "hero": "Kyrielle", "s1": 3, "s2": null }
         ]
       },
       {

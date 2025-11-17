@@ -54,7 +54,7 @@ body {
     display: none !important;
 }
 
-/* Solid background */
+/* Obsidian texture background */
 body::before {
     content: '';
     position: fixed;
@@ -62,11 +62,14 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-primary);
+    background-image: url('Obsidian texture.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: -2;
 }
 
-/* Remove texture overlay */
+/* Dark overlay to ensure text readability */
 body::after {
     content: '';
     position: fixed;
@@ -74,10 +77,9 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
-    background-size: 50px 50px;
+    background: rgba(10, 10, 15, 0.75);
     z-index: -1;
-    opacity: 0.5;
+    pointer-events: none;
 }
 
 @keyframes gridScroll {
@@ -2592,6 +2594,32 @@ body::after {
     font-size: 0.95rem;
 }
 
+.trees-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .trees-container {
+        flex-direction: row;
+        gap: 2rem;
+    }
+    
+    .trees-container .flow-diagram {
+        flex: 1;
+    }
+}
+
+.tree-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--accent-obsidian);
+    letter-spacing: 0.05em;
+}
+
 .flow-diagram {
     background: linear-gradient(135deg, rgba(18, 12, 28, 0.95), rgba(10, 8, 18, 0.92));
     border: 1px solid rgba(147, 112, 219, 0.45);
@@ -3079,7 +3107,7 @@ body::after {
     left: 0;
     width: 3px;
     height: 100%;
-    background: var(--accent-obsidian);
+    background: var(--team-color, var(--accent-obsidian));
 }
 
 .advent-team-header {
@@ -3176,6 +3204,11 @@ body::after {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Hide hero columns with N/A names */
+.advent-hero-column.hero-na-placeholder {
+    display: none;
 }
 
 .advent-hero-name {
@@ -3450,7 +3483,7 @@ body::after {
         padding: 45px 0.25rem;
         flex-wrap: nowrap;
         overflow-x: auto;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .advent-teams-container {

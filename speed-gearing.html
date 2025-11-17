@@ -11,7 +11,7 @@
     <nav class="global-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <h1 class="nav-title">7K RE:BIRTH OBSIDIAN INFO DUMP</h1>
+                <h1 class="nav-title">OBSIDIAN7KDB.INFO</h1>
             </div>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                 ☰
@@ -73,39 +73,24 @@
         <header class="header guide-header">
             <div class="guide-header-text">
                 <h1 class="title guide-title">Speed Gearing Guide</h1>
-                <p class="guide-subtitle">
-                    Farm pieces with 3 or 4 sub stats and a speed line. Roll in +3 steps to decide whether to invest,
-                    chase +15, or scrap.
-                </p>
             </div>
         </header>
 
         <main class="speed-chart-wrapper">
             <section class="chart-context">
                 <div class="context-card">
-                    <p class="context-label">Sub stat rules</p>
-                    <p>Skip 2-line drops. 3-line pieces unlock the 4th stat at +3 and need stacked speed/attack subs.</p>
-                </div>
-                <div class="context-card">
-                    <p class="context-label">Roll cadence</p>
-                    <p>Roll in +3 steps (6/9/12/15). Track only the +3 and +6 outcomes before investing.</p>
-                </div>
-                <div class="context-card">
-                    <p class="context-label">Targets</p>
-                    <p>16 speed at +12 is the reliable floor. 20+ speed needs 4 of the 5 rolls to land on speed.</p>
+                    <p class="context-label">note:</p>
+                    <p>Start with 3 and 4 liner base with speed on them. Dont level 3 liners to 4 liners in an attempt to get speed as the 4th. Not really worth your time.</p>
                 </div>
             </section>
 
+            <div class="trees-container">
+            <!-- 3-Liner Tree -->
             <section class="flow-diagram">
+                <h2 class="tree-title">3-Liner Tree</h2>
                 <div class="diagram-start">
                     <div class="diagram-node start">
-                        <p class="node-eyebrow">Step 0</p>
-                        <h2 class="node-title">Roll +4 speed gear to +6</h2>
-                        <p class="node-note">Stop after each +3 bump so you can bail before gold disappears.</p>
-                        <ul class="diagram-checklist">
-                            <li><strong>3-line drops:</strong> unlock the 4th sub at +3; great for reliable +12/+15 sets.</li>
-                            <li><strong>4-line drops:</strong> already capped on subs; best candidates for 20-speed pushes.</li>
-                        </ul>
+                        <h2 class="node-title">Roll 3-liner pieces to level 6</h2>
                     </div>
                 </div>
 
@@ -126,74 +111,51 @@
                         <p class="node-note">Scrap unless the off-stats match a hyper niche build.</p>
                     </div>
                 </div>
+            </section>
 
-                <div class="lane-grid">
-                    <article class="lane success">
-                        <h3 class="lane-title">Green lane - keep rolling</h3>
-                        <ol class="lane-steps">
-                            <li>
-                                <p class="step-title">Take it straight to +12</p>
-                                <p class="step-note">Locks 16 speed. Stop here if you only need a budget booster.</p>
-                            </li>
-                            <li>
-                                <p class="step-title">Consider +15 if you have gold</p>
-                                <p class="step-note">Even if +12 whiffs, +15 can still land speed for 18-19 totals.</p>
-                            </li>
-                            <li>
-                                <p class="step-title">Chase +20 only with 4-line units</p>
-                                <p class="step-note">You need 4 of 5 rolls to hit speed. Stop once you reach 20.</p>
-                            </li>
-                        </ol>
-                    </article>
-
-                    <article class="lane caution">
-                        <h3 class="lane-title">Amber lane - verify first</h3>
-                        <ol class="lane-steps">
-                            <li>
-                                <p class="step-title">Roll to +9</p>
-                                <p class="step-note">This third roll decides everything; watch only the speed line.</p>
-                            </li>
-                            <li>
-                                <p class="step-title">If +9 hits speed</p>
-                                <p class="step-note">Jump into the green lane rules above and lock 16 at +12.</p>
-                            </li>
-                            <li>
-                                <p class="step-title">If +9 misses</p>
-                                <p class="step-note">Stop. Salvage or keep only when sub stats are perfect.</p>
-                            </li>
-                        </ol>
-                    </article>
-
-                    <article class="lane danger">
-                        <h3 class="lane-title">Red lane - bail out</h3>
-                        <ol class="lane-steps">
-                            <li>
-                                <p class="step-title">Stop at +6</p>
-                                <p class="step-note">Two misses before +6 means the odds of 16+ speed are too low.</p>
-                            </li>
-                            <li>
-                                <p class="step-title">Recycle or reroll</p>
-                                <p class="step-note">Only stash these if the other subs fix a very specific hero.</p>
-                            </li>
-                        </ol>
-                    </article>
+            <!-- 4-Liner Tree -->
+            <section class="flow-diagram">
+                <h2 class="tree-title">4-Liner Tree</h2>
+                <div class="diagram-start">
+                    <div class="diagram-node start">
+                        <h2 class="node-title">Roll 4-liner pieces to level 6</h2>
+                    </div>
                 </div>
 
-                <div class="diagram-legend legend">
-                    <div class="legend-item">
-                        <span class="legend-chip success"></span>
-                        <p>Green = keep rolling.</p>
+                <div class="diagram-branch">
+                    <div class="branch-node success">
+                        <p class="node-eyebrow">By +6</p>
+                        <p class="node-title">Hit speed twice</p>
+                        <p class="node-note">You are already at 12+ speed. Follow the green lane.</p>
                     </div>
-                    <div class="legend-item">
-                        <span class="legend-chip caution"></span>
-                        <p>Amber = check after every roll.</p>
+                    <div class="branch-node caution">
+                        <p class="node-eyebrow">By +6</p>
+                        <p class="node-title">Hit speed once</p>
+                        <p class="node-note">Needs a confirmation roll at +9 before you sink more gold.</p>
                     </div>
-                    <div class="legend-item">
-                        <span class="legend-chip danger"></span>
-                        <p>Red = recycle.</p>
+                    <div class="branch-node danger">
+                        <p class="node-eyebrow">By +6</p>
+                        <p class="node-title">Missed speed twice</p>
+                        <p class="node-note">Scrap unless the off-stats match a hyper niche build.</p>
                     </div>
                 </div>
             </section>
+            </div>
+
+            <div class="diagram-legend legend">
+                <div class="legend-item">
+                    <span class="legend-chip success"></span>
+                    <p>Green = keep rolling.</p>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-chip caution"></span>
+                    <p>Amber = check after every roll.</p>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-chip danger"></span>
+                    <p>Red = recycle.</p>
+                </div>
+            </div>
         </main>
     </div>
     <script>

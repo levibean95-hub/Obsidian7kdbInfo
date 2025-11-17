@@ -68,6 +68,10 @@ function createAdventHeroColumn(hero, skillData, bossName = null) {
     const nameDiv = document.createElement('div');
     nameDiv.className = 'advent-hero-name';
     nameDiv.textContent = hero.name;
+    // Add class to hide columns with N/A names
+    if (hero.name === 'N/A') {
+        column.classList.add('hero-na-placeholder');
+    }
     column.appendChild(nameDiv);
 
     // Skill slots
@@ -163,8 +167,11 @@ function renderTeamCard(team, bossName = null) {
         });
     }
 
-    // Render each hero
+    // Render each hero (skip placeholder heroes with "---" or "N/A" name)
     team.heroes.forEach(hero => {
+        if (hero.name === '---' || hero.name === 'N/A') {
+            return; // Skip empty hero boxes
+        }
         const heroColumn = createAdventHeroColumn(hero, skillMap[hero.name], bossName);
         heroesContainer.appendChild(heroColumn);
     });
