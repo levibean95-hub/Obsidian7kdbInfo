@@ -10,6 +10,7 @@ const PET_IMAGES = {
     'Yeonji': 'Pet Icons/Yeonji.png',
     'Richel': 'Pet Icons/Richel.png',
     'Kree': 'Pet Icons/Kree.png',
+    'Karam': 'Pet Icons/Karam.png',
     'Windy': 'Pet Icons/Windy.png'
 };
 

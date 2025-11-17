@@ -4,7 +4,7 @@
       {
         "name": "Team 1",
         "formationType": "attack",
-        "pet": "Ruu",
+        "pet": "Karam",
         "notes": "",
         "heroes": [
           { "name": "Colt", "position": 2, "row": "back" },
@@ -20,7 +20,7 @@
       {
         "name": "Team 1 alt",
         "formationType": "attack",
-        "pet": "Ruu",
+        "pet": "Karam",
         "notes": "",
         "heroes": [
           { "name": "Colt", "position": 2, "row": "back" },

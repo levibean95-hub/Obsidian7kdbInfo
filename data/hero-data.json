@@ -112,15 +112,55 @@
             "Revive"
         ],
         "gear_pve": {
-            "T0": [],
-            "T6": []
+            "T0": [
+                {
+                    "name": "Vanguard Physical",
+                    "main_stats": "All Attack % (not that important)",
+                    "required_stat_thresholds": "N/A",
+                    "sub_stat_priority": ""
+                }
+            ],
+            "T6": [
+                {
+                    "name": "Vanguard Physical",
+                    "main_stats": "All Attack % (not that important)",
+                    "required_stat_thresholds": "N/A",
+                    "sub_stat_priority": ""
+                }
+            ]
         },
         "gear_pvp": {
-            "T0": [],
-            "T6": []
+            "T0": [
+                {
+                    "name": "Spellweaver Physical",
+                    "main_stats": "All Attack % (not that important)",
+                    "required_stat_thresholds": "N/A",
+                    "sub_stat_priority": ""
+                },
+                {
+                    "name": "Full Speed",
+                    "main_stats": "All Attack % (not that important)",
+                    "required_stat_thresholds": "N/A",
+                    "sub_stat_priority": ""
+                }
+            ],
+            "T6": [
+                {
+                    "name": "Spellweaver Physical",
+                    "main_stats": "All Attack % (not that important)",
+                    "required_stat_thresholds": "N/A",
+                    "sub_stat_priority": ""
+                },
+                {
+                    "name": "Vanguard Physical",
+                    "main_stats": "All Attack % (not that important)",
+                    "required_stat_thresholds": "N/A",
+                    "sub_stat_priority": ""
+                }
+            ]
         },
         "skill_enhance_priority": "N/A",
-        "tips": "S1 concussion is very strong when paired with multi hit heroes. Can infinitely cc 3 enemies."
+        "tips": "S1 concussion is very strong when paired with multi hit heroes. Can infinitely cc 3 enemies. Amelia should be squishy, as she provides a large shield and cleanse when dying. Very strong against tank team due to HP alteration and anti-heal. Game changer when paired with Kyle."
     },
     "Aquila": {
         "name": "Aquila",
@@ -336,7 +376,7 @@
             "T6": []
         },
         "skill_enhance_priority": "N/A",
-        "tips": "Only used in one castle rush and advent. Low priority, only go for him if u get a bunch of random copies for no reason."
+        "tips": "Only used in one castle rush and advent. Low priority, only go for him if u get a bunch of random copies for no reason. Stack bleeds to detonate. Bleeds damage are based off of max attack"
     },
     "Biscuit": {
         "name": "Biscuit",
@@ -377,7 +417,7 @@
             "T6": []
         },
         "skill_enhance_priority": "S1 > passive > basic attack",
-        "tips": "Amazing for clearing nightmare on 3* when used in physical team with Kyle"
+        "tips": "Amazing for clearing nightmare on 3* when used in physical team with Kyle. Used in almost all PvE content. Need speed sub stats for Ox (so Espanda goes 4th). Can build crit set if you're pushing damage in castle rush or advent."
     },
     "Black Rose": {
         "name": "Black Rose",
@@ -565,7 +605,7 @@
             "T6": []
         },
         "skill_enhance_priority": "None",
-        "tips": "Good in physical and magic comp in Arena"
+        "tips": "Good in physical and magic comp in Arena. OP when paired with Platin in GvG. Cant be CCd due to camouflage and can counter cc if your whole team gets stunned."
     },
     "Daisy": {
         "name": "Daisy",
@@ -598,8 +638,8 @@
             "T0": [],
             "T6": []
         },
-        "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nReally hard to find perfect gear for her to clear higher levels of Ox. Gotta find the balance between 1 shotting the ads and being tanky enough to live.\nCan occasionally be used to counter petrify in any other content (like nightmare 8-30)",
-        "tips": "Really hard to find perfect gear for her to clear higher levels of Ox. Gotta find the balance between 1 shotting the ads and being tanky enough to live."
+        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+        "tips": "Really hard to find perfect gear for her to clear higher levels of Ox. Gotta find the balance between 1 shotting the ads and being tanky enough to live. Can occasionally be used to counter petrify in any other content (like nightmare 8-30)"
     },
     "Dellons": {
         "name": "Dellons",
@@ -644,7 +684,7 @@
             "T6": []
         },
         "skill_enhance_priority": "None",
-        "tips": "Dellons is strong but too many units outshine him. Not very high prio. Might be in line for a buff after this next round."
+        "tips": "Dellons is strong but too many units outshine him. Not very high prio. Might be in line for a buff after this next round. Weakness hit is good so he resets his ult. Silence can be nice."
     },
     "Eileene": {
         "name": "Eileene",
@@ -857,7 +897,7 @@
             "T6": []
         },
         "skill_enhance_priority": "S1 > Passive",
-        "tips": "Can use for power up dungeons before u have strong shane/Espada"
+        "tips": "Can use for power up dungeons before u have strong shane/Espada. Passive phys vulnerability + S1 upgrade for defense down is a powerful combo to make your hitters like Kyle go crazy. Weakness hit set is playable because she will more often target low hp targets with her execute. Dont underestimate the burn, it does alot of damage."
     },
     "Feng Yan": {
         "name": "Feng Yan",
@@ -1125,7 +1165,7 @@
         "gear_pvp": {
             "T0": [
                 {
-                    "name": "Spelleaver Magic",
+                    "name": "Spellweaver Magic",
                     "main_stats": "Doesnt matter",
                     "required_stat_thresholds": "Speed",
                     "sub_stat_priority": "Speed"
@@ -1134,7 +1174,7 @@
             "T6": []
         },
         "skill_enhance_priority": "S2 > Passive",
-        "tips": "Soul death is Op in PvP. Counters phyiscal comp, can also be used IN physical comp."
+        "tips": "Soul death is Op in PvP. Counters phyiscal comp, can also be used IN physical comp. Can be used as DPS in Yeonhee advent 2nd team. Follow up attack is pretty strong with Mercure dot."
     },
     "Kagura": {
         "name": "Kagura",
@@ -1909,19 +1949,12 @@
             "T0": [
                 {
                     "name": "Gatekeeper Magic",
-                    "main_stats": "Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)",
-                    "required_stat_thresholds": "100% block rate. Aim for 42% damage reduction (at T4). Hard to hit but super capped if u can do this with 100% block. 70% is fine.",
+                    "main_stats": "Defense % (weapons), Damage Reduction (armors)",
+                    "required_stat_thresholds": "Aim for 42% DR (2 armors and 10% from T4), 65%+ block rate is fine.",
                     "sub_stat_priority": "Block Rate, Defense %, Health %"
                 }
             ],
-            "T6": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Defense % (weapons), Block Rate (armors), Damage Reduction (one armor, optional)",
-                    "required_stat_thresholds": "100% block rate",
-                    "sub_stat_priority": "Block Rate, Defense %, Health %"
-                }
-            ]
+            "T6": []
         },
         "skill_enhance_priority": "Passive",
         "tips": "Can play as solo front line with almost any comp in PVP"
