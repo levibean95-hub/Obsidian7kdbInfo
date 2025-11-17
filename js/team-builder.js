@@ -2175,30 +2175,63 @@ async function drawHeroCard(ctx, x, baseY, heroName, tier, gearSet, skillOrder, 
 
     // Skill order (below stars)
     // skillOrder is array of {skill: 's1', order: 1} objects, need to sort and display
-    if (skillOrder && Array.isArray(skillOrder) && skillOrder.length > 0) {
-        // Sort by order number
-        const sortedSkills = [...skillOrder].sort((a, b) => a.order - b.order);
+    // s2 = top skill (displayed first/top), s1 = bottom skill (displayed second/bottom)
+    currentY += 15;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 9px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Skills:', x + cardWidth / 2, currentY);
 
-        currentY += 15;
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 9px Arial';
+    // Check which skills are present
+    const s1Skill = skillOrder && Array.isArray(skillOrder) ? skillOrder.find(s => s.skill === 's1') : null;
+    const s2Skill = skillOrder && Array.isArray(skillOrder) ? skillOrder.find(s => s.skill === 's2') : null;
+
+    // Draw s2 (top skill, top position)
+    currentY += 25;
+    if (s2Skill) {
+        const hue = 120 - ((s2Skill.order - 1) * (120 / 9));
+        ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
+        roundRect(ctx, x + 42, currentY - 18, 56, 22, 4);
+        ctx.fill();
+
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 13px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('Skills:', x + cardWidth / 2, currentY);
+        ctx.fillText(s2Skill.order.toString(), x + cardWidth / 2, currentY - 4);
+    } else {
+        // No s2 skill - show grey N/A
+        ctx.fillStyle = '#6b7280';
+        roundRect(ctx, x + 42, currentY - 18, 56, 22, 4);
+        ctx.fill();
 
-        sortedSkills.forEach((skillEntry, idx) => {
-            currentY += 25;
-            // Use order number for color gradient (1-10)
-            const hue = 120 - ((skillEntry.order - 1) * (120 / 9));
-            ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
-            roundRect(ctx, x + 42, currentY - 18, 56, 22, 4);
-            ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 11px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('N/A', x + cardWidth / 2, currentY - 4);
+    }
 
-            ctx.fillStyle = '#000000';
-            ctx.font = 'bold 13px Arial';
-            ctx.textAlign = 'center';
-            // Display order number
-            ctx.fillText(skillEntry.order.toString(), x + cardWidth / 2, currentY - 4);
-        });
+    // Draw s1 (bottom skill, bottom position)
+    currentY += 25;
+    if (s1Skill) {
+        const hue = 120 - ((s1Skill.order - 1) * (120 / 9));
+        ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
+        roundRect(ctx, x + 42, currentY - 18, 56, 22, 4);
+        ctx.fill();
+
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 13px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(s1Skill.order.toString(), x + cardWidth / 2, currentY - 4);
+    } else {
+        // No s1 skill - show grey N/A
+        ctx.fillStyle = '#6b7280';
+        roundRect(ctx, x + 42, currentY - 18, 56, 22, 4);
+        ctx.fill();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 11px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('N/A', x + cardWidth / 2, currentY - 4);
     }
 
     // Gear set name at bottom (always show, even if no skills were displayed)
