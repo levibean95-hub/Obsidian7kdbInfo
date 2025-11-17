@@ -2042,13 +2042,51 @@ body::after {
         gap: 0.8rem;
     }
 
-    .gear-card-image {
-        width: 132px;
-        height: 132px;
+    .gear-card {
+        padding: 0.7rem;
+    }
+
+    .gear-card-title {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
     }
 
     .gear-card-content {
-        gap: 0.7rem;
+        gap: 0.6rem;
+        flex-direction: column;
+    }
+
+    .gear-card-image {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        aspect-ratio: 1;
+        margin: 0 auto;
+    }
+
+    .gear-card-stats {
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .gear-stat-item {
+        padding: 0.35rem 0.6rem;
+    }
+
+    .gear-stat-label {
+        font-size: 0.6rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .gear-stat-value {
+        font-size: 0.68rem;
+        line-height: 1.4;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .tier-section-title {
+        font-size: 0.85rem;
     }
 }
 
@@ -4402,6 +4440,25 @@ body::after {
     gap: 0.5rem;
 }
 
+.btn-export-all {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.15)) !important;
+    border-color: #3b82f6 !important;
+}
+
+.btn-export-all:hover {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.25)) !important;
+    border-color: #60a5fa !important;
+}
+
+.btn-export-all:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-export-all .spinner {
+    animation: spin 1s linear infinite;
+}
+
 .clear-all-section {
     display: flex;
     justify-content: flex-end;
@@ -4644,6 +4701,186 @@ body::after {
     background: rgba(197, 163, 255, 0.2);
     border-color: var(--accent-obsidian);
     transform: translateY(-1px);
+}
+
+.btn-share-team-image {
+    padding: 0.3rem 0.6rem;
+    background: rgba(59, 130, 246, 0.2);
+    border: 2px solid #3b82f6;
+    border-radius: 5px;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.btn-share-team-image:hover {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: #60a5fa;
+    transform: translateY(-1px);
+}
+
+.btn-share-team-image:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-share-team-image svg {
+    flex-shrink: 0;
+}
+
+/* Notes button styling */
+.btn-notes {
+    padding: 0.3rem 0.6rem;
+    background: rgba(234, 179, 8, 0.2);
+    border: 2px solid #eab308;
+    border-radius: 5px;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.btn-notes:hover {
+    background: rgba(234, 179, 8, 0.3);
+    border-color: #facc15;
+    transform: translateY(-1px);
+}
+
+/* Notes popup overlay */
+.notes-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.notes-popup {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid var(--accent-obsidian);
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.notes-popup h3 {
+    margin: 0 0 1rem 0;
+    color: var(--accent-obsidian);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.notes-textarea {
+    width: 100%;
+    min-height: 150px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(147, 112, 219, 0.3);
+    border-radius: 8px;
+    padding: 0.8rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.notes-textarea:focus {
+    outline: none;
+    border-color: var(--accent-obsidian);
+}
+
+.notes-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.notes-popup-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-save-notes,
+.btn-cancel-notes {
+    padding: 0.6rem 1.2rem;
+    border: 2px solid;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-save-notes {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+    color: var(--text-primary);
+}
+
+.btn-save-notes:hover {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: #60a5fa;
+    transform: translateY(-1px);
+}
+
+.btn-cancel-notes {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: var(--accent-red);
+    color: var(--text-primary);
+}
+
+.btn-cancel-notes:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: #f87171;
+    transform: translateY(-1px);
+}
+
+/* Image capture optimization */
+.team-wrapper.capturing-image {
+    width: 750px !important;
+    min-width: 750px !important;
+    max-width: 750px !important;
+}
+
+.team-wrapper.capturing-image select,
+.team-wrapper.capturing-image input,
+.team-wrapper.capturing-image button {
+    pointer-events: none !important;
+}
+
+.team-wrapper.capturing-image select:focus,
+.team-wrapper.capturing-image input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Hide pseudo-element formation labels during capture (we add real DOM elements instead) */
+.team-wrapper.capturing-image .team-slots::before,
+.team-wrapper.capturing-image .team-slots::after {
+    display: none !important;
 }
 
 .btn-remove-team {
@@ -5233,7 +5470,7 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
 
 .team-bottom-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 3rem;
     width: 100%;
@@ -5244,6 +5481,22 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     display: flex;
     align-items: center;
     flex: 1;
+    margin-top: 0.75rem;
+}
+
+.team-notes-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin-top: 0.75rem;
+}
+
+.team-share-image-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
     margin-top: 0.75rem;
 }
 
@@ -5409,7 +5662,9 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
 .team-actions {
     display: flex;
     justify-content: center;
+    gap: 1rem;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .btn-add-team {
@@ -5434,6 +5689,45 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     border-color: var(--accent-obsidian);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(147, 112, 219, 0.4);
+}
+
+.btn-export-all-teams {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.15));
+    border: 2px solid #3b82f6;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+}
+
+.btn-export-all-teams:hover {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.25));
+    border-color: #60a5fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.btn-export-all-teams:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-export-all-teams .spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Responsive Design for Team Builder */
@@ -5972,46 +6266,12 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         flex-direction: column;
     }
 
-    .team-header {
-        flex-wrap: wrap;
-        gap: 0.35rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .team-header-left {
-        gap: 0.35rem;
-        flex-wrap: wrap;
-    }
-
-    .team-header-center {
-        gap: 0.3rem;
-    }
-
-    .team-formation-select {
-        width: 100%;
-        order: 3;
-        font-size: 0.7rem;
-        padding: 0.35rem 0.5rem;
-    }
-
     .team-builder-content {
         padding: 0.75rem;
     }
 
     .team-wrapper {
         padding: 0.6rem;
-    }
-
-    .team-name-input {
-        min-width: 70px;
-        font-size: 0.7rem;
-        padding: 0.3rem 0.5rem;
-    }
-
-    .btn-clear-team,
-    .btn-reset-skills {
-        font-size: 0.65rem;
-        padding: 0.3rem 0.5rem;
     }
 
     .team-bottom-container {
@@ -6021,9 +6281,19 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         align-items: center;
     }
 
-    .team-reset-skills-container {
+    .team-reset-skills-container,
+    .team-notes-container,
+    .team-share-image-container {
         width: auto;
         justify-content: center;
+    }
+
+    .btn-reset-skills,
+    .btn-notes,
+    .btn-share-team-image {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.6rem;
+        height: auto;
     }
 
     .team-pet-container {
@@ -6034,10 +6304,114 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         display: none;
     }
 
+    /* Uniform button sizing for mobile */
+    .import-export-section {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .share-section {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    .share-section .btn-primary {
+        width: 100%;
+        justify-content: center;
+        padding: 0.65rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .clear-all-section {
+        justify-content: stretch;
+    }
+
+    .clear-all-section .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 0.65rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    /* Fix team header alignment - force proper layout on mobile */
+    .team-header {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .team-header-left {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.4rem !important;
+        align-items: stretch !important;
+        min-width: 0 !important;
+        max-width: none !important;
+    }
+
+    .team-header-center {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.4rem !important;
+        align-self: flex-end !important;
+    }
+
+    .team-header-right {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        align-self: flex-end !important;
+    }
+
+    .team-name-input {
+        width: 100% !important;
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.6rem !important;
+        height: 32px !important;
+        box-sizing: border-box !important;
+    }
+
+    .team-formation-select {
+        width: 100% !important;
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.6rem !important;
+        height: 32px !important;
+        box-sizing: border-box !important;
+        order: initial !important;
+    }
+
+    .btn-clear-team {
+        height: 32px !important;
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.7rem !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
     .btn-remove-team {
-        width: 24px;
-        height: 24px;
-        font-size: 0.85rem;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 1rem !important;
+        flex-shrink: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Fix formation labels positioning - move them higher */
+    .team-slots::before,
+    .team-slots::after {
+        font-size: 0.65rem !important;
+        padding: 0.15rem 0.3rem !important;
+        top: -25px !important;
+    }
+
+    .team-slots {
+        margin-top: 30px !important;
     }
 }
 

@@ -5,9 +5,9 @@ import { heroes } from './constants.js';
 import { heroData, allEffects } from './state.js';
 import { getHeroImagePath, getTypeIconPath, getPetIconPath } from './utils.js';
 
-// Team data structure: Array of teams, each team has name, slots (array of 5 hero names or null), tiers (array of 5 tier numbers 0-6), gearSets (array of 5 gear set names or null), skillOrders (array of 5 skill order arrays or null), pet (pet name or null), and formationType
+// Team data structure: Array of teams, each team has name, slots (array of 5 hero names or null), tiers (array of 5 tier numbers 0-6), gearSets (array of 5 gear set names or null), skillOrders (array of 5 skill order arrays or null), pet (pet name or null), notes (special notes string), and formationType
 // skillOrders: Each hero slot has an array of skill selections like [{skill: 's1', order: 1}, {skill: 's2', order: 2}]
-let teams = [{ name: 'Team 1', slots: [null, null, null, null, null], tiers: [0, 0, 0, 0, 0], gearSets: [null, null, null, null, null], skillOrders: [[], [], [], [], []], pet: null, formationType: 'basic' }];
+let teams = [{ name: 'Team 1', slots: [null, null, null, null, null], tiers: [0, 0, 0, 0, 0], gearSets: [null, null, null, null, null], skillOrders: [[], [], [], [], []], pet: null, notes: '', formationType: 'basic' }];
 
 // Available pets (from Pet Icons folder)
 const PETS = [
@@ -549,6 +549,14 @@ function createTeamElement(team, teamIndex) {
         updateUrl();
     });
 
+    const notesBtn = document.createElement('button');
+    notesBtn.className = 'btn-notes';
+    notesBtn.innerHTML = 'Notes';
+    notesBtn.title = 'Add Special Notes for this Team';
+    notesBtn.addEventListener('click', () => {
+        showNotesPopup(teamIndex);
+    });
+
     const removeBtn = document.createElement('button');
     removeBtn.className = 'btn-remove-team';
     removeBtn.innerHTML = '&times;';
@@ -574,7 +582,7 @@ function createTeamElement(team, teamIndex) {
     centerGroup.className = 'team-header-center';
     centerGroup.appendChild(clearBtn);
 
-    // Right group: remove button
+    // Right group: remove button only
     const rightGroup = document.createElement('div');
     rightGroup.className = 'team-header-right';
     rightGroup.appendChild(removeBtn);
@@ -613,13 +621,33 @@ function createTeamElement(team, teamIndex) {
     resetSkillsBtnBottom.className = 'team-reset-skills-container';
     resetSkillsBtnBottom.appendChild(resetSkillsBtn);
 
-    // Empty spacer (bottom right) to balance layout
-    const spacer = document.createElement('div');
-    spacer.className = 'team-bottom-spacer';
+    // Share as image button (bottom right)
+    const shareImageBtn = document.createElement('button');
+    shareImageBtn.className = 'btn-share-team-image';
+    shareImageBtn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        Copy as Image
+    `;
+    shareImageBtn.title = 'Copy team as image';
+    shareImageBtn.addEventListener('click', () => captureTeamAsImage(teamWrapper, teamIndex));
+
+    const shareImageContainer = document.createElement('div');
+    shareImageContainer.className = 'team-share-image-container';
+    shareImageContainer.appendChild(shareImageBtn);
+
+    // Notes button container (bottom center-left)
+    const notesBtnContainer = document.createElement('div');
+    notesBtnContainer.className = 'team-notes-container';
+    notesBtnContainer.appendChild(notesBtn);
 
     bottomContainer.appendChild(resetSkillsBtnBottom);
+    bottomContainer.appendChild(notesBtnContainer);
     bottomContainer.appendChild(petSlotDesktop);
-    bottomContainer.appendChild(spacer);
+    bottomContainer.appendChild(shareImageContainer);
 
     teamWrapper.appendChild(teamHeader);
     teamWrapper.appendChild(teamSlots);
@@ -1437,6 +1465,62 @@ function toggleSkillOrder(teamIndex, slotIndex, skill) {
     updateUrl();
 }
 
+// Show notes popup
+function showNotesPopup(teamIndex) {
+    // Create popup overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'notes-popup-overlay';
+
+    const popup = document.createElement('div');
+    popup.className = 'notes-popup';
+
+    const title = document.createElement('h3');
+    title.textContent = 'Special Notes';
+    popup.appendChild(title);
+
+    const textarea = document.createElement('textarea');
+    textarea.className = 'notes-textarea';
+    textarea.placeholder = 'Enter special notes for this team...';
+    textarea.value = teams[teamIndex].notes || '';
+    popup.appendChild(textarea);
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'notes-popup-buttons';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.textContent = 'Save';
+    saveBtn.className = 'btn-save-notes';
+    saveBtn.addEventListener('click', () => {
+        teams[teamIndex].notes = textarea.value;
+        updateUrl();
+        document.body.removeChild(overlay);
+    });
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.className = 'btn-cancel-notes';
+    cancelBtn.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+    });
+
+    buttonContainer.appendChild(saveBtn);
+    buttonContainer.appendChild(cancelBtn);
+    popup.appendChild(buttonContainer);
+
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+
+    // Close on overlay click
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
+
+    // Focus textarea
+    textarea.focus();
+}
+
 // Update skill boxes appearance
 function updateSkillBoxes(boxes, skillOrder) {
     // Re-render all boxes to ensure correct order numbers
@@ -1483,16 +1567,38 @@ function generateImportString() {
             gearSets: team.gearSets || [null, null, null, null, null],
             skillOrders: team.skillOrders || [[], [], [], [], []],
             pet: team.pet || null,
+            notes: team.notes || '',
             formationType: team.formationType || 'basic'
         }))
     };
+
+    // Use LZ-String compression for shorter URLs (40-60% reduction)
+    if (typeof LZString !== 'undefined') {
+        return LZString.compressToEncodedURIComponent(JSON.stringify(data));
+    }
+    // Fallback to Base64 if LZ-String not available
     return btoa(JSON.stringify(data));
 }
 
 // Parse import string and load teams
 function parseImportString(importString) {
     try {
-        const decoded = atob(importString);
+        let decoded;
+
+        // Try LZ-String decompression first (new format)
+        if (typeof LZString !== 'undefined') {
+            try {
+                decoded = LZString.decompressFromEncodedURIComponent(importString);
+            } catch (e) {
+                // Not LZ-String compressed, fall through to Base64
+            }
+        }
+
+        // Fallback to Base64 decoding (old format - backwards compatible)
+        if (!decoded) {
+            decoded = atob(importString);
+        }
+
         const data = JSON.parse(decoded);
         
         if (data.teams && Array.isArray(data.teams)) {
@@ -1503,6 +1609,7 @@ function parseImportString(importString) {
                 gearSets: team.gearSets || [null, null, null, null, null],
                 skillOrders: team.skillOrders || [[], [], [], [], []],
                 pet: team.pet || null,
+                notes: team.notes || '',
                 formationType: team.formationType || 'basic'
             }));
             
@@ -1585,6 +1692,630 @@ function updateUrl() {
     window.history.replaceState({}, '', url);
 }
 
+// Create a custom-styled team image (advent teams style)
+async function captureTeamAsImage(teamWrapper, teamIndex) {
+    const shareBtn = teamWrapper.querySelector('.btn-share-team-image');
+    if (!shareBtn) return;
+
+    const team = teams[teamIndex];
+    if (!team) return;
+
+    try {
+        // Store original button state
+        const originalHTML = shareBtn.innerHTML;
+        shareBtn.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            Generating...
+        `;
+        shareBtn.disabled = true;
+
+        // Generate custom canvas image instead of screenshot
+        await generateTeamCanvas(team, teamIndex, shareBtn, originalHTML);
+    } catch (error) {
+        console.error('Failed to generate team image:', error);
+        alert('Failed to generate image. Please try again.');
+        shareBtn.innerHTML = originalHTML;
+        shareBtn.disabled = false;
+    }
+}
+
+// Export all teams as a single image
+async function exportAllTeamsAsImage() {
+    const exportBtn = document.getElementById('export-all-teams-btn-top');
+    if (!exportBtn) return;
+
+    const originalHTML = exportBtn.innerHTML;
+
+    try {
+        exportBtn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spinner">
+                <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            Generating...
+        `;
+        exportBtn.disabled = true;
+
+        await generateAllTeamsCanvas(exportBtn, originalHTML);
+    } catch (error) {
+        console.error('Failed to generate all teams image:', error);
+        alert('Failed to generate image. Please try again.');
+        exportBtn.innerHTML = originalHTML;
+        exportBtn.disabled = false;
+    }
+}
+
+// Generate canvas with all teams in rows of 2
+async function generateAllTeamsCanvas(exportBtn, originalHTML) {
+    try {
+        const cardWidth = 140;
+        const cardGap = 12;
+        const headerHeight = 80;
+        const petHeight = 150; // Reduced from 170 to reduce bottom padding
+        const padding = 20;
+        const cardHeight = 280;
+        const teamGapX = 60; // Horizontal gap between teams
+        const teamGapY = 40; // Vertical gap between rows
+
+        // Filter out empty teams
+        const validTeams = teams.filter(team => team.slots.filter(h => h !== null).length > 0);
+        if (validTeams.length === 0) {
+            alert('No teams to export');
+            exportBtn.innerHTML = originalHTML;
+            exportBtn.disabled = false;
+            return;
+        }
+
+        // Calculate individual team widths
+        const teamWidths = validTeams.map(team => {
+            const heroCount = team.slots.filter(h => h !== null).length;
+            return (heroCount * cardWidth) + ((heroCount - 1) * cardGap) + (padding * 2);
+        });
+
+        // Calculate canvas dimensions for 2 columns
+        const teamHeight = headerHeight + cardHeight + 60 + petHeight;
+        const numRows = Math.ceil(validTeams.length / 2);
+
+        // Find max width for each column
+        let maxCol1Width = 0;
+        let maxCol2Width = 0;
+        for (let i = 0; i < validTeams.length; i++) {
+            if (i % 2 === 0) {
+                maxCol1Width = Math.max(maxCol1Width, teamWidths[i]);
+            } else {
+                maxCol2Width = Math.max(maxCol2Width, teamWidths[i]);
+            }
+        }
+
+        const canvasWidth = maxCol1Width + maxCol2Width + teamGapX + (padding * 2);
+        const canvasHeight = (numRows * teamHeight) + ((numRows - 1) * teamGapY) + (padding * 2) + 30; // 30 for watermark
+
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        // Background
+        ctx.fillStyle = '#0f0f23';
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+        // Draw teams in 2-column grid
+        for (let i = 0; i < validTeams.length; i++) {
+            const team = validTeams[i];
+            const col = i % 2;
+            const row = Math.floor(i / 2);
+
+            let xPos;
+            if (col === 0) {
+                // Left column - align to left
+                xPos = padding;
+            } else {
+                // Right column - align to right side
+                xPos = maxCol1Width + teamGapX + padding;
+            }
+
+            const yPos = padding + (row * (teamHeight + teamGapY));
+
+            await drawSingleTeamOnCanvas(ctx, team, i, yPos, cardWidth, cardGap, headerHeight, petHeight, cardHeight, padding, col === 0 ? maxCol1Width : maxCol2Width, xPos);
+        }
+
+        // Watermark at bottom right
+        ctx.fillStyle = 'rgba(234, 179, 8, 0.6)';
+        ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'right';
+        ctx.fillText('OBSIDIAN7KDB.INFO', canvasWidth - padding, canvasHeight - 10);
+
+        // Convert to blob and copy/download
+        canvas.toBlob(async (blob) => {
+            try {
+                if (navigator.clipboard && window.ClipboardItem) {
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([item]);
+                    exportBtn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Copied!
+                    `;
+                } else {
+                    const url = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = `All_Teams-${Date.now()}.png`;
+                    link.href = url;
+                    link.click();
+                    exportBtn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Downloaded!
+                    `;
+                }
+
+                setTimeout(() => {
+                    exportBtn.innerHTML = originalHTML;
+                    exportBtn.disabled = false;
+                }, 2000);
+            } catch (err) {
+                console.error('Clipboard error:', err);
+                const url = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.download = `All_Teams-${Date.now()}.png`;
+                link.href = url;
+                link.click();
+
+                exportBtn.innerHTML = originalHTML;
+                exportBtn.disabled = false;
+            }
+        });
+    } catch (error) {
+        console.error('Error generating all teams canvas:', error);
+        exportBtn.innerHTML = originalHTML;
+        exportBtn.disabled = false;
+        throw error;
+    }
+}
+
+// Draw a single team on the canvas at specified position
+async function drawSingleTeamOnCanvas(ctx, team, teamIndex, startY, cardWidth, cardGap, headerHeight, petHeight, cardHeight, padding, teamAreaWidth, startX = null) {
+    const formationType = team.formationType || 'basic';
+    const formationNames = {
+        'basic': 'BASIC FORMATION (2 Front, 3 Back)',
+        'balanced': 'BALANCED FORMATION (3 Front, 2 Back)',
+        'attack': 'ATTACK FORMATION (1 Front, 4 Back)',
+        'protective': 'PROTECTIVE FORMATION (4 Front, 1 Back)'
+    };
+
+    // Calculate team dimensions
+    const heroCount = team.slots.filter(h => h !== null).length;
+    const teamWidth = (heroCount * cardWidth) + ((heroCount - 1) * cardGap) + (padding * 2);
+
+    // Determine X position - if startX provided, use it; otherwise center in teamAreaWidth
+    const baseX = startX !== null ? startX : ((teamAreaWidth - teamWidth) / 2);
+
+    // Team name
+    ctx.fillStyle = '#9370db';
+    ctx.font = 'bold 24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(team.name || `Team ${teamIndex + 1}`, baseX + teamWidth / 2, startY + 25);
+
+    // Formation info
+    ctx.fillStyle = '#c5a3ff';
+    ctx.font = 'bold 14px Arial';
+    ctx.fillText(formationNames[formationType], baseX + teamWidth / 2, startY + 50);
+
+    // Draw heroes
+    let xOffset = baseX + padding;
+    const yStart = startY + headerHeight + 30;
+
+    for (let i = 0; i < team.slots.length; i++) {
+        const heroName = team.slots[i];
+        if (!heroName) continue;
+
+        await drawHeroCard(ctx, xOffset, yStart, heroName, team.tiers[i], team.gearSets[i], team.skillOrders[i], team.formationType, i, cardHeight);
+        xOffset += cardWidth + cardGap;
+    }
+
+    // Draw pet and notes section at bottom
+    const bottomY = yStart + cardHeight + 50; // Increased from 30 to 50 for more padding
+
+    if (team.pet) {
+        // Pet on the left
+        const petX = baseX + padding;
+        await drawPet(ctx, petX, bottomY, team.pet);
+    }
+
+    // Notes section
+    const notesX = team.pet ? (baseX + padding + 140) : (baseX + padding);
+    const notesWidth = teamWidth - (team.pet ? 160 : 40); // Account for pet width if present
+    await drawNotes(ctx, notesX, bottomY, notesWidth, team.notes || '');
+}
+
+// Generate a beautifully styled canvas image (advent team style)
+async function generateTeamCanvas(team, teamIndex, shareBtn, originalHTML) {
+    try {
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Canvas dimensions
+        const cardWidth = 140;
+        const cardGap = 12;
+        const headerHeight = 80;
+        const petHeight = 150; // Reduced to minimize bottom padding
+        const padding = 20;
+
+        // Count non-null heroes
+        const heroCount = team.slots.filter(h => h !== null).length;
+        const canvasWidth = (heroCount * cardWidth) + ((heroCount - 1) * cardGap) + (padding * 2);
+        const cardHeight = 280; // Shorter cards
+        const canvasHeight = headerHeight + cardHeight + 80 + petHeight + (padding * 2); // 80px extra for positioning offset + padding between cards and notes
+
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        // Background
+        ctx.fillStyle = '#0f0f23';
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+        // Header section
+        const formationType = team.formationType || 'basic';
+        const formationNames = {
+            'basic': 'BASIC FORMATION (2 Front, 3 Back)',
+            'balanced': 'BALANCED FORMATION (3 Front, 2 Back)',
+            'attack': 'ATTACK FORMATION (1 Front, 4 Back)',
+            'protective': 'PROTECTIVE FORMATION (4 Front, 1 Back)'
+        };
+
+        // Draw header background
+        ctx.fillStyle = 'rgba(197, 163, 255, 0.15)';
+        ctx.strokeStyle = 'rgba(197, 163, 255, 0.3)';
+        ctx.lineWidth = 2;
+        roundRect(ctx, padding, padding, canvasWidth - (padding * 2), 60, 8);
+        ctx.fill();
+        ctx.stroke();
+
+        // Draw team name
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 18px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(team.name || `Team ${teamIndex + 1}`, canvasWidth / 2, padding + 25);
+
+        // Draw formation info
+        ctx.fillStyle = '#c5a3ff';
+        ctx.font = 'bold 14px Arial';
+        ctx.fillText(formationNames[formationType], canvasWidth / 2, padding + 50);
+
+        // Draw heroes
+        let xOffset = padding;
+        const yStart = headerHeight + padding + 30; // Base position for all cards
+
+        for (let i = 0; i < team.slots.length; i++) {
+            const heroName = team.slots[i];
+            if (!heroName) continue;
+
+            await drawHeroCard(ctx, xOffset, yStart, heroName, team.tiers[i], team.gearSets[i], team.skillOrders[i], team.formationType, i, cardHeight);
+            xOffset += cardWidth + cardGap;
+        }
+
+        // Draw pet and notes section at bottom
+        const bottomY = yStart + cardHeight + 50; // Increased from 30 to 50 for more padding
+
+        if (team.pet) {
+            // Pet on the left
+            await drawPet(ctx, padding, bottomY, team.pet);
+        }
+
+        // Notes section
+        const notesX = team.pet ? padding + 140 : padding; // 140 = petWidth + small gap
+        const notesWidth = canvasWidth - notesX - padding;
+        await drawNotes(ctx, notesX, bottomY, notesWidth, team.notes || '');
+
+        // Watermark at bottom right
+        ctx.fillStyle = 'rgba(234, 179, 8, 0.6)';
+        ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'right';
+        ctx.fillText('OBSIDIAN7KDB.INFO', canvasWidth - padding, canvasHeight - 10);
+
+        // Convert to blob and copy/download
+        canvas.toBlob(async (blob) => {
+            try {
+                if (navigator.clipboard && window.ClipboardItem) {
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([item]);
+                    shareBtn.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Copied!
+                    `;
+                } else {
+                    const url = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    const teamName = team.name || `Team ${teamIndex + 1}`;
+                    link.download = `${teamName.replace(/[^a-z0-9]/gi, '_')}-${Date.now()}.png`;
+                    link.href = url;
+                    link.click();
+                    shareBtn.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Downloaded!
+                    `;
+                }
+
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalHTML;
+                    shareBtn.disabled = false;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy/download image:', err);
+                alert('Failed to copy image. Please try again.');
+                shareBtn.innerHTML = originalHTML;
+                shareBtn.disabled = false;
+            }
+        }, 'image/png');
+    } catch (error) {
+        console.error('Failed to generate canvas:', error);
+        throw error;
+    }
+}
+
+// Helper: Draw rounded rectangle
+function roundRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+}
+
+// Helper: Draw individual hero card (advent style)
+async function drawHeroCard(ctx, x, baseY, heroName, tier, gearSet, skillOrder, formation, slotIndex, cardHeight) {
+    const cardWidth = 140;
+
+    // Determine row (front/back) based on formation
+    const formations = {
+        'basic': ['back', 'front', 'back', 'front', 'back'],
+        'balanced': ['front', 'back', 'front', 'back', 'front'],
+        'attack': ['back', 'back', 'front', 'back', 'back'],
+        'protective': ['front', 'front', 'back', 'front', 'front']
+    };
+    const row = formations[formation]?.[slotIndex] || 'back';
+
+    // Apply vertical offset to ENTIRE card position (front lower, back higher)
+    const rowOffset = row === 'front' ? 30 : -30;
+    const y = baseY + rowOffset;
+
+    // Card background with type-based border
+    const typeColors = {
+        'Attack': '#c93939',
+        'Magic': '#3b82f6',
+        'Defense': '#a67c52',
+        'Support': '#eab308',
+        'Universal': '#9333ea'
+    };
+
+    const heroInfo = heroData[heroName];
+    const borderColor = (heroInfo && typeColors[heroInfo.type]) || 'rgba(147, 112, 219, 0.4)';
+
+    ctx.fillStyle = 'rgba(10, 8, 16, 0.9)';
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = 3;
+    roundRect(ctx, x, y, cardWidth, cardHeight, 10);
+    ctx.fill();
+    ctx.stroke();
+
+    // Load and draw hero portrait
+    let currentY = y + 18;
+    const img = new Image();
+    const imagePath = `Downloaded Hero Portraits/${encodeURIComponent(heroName)}.png`;
+
+    currentY = y + 30;
+    await new Promise((resolve) => {
+        img.onload = () => {
+            const imgSize = 80;
+            const imgX = x + (cardWidth - imgSize) / 2;
+            const imgY = currentY;
+
+            // Draw as square (no clipping)
+            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+
+            // Border around portrait
+            ctx.strokeStyle = 'rgba(147, 112, 219, 0.5)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(imgX, imgY, imgSize, imgSize);
+
+            resolve();
+        };
+        img.onerror = () => {
+            console.warn(`Failed to load hero image: ${imagePath}`);
+            resolve(); // Continue even if image fails
+        };
+        img.src = imagePath;
+    });
+
+    // Hero name
+    currentY += 95;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(heroName, x + cardWidth / 2, currentY);
+
+    // Transcendence stars (yellow with blue outline when active)
+    currentY += 18;
+    // Center the stars: measure star width and calculate proper centering
+    ctx.font = '14px Arial';
+    const starWidth = ctx.measureText('★').width;
+    const starSpacing = 3; // Spacing between stars
+    const totalStarWidth = (starWidth * 6) + (5 * starSpacing);
+    const starStartX = x + (cardWidth - totalStarWidth) / 2 + 5; // Add 5px offset to move right (increased from 3px)
+
+    for (let i = 0; i < 6; i++) {
+        const starX = starStartX + (i * (starWidth + starSpacing));
+
+        // All stars are yellow
+        ctx.fillStyle = '#fbbf24';
+        ctx.fillText('★', starX, currentY);
+
+        // Active stars get blue outline
+        if (i < tier) {
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 1.5;
+            ctx.strokeText('★', starX, currentY);
+        }
+    }
+
+    // Skill order (below stars)
+    // skillOrder is array of {skill: 's1', order: 1} objects, need to sort and display
+    if (skillOrder && Array.isArray(skillOrder) && skillOrder.length > 0) {
+        // Sort by order number
+        const sortedSkills = [...skillOrder].sort((a, b) => a.order - b.order);
+
+        currentY += 15;
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 9px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Skills:', x + cardWidth / 2, currentY);
+
+        sortedSkills.forEach((skillEntry, idx) => {
+            currentY += 25;
+            // Use order number for color gradient (1-10)
+            const hue = 120 - ((skillEntry.order - 1) * (120 / 9));
+            ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
+            roundRect(ctx, x + 42, currentY - 18, 56, 22, 4);
+            ctx.fill();
+
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 13px Arial';
+            ctx.textAlign = 'center';
+            // Display order number
+            ctx.fillText(skillEntry.order.toString(), x + cardWidth / 2, currentY - 4);
+        });
+    }
+
+    // Gear set name at bottom (always show, even if no skills were displayed)
+    if (gearSet && gearSet !== null && gearSet !== 'null' && gearSet !== '') {
+        // If no skills were shown, start closer to stars
+        if (!skillOrder || !Array.isArray(skillOrder) || skillOrder.length === 0) {
+            currentY += 20;
+        } else {
+            currentY += 30;
+        }
+        ctx.fillStyle = '#c0c0c0';
+        ctx.font = 'bold 11px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(gearSet, x + cardWidth / 2, currentY);
+    }
+}
+
+// Helper: Draw pet
+async function drawPet(ctx, x, y, petName) {
+    const petWidth = 120;
+    const petHeight = 140;
+
+    ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
+    ctx.strokeStyle = 'rgba(255, 215, 0, 0.6)';
+    ctx.lineWidth = 2;
+    roundRect(ctx, x, y, petWidth, petHeight, 8);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('PET', x + petWidth / 2, y + 18);
+
+    // Load and draw pet icon
+    const petImg = new Image();
+    const petPath = `Pet Icons/${encodeURIComponent(petName)}.png`;
+
+    await new Promise((resolve) => {
+        petImg.onload = () => {
+            const petImgSize = 80;
+            const petImgX = x + (petWidth - petImgSize) / 2;
+            const petImgY = y + 30;
+
+            // Draw pet image
+            ctx.drawImage(petImg, petImgX, petImgY, petImgSize, petImgSize);
+
+            resolve();
+        };
+        petImg.onerror = () => {
+            console.warn(`Failed to load pet image: ${petPath}`);
+            resolve(); // Continue even if image fails
+        };
+        petImg.src = petPath;
+    });
+
+    // Pet name below image
+    ctx.font = 'bold 11px Arial';
+    ctx.fillText(petName, x + petWidth / 2, y + 120);
+}
+
+// Helper: Draw notes section
+async function drawNotes(ctx, x, y, width, notes) {
+    const notesHeight = 140;
+
+    // Box background
+    ctx.fillStyle = 'rgba(59, 130, 246, 0.2)';
+    ctx.strokeStyle = 'rgba(59, 130, 246, 0.6)';
+    ctx.lineWidth = 2;
+    roundRect(ctx, x, y, width, notesHeight, 8);
+    ctx.fill();
+    ctx.stroke();
+
+    // Title
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('SPECIAL NOTES', x + 10, y + 18);
+
+    // Notes content
+    if (notes && notes.trim()) {
+        ctx.fillStyle = '#e0e0e0';
+        ctx.font = '11px Arial';
+
+        // Word wrap the notes
+        const maxWidth = width - 20;
+        const lineHeight = 16;
+        const words = notes.split(' ');
+        let line = '';
+        let currentY = y + 40;
+
+        for (let i = 0; i < words.length; i++) {
+            const testLine = line + words[i] + ' ';
+            const metrics = ctx.measureText(testLine);
+
+            if (metrics.width > maxWidth && i > 0) {
+                ctx.fillText(line, x + 10, currentY);
+                line = words[i] + ' ';
+                currentY += lineHeight;
+
+                // Stop if we run out of space
+                if (currentY > y + notesHeight - 20) break;
+            } else {
+                line = testLine;
+            }
+        }
+        // Draw remaining line
+        if (currentY <= y + notesHeight - 20) {
+            ctx.fillText(line, x + 10, currentY);
+        }
+    } else {
+        ctx.fillStyle = '#808080';
+        ctx.font = 'italic 11px Arial';
+        ctx.fillText('No special notes', x + 10, y + 40);
+    }
+}
+
 // Setup event listeners
 function setupEventListeners() {
     // Clear selection when clicking outside hero/pet cards and slots
@@ -1634,14 +2365,14 @@ function setupEventListeners() {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 6L9 17l-5-5"/>
                     </svg>
-                    Copied!
+                    URL Copied!
                 `;
                 setTimeout(() => {
                     shareBtn.innerHTML = `
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
                         </svg>
-                        Share URL
+                        Copy URL
                     `;
                 }, 2000);
             }).catch(() => {
@@ -1662,7 +2393,7 @@ function setupEventListeners() {
     if (addTeamBtn) {
         addTeamBtn.addEventListener('click', () => {
             const defaultName = `Team ${teams.length + 1}`;
-            teams.push({ name: defaultName, slots: [null, null, null, null, null], tiers: [0, 0, 0, 0, 0], gearSets: [null, null, null, null, null], skillOrders: [[], [], [], [], []], pet: null, formationType: 'basic' });
+            teams.push({ name: defaultName, slots: [null, null, null, null, null], tiers: [0, 0, 0, 0, 0], gearSets: [null, null, null, null, null], skillOrders: [[], [], [], [], []], pet: null, notes: '', formationType: 'basic' });
             renderTeams();
             updateUrl();
         });
@@ -1684,5 +2415,11 @@ function setupEventListeners() {
                 updateUrl();
             }
         });
+    }
+
+    // Export all teams as image button (top)
+    const exportAllTeamsBtnTop = document.getElementById('export-all-teams-btn-top');
+    if (exportAllTeamsBtnTop) {
+        exportAllTeamsBtnTop.addEventListener('click', exportAllTeamsAsImage);
     }
 }

@@ -1,6 +1,8 @@
 {
 	"scripts": {
-		"start": "serve . -l 3000"
+		"start": "node server.js",
+		"dev": "node server.js",
+		"python": "python server.py"
 	},
 	"devDependencies": {
 		"serve": "^14.2.5"
