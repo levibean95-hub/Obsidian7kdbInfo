@@ -1828,47 +1828,77 @@ async function generateAllTeamsCanvas(exportBtn, originalHTML) {
         ctx.fillText('OBSIDIAN7KDB.INFO', canvasWidth - padding, canvasHeight - 10);
 
         // Convert to blob and copy/download
-        canvas.toBlob(async (blob) => {
-            try {
-                if (navigator.clipboard && window.ClipboardItem) {
-                    const item = new ClipboardItem({ 'image/png': blob });
-                    await navigator.clipboard.write([item]);
-                    exportBtn.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 6L9 17l-5-5"/>
-                        </svg>
-                        Copied!
-                    `;
-                } else {
-                    const url = canvas.toDataURL('image/png');
+        // iOS Safari requires Promise-based ClipboardItem for compatibility
+        try {
+            if (navigator.clipboard && window.ClipboardItem) {
+                // Create ClipboardItem with Promise-based blob (required for iOS)
+                const item = new ClipboardItem({
+                    'image/png': new Promise((resolve) => {
+                        canvas.toBlob((blob) => {
+                            resolve(blob);
+                        }, 'image/png');
+                    })
+                });
+
+                await navigator.clipboard.write([item]);
+                exportBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    Copied!
+                `;
+
+                setTimeout(() => {
+                    exportBtn.innerHTML = originalHTML;
+                    exportBtn.disabled = false;
+                }, 2000);
+            } else {
+                // Fallback: Download the image
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.download = `All_Teams-${Date.now()}.png`;
                     link.href = url;
                     link.click();
+                    URL.revokeObjectURL(url);
+
                     exportBtn.innerHTML = `
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
                         Downloaded!
                     `;
-                }
 
-                setTimeout(() => {
-                    exportBtn.innerHTML = originalHTML;
-                    exportBtn.disabled = false;
-                }, 2000);
-            } catch (err) {
-                console.error('Clipboard error:', err);
-                const url = canvas.toDataURL('image/png');
+                    setTimeout(() => {
+                        exportBtn.innerHTML = originalHTML;
+                        exportBtn.disabled = false;
+                    }, 2000);
+                }, 'image/png');
+            }
+        } catch (err) {
+            console.error('Failed to copy/download image:', err);
+
+            // Better error message for mobile users
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const errorMsg = isMobile
+                ? 'Unable to copy image on this device. The image will be downloaded instead.'
+                : 'Failed to copy image. Please try again.';
+
+            alert(errorMsg);
+
+            // Fallback to download on error
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
                 link.download = `All_Teams-${Date.now()}.png`;
                 link.href = url;
                 link.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png');
 
-                exportBtn.innerHTML = originalHTML;
-                exportBtn.disabled = false;
-            }
-        });
+            exportBtn.innerHTML = originalHTML;
+            exportBtn.disabled = false;
+        }
     } catch (error) {
         console.error('Error generating all teams canvas:', error);
         exportBtn.innerHTML = originalHTML;
@@ -2019,43 +2049,79 @@ async function generateTeamCanvas(team, teamIndex, shareBtn, originalHTML) {
         ctx.fillText('OBSIDIAN7KDB.INFO', canvasWidth - padding, canvasHeight - 10);
 
         // Convert to blob and copy/download
-        canvas.toBlob(async (blob) => {
-            try {
-                if (navigator.clipboard && window.ClipboardItem) {
-                    const item = new ClipboardItem({ 'image/png': blob });
-                    await navigator.clipboard.write([item]);
-                    shareBtn.innerHTML = `
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 6L9 17l-5-5"/>
-                        </svg>
-                        Copied!
-                    `;
-                } else {
-                    const url = canvas.toDataURL('image/png');
+        // iOS Safari requires Promise-based ClipboardItem for compatibility
+        try {
+            if (navigator.clipboard && window.ClipboardItem) {
+                // Create ClipboardItem with Promise-based blob (required for iOS)
+                const item = new ClipboardItem({
+                    'image/png': new Promise((resolve) => {
+                        canvas.toBlob((blob) => {
+                            resolve(blob);
+                        }, 'image/png');
+                    })
+                });
+
+                await navigator.clipboard.write([item]);
+                shareBtn.innerHTML = `
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    Copied!
+                `;
+
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalHTML;
+                    shareBtn.disabled = false;
+                }, 2000);
+            } else {
+                // Fallback: Download the image
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     const teamName = team.name || `Team ${teamIndex + 1}`;
                     link.download = `${teamName.replace(/[^a-z0-9]/gi, '_')}-${Date.now()}.png`;
                     link.href = url;
                     link.click();
+                    URL.revokeObjectURL(url);
+
                     shareBtn.innerHTML = `
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
                         Downloaded!
                     `;
-                }
 
-                setTimeout(() => {
-                    shareBtn.innerHTML = originalHTML;
-                    shareBtn.disabled = false;
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy/download image:', err);
-                alert('Failed to copy image. Please try again.');
-                shareBtn.innerHTML = originalHTML;
-                shareBtn.disabled = false;
+                    setTimeout(() => {
+                        shareBtn.innerHTML = originalHTML;
+                        shareBtn.disabled = false;
+                    }, 2000);
+                }, 'image/png');
             }
-        }, 'image/png');
+        } catch (err) {
+            console.error('Failed to copy/download image:', err);
+
+            // Better error message for mobile users
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const errorMsg = isMobile
+                ? 'Unable to copy image on this device. The image will be downloaded instead.'
+                : 'Failed to copy image. Please try again.';
+
+            alert(errorMsg);
+
+            // Fallback to download on error
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                const teamName = team.name || `Team ${teamIndex + 1}`;
+                link.download = `${teamName.replace(/[^a-z0-9]/gi, '_')}-${Date.now()}.png`;
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+
+            shareBtn.innerHTML = originalHTML;
+            shareBtn.disabled = false;
+        }
     } catch (error) {
         console.error('Failed to generate canvas:', error);
         throw error;
