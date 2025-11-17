@@ -29,7 +29,6 @@
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                     <span>Speed Gearing Guide</span>
-                    <span class="wip-badge-small">WIP</span>
                 </a>
                 <a href="index.html" class="nav-link nav-link-external" data-view="grid">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -87,74 +86,202 @@
             <div class="trees-container">
             <!-- 3-Liner Tree -->
             <section class="flow-diagram">
-                <h2 class="tree-title">3-Liner Tree</h2>
-                <div class="diagram-start">
-                    <div class="diagram-node start">
-                        <h2 class="node-title">Roll 3-liner pieces to level 6</h2>
+                <div class="tree-header">
+                    <h2 class="tree-title">3-Liner Tree</h2>
+                    <div class="tree-controls">
+                        <button class="reset-btn" data-tree="3liner" style="display: none;">Reset</button>
                     </div>
                 </div>
 
-                <div class="diagram-branch">
-                    <div class="branch-node success">
-                        <p class="node-eyebrow">By +6</p>
-                        <p class="node-title">Hit speed twice</p>
-                        <p class="node-note">You are already at 12+ speed. Follow the green lane.</p>
+                <div class="flow-tree" id="tree-3liner">
+                    <!-- Start -->
+                    <div class="flow-node flow-start">
+                        <div class="node-content">
+                            <h3 class="node-title">Level 3-liner to level 6</h3>
+                            <p class="node-note">Starts with 4 base speed</p>
+                        </div>
                     </div>
-                    <div class="branch-node caution">
-                        <p class="node-eyebrow">By +6</p>
-                        <p class="node-title">Hit speed once</p>
-                        <p class="node-note">Needs a confirmation roll at +9 before you sink more gold.</p>
+
+                    <!-- Level 6 Decision -->
+                    <div class="decision-point" data-level="6">
+                        <p class="decision-prompt">What happened at Level 6?</p>
+                        <div class="decision-options">
+                            <button class="decision-btn success" data-path="6-hit">
+                                <span class="btn-label">Hit +4 speed</span>
+                                <span class="btn-detail">(8 total)</span>
+                            </button>
+                            <button class="decision-btn danger" data-path="6-miss" data-terminal="true">
+                                <span class="btn-label">Miss</span>
+                                <span class="btn-detail">(stays 4)</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="branch-node danger">
-                        <p class="node-eyebrow">By +6</p>
-                        <p class="node-title">Missed speed twice</p>
-                        <p class="node-note">Scrap unless the off-stats match a hyper niche build.</p>
+
+                    <!-- Level 9 Decision (hidden until 6-hit selected) -->
+                    <div class="decision-point hidden" data-level="9" data-requires="6-hit">
+                        <p class="decision-prompt">What happened at Level 9?</p>
+                        <div class="decision-options">
+                            <button class="decision-btn success" data-path="9-hit" data-terminal="true">
+                                <span class="btn-label">Hit +4 speed</span>
+                                <span class="btn-detail">(12 total)</span>
+                            </button>
+                            <button class="decision-btn caution" data-path="9-miss">
+                                <span class="btn-label">Miss</span>
+                                <span class="btn-detail">(stays 8)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Level 12 Decision (hidden until 9-miss selected) -->
+                    <div class="decision-point hidden" data-level="12" data-requires="9-miss">
+                        <p class="decision-prompt">What happened at Level 12?</p>
+                        <div class="decision-options">
+                            <button class="decision-btn success" data-path="12-hit" data-terminal="true">
+                                <span class="btn-label">Hit +4 speed</span>
+                                <span class="btn-detail">(12 total)</span>
+                            </button>
+                            <button class="decision-btn caution" data-path="12-miss" data-terminal="true">
+                                <span class="btn-label">Miss</span>
+                                <span class="btn-detail">(stays 8)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Messages -->
+                    <div class="terminal-message hidden" data-outcome="6-miss">
+                        <div class="outcome-card danger">
+                            <h4>❌ Throw Away</h4>
+                            <p>This piece didn't hit speed at Level 6. It's not worth investing more gold.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="9-hit">
+                        <div class="outcome-card success">
+                            <h4>✓ Level to 15</h4>
+                            <p>Great! You hit 12 speed by Level 9. Take this piece all the way to 15.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="12-hit">
+                        <div class="outcome-card success">
+                            <h4>✓ Level to 15</h4>
+                            <p>You finally hit 12 speed at Level 12. Finish leveling to 15.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="12-miss">
+                        <div class="outcome-card caution">
+                            <h4>⚠ Level to 15 and Pray</h4>
+                            <p>Still at 8 speed by Level 12. Take it to 15 and hope you hit 12+ speed on the final roll.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- 4-Liner Tree -->
             <section class="flow-diagram">
-                <h2 class="tree-title">4-Liner Tree</h2>
-                <div class="diagram-start">
-                    <div class="diagram-node start">
-                        <h2 class="node-title">Roll 4-liner pieces to level 6</h2>
+                <div class="tree-header">
+                    <h2 class="tree-title">4-Liner Tree</h2>
+                    <div class="tree-controls">
+                        <button class="reset-btn" data-tree="4liner" style="display: none;">Reset</button>
                     </div>
                 </div>
 
-                <div class="diagram-branch">
-                    <div class="branch-node success">
-                        <p class="node-eyebrow">By +6</p>
-                        <p class="node-title">Hit speed twice</p>
-                        <p class="node-note">You are already at 12+ speed. Follow the green lane.</p>
+                <div class="flow-tree" id="tree-4liner">
+                    <!-- Start -->
+                    <div class="flow-node flow-start">
+                        <div class="node-content">
+                            <h3 class="node-title">Level 4-liner to level 6</h3>
+                            <p class="node-note">Starts with 4 base speed</p>
+                        </div>
                     </div>
-                    <div class="branch-node caution">
-                        <p class="node-eyebrow">By +6</p>
-                        <p class="node-title">Hit speed once</p>
-                        <p class="node-note">Needs a confirmation roll at +9 before you sink more gold.</p>
+
+                    <!-- Level 6 Decision -->
+                    <div class="decision-point" data-level="6">
+                        <p class="decision-prompt">What happened at Level 6?</p>
+                        <div class="decision-options">
+                            <button class="decision-btn success" data-path="6-perfect" data-terminal="true">
+                                <span class="btn-label">Hit +8 speed</span>
+                                <span class="btn-detail">(12 total)</span>
+                            </button>
+                            <button class="decision-btn caution" data-path="6-partial">
+                                <span class="btn-label">Hit +4 speed</span>
+                                <span class="btn-detail">(8 total)</span>
+                            </button>
+                            <button class="decision-btn danger" data-path="6-miss" data-terminal="true">
+                                <span class="btn-label">Miss</span>
+                                <span class="btn-detail">(stays 4)</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="branch-node danger">
-                        <p class="node-eyebrow">By +6</p>
-                        <p class="node-title">Missed speed twice</p>
-                        <p class="node-note">Scrap unless the off-stats match a hyper niche build.</p>
+
+                    <!-- Level 9 Decision (hidden until 6-partial selected) -->
+                    <div class="decision-point hidden" data-level="9" data-requires="6-partial">
+                        <p class="decision-prompt">What happened at Level 9?</p>
+                        <div class="decision-options">
+                            <button class="decision-btn success" data-path="9-hit" data-terminal="true">
+                                <span class="btn-label">Hit +4 speed</span>
+                                <span class="btn-detail">(12 total)</span>
+                            </button>
+                            <button class="decision-btn caution" data-path="9-miss">
+                                <span class="btn-label">Miss</span>
+                                <span class="btn-detail">(stays 8)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Level 12 Decision (hidden until 9-miss selected) -->
+                    <div class="decision-point hidden" data-level="12" data-requires="9-miss">
+                        <p class="decision-prompt">What happened at Level 12?</p>
+                        <div class="decision-options">
+                            <button class="decision-btn success" data-path="12-hit" data-terminal="true">
+                                <span class="btn-label">Hit +4 speed</span>
+                                <span class="btn-detail">(12 total)</span>
+                            </button>
+                            <button class="decision-btn danger" data-path="12-miss" data-terminal="true">
+                                <span class="btn-label">Miss</span>
+                                <span class="btn-detail">(stays 8)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Messages -->
+                    <div class="terminal-message hidden" data-outcome="6-perfect">
+                        <div class="outcome-card success">
+                            <h4>✓ Level to 15 Immediately</h4>
+                            <p>Perfect! You hit 12 speed at Level 6. Take this piece straight to 15.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="6-miss">
+                        <div class="outcome-card danger">
+                            <h4>❌ Throw Away</h4>
+                            <p>This piece didn't hit speed at Level 6. It's not worth investing more gold.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="9-hit">
+                        <div class="outcome-card success">
+                            <h4>✓ Level to 15</h4>
+                            <p>Great! You hit 12 speed by Level 9. Take this piece all the way to 15.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="12-hit">
+                        <div class="outcome-card success">
+                            <h4>✓ Level to 15</h4>
+                            <p>You finally hit 12 speed at Level 12. Finish leveling to 15 and hope for 16+.</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal-message hidden" data-outcome="12-miss">
+                        <div class="outcome-card danger">
+                            <h4>❌ Throw Away</h4>
+                            <p>Still at 8 speed by Level 12. This piece isn't worth keeping. Recycle it.</p>
+                        </div>
                     </div>
                 </div>
             </section>
-            </div>
-
-            <div class="diagram-legend legend">
-                <div class="legend-item">
-                    <span class="legend-chip success"></span>
-                    <p>Green = keep rolling.</p>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-chip caution"></span>
-                    <p>Amber = check after every roll.</p>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-chip danger"></span>
-                    <p>Red = recycle.</p>
-                </div>
             </div>
         </main>
     </div>
@@ -183,7 +310,192 @@
                     }
                 });
             }
+
+            // Interactive Flow Tree Logic
+            initializeFlowTrees();
         });
+
+        function initializeFlowTrees() {
+            // Initialize both trees
+            initializeTree('3liner');
+            initializeTree('4liner');
+        }
+
+        function initializeTree(treeId) {
+            const tree = document.getElementById(`tree-${treeId}`);
+            if (!tree) return;
+
+            const resetBtn = document.querySelector(`.reset-btn[data-tree="${treeId}"]`);
+            const decisionBtns = tree.querySelectorAll('.decision-btn');
+
+            // Track selected path
+            let selectedPath = [];
+
+            // Reset functionality
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    resetTree(tree, treeId);
+                    selectedPath = [];
+                    resetBtn.style.display = 'none';
+                });
+            }
+
+            // Decision button clicks
+            decisionBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const path = btn.dataset.path;
+                    const isTerminal = btn.dataset.terminal === 'true';
+                    const parentDecision = btn.closest('.decision-point');
+                    const isAlreadySelected = btn.classList.contains('selected');
+
+                    // If clicking already selected button, deselect and reset
+                    if (isAlreadySelected) {
+                        // Deselect this button
+                        btn.classList.remove('selected');
+
+                        // Re-enable all buttons in this decision
+                        parentDecision.querySelectorAll('.decision-btn').forEach(b => {
+                            b.classList.remove('disabled');
+                        });
+
+                        // Hide all subsequent decision points
+                        const allDecisions = tree.querySelectorAll('.decision-point');
+                        let foundCurrent = false;
+                        allDecisions.forEach(decision => {
+                            if (decision === parentDecision) {
+                                foundCurrent = true;
+                            } else if (foundCurrent) {
+                                decision.classList.remove('visible');
+                                decision.classList.add('hidden');
+                                // Reset buttons in hidden decisions
+                                decision.querySelectorAll('.decision-btn').forEach(b => {
+                                    b.classList.remove('selected', 'disabled');
+                                });
+                            }
+                        });
+
+                        // Hide all terminal messages
+                        tree.querySelectorAll('.terminal-message').forEach(msg => {
+                            msg.classList.remove('visible');
+                            msg.classList.add('hidden');
+                        });
+
+                        // Update selected path
+                        const pathIndex = selectedPath.indexOf(path);
+                        if (pathIndex > -1) {
+                            selectedPath.splice(pathIndex);
+                        }
+
+                        // Check if we should hide reset button
+                        const anySelected = tree.querySelector('.decision-btn.selected');
+                        if (!anySelected) {
+                            resetBtn.style.display = 'none';
+                        }
+
+                        return;
+                    }
+
+                    // If clicking a different button (switching paths)
+                    // Hide all subsequent decision points first
+                    const allDecisions = tree.querySelectorAll('.decision-point');
+                    let foundCurrent = false;
+                    allDecisions.forEach(decision => {
+                        if (decision === parentDecision) {
+                            foundCurrent = true;
+                        } else if (foundCurrent) {
+                            decision.classList.remove('visible');
+                            decision.classList.add('hidden');
+                            // Reset buttons in hidden decisions
+                            decision.querySelectorAll('.decision-btn').forEach(b => {
+                                b.classList.remove('selected', 'disabled');
+                            });
+                        }
+                    });
+
+                    // Hide all terminal messages
+                    tree.querySelectorAll('.terminal-message').forEach(msg => {
+                        msg.classList.remove('visible');
+                        msg.classList.add('hidden');
+                    });
+
+                    // Mark button as selected and grey out others
+                    parentDecision.querySelectorAll('.decision-btn').forEach(b => {
+                        b.classList.remove('selected');
+                        if (b !== btn) {
+                            b.classList.add('disabled');
+                        }
+                    });
+                    btn.classList.remove('disabled');
+                    btn.classList.add('selected');
+
+                    // Add to path
+                    selectedPath.push(path);
+
+                    if (isTerminal) {
+                        // Show terminal message
+                        showTerminalMessage(tree, path);
+                        // Show reset button
+                        resetBtn.style.display = 'block';
+                    } else {
+                        // Show next decision point
+                        const nextDecision = tree.querySelector(`.decision-point[data-requires="${path}"]`);
+                        if (nextDecision) {
+                            nextDecision.classList.remove('hidden');
+                            nextDecision.classList.add('visible');
+                            // Scroll to next decision
+                            setTimeout(() => {
+                                nextDecision.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }, 100);
+                        }
+                        // Show reset button
+                        resetBtn.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        function resetTree(tree, treeId) {
+            // Hide all decision points except the first
+            const decisionPoints = tree.querySelectorAll('.decision-point');
+            decisionPoints.forEach((point, index) => {
+                if (index === 0) {
+                    point.classList.remove('hidden');
+                } else {
+                    point.classList.remove('visible');
+                    point.classList.add('hidden');
+                }
+            });
+
+            // Remove all selections
+            tree.querySelectorAll('.decision-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Hide all terminal messages
+            tree.querySelectorAll('.terminal-message').forEach(msg => {
+                msg.classList.remove('visible');
+                msg.classList.add('hidden');
+            });
+        }
+
+        function showTerminalMessage(tree, outcome) {
+            // Hide all terminal messages first
+            tree.querySelectorAll('.terminal-message').forEach(msg => {
+                msg.classList.remove('visible');
+                msg.classList.add('hidden');
+            });
+
+            // Show the matching terminal message
+            const message = tree.querySelector(`.terminal-message[data-outcome="${outcome}"]`);
+            if (message) {
+                message.classList.remove('hidden');
+                message.classList.add('visible');
+                // Scroll to message
+                setTimeout(() => {
+                    message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
     </script>
 </body>
 </html>
