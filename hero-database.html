@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7K RE:BIRTH OBSIDIAN INFO DUMP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Global Navigation Menu -->
+    <nav class="global-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand" style="text-decoration: none; cursor: pointer;">
+                <h1 class="nav-title">OBSIDIAN7KDB.INFO</h1>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="hero-database.html" id="nav-heroes-link" class="nav-link nav-link-main active"
+                    data-view="grid">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Hero Database</span>
+                </a>
+                <a href="guild-war-teams.html" class="nav-link nav-link-external">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span>Guild War Teams</span>
+                </a>
+                <a href="#advent" id="nav-advent-link" class="nav-link" data-view="advent">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Advent Teams</span>
+                    <span class="wip-badge-small">WIP</span>
+                </a>
+                <a href="speed-gearing.html" class="nav-link nav-link-external">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>Speed Gearing Guide</span>
+                </a>
+                <a href="wish-list.html" class="nav-link nav-link-external">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                        </path>
+                    </svg>
+                    <span>Wish List</span>
+                </a>
+                <a href="#teams" id="nav-teams-link" class="nav-link" data-view="teambuilder">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                    <span>Team Builder</span>
+                    <span class="new-badge">New</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wip-disclaimer">
+        &#9888; <strong>Work in Progress:</strong> This site is actively being developed. Not all hero data has been
+        filled out yet. Please check back regularly for updates.
+    </div>
+
+    <div id="app">
+        <!-- Hero Grid View -->
+        <div id="hero-grid-view" class="view active">
+            <div class="page-content">
+                <h1 class="hero-database-title">HERO DATABASE</h1>
+                <div class="hero-database-content-wrapper">
+                    <div class="filters-container">
+                        <div class="filters-row">
+                            <div class="search-container">
+                                <input type="text" id="search-input" placeholder="Search heroes..."
+                                    class="search-input">
+                            </div>
+                            <div class="type-filter-container">
+                                <div class="type-button-group">
+                                    <button class="type-filter-button active" data-type="" title="All Types">
+                                        <span class="type-icon-all">All</span>
+                                    </button>
+                                    <button class="type-filter-button" data-type="Attack" title="Attack">
+                                        <img src="Type Icons/type_1_attack.png" alt="Attack" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Magic" title="Magic">
+                                        <img src="Type Icons/type_2_magic.png" alt="Magic" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Defense" title="Defense">
+                                        <img src="Type Icons/type_3_defense.png" alt="Defense" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Support" title="Support">
+                                        <img src="Type Icons/type_4_support.png" alt="Support" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Universal" title="Universal">
+                                        <img src="Type Icons/type_5_universal.png" alt="Universal" class="type-icon">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="dropdown-filters-group">
+                                <div class="effect-filter-container">
+                                    <div class="custom-select-wrapper">
+                                        <input type="text" id="effect-search-input" class="effect-search-input"
+                                            placeholder="Filter by Effect..." autocomplete="off" role="combobox"
+                                            aria-autocomplete="list" aria-expanded="false"
+                                            aria-controls="effect-dropdown" aria-haspopup="listbox">
+                                        <div class="effect-dropdown" id="effect-dropdown" role="listbox"
+                                            aria-label="Effect options">
+                                            <div class="effect-option" data-value="" role="option">All Effects</div>
+                                            <!-- Effect options will be dynamically generated -->
+                                        </div>
+                                        <button class="clear-effect-btn" id="clear-effect-btn" style="display: none;"
+                                            title="Clear filter" aria-label="Clear effect filter">&times;</button>
+                                    </div>
+                                </div>
+                                <div class="target-filter-container">
+                                    <div class="custom-select-wrapper">
+                                        <input type="text" id="target-search-input" class="effect-search-input"
+                                            placeholder="Filter by Target..." autocomplete="off" role="combobox"
+                                            aria-autocomplete="list" aria-expanded="false"
+                                            aria-controls="target-dropdown" aria-haspopup="listbox">
+                                        <div class="effect-dropdown" id="target-dropdown" role="listbox"
+                                            aria-label="Target options">
+                                            <div class="effect-option" data-value="" role="option">All Targets</div>
+                                            <!-- Target options will be dynamically generated -->
+                                        </div>
+                                        <button class="clear-effect-btn" id="clear-target-btn" style="display: none;"
+                                            title="Clear filter" aria-label="Clear target filter">&times;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="heroes-grid" id="heroes-grid">
+                        <!-- Hero cards will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Detail View -->
+        <div id="hero-detail-view" class="view">
+            <div class="page-content">
+                <div class="hero-detail-content">
+                    <div class="hero-detail-top">
+                        <button id="back-to-heroes" class="back-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back to Heroes
+                        </button>
+                        <h1 id="detail-hero-name" class="hero-name-large"></h1>
+                    </div>
+                    <div class="hero-header">
+                        <div class="hero-portrait-section">
+                            <div class="hero-portrait-card">
+                                <div class="hero-portrait-card-container">
+                                    <div class="type-icon-badge" id="detail-type-badge">
+                                        <img id="detail-type-icon" src="" alt="">
+                                    </div>
+                                    <div class="rarity-badge" id="detail-rarity-badge"></div>
+                                    <img id="detail-hero-image" src="" alt="" class="hero-portrait-image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-title-section">
+                            <div class="hero-meta-info">
+                                <div class="hero-meta-item hero-type-item">
+                                    <span class="meta-label">Type:</span>
+                                    <span id="hero-type" class="meta-value-with-icon">
+                                        <img id="hero-type-icon" src="" alt="" class="hero-type-icon">
+                                        <span id="hero-type-text"><em>To be added</em></span>
+                                    </span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="meta-label">Target Number:</span>
+                                    <span id="hero-target-number" class="meta-value"><em>To be added</em></span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="meta-label">Role:</span>
+                                    <span id="hero-role" class="meta-value"><em>To be added</em></span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="meta-label">Primary content used in:</span>
+                                    <span id="hero-primary-content" class="meta-value"><em>To be added</em></span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="meta-label">Target transcendence:</span>
+                                    <span id="hero-target-transcendence" class="meta-value"><em>To be added</em></span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="meta-label">Wish list priority:</span>
+                                    <span id="hero-wishlist-priority" class="meta-value"><em>To be added</em></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-sections" id="hero-sections">
+                        <!-- Sections will be added here as you specify them -->
+                        <div class="section-placeholder">
+                            <p>Hero sections will be added here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advent Teams View -->
+        <div id="advent-teams-view" class="view">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1 class="page-title">Advent Teams</h1>
+                </div>
+
+                <div class="boss-filter-container">
+                    <select id="boss-filter" class="boss-filter-dropdown">
+                        <option value="all">All Bosses</option>
+                        <option value="yeonhee">Yeonhee</option>
+                        <option value="kyle">Kyle</option>
+                        <option value="karma">Karma</option>
+                        <option value="teo">Teo</option>
+                    </select>
+                </div>
+
+                <div class="advent-bosses-container" id="advent-bosses-container">
+                    <!-- Boss sections will be dynamically generated here -->
+                    <!-- Each boss has: Boss name, Team 1, Team 2, Replacements section -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Builder View -->
+        <div id="team-builder-view" class="view">
+            <div class="page-content team-builder-page">
+
+                <div class="team-builder-main">
+                    <!-- Left Sidebar: Hero Pool -->
+                    <div class="team-builder-sidebar">
+                        <h2 class="sidebar-title">Hero Pool</h2>
+                        <div class="hero-pool-search">
+                            <input type="text" id="team-builder-search" placeholder="Search heroes..."
+                                class="team-builder-search-input">
+                        </div>
+                        <div class="team-builder-filters">
+                            <div class="team-builder-type-filter">
+                                <div class="type-button-group">
+                                    <button class="type-filter-button active" data-type="" title="All Types">
+                                        <span class="type-icon-all">All</span>
+                                    </button>
+                                    <button class="type-filter-button" data-type="Attack" title="Attack">
+                                        <img src="Type Icons/type_1_attack.png" alt="Attack" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Magic" title="Magic">
+                                        <img src="Type Icons/type_2_magic.png" alt="Magic" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Defense" title="Defense">
+                                        <img src="Type Icons/type_3_defense.png" alt="Defense" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Support" title="Support">
+                                        <img src="Type Icons/type_4_support.png" alt="Support" class="type-icon">
+                                    </button>
+                                    <button class="type-filter-button" data-type="Universal" title="Universal">
+                                        <img src="Type Icons/type_5_universal.png" alt="Universal" class="type-icon">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="team-builder-effect-filter">
+                                <div class="custom-select-wrapper">
+                                    <input type="text" id="team-builder-effect-search" class="effect-search-input"
+                                        placeholder="Filter by Effect..." autocomplete="off" role="combobox"
+                                        aria-autocomplete="list" aria-expanded="false"
+                                        aria-controls="team-builder-effect-dropdown" aria-haspopup="listbox">
+                                    <div class="effect-dropdown" id="team-builder-effect-dropdown" role="listbox"
+                                        aria-label="Effect options">
+                                        <div class="effect-option" data-value="" role="option">All Effects</div>
+                                        <!-- Effect options will be dynamically generated -->
+                                    </div>
+                                    <button class="clear-effect-btn" id="team-builder-clear-effect-btn"
+                                        style="display: none;" title="Clear filter"
+                                        aria-label="Clear effect filter">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-builder-mode-toggle">
+                            <button id="toggle-hero-mode" class="mode-toggle-btn active" data-mode="heroes">
+                                Heroes
+                            </button>
+                            <button id="toggle-pet-mode" class="mode-toggle-btn" data-mode="pets">
+                                Pets
+                            </button>
+                        </div>
+                        <div class="hero-pool-grid" id="hero-pool-grid">
+                            <!-- Hero cards will be dynamically generated here -->
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Teams -->
+                    <div class="team-builder-teams-section">
+                        <div class="team-builder-controls">
+                            <div class="team-builder-subject-section">
+                                <label for="team-builder-subject" class="subject-label">Subject/Description:</label>
+                                <input type="text" id="team-builder-subject"
+                                    placeholder="e.g., PvP Teams, Advent Boss Teams..."
+                                    class="team-builder-subject-input">
+                            </div>
+                            <div class="import-export-section">
+                                <div class="share-section">
+                                    <button id="share-url-btn" class="btn-primary">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path
+                                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                                        </svg>
+                                        Copy URL
+                                    </button>
+                                    <button id="export-all-teams-btn-top" class="btn-primary btn-export-all">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                        Export All Teams
+                                    </button>
+                                </div>
+                                <div class="clear-all-section">
+                                    <button id="clear-all-teams-btn" class="btn-secondary">
+                                        Clear All Teams
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="teams-container" id="teams-container">
+                            <!-- Teams will be dynamically generated here -->
+                        </div>
+
+                        <div class="team-actions">
+                            <button id="add-team-btn" class="btn-add-team">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                                Add Team
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Libraries for Team Builder Sharing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"
+        integrity="sha512-4TxqToMIhALcFOBIqbkvG2WiACT0e69qC1v06N5OXSiKB1hrSpDDVScgaCk2RJcdsXzfaUfxOmDWKtKF2JSR1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="module" src="js/main.js?v=2"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+
+                // Close menu when clicking a link
+                navLinks.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        console.log('Link clicked:', link.href);
+                        console.log('Is external:', link.classList.contains('nav-link-external'));
+                        console.log('Will preventDefault:', !link.classList.contains('nav-link-external'));
+                        navLinks.classList.remove('show');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                        navLinks.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
