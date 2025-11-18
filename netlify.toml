@@ -5,6 +5,14 @@
   publish = "."
 
 [[headers]]
+  # Don't cache HTML files - always fetch fresh
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+[[headers]]
   # Apply headers to all routes
   for = "/*"
   [headers.values]
