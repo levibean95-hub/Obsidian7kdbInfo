@@ -86,6 +86,7 @@ body::after {
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(50px);
     }
@@ -113,6 +114,7 @@ body::after {
         opacity: 0;
         transform: translateY(30px) scale(0.98);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -967,9 +969,12 @@ body::after {
 }
 
 @keyframes pulseGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.7;
     }
+
     50% {
         opacity: 1;
     }
@@ -1017,13 +1022,13 @@ body::after {
 /* L++ Rarity - Prismatic Blue/Pink/Purple */
 .rarity-lplusplus {
     background: linear-gradient(135deg,
-        rgba(255, 150, 230, 0.95) 0%,
-        rgba(180, 200, 255, 0.95) 20%,
-        rgba(80, 120, 200, 0.95) 40%,
-        rgba(100, 50, 180, 0.95) 50%,
-        rgba(80, 120, 200, 0.95) 60%,
-        rgba(200, 180, 255, 0.95) 80%,
-        rgba(255, 150, 230, 0.95) 100%);
+            rgba(255, 150, 230, 0.95) 0%,
+            rgba(180, 200, 255, 0.95) 20%,
+            rgba(80, 120, 200, 0.95) 40%,
+            rgba(100, 50, 180, 0.95) 50%,
+            rgba(80, 120, 200, 0.95) 60%,
+            rgba(200, 180, 255, 0.95) 80%,
+            rgba(255, 150, 230, 0.95) 100%);
     color: #fff;
     border-color: rgba(255, 255, 255, 0.8);
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6);
@@ -1034,9 +1039,9 @@ body::after {
 /* L+ Rarity - Bright Gold */
 .rarity-lplus {
     background: linear-gradient(135deg,
-        rgba(255, 215, 0, 0.95) 0%,
-        rgba(255, 140, 0, 0.95) 50%,
-        rgba(255, 215, 0, 0.95) 100%);
+            rgba(255, 215, 0, 0.95) 0%,
+            rgba(255, 140, 0, 0.95) 50%,
+            rgba(255, 215, 0, 0.95) 100%);
     color: #1a0f00;
     border-color: rgba(255, 255, 255, 0.6);
     /* Removed infinite animation - now only glows on hover */
@@ -1045,8 +1050,8 @@ body::after {
 /* L Rarity - Gold */
 .rarity-l {
     background: linear-gradient(135deg,
-        rgba(218, 165, 32, 0.92) 0%,
-        rgba(184, 134, 11, 0.92) 100%);
+            rgba(218, 165, 32, 0.92) 0%,
+            rgba(184, 134, 11, 0.92) 100%);
     color: #fff;
     border-color: rgba(255, 215, 0, 0.5);
 }
@@ -1054,8 +1059,8 @@ body::after {
 /* Rare Rarity - Purple */
 .rarity-rare {
     background: linear-gradient(135deg,
-        rgba(147, 112, 219, 0.92) 0%,
-        rgba(121, 82, 179, 0.92) 100%);
+            rgba(147, 112, 219, 0.92) 0%,
+            rgba(121, 82, 179, 0.92) 100%);
     color: #fff;
     border-color: rgba(147, 112, 219, 0.5);
 }
@@ -1063,8 +1068,8 @@ body::after {
 /* Unknown Rarity - Gray */
 .rarity-unknown {
     background: linear-gradient(135deg,
-        rgba(100, 100, 100, 0.85) 0%,
-        rgba(70, 70, 70, 0.85) 100%);
+            rgba(100, 100, 100, 0.85) 0%,
+            rgba(70, 70, 70, 0.85) 100%);
     color: #fff;
     border-color: rgba(120, 120, 120, 0.4);
 }
@@ -1072,43 +1077,50 @@ body::after {
 /* Hover effects for rarity badges - only glow when hovering over hero card */
 .hero-card:hover .rarity-lplusplus {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                0 0 20px rgba(100, 180, 255, 0.5),
-                0 0 30px rgba(255, 150, 230, 0.4);
+        0 0 20px rgba(100, 180, 255, 0.5),
+        0 0 30px rgba(255, 150, 230, 0.4);
 }
 
 .hero-card:hover .rarity-lplus {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                0 0 25px rgba(255, 215, 0, 0.7),
-                0 0 35px rgba(255, 140, 0, 0.4);
+        0 0 25px rgba(255, 215, 0, 0.7),
+        0 0 35px rgba(255, 140, 0, 0.4);
 }
 
 @keyframes rarityGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                    0 0 15px rgba(255, 215, 0, 0.4);
+            0 0 15px rgba(255, 215, 0, 0.4);
     }
+
     50% {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                    0 0 25px rgba(255, 215, 0, 0.7),
-                    0 0 35px rgba(255, 140, 0, 0.4);
+            0 0 25px rgba(255, 215, 0, 0.7),
+            0 0 35px rgba(255, 140, 0, 0.4);
     }
 }
 
 @keyframes rarityGlowPrismatic {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                    0 0 20px rgba(255, 0, 150, 0.5),
-                    0 0 30px rgba(150, 0, 255, 0.3);
+            0 0 20px rgba(255, 0, 150, 0.5),
+            0 0 30px rgba(150, 0, 255, 0.3);
     }
+
     33% {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                    0 0 20px rgba(255, 215, 0, 0.5),
-                    0 0 30px rgba(255, 100, 0, 0.3);
+            0 0 20px rgba(255, 215, 0, 0.5),
+            0 0 30px rgba(255, 100, 0, 0.3);
     }
+
     66% {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6),
-                    0 0 20px rgba(0, 255, 150, 0.5),
-                    0 0 30px rgba(0, 150, 255, 0.3);
+            0 0 20px rgba(0, 255, 150, 0.5),
+            0 0 30px rgba(0, 150, 255, 0.3);
     }
 }
 
@@ -1116,9 +1128,11 @@ body::after {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -1138,8 +1152,8 @@ body::after {
     border-radius: 0 14px 0 0;
     z-index: 5;
     background: linear-gradient(135deg,
-        rgba(18, 12, 28, 0.98) 0%,
-        rgba(12, 8, 18, 0.98) 100%);
+            rgba(18, 12, 28, 0.98) 0%,
+            rgba(12, 8, 18, 0.98) 100%);
     border-right: 1px solid rgba(255, 255, 255, 0.06);
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     box-shadow:
@@ -1232,8 +1246,8 @@ body::after {
 
 .hero-card:hover .type-icon-badge {
     background: linear-gradient(135deg,
-        rgba(18, 12, 28, 0.98) 0%,
-        rgba(12, 8, 18, 0.98) 100%);
+            rgba(18, 12, 28, 0.98) 0%,
+            rgba(12, 8, 18, 0.98) 100%);
     border-right-color: rgba(255, 255, 255, 0.12);
     border-top-color: rgba(255, 255, 255, 0.12);
     box-shadow:
@@ -1445,8 +1459,8 @@ body::after {
     border-radius: 0 14px 0 0;
     z-index: 5;
     background: linear-gradient(135deg,
-        rgba(18, 12, 28, 0.98) 0%,
-        rgba(12, 8, 18, 0.98) 100%);
+            rgba(18, 12, 28, 0.98) 0%,
+            rgba(12, 8, 18, 0.98) 100%);
     border-right: 1px solid rgba(255, 255, 255, 0.06);
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     box-shadow:
@@ -1703,7 +1717,7 @@ body::after {
         flex-shrink: 0;
     }
 
-    .search-container + .type-filter-container {
+    .search-container+.type-filter-container {
         margin-left: 0.4rem;
     }
 
@@ -2898,10 +2912,10 @@ body::after {
     right: 0;
     height: 2px;
     background: linear-gradient(to right,
-        transparent 0%,
-        rgba(147, 112, 219, 0.4) 10%,
-        rgba(147, 112, 219, 0.4) 90%,
-        transparent 100%);
+            transparent 0%,
+            rgba(147, 112, 219, 0.4) 10%,
+            rgba(147, 112, 219, 0.4) 90%,
+            transparent 100%);
 }
 
 .flow-path {
@@ -2923,7 +2937,7 @@ body::after {
     background: linear-gradient(to bottom, rgba(147, 112, 219, 0.4), rgba(147, 112, 219, 0.6));
 }
 
-.flow-path > .flow-node {
+.flow-path>.flow-node {
     margin-top: 1.5rem;
 }
 
@@ -2965,7 +2979,7 @@ body::after {
     background: rgba(147, 112, 219, 0.3);
 }
 
-.flow-sub-branches .flow-path > .flow-node {
+.flow-sub-branches .flow-path>.flow-node {
     margin-top: 0;
 }
 
@@ -3002,6 +3016,7 @@ body::after {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -3130,6 +3145,7 @@ body::after {
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -3315,6 +3331,7 @@ body::after {
 .diagram-legend .legend-item {
     margin-top: 0.4rem;
 }
+
 .legend {
     display: flex;
     gap: 1.2rem;
@@ -3886,6 +3903,7 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -5244,23 +5262,23 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     .hero-selector-input {
         font-size: 16px;
     }
-    
+
     .team-slot:has(.team-slot-hero) .hero-selector-input {
         font-size: 16px;
     }
-    
+
     .team-name-input {
         font-size: 16px;
     }
-    
+
     .team-formation-select {
         font-size: 16px;
     }
-    
+
     .team-pet-select {
         font-size: 16px;
     }
-    
+
     .team-builder-effect-filter .effect-search-input {
         font-size: 16px;
     }
@@ -5746,8 +5764,13 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
 }
 
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive Design for Team Builder */
@@ -6073,15 +6096,19 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     .team-slots[data-formation="basic"] .team-slot:nth-child(1) {
         grid-row: 1;
     }
+
     .team-slots[data-formation="basic"] .team-slot:nth-child(2) {
         grid-row: 1;
     }
+
     .team-slots[data-formation="basic"] .team-slot:nth-child(3) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="basic"] .team-slot:nth-child(4) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="basic"] .team-slot:nth-child(5) {
         grid-row: 3;
     }
@@ -6090,15 +6117,19 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     .team-slots[data-formation="balanced"] .team-slot:nth-child(1) {
         grid-row: 1;
     }
+
     .team-slots[data-formation="balanced"] .team-slot:nth-child(2) {
         grid-row: 1;
     }
+
     .team-slots[data-formation="balanced"] .team-slot:nth-child(3) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="balanced"] .team-slot:nth-child(4) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="balanced"] .team-slot:nth-child(5) {
         grid-row: 3;
     }
@@ -6109,15 +6140,19 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     .team-slots[data-formation="attack"] .team-slot:nth-child(1) {
         grid-row: 1;
     }
+
     .team-slots[data-formation="attack"] .team-slot:nth-child(2) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="attack"] .team-slot:nth-child(3) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="attack"] .team-slot:nth-child(4) {
         grid-row: 3;
     }
+
     .team-slots[data-formation="attack"] .team-slot:nth-child(5) {
         grid-row: 4;
     }
@@ -6128,15 +6163,19 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     .team-slots[data-formation="protective"] .team-slot:nth-child(1) {
         grid-row: 1;
     }
+
     .team-slots[data-formation="protective"] .team-slot:nth-child(2) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="protective"] .team-slot:nth-child(3) {
         grid-row: 2;
     }
+
     .team-slots[data-formation="protective"] .team-slot:nth-child(4) {
         grid-row: 3;
     }
+
     .team-slots[data-formation="protective"] .team-slot:nth-child(5) {
         grid-row: 4;
     }
@@ -6163,8 +6202,8 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     }
 
     /* Create horizontal layout for image + skills on mobile */
-    .team-slot-hero > .team-slot-image-container,
-    .team-slot-hero > .skill-order-container {
+    .team-slot-hero>.team-slot-image-container,
+    .team-slot-hero>.skill-order-container {
         display: inline-block;
     }
 
@@ -6458,6 +6497,62 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
 }
 
+/* Tablet/Medium desktop - adjust spacing before mobile breakpoint */
+@media (max-width: 1200px) {
+    .nav-brand {
+        padding: 1rem 2rem calc(1rem - 2px) 1rem;
+    }
+
+    .nav-title {
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        gap: 0.25rem;
+    }
+
+    .nav-link {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-link svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .nav-brand {
+        padding: 1rem 1.5rem calc(1rem - 2px) 1rem;
+    }
+
+    .nav-title {
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.2rem;
+    }
+
+    .nav-link {
+        padding: 0.6rem 0.65rem;
+        font-size: 0.8rem;
+        gap: 0.3rem;
+    }
+
+    .nav-link svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .wip-badge-small,
+    .new-badge {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.35rem;
+    }
+}
+
 @media (max-width: 900px) {
     .nav-container {
         display: flex;
@@ -6506,8 +6601,8 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
         right: 0;
         background: var(--bg-card-dark);
         flex-direction: column;
-        padding: 1rem;
-        gap: 0.5rem;
+        padding: 0.5rem;
+        gap: 0.25rem;
         border-top: 2px solid var(--accent-amber);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
         z-index: 999;
@@ -6550,8 +6645,8 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
     .nav-link {
         width: 100%;
         justify-content: flex-start;
-        padding: 1rem;
-        border-radius: 8px;
+        padding: 0.6rem 0.8rem;
+        border-radius: 6px;
     }
 
     .nav-link svg {
@@ -6585,5 +6680,200 @@ body:has(.hero-pool-card.selected[data-pet-name]) .team-pet-slot.empty-pet-slot:
 
     .wip-badge-small {
         display: none;
+    }
+}
+
+/* Landing Page Specific Styles */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(100vh - 70px);
+    padding: 2rem;
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.landing-header {
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.landing-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--accent-amber);
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 30px rgba(255, 204, 0, 0.15);
+}
+
+.landing-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-card:hover {
+    transform: translateY(-5px);
+    background: var(--bg-card-dark);
+    border-color: var(--accent-amber);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-card:hover::before {
+    opacity: 1;
+}
+
+.nav-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-card:hover .nav-card-icon {
+    transform: scale(1.1);
+    color: var(--accent-amber);
+}
+
+.nav-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.nav-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-new {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.badge-wip {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* Mobile Responsiveness for Landing Page */
+@media (max-width: 768px) {
+    .landing-page {
+        padding: 1rem;
+        min-height: auto;
+        padding-top: 1rem;
+    }
+
+    .landing-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .landing-title {
+        font-size: 1.75rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+    }
+
+    .landing-subtitle {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+
+    .nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .nav-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.25rem 0.75rem;
+        min-height: auto;
+        justify-content: center;
+    }
+
+    .nav-card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.75rem;
+        margin-right: 0;
+        flex-shrink: 0;
+    }
+
+    .nav-card-title {
+        font-size: 1rem;
+        margin-bottom: 0;
+        line-height: 1.3;
+    }
+
+    .nav-card-desc {
+        display: none;
+    }
+
+    .badge {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 0.6rem;
+        padding: 0.15rem 0.4rem;
     }
 }

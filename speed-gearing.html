@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed Gearing Guide | Obsidian Gaming 7k Heroes</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Global Navigation Menu -->
     <nav class="global-nav">
@@ -17,7 +19,7 @@
                 ☰
             </button>
             <div class="nav-links" id="nav-links">
-                <a href="index.html" class="nav-link nav-link-external" data-view="grid">
+                <a href="hero-database.html" class="nav-link nav-link-external" data-view="grid">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="3" width="7" height="7"></rect>
                         <rect x="14" y="3" width="7" height="7"></rect>
@@ -34,7 +36,7 @@
                     </svg>
                     <span>Guild War Teams</span>
                 </a>
-                <a href="index.html#advent" class="nav-link nav-link-external" data-view="advent">
+                <a href="hero-database.html#advent" class="nav-link nav-link-external" data-view="advent">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                         <circle cx="9" cy="7" r="4"></circle>
@@ -53,13 +55,15 @@
                 </a>
                 <a href="wish-list.html" class="nav-link nav-link-external">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                        </path>
                     </svg>
                     <span>Wish List</span>
                 </a>
-                <a href="index.html#teams" class="nav-link nav-link-external" data-view="teambuilder">
+                <a href="hero-database.html#teams" class="nav-link nav-link-external" data-view="teambuilder">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
+                        <path d="M12 5v14M5 12h14" />
                     </svg>
                     <span>Team Builder</span>
                     <span class="new-badge">New</span>
@@ -79,209 +83,210 @@
             <section class="chart-context">
                 <div class="context-card">
                     <p class="context-label">note:</p>
-                    <p>Start with 3 and 4 liner base with speed on them. Dont level 3 liners to 4 liners in an attempt to get speed as the 4th. Not really worth your time.</p>
+                    <p>Start with 3 and 4 liner base with speed on them. Dont level 3 liners to 4 liners in an attempt
+                        to get speed as the 4th. Not really worth your time.</p>
                 </div>
             </section>
 
             <div class="trees-container">
-            <!-- 3-Liner Tree -->
-            <section class="flow-diagram">
-                <div class="tree-header">
-                    <h2 class="tree-title">3-Liner Tree</h2>
-                    <div class="tree-controls">
-                        <button class="reset-btn" data-tree="3liner" style="display: none;">Reset</button>
-                    </div>
-                </div>
-
-                <div class="flow-tree" id="tree-3liner">
-                    <!-- Start -->
-                    <div class="flow-node flow-start">
-                        <div class="node-content">
-                            <h3 class="node-title">Level 3-liner to level 6</h3>
-                            <p class="node-note">Starts with 4 base speed</p>
+                <!-- 3-Liner Tree -->
+                <section class="flow-diagram">
+                    <div class="tree-header">
+                        <h2 class="tree-title">3-Liner Tree</h2>
+                        <div class="tree-controls">
+                            <button class="reset-btn" data-tree="3liner" style="display: none;">Reset</button>
                         </div>
                     </div>
 
-                    <!-- Level 6 Decision -->
-                    <div class="decision-point" data-level="6">
-                        <p class="decision-prompt">What happened at Level 6?</p>
-                        <div class="decision-options">
-                            <button class="decision-btn success" data-path="6-hit">
-                                <span class="btn-label">Hit +4 speed</span>
-                                <span class="btn-detail">(8 total)</span>
-                            </button>
-                            <button class="decision-btn danger" data-path="6-miss" data-terminal="true">
-                                <span class="btn-label">Miss</span>
-                                <span class="btn-detail">(stays 4)</span>
-                            </button>
+                    <div class="flow-tree" id="tree-3liner">
+                        <!-- Start -->
+                        <div class="flow-node flow-start">
+                            <div class="node-content">
+                                <h3 class="node-title">Level 3-liner to level 6</h3>
+                                <p class="node-note">Starts with 4 base speed</p>
+                            </div>
+                        </div>
+
+                        <!-- Level 6 Decision -->
+                        <div class="decision-point" data-level="6">
+                            <p class="decision-prompt">What happened at Level 6?</p>
+                            <div class="decision-options">
+                                <button class="decision-btn success" data-path="6-hit">
+                                    <span class="btn-label">Hit +4 speed</span>
+                                    <span class="btn-detail">(8 total)</span>
+                                </button>
+                                <button class="decision-btn danger" data-path="6-miss" data-terminal="true">
+                                    <span class="btn-label">Miss</span>
+                                    <span class="btn-detail">(stays 4)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Level 9 Decision (hidden until 6-hit selected) -->
+                        <div class="decision-point hidden" data-level="9" data-requires="6-hit">
+                            <p class="decision-prompt">What happened at Level 9?</p>
+                            <div class="decision-options">
+                                <button class="decision-btn success" data-path="9-hit" data-terminal="true">
+                                    <span class="btn-label">Hit +4 speed</span>
+                                    <span class="btn-detail">(12 total)</span>
+                                </button>
+                                <button class="decision-btn caution" data-path="9-miss">
+                                    <span class="btn-label">Miss</span>
+                                    <span class="btn-detail">(stays 8)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Level 12 Decision (hidden until 9-miss selected) -->
+                        <div class="decision-point hidden" data-level="12" data-requires="9-miss">
+                            <p class="decision-prompt">What happened at Level 12?</p>
+                            <div class="decision-options">
+                                <button class="decision-btn success" data-path="12-hit" data-terminal="true">
+                                    <span class="btn-label">Hit +4 speed</span>
+                                    <span class="btn-detail">(12 total)</span>
+                                </button>
+                                <button class="decision-btn caution" data-path="12-miss" data-terminal="true">
+                                    <span class="btn-label">Miss</span>
+                                    <span class="btn-detail">(stays 8)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Messages -->
+                        <div class="terminal-message hidden" data-outcome="6-miss">
+                            <div class="outcome-card danger">
+                                <h4>❌ Throw Away</h4>
+                                <p>This piece didn't hit speed at Level 6. It's not worth investing more gold.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="9-hit">
+                            <div class="outcome-card success">
+                                <h4>✓ Level to 15</h4>
+                                <p>Great! You hit 12 speed by Level 9. Take this piece all the way to 15.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="12-hit">
+                            <div class="outcome-card success">
+                                <h4>✓ Level to 15</h4>
+                                <p>You finally hit 12 speed at Level 12. Finish leveling to 15.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="12-miss">
+                            <div class="outcome-card danger">
+                                <h4>❌ Throw Away</h4>
+                                <p>Still at 8 speed by Level 12. This piece isn't worth keeping. Recycle it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4-Liner Tree -->
+                <section class="flow-diagram">
+                    <div class="tree-header">
+                        <h2 class="tree-title">4-Liner Tree</h2>
+                        <div class="tree-controls">
+                            <button class="reset-btn" data-tree="4liner" style="display: none;">Reset</button>
                         </div>
                     </div>
 
-                    <!-- Level 9 Decision (hidden until 6-hit selected) -->
-                    <div class="decision-point hidden" data-level="9" data-requires="6-hit">
-                        <p class="decision-prompt">What happened at Level 9?</p>
-                        <div class="decision-options">
-                            <button class="decision-btn success" data-path="9-hit" data-terminal="true">
-                                <span class="btn-label">Hit +4 speed</span>
-                                <span class="btn-detail">(12 total)</span>
-                            </button>
-                            <button class="decision-btn caution" data-path="9-miss">
-                                <span class="btn-label">Miss</span>
-                                <span class="btn-detail">(stays 8)</span>
-                            </button>
+                    <div class="flow-tree" id="tree-4liner">
+                        <!-- Start -->
+                        <div class="flow-node flow-start">
+                            <div class="node-content">
+                                <h3 class="node-title">Level 4-liner to level 6</h3>
+                                <p class="node-note">Starts with 4 base speed</p>
+                            </div>
+                        </div>
+
+                        <!-- Level 6 Decision -->
+                        <div class="decision-point" data-level="6">
+                            <p class="decision-prompt">What happened at Level 6?</p>
+                            <div class="decision-options">
+                                <button class="decision-btn success" data-path="6-perfect" data-terminal="true">
+                                    <span class="btn-label">Hit +8 speed</span>
+                                    <span class="btn-detail">(12 total)</span>
+                                </button>
+                                <button class="decision-btn caution" data-path="6-partial">
+                                    <span class="btn-label">Hit +4 speed</span>
+                                    <span class="btn-detail">(8 total)</span>
+                                </button>
+                                <button class="decision-btn danger" data-path="6-miss" data-terminal="true">
+                                    <span class="btn-label">Miss</span>
+                                    <span class="btn-detail">(stays 4)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Level 9 Decision (hidden until 6-partial selected) -->
+                        <div class="decision-point hidden" data-level="9" data-requires="6-partial">
+                            <p class="decision-prompt">What happened at Level 9?</p>
+                            <div class="decision-options">
+                                <button class="decision-btn success" data-path="9-hit" data-terminal="true">
+                                    <span class="btn-label">Hit +4 speed</span>
+                                    <span class="btn-detail">(12 total)</span>
+                                </button>
+                                <button class="decision-btn caution" data-path="9-miss">
+                                    <span class="btn-label">Miss</span>
+                                    <span class="btn-detail">(stays 8)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Level 12 Decision (hidden until 9-miss selected) -->
+                        <div class="decision-point hidden" data-level="12" data-requires="9-miss">
+                            <p class="decision-prompt">What happened at Level 12?</p>
+                            <div class="decision-options">
+                                <button class="decision-btn success" data-path="12-hit" data-terminal="true">
+                                    <span class="btn-label">Hit +4 speed</span>
+                                    <span class="btn-detail">(12 total)</span>
+                                </button>
+                                <button class="decision-btn danger" data-path="12-miss" data-terminal="true">
+                                    <span class="btn-label">Miss</span>
+                                    <span class="btn-detail">(stays 8)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Messages -->
+                        <div class="terminal-message hidden" data-outcome="6-perfect">
+                            <div class="outcome-card success">
+                                <h4>✓ Level to 15 Immediately</h4>
+                                <p>Perfect! You hit 12 speed at Level 6. Take this piece straight to 15.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="6-miss">
+                            <div class="outcome-card danger">
+                                <h4>❌ Throw Away</h4>
+                                <p>This piece didn't hit speed at Level 6. It's not worth investing more gold.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="9-hit">
+                            <div class="outcome-card success">
+                                <h4>✓ Level to 15</h4>
+                                <p>Great! You hit 12 speed by Level 9. Take this piece all the way to 15.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="12-hit">
+                            <div class="outcome-card success">
+                                <h4>✓ Level to 15</h4>
+                                <p>You finally hit 12 speed at Level 12. Finish leveling to 15 and hope for 16+.</p>
+                            </div>
+                        </div>
+
+                        <div class="terminal-message hidden" data-outcome="12-miss">
+                            <div class="outcome-card danger">
+                                <h4>❌ Throw Away</h4>
+                                <p>Still at 8 speed by Level 12. This piece isn't worth keeping. Recycle it.</p>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Level 12 Decision (hidden until 9-miss selected) -->
-                    <div class="decision-point hidden" data-level="12" data-requires="9-miss">
-                        <p class="decision-prompt">What happened at Level 12?</p>
-                        <div class="decision-options">
-                            <button class="decision-btn success" data-path="12-hit" data-terminal="true">
-                                <span class="btn-label">Hit +4 speed</span>
-                                <span class="btn-detail">(12 total)</span>
-                            </button>
-                            <button class="decision-btn caution" data-path="12-miss" data-terminal="true">
-                                <span class="btn-label">Miss</span>
-                                <span class="btn-detail">(stays 8)</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Terminal Messages -->
-                    <div class="terminal-message hidden" data-outcome="6-miss">
-                        <div class="outcome-card danger">
-                            <h4>❌ Throw Away</h4>
-                            <p>This piece didn't hit speed at Level 6. It's not worth investing more gold.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="9-hit">
-                        <div class="outcome-card success">
-                            <h4>✓ Level to 15</h4>
-                            <p>Great! You hit 12 speed by Level 9. Take this piece all the way to 15.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="12-hit">
-                        <div class="outcome-card success">
-                            <h4>✓ Level to 15</h4>
-                            <p>You finally hit 12 speed at Level 12. Finish leveling to 15.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="12-miss">
-                        <div class="outcome-card danger">
-                            <h4>❌ Throw Away</h4>
-                            <p>Still at 8 speed by Level 12. This piece isn't worth keeping. Recycle it.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4-Liner Tree -->
-            <section class="flow-diagram">
-                <div class="tree-header">
-                    <h2 class="tree-title">4-Liner Tree</h2>
-                    <div class="tree-controls">
-                        <button class="reset-btn" data-tree="4liner" style="display: none;">Reset</button>
-                    </div>
-                </div>
-
-                <div class="flow-tree" id="tree-4liner">
-                    <!-- Start -->
-                    <div class="flow-node flow-start">
-                        <div class="node-content">
-                            <h3 class="node-title">Level 4-liner to level 6</h3>
-                            <p class="node-note">Starts with 4 base speed</p>
-                        </div>
-                    </div>
-
-                    <!-- Level 6 Decision -->
-                    <div class="decision-point" data-level="6">
-                        <p class="decision-prompt">What happened at Level 6?</p>
-                        <div class="decision-options">
-                            <button class="decision-btn success" data-path="6-perfect" data-terminal="true">
-                                <span class="btn-label">Hit +8 speed</span>
-                                <span class="btn-detail">(12 total)</span>
-                            </button>
-                            <button class="decision-btn caution" data-path="6-partial">
-                                <span class="btn-label">Hit +4 speed</span>
-                                <span class="btn-detail">(8 total)</span>
-                            </button>
-                            <button class="decision-btn danger" data-path="6-miss" data-terminal="true">
-                                <span class="btn-label">Miss</span>
-                                <span class="btn-detail">(stays 4)</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Level 9 Decision (hidden until 6-partial selected) -->
-                    <div class="decision-point hidden" data-level="9" data-requires="6-partial">
-                        <p class="decision-prompt">What happened at Level 9?</p>
-                        <div class="decision-options">
-                            <button class="decision-btn success" data-path="9-hit" data-terminal="true">
-                                <span class="btn-label">Hit +4 speed</span>
-                                <span class="btn-detail">(12 total)</span>
-                            </button>
-                            <button class="decision-btn caution" data-path="9-miss">
-                                <span class="btn-label">Miss</span>
-                                <span class="btn-detail">(stays 8)</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Level 12 Decision (hidden until 9-miss selected) -->
-                    <div class="decision-point hidden" data-level="12" data-requires="9-miss">
-                        <p class="decision-prompt">What happened at Level 12?</p>
-                        <div class="decision-options">
-                            <button class="decision-btn success" data-path="12-hit" data-terminal="true">
-                                <span class="btn-label">Hit +4 speed</span>
-                                <span class="btn-detail">(12 total)</span>
-                            </button>
-                            <button class="decision-btn danger" data-path="12-miss" data-terminal="true">
-                                <span class="btn-label">Miss</span>
-                                <span class="btn-detail">(stays 8)</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Terminal Messages -->
-                    <div class="terminal-message hidden" data-outcome="6-perfect">
-                        <div class="outcome-card success">
-                            <h4>✓ Level to 15 Immediately</h4>
-                            <p>Perfect! You hit 12 speed at Level 6. Take this piece straight to 15.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="6-miss">
-                        <div class="outcome-card danger">
-                            <h4>❌ Throw Away</h4>
-                            <p>This piece didn't hit speed at Level 6. It's not worth investing more gold.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="9-hit">
-                        <div class="outcome-card success">
-                            <h4>✓ Level to 15</h4>
-                            <p>Great! You hit 12 speed by Level 9. Take this piece all the way to 15.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="12-hit">
-                        <div class="outcome-card success">
-                            <h4>✓ Level to 15</h4>
-                            <p>You finally hit 12 speed at Level 12. Finish leveling to 15 and hope for 16+.</p>
-                        </div>
-                    </div>
-
-                    <div class="terminal-message hidden" data-outcome="12-miss">
-                        <div class="outcome-card danger">
-                            <h4>❌ Throw Away</h4>
-                            <p>Still at 8 speed by Level 12. This piece isn't worth keeping. Recycle it.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
             </div>
         </main>
     </div>
@@ -498,4 +503,5 @@
         }
     </script>
 </body>
+
 </html>
