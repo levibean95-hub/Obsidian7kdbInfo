@@ -1,8 +1,8 @@
-# Netlify configuration for 7K Gearing static site
+# Netlify configuration for 7K Gearing React + Vite site
 
 [build]
-  # No build command needed - this is a static site
-  publish = "."
+  command = "pnpm build"
+  publish = "dist"
 
 [[headers]]
   # Don't cache HTML files - always fetch fresh
@@ -23,7 +23,7 @@
 
 [[headers]]
   # Cache JS modules for shorter time to avoid stale cache issues
-  for = "/js/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=300"
 
@@ -32,3 +32,9 @@
   for = "/data/*"
   [headers.values]
     Cache-Control = "public, max-age=300"
+
+[[redirects]]
+  # SPA fallback - redirect all routes to index.html
+  from = "/*"
+  to = "/index.html"
+  status = 200

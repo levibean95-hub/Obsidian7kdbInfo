@@ -1,0 +1,205 @@
+# 7 Knights Rebirth - Hero Database Project Structure
+
+## Tech Stack
+
+- **Framework**: React 19 with TypeScript
+- **Build Tool**: Vite (created with `pnpm create vite@latest` template `react-ts`)
+- **Router**: TanStack Router (type-safe routing)
+- **Package Manager**: pnpm (ALWAYS use pnpm, never npm or yarn)
+- **Styling**: CSS with CSS variables (no CSS-in-JS libraries)
+- **No External Libraries**: Unless explicitly requested by the user
+
+## Coding Standards
+
+### Component Structure
+
+**ALWAYS** use this structure for React components:
+
+```typescript
+// Props interface defined ABOVE the component
+interface ComponentNameProps {
+  prop1: string;
+  prop2: number;
+  // ... other props
+}
+
+// Component with explicit React.FC type
+const ComponentName: React.FC<ComponentNameProps> = ({ prop1, prop2 }) => {
+  // Component logic here
+  return <div>{/* JSX */}</div>;
+};
+
+export default ComponentName;
+```
+
+**Rules:**
+
+- If component has NO props, omit the props interface entirely
+- Always use `React.FC<PropsType>` for type safety
+- Always define props interface above the component
+- Use descriptive, PascalCase component names
+
+### TypeScript Rules
+
+**CRITICAL:**
+
+- ❌ **NEVER** use the `any` keyword
+- ✅ **ALWAYS** use strong typing
+- ✅ Use proper TypeScript types from `src/lib/types.ts`
+- ✅ Import types explicitly: `import type { HeroData, GearSet } from '../../lib/types'`
+
+**Examples:**
+
+```typescript
+// ❌ BAD
+const handleClick = (data: any) => { ... }
+
+// ✅ GOOD
+const handleClick = (data: HeroData) => { ... }
+```
+
+### Styling Rules
+
+- Each page/component has its own CSS file in the same folder
+- Use CSS variables from `src/index.css` for theming
+- Follow the existing color scheme (purple/amber theme)
+- Mobile-responsive design is required
+
+**CSS File Naming:**
+
+- Component: `HeroGrid.tsx` → `HeroGrid.css`
+- Page: `HeroDetail.tsx` → `HeroDetail.css`
+
+### Routing
+
+- All routes defined in `src/routes.tsx` using TanStack Router
+- Use `useNavigate()` and `useParams()` from `@tanstack/react-router`
+- Route paths follow kebab-case: `/hero-database`, `/team-builder`
+
+### React Best Practices
+
+**CRITICAL: Avoid Overusing useEffect**
+
+- ❌ **BAD**: Using `useEffect` for derived state or computed values
+- ✅ **GOOD**: Compute values directly in render or use `useMemo` for expensive calculations
+- ✅ **GOOD**: Use `useEffect` ONLY for:
+  - Side effects (API calls, subscriptions, DOM manipulation)
+  - Synchronizing with external systems
+  - Cleanup operations
+
+**Examples:**
+
+```typescript
+// ❌ BAD - Unnecessary useEffect for derived state
+const [filteredHeroes, setFilteredHeroes] = useState([]);
+
+useEffect(() => {
+  setFilteredHeroes(heroes.filter((h) => h.type === selectedType));
+}, [heroes, selectedType]);
+
+// ✅ GOOD - Compute directly in render
+const filteredHeroes = heroes.filter((h) => h.type === selectedType);
+
+// ✅ GOOD - Use useMemo for expensive calculations
+const filteredHeroes = useMemo(() => {
+  return heroes.filter((h) => h.type === selectedType);
+}, [heroes, selectedType]);
+
+// ✅ GOOD - useEffect for side effects (API calls)
+useEffect(() => {
+  const loadData = async () => {
+    const data = await loadHeroData();
+    setHeroData(data);
+  };
+  loadData();
+}, []);
+```
+
+**General Rule**: If you can compute it during render, do it during render. Only use `useEffect` when you need to perform side effects.
+
+### Data Management
+
+- **Data-driven**: All hero/team data comes from JSON files in `public/data/`
+- Load data using functions from `src/lib/data-loader.ts`
+- Use `AppContext` for global state management
+- Never hardcode hero/team data in components
+
+### File Organization
+
+- **Pages**: One folder per page with `.tsx` and `.css` files
+- **Components**: One folder per component with `.tsx` and `.css` files
+- **Types**: All types in `src/lib/types.ts`
+- **Constants**: All constants in `src/lib/constants.ts`
+- **Utils**: Utility functions in `src/lib/utils.ts` or specific utility files
+
+## Important Notes
+
+1. **Package Manager**: ALWAYS use `pnpm`, never `npm` or `yarn`
+2. **Legacy Folder**: Contains old website files - reference only, don't modify
+3. **Admin Route**: `/admin` only works on localhost, redirects to 404 in production
+4. **404 Route**: Catch-all route `/$` and specific `/404` route both show NotFound page
+5. **Image Paths**: Use utility functions from `src/lib/utils.ts` for image paths
+6. **No External Libraries**: Don't add libraries unless explicitly requested
+
+## Common Patterns
+
+### Loading Data
+
+**Note**: Only use `useEffect` for data loading when it's a true side effect (API call, file read, etc.)
+
+```typescript
+import { loadHeroData } from "../../lib/data-loader";
+
+// ✅ GOOD - useEffect for async data loading (side effect)
+useEffect(() => {
+  const loadData = async () => {
+    const heroData = await loadHeroData();
+    setHeroData(heroData);
+  };
+  loadData();
+}, []);
+```
+
+### Navigation
+
+```typescript
+import { useNavigate } from "@tanstack/react-router";
+
+const navigate = useNavigate();
+navigate({ to: "/hero-database/Fai" });
+```
+
+### Using Context
+
+```typescript
+import { useApp } from "../../context/AppContext";
+
+const { state, setSearchQuery } = useApp();
+```
+
+### Image Paths
+
+```typescript
+import { getHeroImagePath } from "../../lib/utils";
+
+<img src={getHeroImagePath(heroName, false, true)} />;
+```
+
+## Development Workflow
+
+1. **Start Development**: `pnpm dev` (runs on port 3000)
+2. **Build**: `pnpm build` (outputs to `dist/`)
+3. **Preview**: `pnpm preview` (preview production build)
+4. **Linting**: Check linter errors before committing
+
+## Key Features
+
+- Hero Database with filtering and search
+- Detailed hero pages with gear recommendations
+- Advent Teams viewer
+- Team Builder with drag-and-drop and image export
+- Guild War Teams viewer
+- Speed Gearing Guide
+- Wish List tier list
+- Admin Editor (localhost only) for editing JSON data
+- 404 Not Found page with hero-themed design

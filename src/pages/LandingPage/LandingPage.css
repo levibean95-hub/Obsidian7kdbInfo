@@ -1,0 +1,207 @@
+/* Landing Page Styles */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(100vh - 70px);
+    padding: 2rem;
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.landing-header {
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.landing-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--accent-amber);
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 30px rgba(255, 204, 0, 0.15);
+}
+
+.landing-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-card:hover {
+    transform: translateY(-5px);
+    background: var(--bg-card-dark);
+    border-color: var(--accent-amber);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-card:hover::before {
+    opacity: 1;
+}
+
+.nav-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-card:hover .nav-card-icon {
+    transform: scale(1.1);
+    color: var(--accent-amber);
+}
+
+.nav-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.nav-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-new {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.badge-wip {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.wip-disclaimer {
+    max-width: 1000px;
+    margin: 0 auto 0.25rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 204, 0, 0.12);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 204, 0, 0.4);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 204, 0, 0.2),
+        0 0 30px rgba(255, 204, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.wip-disclaimer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 204, 0, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.wip-disclaimer strong {
+    color: var(--accent-amber);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .landing-title {
+        font-size: 2.5rem;
+    }
+
+    .landing-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .nav-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .nav-card {
+        padding: 1.5rem;
+    }
+}
+

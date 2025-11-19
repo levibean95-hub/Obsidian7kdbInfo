@@ -2,338 +2,189 @@
 alwaysApply: true
 ---
 
-# Cursor Rules for 7 Knights Rebirth Hero Database
+# 7 Knights Rebirth - Hero Database Project Structure
 
-## Project Overview
+## Tech Stack
 
-This is a static web application that serves as a hero database for "7 Knights Rebirth" game. It displays hero portraits in a grid view and shows detailed hero information when clicked. The application is designed to be deployed to static hosting platforms (Netlify, GitHub Pages, Vercel, etc.).
+- **Framework**: React 19 with TypeScript
+- **Build Tool**: Vite (created with `pnpm create vite@latest` template `react-ts`)
+- **Router**: TanStack Router (type-safe routing)
+- **Package Manager**: pnpm (ALWAYS use pnpm, never npm or yarn)
+- **Styling**: CSS with CSS variables (no CSS-in-JS libraries)
+- **No External Libraries**: Unless explicitly requested by the user
 
-## Core Architecture
+## Coding Standards
 
-### Two-View System
+### Component Structure
 
-The application uses a view-switching architecture with two main views:
+**ALWAYS** use this structure for React components:
 
-1. **Grid View** (`#hero-grid-view`): Displays all heroes as cards with portrait images from `Hero Portraits/` folder
-2. **Detail View** (`#hero-detail-view`): Shows individual hero details with full model images from `Hero Models BGL/` folder
+```typescript
+// Props interface defined ABOVE the component
+interface ComponentNameProps {
+  prop1: string;
+  prop2: number;
+  // ... other props
+}
 
-Views are toggled by adding/removing the `active` class. Only one view is visible at a time.
+// Component with explicit React.FC type
+const ComponentName: React.FC<ComponentNameProps> = ({ prop1, prop2 }) => {
+  // Component logic here
+  return <div>{/* JSX */}</div>;
+};
 
-### Image Path Handling
-
-The application uses multiple image folders:
-- `Hero Portraits/`: Used for grid view cards (portrait style)
-- `Hero Models BGL/`: Used for detail view (full character models)
-- `Gear Sets Photos/`: Contains gear set images to be displayed in hero detail pages
-
-**Critical**: The `getHeroImagePath(heroName, useModel)` function (js/utils.js) handles:
-- URL encoding for folders with spaces and special characters
-- Switching between portrait and model paths based on the `useModel` boolean
-- Configuration via `HERO_PORTRAITS_PATH` and `HERO_MODELS_PATH` constants from js/constants.js
-
-This encoding is essential for web hosting compatibility.
-
-## Data-Driven Architecture
-
-**CRITICAL**: This application is FULLY DATA-DRIVEN. Hero data is stored in `data/hero-data.json` and automatically displayed on the website.
-
-### Updating Hero Data Workflow
-
-1. **Edit** `data/hero-data.json` to add or modify hero data
-2. **Refresh** browser to see changes
-
-**No code changes needed!** The JSON file contains ALL fields (effects, metadata, gear configs, tips) and the website automatically displays them.
-
-### Hero Data Structure
-
-Each hero in `data/hero-data.json` has these fields:
-- **Meta Information**: name, role, primary_content, target_transcendence, wishlist_priority, type, target_number, rarity
-- **Effects**: Array of effect strings for filtering
-- **Gear PvE**: T0 and T6 gear set configurations (arrays of gear objects)
-- **Gear PvP**: T0 and T6 gear set configurations (arrays of gear objects)
-- **Skill Enhance Priority**: Recommended skill enhancement order (string)
-- **Tips/Important Info**: Additional hero information (string)
-
-Each gear object contains:
-- `name`: Gear set name
-- `main_stats`: Main stat requirements
-- `required_stat_thresholds`: Threshold requirements
-- `sub_stat_priority`: Priority stats
-
-All this data is automatically displayed on hero detail pages.
-
-### When Code Changes ARE Needed
-
-Code changes in `js/gear-builder.js` are ONLY needed for:
-- Heroes requiring custom formatting or layout (e.g., Amelia, Ace with special notes)
-- Heroes with complex gear requirements not fitting the standard format
-
-For 90% of heroes, just update the JSON and refresh!
-
-## Modular Architecture
-
-The application uses ES6 modules for better code organization and maintainability:
-
-- **main.js** - Entry point that initializes the app and loads data
-- **constants.js** - Static configuration (hero list, paths, regex patterns)
-- **state.js** - Centralized state management with getter/setter functions
-- **utils.js** - Reusable utility functions (image paths, validation)
-- **data-loader.js** - Asynchronous data loading from JSON files
-- **filters.js** - All filtering logic (search, effects, types, targets)
-- **hero-grid.js** - Grid view rendering and hero card creation
-- **hero-detail.js** - Hero detail view and metadata display
-- **gear-builder.js** - Gear sections with all hero-specific configurations
-- **advent-teams.js** - Advent boss teams rendering
-- **views.js** - View switching and event listeners
-
-Data is loaded asynchronously from JSON files in the `data/` folder.
-
-## File Structure
-
-```
-index.html          - Main HTML structure with both grid and detail views
-styles.css          - Modern dark theme with animations and responsive design
-js/                 - Modular JavaScript files (ES6 modules)
-  ├── main.js       - Application entry point and initialization
-  ├── constants.js  - Hero list and configuration constants
-  ├── state.js      - Global state management
-  ├── utils.js      - Utility helper functions
-  ├── data-loader.js - Load data from JSON files
-  ├── filters.js    - Search and filter functionality
-  ├── hero-grid.js  - Grid view rendering
-  ├── hero-detail.js - Hero detail view and metadata
-  ├── gear-builder.js - Gear sections and hero-specific data
-  ├── advent-teams.js - Advent teams view
-  └── views.js      - View switching and navigation
-data/               - JSON data files
-  ├── hero-data.json - Complete hero data (effects, metadata, gear configs, tips)
-  └── advent-teams-data.json - Advent team compositions
-Hero Portraits/     - Portrait images for grid view cards
-Hero Models BGL/    - Full model images for detail view
-Gear Sets Photos/   - Gear set images for hero detail pages
-Type Icons/         - Type icon images (Attack, Magic, Defense, Support, Universal)
-Pet Icons/          - Pet icon images
-.claude/            - Feature-specific documentation
+export default ComponentName;
 ```
 
-**Important Files:**
-- `data/hero-data.json` - Edit this file directly to update hero information
-- `js/` folder - All JavaScript is modular using ES6 modules
-- `data/` folder - Hero and advent team data stored as JSON files
+**Rules:**
 
-## Adding New Heroes
+- If component has NO props, omit the props interface entirely
+- Always use `React.FC<PropsType>` for type safety
+- Always define props interface above the component
+- Use descriptive, PascalCase component names
 
-When adding a brand new hero to the database:
+### TypeScript Rules
 
-**Step 1: Add Hero Images**
-- Add hero portrait to `Hero Portraits/` folder (filename: `HeroName.png`)
-- Optionally add full model to `Hero Models BGL/` folder (filename: `HeroName.png`)
+**CRITICAL:**
 
-**Step 2: Update Constants**
-- Add hero name to the `heroes` array in `js/constants.js`
-- Hero names must exactly match the image filenames (without `.png` extension)
-- Hero names are case-sensitive (e.g., "Nia" not "nia")
-- Names with spaces are supported (e.g., "Bi Dam", "Yu Shin")
-- Place in correct rarity section (L++, L+, L, or Rare)
+- ❌ **NEVER** use the `any` keyword
+- ✅ **ALWAYS** use strong typing
+- ✅ Use proper TypeScript types from `src/lib/types.ts`
+- ✅ Import types explicitly: `import type { HeroData, GearSet } from '../../lib/types'`
 
-**Step 3: Add Hero Data**
-- Add hero entry to `data/hero-data.json` with all required fields:
-  - name, role, primary_content, target_transcendence, wishlist_priority, type, target_number, rarity
-  - effects (array)
-  - gear_pve (object with t0 and t6 arrays)
-  - gear_pvp (object with t0 and t6 arrays)
-  - skill_enhance_priority (string)
-  - tips (string)
+**Examples:**
 
-**Step 4: Verify**
-- Refresh browser and check that hero card appears in grid
-- Click hero card and verify all data displays correctly
-- No code changes needed in `js/gear-builder.js` or `js/hero-detail.js` (data displays automatically!)
+```typescript
+// ❌ BAD
+const handleClick = (data: any) => { ... }
 
-**Optional Step 5: Custom Implementation (if needed)**
-- Only add explicit implementation in `populateHeroSections()` in `js/gear-builder.js` if you need custom formatting
-- Most heroes work fine with the automatic JSON-driven display
+// ✅ GOOD
+const handleClick = (data: HeroData) => { ... }
+```
 
-## Hero Effects and Filtering System
+### Styling Rules
 
-The application includes a searchable effect filter system that allows users to filter heroes by their effects:
+- Each page/component has its own CSS file in the same folder
+- Use CSS variables from `src/index.css` for theming
+- Follow the existing color scheme (purple/amber theme)
+- Mobile-responsive design is required
 
-**Data Source:**
-- Hero effects are stored in `data/hero-data.json`
-- Data is loaded asynchronously via `js/data-loader.js` module
+**CSS File Naming:**
 
-**Searchable Dropdown:**
-- Custom searchable dropdown (not a native `<select>`) for better UX
-- Users can type to filter effects in real-time
-- Clicking an effect filters the hero grid to show only heroes with that effect
-- Clear button (×) appears when an effect is selected
-- Dropdown closes on selection or when clicking outside
-- Press Escape to close the dropdown
+- Component: `HeroGrid.tsx` → `HeroGrid.css`
+- Page: `HeroDetail.tsx` → `HeroDetail.css`
 
-**Implementation:**
-- `populateEffectFilter()` - Populates dropdown with all unique effects (js/filters.js)
-- `setupEffectFilterListeners()` - Sets up all event handlers for the searchable dropdown (js/filters.js)
-- `filterEffectOptions(searchTerm)` - Filters visible options based on search (js/filters.js)
-- `selectEffect(value, displayText)` - Handles effect selection and hero filtering (js/filters.js)
+### Routing
 
-## Gear Set Photos and Card-Based Layout
+- All routes defined in `src/routes.tsx` using TanStack Router
+- Use `useNavigate()` and `useParams()` from `@tanstack/react-router`
+- Route paths follow kebab-case: `/hero-database`, `/team-builder`
 
-The `Gear Sets Photos/` folder contains images of gear sets that should be displayed within hero detail pages. The application uses a **card-based layout** for displaying gear information:
+### React Best Practices
 
-**Card Layout System:**
-- Each gear set gets its own compact card (180-200px wide)
-- Cards automatically arrange in a responsive grid (side-by-side on desktop, stacked on mobile)
-- Heroes can have different numbers of gear sets, and the layout adapts automatically
-- Gear sets are separated into T0 and T6 tier sections
+**CRITICAL: Avoid Overusing useEffect**
 
-**Card Structure (per gear set):**
-Each card contains (in order from top to bottom):
-1. Gear set name (title)
-2. Square gear photo from `Gear Sets Photos/` folder
-3. Main Stats (directly below photo)
-4. Required Stat Thresholds (formerly "Important Stats")
-5. Sub Stat Priority (when applicable)
+- ❌ **BAD**: Using `useEffect` for derived state or computed values
+- ✅ **GOOD**: Compute values directly in render or use `useMemo` for expensive calculations
+- ✅ **GOOD**: Use `useEffect` ONLY for:
+  - Side effects (API calls, subscriptions, DOM manipulation)
+  - Synchronizing with external systems
+  - Cleanup operations
 
-**Implementation:**
-- Gear set images are located in `Gear Sets Photos/` folder
-- Images should be properly URL-encoded when referenced (handle spaces and special characters)
-- Multiple gear sets for the same tier are comma-separated (e.g., "Spellweaver Physical, Full Speed")
-- The `createGearCard()` function handles individual card creation (js/gear-builder.js)
-- The `buildGearSection()` function builds complete T0/T6 sections (js/gear-builder.js)
-- The `isT6DifferentFromT0()` function compares T0 and T6 gear data (js/gear-builder.js)
-- The `populateHeroSections()` function contains all hero-specific gear configurations (js/gear-builder.js)
-- Use proper path handling similar to hero images to ensure web hosting compatibility
+**Examples:**
 
-**T6 Section Conditional Rendering:**
-- T6 sections are only displayed when the gear differs from T0
-- To avoid redundancy, if T6 gear is identical to T0 (same gear name, main stats, required stats, and sub stats), the T6 section will be hidden
-- When adding hero data, always provide T6 information if available, and the system will automatically determine if it should be displayed
-- This applies to both Gear PvE and Gear PvP sections
+```typescript
+// ❌ BAD - Unnecessary useEffect for derived state
+const [filteredHeroes, setFilteredHeroes] = useState([]);
 
-**Gear Set Photo Naming Convention:**
+useEffect(() => {
+  setFilteredHeroes(heroes.filter((h) => h.type === selectedType));
+}, [heroes, selectedType]);
 
-**CRITICAL**: Gear set names in hero data should use the CORRECT, standard naming. When a matching photo doesn't exist in `Gear Sets Photos/`, it should be added with the correct filename.
+// ✅ GOOD - Compute directly in render
+const filteredHeroes = heroes.filter((h) => h.type === selectedType);
 
-**Before adding or updating gear set information:**
-1. **Check available gear set photos**: Verify exact filenames in `Gear Sets Photos/` folder
-2. **Use correct standard names**: Always use proper capitalization and spelling:
-   - Correct: `Name: Avenger Physical`
-   - Wrong: `Name: Avernger physical` (typo and wrong case)
-3. **ALWAYS use "Full Speed" as the gear set name, NOT just "Speed"**
-   - Correct: `Name: Full Speed`
-   - Wrong: `Name: Speed`
-   - The gear set photo is named "Full Speed.png" in the `Gear Sets Photos/` folder
-4. **If photo is missing or misnamed**: Note that the photo needs to be added/renamed in the `Gear Sets Photos/` folder
-5. **No extra text**: Don't add descriptive text like "(Situational)" or "(magic)" unless it's part of the standard gear set name
-6. **Verify in browser**: After updating hero data, check the hero's detail page to ensure gear photos display correctly
+// ✅ GOOD - Use useMemo for expensive calculations
+const filteredHeroes = useMemo(() => {
+  return heroes.filter((h) => h.type === selectedType);
+}, [heroes, selectedType]);
 
-## Advent Teams System
+// ✅ GOOD - useEffect for side effects (API calls)
+useEffect(() => {
+  const loadData = async () => {
+    const data = await loadHeroData();
+    setHeroData(data);
+  };
+  loadData();
+}, []);
+```
 
-The Advent Teams page displays team compositions for game mode content. Teams are shown in a compact, side-by-side layout with visual positioning that indicates front and back row placements.
+**General Rule**: If you can compute it during render, do it during render. Only use `useEffect` when you need to perform side effects.
 
-**Team Data Structure:**
-Teams are stored in `data/advent-teams-data.json`. The structure is organized by boss name, with each boss containing an array of teams.
+### Data Management
 
-**Formation Types and Positioning:**
-The application uses **alternating visual positioning** to display front and back rows. Heroes are positioned using CSS transforms:
-- **Back row**: Heroes move UP (-40px translateY)
-- **Front row**: Heroes move DOWN (+40px translateY)
+- **Data-driven**: All hero/team data comes from JSON files in `public/data/`
+- Load data using functions from `src/lib/data-loader.ts`
+- Use `AppContext` for global state management
+- Never hardcode hero/team data in components
 
-**Formation Patterns:**
+### File Organization
 
-| Formation Type | Front/Back Split | Alternating Pattern |
-|---------------|------------------|---------------------|
-| **Basic** | 2 Front, 3 Back | **Front (down):** 2, 4<br>**Back (up):** 1, 3, 5 |
-| **Balanced** | 3 Front, 2 Back | **Front (down):** 1, 3, 5<br>**Back (up):** 2, 4 |
-| **Attack** | 1 Front, 4 Back | **Front (down):** 3<br>**Back (up):** 1, 2, 4, 5 |
-| **Protective** | 4 Front, 1 Back | **Front (down):** 1, 2, 4, 5<br>**Back (up):** 3 |
-
-**Important:** The formation label is hidden on the page. Players identify formations by the visual positioning of units.
-
-**Adding Heroes to Teams:**
-Each hero in the `heroes` array requires:
-- `name`: Hero name (must match portrait filename in `Hero Portraits/` folder)
-- `position`: Position number (1-5)
-- `row`: Either `'front'` or `'back'` (determines visual positioning)
-
-**Setting Skill Priorities:**
-**CRITICAL - Skill Slot Mapping:**
-- **S1 = Bottom skill** (lower skill slot in-game)
-- **S2 = Top skill** (upper skill slot in-game)
-
-Each hero in the `skills` array can have two skills (S1 and S2):
-- `hero`: Hero name (must match name in `heroes` array)
-- `s1`: Bottom skill execution order (number) or `null` if not used
-- `s2`: Top skill execution order (number) or `null` if not used
-
-**Hero Portrait Requirements:**
-**CRITICAL:** Before adding heroes to teams:
-1. Ensure hero portraits exist in `Hero Portraits/` folder
-2. Portrait filenames must match hero names exactly (case-sensitive)
-3. If portraits are missing, copy them from `Downloaded Hero Portraits/` folder
-
-## State Management
-
-The application maintains state in `js/state.js` module with exported getter/setter functions:
-- `currentView`: Tracks which view is active ('grid' or 'detail')
-- `selectedHero`: The currently selected hero name
-- `searchQuery`: Current search filter text
-- `savedScrollPosition`: Preserves scroll position when navigating between views
-- `heroData`: Loaded from `data/hero-data.json`
-- `adventTeamsData`: Loaded from `data/advent-teams-data.json`
-- `allEffects` and `allTargets`: Extracted from hero data for filters
-
-**Important**: When users navigate from grid → detail → grid, the scroll position is preserved so they return to the same location in the hero list. However, on page refresh, the scroll always resets to top.
-
-## Design System
-
-The application uses a dark theme with CSS custom properties defined in `styles.css`:
-- Color scheme: Dark blue/purple gradient background with indigo/purple accents
-- Modern features: Glassmorphism effects, smooth transitions, gradient text
-- Responsive grid: Auto-adjusts from desktop (200px cards) to mobile (140px cards)
-
-## Deployment
-
-This is a pure static site with no build step or dependencies. When deploying to Netlify:
-1. Ensure all changes are saved (especially JSON data files)
-2. Run: `netlify deploy --prod` from the project directory
-3. The site is already linked to Netlify (see `netlify.toml`)
-
-## Code Style Guidelines
-
-1. **Use ES6 modules**: All JavaScript files should use ES6 import/export syntax
-2. **Modular organization**: Keep functionality separated into logical modules
-3. **Data-driven approach**: Prefer JSON data files over hardcoded data
-4. **URL encoding**: Always properly encode file paths with spaces or special characters
-5. **Error handling**: Include proper error handling for async operations
-6. **Comments**: Add comments for complex logic or non-obvious behavior
-7. **Consistent naming**: Use camelCase for variables/functions, kebab-case for CSS classes
+- **Pages**: One folder per page with `.tsx` and `.css` files
+- **Components**: One folder per component with `.tsx` and `.css` files
+- **Types**: All types in `src/lib/types.ts`
+- **Constants**: All constants in `src/lib/constants.ts`
+- **Utils**: Utility functions in `src/lib/utils.ts` or specific utility files
 
 ## Important Notes
 
-- **Effects**: Should NOT say `[To be filled with hero-specific effects]` - replace with actual effects
-- **Metadata**: Automatically pulled from JSON (Role, Primary content, Target transcendence, Wishlist priority)
-- **Legacy code**: `script.js` is legacy and should not be used or referenced
-- **Python scripts**: No Python scripts should exist in the project - all data manipulation should be done via JSON editing
-- **File paths**: Always use constants from `js/constants.js` for image paths
-- **Case sensitivity**: Hero names and file paths are case-sensitive
+1. **Package Manager**: ALWAYS use `pnpm`, never `npm` or `yarn`
+2. **Legacy Folder**: Contains old website files - reference only, don't modify
+3. **Admin Route**: `/admin` only works on localhost, redirects to 404 in production
+4. **404 Route**: Catch-all route `/$` and specific `/404` route both show NotFound page
+5. **Image Paths**: Use utility functions from `src/lib/utils.ts` for image paths
+6. **No External Libraries**: Don't add libraries unless explicitly requested
 
-## When Working on Specific Features
+## Common Patterns
 
-### Hero-Related Work:
-- Always check `data/hero-data.json` first
-- Update JSON directly - code changes rarely needed
-- Verify gear set photos exist in `Gear Sets Photos/` folder
-- Use correct gear set naming conventions
+### Loading Data
 
-### Team-Related Work:
-- Update `data/advent-teams-data.json`
-- Ensure hero portraits exist before adding to teams
-- Follow formation patterns exactly
-- Verify skill slot mapping (S1 = bottom, S2 = top)
+**Note**: Only use `useEffect` for data loading when it's a true side effect (API call, file read, etc.)
 
-### UI/UX Work:
-- Maintain dark theme consistency
-- Ensure responsive design works on mobile
-- Test view switching and scroll position preservation
-- Verify filters work correctly with data
+```typescript
+import { loadHeroData } from "../../lib/data-loader";
+
+// ✅ GOOD - useEffect for async data loading (side effect)
+useEffect(() => {
+  const loadData = async () => {
+    const heroData = await loadHeroData();
+    setHeroData(heroData);
+  };
+  loadData();
+}, []);
+```
+
+### Navigation
+
+```typescript
+import { useNavigate } from "@tanstack/react-router";
+
+const navigate = useNavigate();
+navigate({ to: "/hero-database/Fai" });
+```
+
+### Using Context
+
+```typescript
+import { useApp } from "../../context/AppContext";
+
+const { state, setSearchQuery } = useApp();
+```
+
+### Image Paths
+
+```typescript
+import { getHeroImagePath } from "../../lib/utils";
+
+<img src={getHeroImagePath(heroName, false, true)} />;
+```

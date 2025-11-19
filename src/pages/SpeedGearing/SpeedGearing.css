@@ -1,0 +1,344 @@
+/* Speed Gearing Guide Styles */
+.speed-gearing-view {
+  min-height: calc(100vh - 70px);
+}
+
+.speed-chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+.chart-context {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.context-card {
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(147, 112, 219, 0.35);
+  background: rgba(10, 8, 16, 0.85);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+}
+
+.context-label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  color: var(--accent-amber);
+  margin-bottom: 0.4rem;
+}
+
+.context-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.trees-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tree-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--accent-obsidian);
+  letter-spacing: 0.05em;
+}
+
+.tree-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.reset-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.1);
+  color: rgba(239, 68, 68, 1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.6);
+  transform: translateY(-1px);
+}
+
+.flow-diagram {
+  background: linear-gradient(
+    135deg,
+    rgba(18, 12, 28, 0.95),
+    rgba(10, 8, 18, 0.92)
+  );
+  border: 1px solid rgba(147, 112, 219, 0.45);
+  border-radius: 24px;
+  padding: 1.5rem 1.5rem 2rem;
+  position: relative;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.flow-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flow-node {
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  border: 2px solid rgba(147, 112, 219, 0.4);
+  background: rgba(8, 6, 18, 0.95);
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.flow-node.flow-start {
+  text-align: center;
+  border-color: rgba(147, 112, 219, 0.6);
+  background: rgba(15, 10, 25, 0.95);
+  margin-bottom: 2rem;
+}
+
+.node-content {
+  position: relative;
+}
+
+.node-title {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.node-note {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.decision-point {
+  padding: 1rem;
+  background: rgba(15, 10, 25, 0.6);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+.decision-point.hidden {
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.decision-point.visible {
+  display: block;
+  opacity: 1;
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.decision-prompt {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(147, 112, 219, 1);
+  text-align: center;
+}
+
+.decision-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.decision-btn {
+  flex: 1;
+  min-width: 140px;
+  max-width: 250px;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 2px solid rgba(147, 112, 219, 0.4);
+  background: rgba(8, 6, 18, 0.95);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.decision-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.decision-btn.success {
+  border-color: rgba(65, 217, 167, 0.6);
+  background: rgba(8, 20, 16, 0.95);
+}
+
+.decision-btn.success:hover {
+  border-color: rgba(65, 217, 167, 0.9);
+  background: rgba(10, 25, 20, 1);
+  box-shadow: 0 8px 25px rgba(65, 217, 167, 0.3);
+}
+
+.decision-btn.caution {
+  border-color: rgba(255, 204, 0, 0.6);
+  background: rgba(20, 18, 8, 0.95);
+}
+
+.decision-btn.caution:hover {
+  border-color: rgba(255, 204, 0, 0.9);
+  background: rgba(25, 22, 10, 1);
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.3);
+}
+
+.decision-btn.danger {
+  border-color: rgba(239, 68, 68, 0.6);
+  background: rgba(20, 8, 8, 0.95);
+}
+
+.decision-btn.danger:hover {
+  border-color: rgba(239, 68, 68, 0.9);
+  background: rgba(25, 10, 10, 1);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.decision-btn.selected {
+  border-width: 3px;
+  transform: scale(1.05);
+}
+
+.btn-label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.btn-detail {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.terminal-message {
+  padding: 0.5rem;
+  transition: all 0.4s ease;
+}
+
+.terminal-message.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.terminal-message.visible {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.outcome-card {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 2px solid;
+  text-align: center;
+}
+
+.outcome-card.success {
+  background: linear-gradient(
+    135deg,
+    rgba(8, 25, 20, 0.95),
+    rgba(10, 30, 24, 0.95)
+  );
+  border-color: rgba(65, 217, 167, 0.7);
+  box-shadow: 0 12px 30px rgba(65, 217, 167, 0.2);
+}
+
+.outcome-card.danger {
+  background: linear-gradient(
+    135deg,
+    rgba(25, 10, 10, 0.95),
+    rgba(30, 12, 12, 0.95)
+  );
+  border-color: rgba(239, 68, 68, 0.7);
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.2);
+}
+
+.outcome-card h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.outcome-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .decision-options {
+    flex-direction: column;
+  }
+
+  .decision-btn {
+    max-width: 100%;
+  }
+}
