@@ -254,7 +254,6 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
   value,
   onChange,
   placeholder = "Select options...",
-  label,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);

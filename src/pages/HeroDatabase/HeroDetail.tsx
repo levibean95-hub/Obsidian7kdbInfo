@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useParams, useNavigate } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
 import { useApp } from "../../context/AppContext";
 import { getHeroImagePath, getTypeIconPath } from "../../lib/utils";
 import { HERO_PORTRAIT_FALLBACK } from "../../lib/constants";
@@ -9,7 +9,6 @@ import "./HeroDetail.css";
 
 const HeroDetail: React.FC = () => {
   const { heroName } = useParams({ from: "/hero-database/$heroName" });
-  const navigate = useNavigate();
   const { state, setSelectedHero } = useApp();
   const [showEffects, setShowEffects] = useState(false);
 
