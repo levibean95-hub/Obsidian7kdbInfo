@@ -8,7 +8,7 @@ import GearCard from "../../components/HeroDetail/GearCard";
 import "./HeroDetail.css";
 
 const HeroDetail: React.FC = () => {
-  const { heroName } = useParams({ from: "/hero-database/$heroName", strict: false });
+  const { heroName } = useParams({ from: "/hero-database/$heroName" });
   const navigate = useNavigate();
   const { state, setSelectedHero } = useApp();
   const [showEffects, setShowEffects] = useState(false);
