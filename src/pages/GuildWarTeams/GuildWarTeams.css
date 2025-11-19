@@ -1,0 +1,17 @@
+/* Guild War Teams Styles - Reuse Advent Teams styles */
+.guild-war-teams-view {
+    min-height: calc(100vh - 70px);
+}
+
+.guild-war-teams-view .advent-teams-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    flex: 1;
+}
+
+@media (max-width: 1024px) {
+    .guild-war-teams-view .advent-teams-container {
+        grid-template-columns: 1fr;
+    }
+}

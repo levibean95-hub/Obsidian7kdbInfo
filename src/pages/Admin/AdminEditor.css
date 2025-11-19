@@ -1,0 +1,479 @@
+/* Admin Editor Styles */
+.admin-editor-view {
+    min-height: calc(100vh - 70px);
+}
+
+.admin-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.admin-warning {
+    background: rgba(234, 179, 8, 0.15);
+    border: 2px solid var(--accent-amber);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.admin-warning code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.admin-tab {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.admin-tab:hover {
+    color: var(--accent-amber);
+    border-bottom-color: var(--accent-amber);
+}
+
+.admin-tab.active {
+    color: var(--accent-amber);
+    border-bottom-color: var(--accent-amber);
+}
+
+.admin-content {
+    background: linear-gradient(145deg, rgba(18, 12, 28, 0.95), rgba(15, 10, 22, 0.98));
+    backdrop-filter: blur(30px);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.admin-editor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.admin-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.admin-editor-header h2 {
+    color: var(--accent-amber);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.admin-save-btn {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.2), rgba(121, 82, 179, 0.15));
+    border: 2px solid var(--accent-primary);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.admin-save-btn:hover:not(:disabled) {
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.3), rgba(121, 82, 179, 0.25));
+    border-color: var(--accent-obsidian);
+    transform: translateY(-2px);
+}
+
+.admin-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.admin-save-btn.success {
+    background: linear-gradient(145deg, rgba(34, 197, 94, 0.3), rgba(22, 163, 74, 0.2));
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+.admin-save-btn.error {
+    background: linear-gradient(145deg, rgba(239, 68, 68, 0.3), rgba(220, 38, 38, 0.2));
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.admin-selector-section {
+    margin-bottom: 2rem;
+}
+
+.admin-selector-section label {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.admin-select {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem 1rem;
+    background: rgba(15, 10, 22, 0.95);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-select:hover {
+    border-color: var(--accent-amber);
+}
+
+.admin-select:focus {
+    outline: none;
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
+.admin-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-form-group label {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.admin-input,
+.admin-textarea {
+    padding: 0.75rem 1rem;
+    background: rgba(15, 10, 22, 0.95);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.admin-input:focus,
+.admin-textarea:focus {
+    outline: none;
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
+.admin-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.admin-array-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-array-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.admin-array-item .admin-input {
+    flex: 1;
+}
+
+.admin-add-btn,
+.admin-remove-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(147, 112, 219, 0.2);
+    border: 1px solid var(--accent-primary);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.admin-add-btn:hover {
+    background: rgba(147, 112, 219, 0.3);
+    transform: translateY(-1px);
+}
+
+.admin-remove-btn {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+    padding: 0.5rem 0.75rem;
+}
+
+.admin-remove-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.admin-gear-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-gear-section h3 {
+    color: var(--accent-amber);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.admin-gear-card {
+    background: rgba(10, 8, 16, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.admin-gear-remove {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.admin-json-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-json-editor label {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.admin-json-textarea {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    padding: 1rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    resize: vertical;
+    min-height: 400px;
+}
+
+.admin-json-hint {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Searchable Select Styles */
+.admin-searchable-select {
+    position: relative;
+    width: 100%;
+}
+
+.admin-search-input {
+    width: 100%;
+}
+
+.admin-search-dropdown {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(15, 10, 22, 1);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+}
+
+.admin-search-option {
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-search-option:last-child {
+    border-bottom: none;
+}
+
+.admin-search-option:hover {
+    background: rgba(147, 112, 219, 0.2);
+    color: var(--accent-amber);
+}
+
+.admin-search-option.selected {
+    background: rgba(147, 112, 219, 0.3);
+    color: var(--accent-amber);
+    font-weight: 600;
+}
+
+.admin-search-option.empty {
+    color: var(--text-secondary);
+    cursor: default;
+    font-style: italic;
+}
+
+.admin-search-option.empty:hover {
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+/* Teams Section Styles */
+.admin-teams-section {
+    margin-top: 2rem;
+}
+
+.admin-teams-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.admin-teams-header h3 {
+    color: var(--accent-amber);
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.admin-team-card {
+    background: rgba(10, 8, 16, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.admin-team-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.admin-team-card-header h4 {
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.admin-team-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-heroes-section,
+.admin-skills-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-heroes-section h5,
+.admin-skills-section h5 {
+    color: var(--accent-amber);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.admin-hero-card,
+.admin-skill-card {
+    background: rgba(5, 4, 8, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+}
+
+.admin-hero-card .admin-form-group,
+.admin-skill-card .admin-form-group {
+    grid-column: 1 / -1;
+}
+
+.admin-hero-card .admin-remove-btn,
+.admin-skill-card .admin-remove-btn {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+}
+
+@media (max-width: 768px) {
+    .admin-editor-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .admin-save-btn {
+        width: 100%;
+    }
+
+    .admin-tabs {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .admin-tab {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        border-left: 3px solid transparent;
+    }
+
+    .admin-tab.active {
+        border-left-color: var(--accent-amber);
+        border-bottom-color: var(--border-color);
+    }
+}
+

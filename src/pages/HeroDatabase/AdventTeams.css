@@ -1,0 +1,481 @@
+/* Advent Teams Styles */
+.advent-teams-view {
+    min-height: calc(100vh - 70px);
+}
+
+.advent-bosses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 50vh;
+}
+
+.advent-boss-section {
+    background: linear-gradient(145deg, rgba(18, 12, 28, 0.95), rgba(15, 10, 22, 0.98));
+    backdrop-filter: blur(30px);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.95),
+        inset 0 1px 0 rgba(197, 163, 255, 0.15),
+        inset 0 0 30px rgba(147, 112, 219, 0.08);
+    display: flex;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.advent-boss-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-amber);
+}
+
+.advent-boss-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding: 1rem 0.5rem;
+    border-right: 2px solid rgba(255, 204, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.advent-boss-header h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent-amber);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    filter: drop-shadow(0 2px 8px rgba(255, 204, 0, 0.3));
+    margin: 0;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.advent-teams-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    flex: 1;
+}
+
+.advent-team-card {
+    background: rgba(15, 10, 22, 0.95);
+    border: 2px solid rgba(147, 112, 219, 0.35);
+    border-radius: 12px;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 rgba(197, 163, 255, 0.1),
+        inset 0 0 20px rgba(147, 112, 219, 0.06);
+}
+
+.advent-team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--team-color, var(--accent-obsidian));
+}
+
+.advent-team-card--empty {
+    min-height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+.advent-team-header {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(147, 112, 219, 0.3);
+}
+
+.advent-team-header h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent-obsidian);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+.advent-heroes-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    padding: 45px 0.5rem 30px;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.advent-hero-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid rgba(147, 112, 219, 0.4);
+    border-radius: 10px;
+    min-width: 95px;
+    max-width: 110px;
+    cursor: pointer;
+    transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    will-change: transform;
+}
+
+.advent-hero-column:hover {
+    border-color: var(--accent-amber);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(255, 204, 0, 0.3),
+        0 0 15px rgba(255, 204, 0, 0.2);
+}
+
+.advent-hero-column.back {
+    transform: translateY(-40px);
+}
+
+.advent-hero-column.back:hover {
+    transform: translateY(-40px);
+}
+
+.advent-hero-column.front {
+    transform: translateY(40px);
+}
+
+.advent-hero-column.front:hover {
+    transform: translateY(40px);
+}
+
+.advent-hero-portrait {
+    width: 65px;
+    height: 65px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid rgba(147, 112, 219, 0.5);
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.advent-hero-column:hover .advent-hero-portrait {
+    border-color: var(--accent-amber);
+    box-shadow: 0 4px 16px rgba(255, 204, 0, 0.4);
+}
+
+.advent-hero-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.advent-hero-name {
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+}
+
+.advent-skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.advent-skill-slot {
+    background: rgba(20, 15, 30, 0.9);
+    border: 1px solid #7ab88a;
+    border-radius: 6px;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #7ab88a;
+    text-align: center;
+    transition: all 0.2s ease;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advent-skill-slot.empty {
+    border-style: solid;
+    border-color: #cc8585;
+    color: #cc8585;
+    opacity: 1;
+    background: rgba(10, 8, 16, 0.5);
+}
+
+.advent-bottom-section {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.advent-pet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(10, 8, 16, 0.6);
+    border-radius: 8px;
+    border: 2px solid rgba(147, 112, 219, 0.3);
+    min-width: 100px;
+    flex-shrink: 0;
+}
+
+.advent-pet-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(15, 10, 22, 0.8);
+    border: 2px solid rgba(147, 112, 219, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advent-pet-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.advent-pet-icon.placeholder .pet-placeholder-box {
+    width: 40px;
+    height: 40px;
+    border: 2px dashed rgba(147, 112, 219, 0.4);
+    border-radius: 6px;
+    background: rgba(10, 8, 16, 0.5);
+}
+
+.advent-pet-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.advent-notes-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(10, 8, 16, 0.6);
+    border-radius: 8px;
+    border: 2px solid rgba(147, 112, 219, 0.3);
+}
+
+.advent-notes-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-obsidian);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.advent-notes-content {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.advent-notes-content.empty {
+    color: var(--text-tertiary);
+    font-style: italic;
+    font-weight: normal;
+}
+
+.boss-filter-container {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+}
+
+.boss-filter-dropdown {
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    background: linear-gradient(145deg, rgba(18, 12, 28, 0.95), rgba(15, 10, 22, 0.98));
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c5a3ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+}
+
+.boss-filter-dropdown:hover {
+    border-color: var(--accent-obsidian);
+    box-shadow: 0 0 15px rgba(197, 163, 255, 0.3);
+}
+
+.boss-filter-dropdown:focus {
+    outline: none;
+    border-color: var(--accent-obsidian);
+    box-shadow: 0 0 20px rgba(197, 163, 255, 0.4);
+}
+
+.boss-filter-dropdown option {
+    background: rgba(15, 10, 22, 0.98);
+    color: var(--text-primary);
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .advent-boss-section {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .advent-boss-header {
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 204, 0, 0.4);
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        min-width: auto;
+    }
+
+    .advent-boss-header h2 {
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+        font-size: 1.5rem;
+    }
+
+    .advent-heroes-container {
+        gap: 0.5rem;
+        padding: 45px 0.5rem 30px;
+        flex-wrap: nowrap;
+        justify-content: center;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .advent-hero-column {
+        min-width: 95px;
+        max-width: 110px;
+        padding: 0.7rem;
+        gap: 0.4rem;
+        flex-shrink: 0;
+    }
+
+    .advent-hero-column.back {
+        transform: translateY(-40px);
+    }
+
+    .advent-hero-column.back:hover {
+        transform: translateY(-40px);
+    }
+
+    .advent-hero-column.front {
+        transform: translateY(40px);
+    }
+
+    .advent-hero-column.front:hover {
+        transform: translateY(40px);
+    }
+
+    .advent-hero-portrait {
+        width: 65px;
+        height: 65px;
+    }
+
+    .advent-hero-name {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+    .advent-skill-slot {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.4rem;
+        min-height: 22px;
+    }
+
+    .advent-teams-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .advent-team-card {
+        padding: 1rem;
+    }
+
+    .advent-bottom-section {
+        flex-direction: row;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .advent-pet-container {
+        padding: 0.75rem;
+        min-width: 100px;
+        flex-shrink: 0;
+    }
+
+    .advent-pet-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .advent-pet-label {
+        font-size: 0.75rem;
+    }
+
+    .advent-notes-container {
+        padding: 0.75rem;
+        flex: 1;
+    }
+
+    .advent-notes-title {
+        font-size: 0.75rem;
+    }
+
+    .advent-notes-content {
+        font-size: 0.85rem;
+    }
+
+    .boss-filter-container {
+        padding: 0.5rem 0;
+        margin-bottom: 1rem;
+    }
+
+    .boss-filter-dropdown {
+        width: 100%;
+        max-width: 300px;
+    }
+}

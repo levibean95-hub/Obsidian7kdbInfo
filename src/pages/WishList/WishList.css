@@ -1,0 +1,172 @@
+/* Wish List Tier List Styles */
+.wish-list-view {
+    min-height: calc(100vh - 70px);
+    padding-bottom: 40px;
+}
+
+.tier-list-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tier-section {
+    margin-bottom: 30px;
+    background: rgba(30, 30, 60, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    font-weight: bold;
+    border-bottom: 2px solid;
+}
+
+.tier-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.tier-count {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Tier Colors */
+.tier-header.very-high {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(239, 68, 68, 0.3));
+    border-bottom-color: #ef4444;
+    color: #fca5a5;
+}
+
+.tier-header.high {
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.3), rgba(249, 115, 22, 0.3));
+    border-bottom-color: #f97316;
+    color: #fdba74;
+}
+
+.tier-header.medium {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.3), rgba(250, 204, 21, 0.3));
+    border-bottom-color: #facc15;
+    color: #fde047;
+}
+
+.tier-header.low {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(74, 222, 128, 0.3));
+    border-bottom-color: #4ade80;
+    color: #86efac;
+}
+
+.tier-header.very-low {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.3));
+    border-bottom-color: #60a5fa;
+    color: #93c5fd;
+}
+
+.tier-header.do-not {
+    background: linear-gradient(135deg, rgba(107, 114, 128, 0.3), rgba(156, 163, 175, 0.3));
+    border-bottom-color: #9ca3af;
+    color: #d1d5db;
+}
+
+.tier-header.na {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.3), rgba(107, 114, 128, 0.3));
+    border-bottom-color: #6b7280;
+    color: #9ca3af;
+}
+
+.tier-heroes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px;
+    min-height: 120px;
+    align-items: flex-start;
+}
+
+.tier-heroes:empty::after {
+    content: 'No heroes in this tier';
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-card-tier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: none;
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    text-align: center;
+    outline: none;
+}
+
+.hero-card-tier:hover {
+    transform: translateY(-5px);
+}
+
+.hero-image-container-tier {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid rgba(147, 112, 219, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.hero-card-tier:hover .hero-image-container-tier {
+    border-color: var(--accent-amber);
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+}
+
+.hero-image-tier {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-name-tier {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.hero-transcendence-tier {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .tier-heroes {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .hero-card-tier {
+        width: 100px;
+    }
+
+    .hero-image-container-tier {
+        width: 80px;
+        height: 80px;
+    }
+}
