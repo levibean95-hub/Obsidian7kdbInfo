@@ -198,9 +198,6 @@ const GuildWarTeams: React.FC = () => {
           <h1 className="page-title">GUILD WAR TEAMS</h1>
         </div>
         <div className="advent-boss-section">
-          <div className="advent-boss-header">
-            <h2>Guild War Teams</h2>
-          </div>
           <div className="advent-teams-container">
             {guildWarData.teams.map((team, index) => renderTeamCard(team, index))}
           </div>

@@ -125,3 +125,10 @@ export interface AppState {
     guildWarTeamsData: GuildWarTeamsData;
 }
 
+
+export interface SavedLoadout {
+    id: string;
+    name: string;
+    timestamp: number;
+    data: string;
+}

@@ -15,14 +15,17 @@ import {
   copyCanvasToClipboard,
   downloadCanvasAsImage,
 } from "../../lib/team-image-export";
+import SavedTeamsModal from "./SavedTeamsModal";
+import { useToast } from "../../context/ToastContext";
+import ConfirmationModal from "../../components/UI/ConfirmationModal";
 import "./TeamBuilder.css";
 
 // Declare LZString for URL compression
 declare const LZString:
   | {
-      compressToEncodedURIComponent: (str: string) => string;
-      decompressFromEncodedURIComponent: (str: string) => string | null;
-    }
+    compressToEncodedURIComponent: (str: string) => string;
+    decompressFromEncodedURIComponent: (str: string) => string | null;
+  }
   | undefined;
 
 const TeamBuilder: React.FC = () => {
@@ -73,6 +76,15 @@ const TeamBuilder: React.FC = () => {
   const [exportAllState, setExportAllState] = useState<"idle" | "copied">(
     "idle"
   );
+  const [showSavedTeamsModal, setShowSavedTeamsModal] = useState(false);
+  const { showToast } = useToast();
+  const [confirmationModal, setConfirmationModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    onConfirm: () => void;
+    isDanger?: boolean;
+  } | null>(null);
 
   // Load from URL on mount
   useEffect(() => {
@@ -516,6 +528,7 @@ const TeamBuilder: React.FC = () => {
     try {
       await navigator.clipboard.writeText(url);
       setCopyUrlState("copied");
+      showToast("URL copied to clipboard!", "success");
       setTimeout(() => {
         setCopyUrlState("idle");
       }, 2000);
@@ -527,7 +540,9 @@ const TeamBuilder: React.FC = () => {
       textarea.select();
       document.execCommand("copy");
       document.body.removeChild(textarea);
+      document.body.removeChild(textarea);
       setCopyUrlState("copied");
+      showToast("URL copied to clipboard!", "success");
       setTimeout(() => {
         setCopyUrlState("idle");
       }, 2000);
@@ -559,29 +574,34 @@ const TeamBuilder: React.FC = () => {
   };
 
   const handleClearAllTeams = () => {
-    if (
-      confirm(
-        "Are you sure you want to clear all teams? This cannot be undone."
-      )
-    ) {
-      const newTeams = teams.map((team) => ({
-        ...team,
-        slots: [null, null, null, null, null],
-        tiers: [0, 0, 0, 0, 0],
-        gearSets: [null, null, null, null, null],
-        skillOrders: [[], [], [], [], []],
-        pet: null,
-      }));
-      setTeams(newTeams);
-    }
+    setConfirmationModal({
+      isOpen: true,
+      title: "Clear All Teams",
+      message: "Are you sure you want to clear all teams? This cannot be undone.",
+      isDanger: true,
+      onConfirm: () => {
+        const newTeams = teams.map((team) => ({
+          ...team,
+          slots: [null, null, null, null, null],
+          tiers: [0, 0, 0, 0, 0],
+          gearSets: [null, null, null, null, null],
+          skillOrders: [[], [], [], [], []],
+          pet: null,
+        }));
+        setTeams(newTeams);
+        setConfirmationModal(null);
+        showToast("All teams cleared", "info");
+      },
+    });
   };
 
   const handleRemoveTeam = (teamIndex: number) => {
     if (teams.length > 1) {
       const newTeams = teams.filter((_, i) => i !== teamIndex);
       setTeams(newTeams);
+      showToast("Team removed", "info");
     } else {
-      alert("You must have at least one team.");
+      showToast("You must have at least one team.", "error");
     }
   };
 
@@ -623,6 +643,7 @@ const TeamBuilder: React.FC = () => {
 
       if (copied) {
         setCopyImageState((prev) => ({ ...prev, [teamIndex]: "copied" }));
+        showToast("Team image copied to clipboard!", "success");
         setTimeout(() => {
           setCopyImageState((prev) => ({ ...prev, [teamIndex]: "idle" }));
         }, 2000);
@@ -635,6 +656,7 @@ const TeamBuilder: React.FC = () => {
         )}-${Date.now()}.png`;
         downloadCanvasAsImage(canvas, filename);
         setCopyImageState((prev) => ({ ...prev, [teamIndex]: "copied" }));
+        showToast("Team image downloaded!", "success");
         setTimeout(() => {
           setCopyImageState((prev) => ({ ...prev, [teamIndex]: "idle" }));
         }, 2000);
@@ -659,6 +681,7 @@ const TeamBuilder: React.FC = () => {
 
       if (copied) {
         setExportAllState("copied");
+        showToast("All teams image copied to clipboard!", "success");
         setTimeout(() => {
           setExportAllState("idle");
         }, 2000);
@@ -667,6 +690,7 @@ const TeamBuilder: React.FC = () => {
         const filename = `all-teams-${Date.now()}.png`;
         downloadCanvasAsImage(canvas, filename);
         setExportAllState("copied");
+        showToast("All teams image downloaded!", "success");
         setTimeout(() => {
           setExportAllState("idle");
         }, 2000);
@@ -675,6 +699,15 @@ const TeamBuilder: React.FC = () => {
       console.error("Failed to generate all teams image:", error);
     } finally {
       setIsExporting(false);
+    }
+  };
+
+  const handleLoadSavedTeam = (data: string) => {
+    const success = parseImportString(data);
+    if (success) {
+      showToast("Team loaded successfully!", "success");
+    } else {
+      showToast("Failed to load saved team data.", "error");
     }
   };
 
@@ -712,9 +745,8 @@ const TeamBuilder: React.FC = () => {
                   {typeButtons.map((type) => (
                     <button
                       key={type || "all"}
-                      className={`type-filter-button ${
-                        state.selectedType === type ? "active" : ""
-                      }`}
+                      className={`type-filter-button ${state.selectedType === type ? "active" : ""
+                        }`}
                       data-type={type}
                       title={type || "All Types"}
                       onClick={() => handleTypeFilter(type)}
@@ -761,78 +793,76 @@ const TeamBuilder: React.FC = () => {
             <div className="hero-pool-grid">
               {showPets
                 ? filteredPets.map((petName) => {
-                    const isSelected = selectedHero === `pet:${petName}`;
-                    return (
-                      <div
-                        key={petName}
-                        className={`hero-pool-card ${
-                          isSelected ? "selected" : ""
-                        } ${
-                          draggedHero === `pet:${petName}` ? "dragging" : ""
+                  const isSelected = selectedHero === `pet:${petName}`;
+                  return (
+                    <div
+                      key={petName}
+                      className={`hero-pool-card ${isSelected ? "selected" : ""
+                        } ${draggedHero === `pet:${petName}` ? "dragging" : ""
                         }`}
-                        draggable
-                        onDragStart={(e) =>
-                          handleDragStart(`pet:${petName}`, e)
-                        }
-                        onDragEnd={handleDragEnd}
-                        onClick={() => handlePetClick(petName)}
-                      >
-                        <div className="hero-pool-image-container">
-                          <img
-                            src={getPetIconPath(petName) || ""}
-                            alt={petName}
-                            className="hero-pool-image"
-                          />
-                        </div>
-                        <div className="hero-pool-name">{petName}</div>
+                      draggable
+                      onDragStart={(e) =>
+                        handleDragStart(`pet:${petName}`, e)
+                      }
+                      onDragEnd={handleDragEnd}
+                      onClick={() => handlePetClick(petName)}
+                    >
+                      <div className="hero-pool-image-container">
+                        <img
+                          src={getPetIconPath(petName) || ""}
+                          alt={petName}
+                          className="hero-pool-image"
+                        />
                       </div>
-                    );
-                  })
+                      <div className="hero-pool-name">{petName}</div>
+                    </div>
+                  );
+                })
                 : filteredHeroes.map((heroName) => {
-                    const isSelected = selectedHero === heroName;
-                    const heroInfo = state.heroData[heroName];
-                    const heroType = heroInfo?.type?.toLowerCase() || "";
+                  const isSelected = selectedHero === heroName;
+                  const heroInfo = state.heroData[heroName];
+                  const heroType = heroInfo?.type?.toLowerCase() || "";
 
-                    return (
-                      <div
-                        key={heroName}
-                        className={`hero-pool-card ${
-                          isSelected ? "selected" : ""
+                  return (
+                    <div
+                      key={heroName}
+                      className={`hero-pool-card ${isSelected ? "selected" : ""
                         } ${draggedHero === heroName ? "dragging" : ""}`}
-                        data-hero-type={heroType}
-                        draggable
-                        onDragStart={(e) => handleDragStart(heroName, e)}
-                        onDragEnd={handleDragEnd}
-                        onClick={() => handleHeroClick(heroName)}
-                      >
-                        <div className="hero-pool-image-container">
-                          {heroInfo?.type && (
-                            <div className="type-icon-badge-small">
-                              <img
-                                src={getTypeIconPath(heroInfo.type)}
-                                alt={heroInfo.type}
-                              />
-                            </div>
-                          )}
-                          {heroInfo?.rarity && (
-                            <div
-                              className={`rarity-badge-small rarity-${heroInfo.rarity
-                                .toLowerCase()
-                                .replace(/\+/g, "plus")}`}
-                            >
-                              {heroInfo.rarity}
-                            </div>
-                          )}
-                          <img
-                            src={getHeroImagePath(heroName)}
-                            alt={heroName}
-                            className="hero-pool-image"
-                          />
-                        </div>
-                        <div className="hero-pool-name">{heroName}</div>
+                      data-hero-type={heroType}
+                      draggable
+                      onDragStart={(e) => handleDragStart(heroName, e)}
+                      onDragEnd={handleDragEnd}
+                      onClick={() => handleHeroClick(heroName)}
+                    >
+                      <div className="hero-pool-image-container">
+                        {heroInfo?.type && (
+                          <div className="type-icon-badge-small">
+                            <img
+                              src={getTypeIconPath(heroInfo.type)}
+                              alt={heroInfo.type}
+                            />
+                          </div>
+                        )}
+                        {heroInfo?.rarity && (
+                          <div
+                            className={`rarity-badge-small rarity-${heroInfo.rarity
+                              .toLowerCase()
+                              .replace(/\+/g, "plus")}`}
+                          >
+                            {heroInfo.rarity}
+                          </div>
+                        )}
+                        <img
+                          src={getHeroImagePath(heroName)}
+                          alt={heroName}
+                          className="hero-pool-image"
+                          onError={(e) => console.error(`Failed to load image for ${heroName}:`, e.currentTarget.src)}
+                        />
                       </div>
-                    );
-                  })}
+                      <div className="hero-pool-name">{heroName}</div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -854,6 +884,24 @@ const TeamBuilder: React.FC = () => {
               </div>
               <div className="import-export-section">
                 <div className="share-section">
+                  <button
+                    className="btn-secondary btn-saved-teams"
+                    onClick={() => setShowSavedTeamsModal(true)}
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                      <polyline points="17 21 17 13 7 13 7 21" />
+                      <polyline points="7 3 7 8 15 8" />
+                    </svg>
+                    Saved Teams
+                  </button>
                   <button
                     id="share-url-btn"
                     className="btn-primary"
@@ -1034,6 +1082,24 @@ const TeamBuilder: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      <SavedTeamsModal
+        isOpen={showSavedTeamsModal}
+        onClose={() => setShowSavedTeamsModal(false)}
+        onLoad={handleLoadSavedTeam}
+        currentData={generateImportString()}
+      />
+
+      {confirmationModal && (
+        <ConfirmationModal
+          isOpen={confirmationModal.isOpen}
+          title={confirmationModal.title}
+          message={confirmationModal.message}
+          onConfirm={confirmationModal.onConfirm}
+          onCancel={() => setConfirmationModal(null)}
+          isDanger={confirmationModal.isDanger}
+        />
       )}
     </div>
   );
@@ -1546,10 +1612,10 @@ const TeamSlot: React.FC<TeamSlotProps> = ({
                 style={
                   s2Skill
                     ? {
-                        backgroundColor: getSkillOrderColor(s2Skill.order),
-                        color: "#fff",
-                        borderColor: getSkillOrderColor(s2Skill.order),
-                      }
+                      backgroundColor: getSkillOrderColor(s2Skill.order),
+                      color: "#fff",
+                      borderColor: getSkillOrderColor(s2Skill.order),
+                    }
                     : {}
                 }
                 onClick={(e) => {
@@ -1564,10 +1630,10 @@ const TeamSlot: React.FC<TeamSlotProps> = ({
                 style={
                   s1Skill
                     ? {
-                        backgroundColor: getSkillOrderColor(s1Skill.order),
-                        color: "#fff",
-                        borderColor: getSkillOrderColor(s1Skill.order),
-                      }
+                      backgroundColor: getSkillOrderColor(s1Skill.order),
+                      color: "#fff",
+                      borderColor: getSkillOrderColor(s1Skill.order),
+                    }
                     : {}
                 }
                 onClick={(e) => {

@@ -48,12 +48,12 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result success">+4 Speed → 8 total</div>
+                      <div className="step-result success">8 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 9</div>
-                      <div className="step-result success">+4 Speed → 12 total</div>
+                      <div className="step-result success">12 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action success-action">
@@ -69,17 +69,17 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result success">+4 Speed → 8 total</div>
+                      <div className="step-result success">8 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 9</div>
-                      <div className="step-result caution">Miss → stays 8</div>
+                      <div className="step-result caution">8 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 12</div>
-                      <div className="step-result success">+4 Speed → 12 total</div>
+                      <div className="step-result success">12 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action success-action">
@@ -95,17 +95,17 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result success">+4 Speed → 8 total</div>
+                      <div className="step-result success">8 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 9</div>
-                      <div className="step-result caution">Miss → stays 8</div>
+                      <div className="step-result caution">8 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 12</div>
-                      <div className="step-result danger">Miss → stays 8</div>
+                      <div className="step-result danger">8 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action danger-action">
@@ -121,7 +121,7 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result danger">Miss → stays 4</div>
+                      <div className="step-result danger">4 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action danger-action">
@@ -148,7 +148,7 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result success">+8 Speed → 12 total</div>
+                      <div className="step-result success">12 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action success-action">
@@ -164,12 +164,12 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result caution">+4 Speed → 8 total</div>
+                      <div className="step-result caution">8 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 9</div>
-                      <div className="step-result success">+4 Speed → 12 total</div>
+                      <div className="step-result success">12 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action success-action">
@@ -185,17 +185,17 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result caution">+4 Speed → 8 total</div>
+                      <div className="step-result caution">8 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 9</div>
-                      <div className="step-result caution">Miss → stays 8</div>
+                      <div className="step-result caution">8 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 12</div>
-                      <div className="step-result success">+4 Speed → 12 total</div>
+                      <div className="step-result success">12 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action success-action">
@@ -211,17 +211,17 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result caution">+4 Speed → 8 total</div>
+                      <div className="step-result caution">8 speed</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 9</div>
-                      <div className="step-result caution">Miss → stays 8</div>
+                      <div className="step-result caution">8 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="step">
                       <div className="step-level">Lvl 12</div>
-                      <div className="step-result danger">Miss → stays 8</div>
+                      <div className="step-result danger">8 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action danger-action">
@@ -237,7 +237,7 @@ const SpeedGearing: React.FC = () => {
                   <div className="path-steps">
                     <div className="step">
                       <div className="step-level">Lvl 6</div>
-                      <div className="step-result danger">Miss → stays 4</div>
+                      <div className="step-result danger">4 speed (miss)</div>
                     </div>
                     <div className="arrow">↓</div>
                     <div className="final-action danger-action">

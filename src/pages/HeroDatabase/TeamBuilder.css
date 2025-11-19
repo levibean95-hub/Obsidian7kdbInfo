@@ -428,7 +428,8 @@
     flex-wrap: wrap;
 }
 
-.share-section .btn-primary {
+.share-section .btn-primary,
+.share-section .btn-saved-teams {
     display: flex;
     align-items: center;
     gap: 0.5rem;
