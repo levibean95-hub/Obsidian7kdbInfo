@@ -7,14 +7,38 @@
         "pet": "Karam",
         "notes": "",
         "heroes": [
-          { "name": "Colt", "position": 2, "row": "back" },
-          { "name": "Platin", "position": 3, "row": "front" },
-          { "name": "Fai", "position": 4, "row": "back" }
+          {
+            "name": "Colt",
+            "position": 2,
+            "row": "back"
+          },
+          {
+            "name": "Platin",
+            "position": 3,
+            "row": "front"
+          },
+          {
+            "name": "Fai",
+            "position": 4,
+            "row": "back"
+          }
         ],
         "skills": [
-          { "hero": "Colt", "s1": 2, "s2": 3 },
-          { "hero": "Platin", "s1": null, "s2": null },
-          { "hero": "Fai", "s1": 1, "s2": null }
+          {
+            "hero": "Colt",
+            "s1": 2,
+            "s2": 3
+          },
+          {
+            "hero": "Platin",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Fai",
+            "s1": 1,
+            "s2": null
+          }
         ]
       },
       {
@@ -23,14 +47,38 @@
         "pet": "Karam",
         "notes": "",
         "heroes": [
-          { "name": "Colt", "position": 2, "row": "back" },
-          { "name": "Platin", "position": 3, "row": "front" },
-          { "name": "Karin", "position": 4, "row": "back" }
+          {
+            "name": "Colt",
+            "position": 2,
+            "row": "back"
+          },
+          {
+            "name": "Platin",
+            "position": 3,
+            "row": "front"
+          },
+          {
+            "name": "Karin",
+            "position": 4,
+            "row": "back"
+          }
         ],
         "skills": [
-          { "hero": "Colt", "s1": 2, "s2": 3 },
-          { "hero": "Platin", "s1": null, "s2": 1 },
-          { "hero": "Karin", "s1": null, "s2": null }
+          {
+            "hero": "Colt",
+            "s1": 2,
+            "s2": 3
+          },
+          {
+            "hero": "Platin",
+            "s1": null,
+            "s2": 1
+          },
+          {
+            "hero": "Karin",
+            "s1": null,
+            "s2": null
+          }
         ]
       },
       {
@@ -39,14 +87,38 @@
         "pet": "Eirin",
         "notes": "",
         "heroes": [
-          { "name": "Kagura", "position": 2, "row": "front" },
-          { "name": "Kyle", "position": 3, "row": "back" },
-          { "name": "Amelia", "position": 4, "row": "front" }
+          {
+            "name": "Kagura",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Kyle",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Amelia",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Kagura", "s1": null, "s2": null },
-          { "hero": "Kyle", "s1": 2, "s2": 3 },
-          { "hero": "Amelia", "s1": 1, "s2": null }
+          {
+            "hero": "Kagura",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Kyle",
+            "s1": 2,
+            "s2": 3
+          },
+          {
+            "hero": "Amelia",
+            "s1": 1,
+            "s2": null
+          }
         ]
       },
       {
@@ -55,14 +127,38 @@
         "pet": "Eirin",
         "notes": "",
         "heroes": [
-          { "name": "Kagura", "position": 2, "row": "front" },
-          { "name": "Kyle", "position": 3, "row": "back" },
-          { "name": "Dellons", "position": 4, "row": "front" }
+          {
+            "name": "Kagura",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Kyle",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Dellons",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Kagura", "s1": null, "s2": null },
-          { "hero": "Kyle", "s1": 2, "s2": 3 },
-          { "hero": "Dellons", "s1": 1, "s2": null }
+          {
+            "hero": "Kagura",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Kyle",
+            "s1": 2,
+            "s2": 3
+          },
+          {
+            "hero": "Dellons",
+            "s1": 1,
+            "s2": null
+          }
         ]
       },
       {
@@ -71,14 +167,38 @@
         "pet": "Merparrow",
         "notes": "",
         "heroes": [
-          { "name": "Yu Shin", "position": 2, "row": "front" },
-          { "name": "Rin", "position": 3, "row": "back" },
-          { "name": "Mercure", "position": 4, "row": "front" }
+          {
+            "name": "Yu Shin",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Rin",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Mercure",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Yu Shin", "s1": 3, "s2": null },
-          { "hero": "Rin", "s1": null, "s2": 1 },
-          { "hero": "Mercure", "s1": null, "s2": 2 }
+          {
+            "hero": "Yu Shin",
+            "s1": 3,
+            "s2": null
+          },
+          {
+            "hero": "Rin",
+            "s1": null,
+            "s2": 1
+          },
+          {
+            "hero": "Mercure",
+            "s1": null,
+            "s2": 2
+          }
         ]
       },
       {
@@ -87,14 +207,38 @@
         "pet": "Merparrow",
         "notes": "",
         "heroes": [
-          { "name": "Vanessa", "position": 2, "row": "front" },
-          { "name": "Rin", "position": 3, "row": "back" },
-          { "name": "Juri", "position": 4, "row": "front" }
+          {
+            "name": "Vanessa",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Rin",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Juri",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Vanessa", "s1": 1, "s2": null },
-          { "hero": "Juri", "s1": null, "s2": 2 },
-          { "hero": "Rin", "s1": null, "s2": 3 }
+          {
+            "hero": "Vanessa",
+            "s1": 1,
+            "s2": null
+          },
+          {
+            "hero": "Juri",
+            "s1": null,
+            "s2": 2
+          },
+          {
+            "hero": "Rin",
+            "s1": null,
+            "s2": 3
+          }
         ]
       },
       {
@@ -103,14 +247,38 @@
         "pet": "Yeonji",
         "notes": "",
         "heroes": [
-          { "name": "Rosie", "position": 2, "row": "front" },
-          { "name": "Yeonhee", "position": 3, "row": "back" },
-          { "name": "Vanessa", "position": 4, "row": "front" }
+          {
+            "name": "Rosie",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Yeonhee",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Vanessa",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Rosie", "s1": null, "s2": null },
-          { "hero": "Yeonhee", "s1": 2, "s2": 3 },
-          { "hero": "Vanessa", "s1": 1, "s2": null }
+          {
+            "hero": "Rosie",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Yeonhee",
+            "s1": 3,
+            "s2": 2
+          },
+          {
+            "hero": "Vanessa",
+            "s1": 1,
+            "s2": null
+          }
         ]
       },
       {
@@ -119,14 +287,38 @@
         "pet": "Yeonji",
         "notes": "",
         "heroes": [
-          { "name": "Vanessa", "position": 2, "row": "front" },
-          { "name": "Yeonhee", "position": 3, "row": "back" },
-          { "name": "Juri", "position": 4, "row": "front" }
+          {
+            "name": "Vanessa",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Yeonhee",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Juri",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Vanessa", "s1": 1, "s2": null },
-          { "hero": "Yeonhee", "s1": null, "s2": 3 },
-          { "hero": "Juri", "s1": null, "s2": 2 }
+          {
+            "hero": "Vanessa",
+            "s1": 1,
+            "s2": null
+          },
+          {
+            "hero": "Yeonhee",
+            "s1": 3,
+            "s2": 2
+          },
+          {
+            "hero": "Juri",
+            "s1": null,
+            "s2": null
+          }
         ]
       },
       {
@@ -135,14 +327,38 @@
         "pet": "Yeonji",
         "notes": "",
         "heroes": [
-          { "name": "Vanessa", "position": 2, "row": "front" },
-          { "name": "Kyrielle", "position": 3, "row": "back" },
-          { "name": "Juri", "position": 4, "row": "front" }
+          {
+            "name": "Vanessa",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Kyrielle",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Juri",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Vanessa", "s1": 1, "s2": null },
-          { "hero": "Juri", "s1": null, "s2": 2 },
-          { "hero": "Kyrielle", "s1": 3, "s2": null }
+          {
+            "hero": "Vanessa",
+            "s1": 1,
+            "s2": null
+          },
+          {
+            "hero": "Juri",
+            "s1": null,
+            "s2": 2
+          },
+          {
+            "hero": "Kyrielle",
+            "s1": 3,
+            "s2": null
+          }
         ]
       },
       {
@@ -151,14 +367,38 @@
         "pet": "Richel",
         "notes": "",
         "heroes": [
-          { "name": "Ace", "position": 2, "row": "front" },
-          { "name": "Teo", "position": 3, "row": "back" },
-          { "name": "Eileene", "position": 4, "row": "front" }
+          {
+            "name": "Ace",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Teo",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Eileene",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Ace", "s1": null, "s2": null },
-          { "hero": "Teo", "s1": 2, "s2": 3 },
-          { "hero": "Eileene", "s1": null, "s2": 1 }
+          {
+            "hero": "Elysia",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Teo",
+            "s1": 2,
+            "s2": 3
+          },
+          {
+            "hero": "Eileene",
+            "s1": null,
+            "s2": 1
+          }
         ]
       },
       {
@@ -167,14 +407,78 @@
         "pet": "Kree",
         "notes": "",
         "heroes": [
-          { "name": "Silvesta", "position": 2, "row": "front" },
-          { "name": "Orly", "position": 3, "row": "back" },
-          { "name": "Kyrielle", "position": 4, "row": "front" }
+          {
+            "name": "Silvesta",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Orly",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Kyrielle",
+            "position": 4,
+            "row": "front"
+          }
         ],
         "skills": [
-          { "hero": "Silvesta", "s1": 3, "s2": 1 },
-          { "hero": "Orly", "s1": null, "s2": null },
-          { "hero": "Kyrielle", "s1": null, "s2": 2 }
+          {
+            "hero": "Silvesta",
+            "s1": 3,
+            "s2": 1
+          },
+          {
+            "hero": "Orly",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Kyrielle",
+            "s1": null,
+            "s2": 2
+          }
+        ]
+      },
+      {
+        "name": "Team 5 alt 2",
+        "formationType": "attack",
+        "pet": "Richel",
+        "notes": "",
+        "heroes": [
+          {
+            "name": "Teo",
+            "position": 3,
+            "row": "back"
+          },
+          {
+            "name": "Ace",
+            "position": 2,
+            "row": "front"
+          },
+          {
+            "name": "Eileene",
+            "position": 4,
+            "row": "front"
+          }
+        ],
+        "skills": [
+          {
+            "hero": "Teo",
+            "s1": 2,
+            "s2": 3
+          },
+          {
+            "hero": "Ace",
+            "s1": null,
+            "s2": null
+          },
+          {
+            "hero": "Eileene",
+            "s1": null,
+            "s2": 1
+          }
         ]
       }
     ]

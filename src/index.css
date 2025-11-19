@@ -37,16 +37,28 @@
     --portrait-backdrop-dark: linear-gradient(165deg, rgba(6, 5, 10, 0.95), rgba(21, 16, 30, 0.85));
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    overscroll-behavior-x: none;
+}
+
 body {
     font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
+    width: 100%;
+    height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overscroll-behavior-x: none;
+    touch-action: pan-y pinch-zoom;
 }
 
 /* Utility Classes */
@@ -85,6 +97,8 @@ body::after {
 #app {
     width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* Enhanced Scrollbar Styling */

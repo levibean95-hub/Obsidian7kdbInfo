@@ -305,10 +305,13 @@
 .admin-searchable-select {
     position: relative;
     width: 100%;
+    z-index: auto;
 }
 
 .admin-search-input {
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .admin-search-dropdown {
@@ -323,7 +326,7 @@
     border: 2px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.95);
-    z-index: 10000;
+    z-index: 99999;
 }
 
 .admin-search-option {
@@ -509,6 +512,243 @@
     align-self: start;
 }
 
+/* New Team Card Design */
+.admin-team-card-new {
+    background: linear-gradient(145deg, rgba(18, 12, 28, 0.95), rgba(15, 10, 22, 0.98));
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    overflow: visible;
+    position: relative;
+}
+
+.admin-team-card-new:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 20px rgba(147, 112, 219, 0.15);
+}
+
+.admin-team-header-left {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex: 1;
+}
+
+.admin-team-name-input {
+    padding: 0.5rem 1rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: inherit;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.admin-team-name-input:focus {
+    outline: none;
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
+.admin-formation-select {
+    padding: 0.5rem 1rem;
+    background: rgba(10, 8, 16, 0.8);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-formation-select:hover {
+    border-color: var(--accent-amber);
+}
+
+.admin-formation-select:focus {
+    outline: none;
+    border-color: var(--accent-amber);
+}
+
+/* Hero Slots Grid */
+.admin-hero-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.admin-hero-slot {
+    background: rgba(10, 8, 16, 0.6);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    overflow: visible;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.admin-hero-slot:hover {
+    border-color: var(--accent-primary);
+    z-index: 100;
+}
+
+.admin-hero-slot:focus-within {
+    z-index: 100;
+}
+
+.admin-slot-header {
+    background: linear-gradient(90deg, rgba(147, 112, 219, 0.2), rgba(121, 82, 179, 0.1));
+    padding: 0.5rem 1rem;
+    color: var(--accent-amber);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-slot-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.admin-slot-row-selector {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    background: rgba(5, 4, 8, 0.5);
+    border-radius: 6px;
+}
+
+.admin-slot-row-selector label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.admin-slot-row-selector label:hover {
+    color: var(--accent-amber);
+}
+
+.admin-slot-row-selector input[type="radio"] {
+    cursor: pointer;
+    accent-color: var(--accent-amber);
+}
+
+.admin-slot-skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.admin-skill-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.admin-skill-input label {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.admin-input-sm {
+    padding: 0.5rem;
+    background: rgba(15, 10, 22, 0.95);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.admin-input-sm:focus {
+    outline: none;
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.2);
+}
+
+.admin-input-sm::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.admin-slot-remove-btn {
+    padding: 0.5rem;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    color: #ef4444;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.admin-slot-remove-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: #ef4444;
+}
+
+/* Team Footer */
+.admin-team-footer {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-select-compact,
+.admin-textarea-compact {
+    padding: 0.5rem 0.75rem;
+    background: rgba(15, 10, 22, 0.95);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.admin-select-compact {
+    cursor: pointer;
+}
+
+.admin-textarea-compact {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.admin-select-compact:hover,
+.admin-textarea-compact:hover {
+    border-color: var(--accent-amber);
+}
+
+.admin-select-compact:focus,
+.admin-textarea-compact:focus {
+    outline: none;
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
 @media (max-width: 768px) {
     .admin-editor-header {
         flex-direction: column;
@@ -535,6 +775,23 @@
     .admin-tab.active {
         border-left-color: var(--accent-amber);
         border-bottom-color: var(--border-color);
+    }
+
+    .admin-hero-slots-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-team-header-left {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-team-name-input {
+        min-width: auto;
+    }
+
+    .admin-team-footer {
+        grid-template-columns: 1fr;
     }
 }
 

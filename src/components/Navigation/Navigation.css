@@ -275,7 +275,11 @@
         border: 2px solid var(--accent-amber);
         border-right: none;
         backdrop-filter: blur(10px);
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.15s ease-out;
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        touch-action: manipulation;
+        will-change: transform, right;
     }
 
     .mobile-menu-toggle::before,
@@ -289,18 +293,9 @@
         box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
     }
 
-    .mobile-menu-toggle:hover {
-        right: -0.5rem;
-        background: linear-gradient(135deg, rgba(255, 204, 0, 0.35), rgba(147, 112, 219, 0.3));
-        box-shadow: -6px 0 24px rgba(0, 0, 0, 0.7),
-                    -10px 0 50px rgba(255, 204, 0, 0.4),
-                    inset 2px 0 2px rgba(255, 255, 255, 0.2);
-        border-color: #ffdb4d;
-    }
-
     .mobile-menu-toggle:active {
-        right: -0.85rem;
-        transform: translateY(-50%) scale(0.97);
+        transform: translateY(-50%) scale(0.95);
+        transition: all 0.05s ease-out;
     }
 
     .mobile-grid-menu {
@@ -321,10 +316,24 @@
                     0 0 100px rgba(255, 204, 0, 0.3);
         backdrop-filter: blur(20px);
         grid-template-columns: repeat(2, 1fr);
+        will-change: opacity, transform;
+        -webkit-overflow-scrolling: touch;
     }
 
     .mobile-grid-menu.show {
         display: grid;
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -48%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
     }
 
     .mobile-grid-menu .nav-link {
@@ -335,6 +344,8 @@
         padding: 1rem;
         text-align: center;
         gap: 0.5rem;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
 
     .mobile-grid-menu .nav-link svg {

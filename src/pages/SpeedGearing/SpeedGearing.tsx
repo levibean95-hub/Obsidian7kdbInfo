@@ -34,8 +34,8 @@ const SpeedGearing: React.FC = () => {
 
           <div className="trees-container">
             {/* 3-Liner Paths */}
-            <section className="upgrade-section">
-              <div className="section-header" onClick={() => setCollapsed3Liner(!collapsed3Liner)}>
+            <section className="upgrade-section" onClick={() => setCollapsed3Liner(!collapsed3Liner)}>
+              <div className="section-header">
                 <h2 className="section-title">3-Liner Upgrade Paths</h2>
                 <span className="collapse-icon">{collapsed3Liner ? '▼' : '▲'}</span>
               </div>
@@ -134,8 +134,8 @@ const SpeedGearing: React.FC = () => {
             </section>
 
             {/* 4-Liner Paths */}
-            <section className="upgrade-section">
-              <div className="section-header" onClick={() => setCollapsed4Liner(!collapsed4Liner)}>
+            <section className="upgrade-section" onClick={() => setCollapsed4Liner(!collapsed4Liner)}>
+              <div className="section-header">
                 <h2 className="section-title">4-Liner Upgrade Paths</h2>
                 <span className="collapse-icon">{collapsed4Liner ? '▼' : '▲'}</span>
               </div>

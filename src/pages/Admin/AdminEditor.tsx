@@ -565,22 +565,20 @@ const SearchableHeroSelect: React.FC<SearchableHeroSelectProps> = ({
     setTimeout(() => {
       if (!dropdownRef.current?.contains(document.activeElement)) {
         setShowDropdown(false);
+        // Only auto-select if there's an exact match, otherwise keep what's typed
         const match = heroes.find(
           (h) => h.toLowerCase() === searchTerm.toLowerCase()
         );
         if (match) {
           onSelect(match);
-          setSearchTerm("");
-        } else {
-          setSearchTerm(selectedHero);
         }
       }
-    }, 200);
+    }, 250);
   };
 
   const handleHeroClick = (heroName: string) => {
     onSelect(heroName);
-    setSearchTerm("");
+    setSearchTerm(heroName);
     setShowDropdown(false);
     if (inputRef.current) {
       inputRef.current.blur();
@@ -588,9 +586,7 @@ const SearchableHeroSelect: React.FC<SearchableHeroSelectProps> = ({
   };
 
   useEffect(() => {
-    if (selectedHero) {
-      setSearchTerm(selectedHero);
-    }
+    setSearchTerm(selectedHero || "");
   }, [selectedHero]);
 
   useEffect(() => {
@@ -1390,18 +1386,6 @@ const AdventDataEditor: React.FC<AdventDataEditorProps> = ({
     }));
   };
 
-  const addHero = (teamIndex: number) => {
-    if (!selectedBoss || !currentBoss) return;
-    const teams = [...currentBoss.teams];
-    const heroes = [...teams[teamIndex].heroes];
-    heroes.push({ name: "", position: heroes.length + 1, row: "front" });
-    teams[teamIndex] = { ...teams[teamIndex], heroes };
-    setAdventData((prev) => ({
-      ...prev,
-      [selectedBoss]: { teams },
-    }));
-  };
-
   const removeHero = (teamIndex: number, heroIndex: number) => {
     if (!selectedBoss || !currentBoss) return;
     const teams = [...currentBoss.teams];
@@ -1430,18 +1414,6 @@ const AdventDataEditor: React.FC<AdventDataEditorProps> = ({
     const teams = [...currentBoss.teams];
     const skills = [...teams[teamIndex].skills];
     skills[skillIndex] = { ...skills[skillIndex], [field]: value };
-    teams[teamIndex] = { ...teams[teamIndex], skills };
-    setAdventData((prev) => ({
-      ...prev,
-      [selectedBoss]: { teams },
-    }));
-  };
-
-  const addSkill = (teamIndex: number, heroName: string) => {
-    if (!selectedBoss || !currentBoss) return;
-    const teams = [...currentBoss.teams];
-    const skills = [...teams[teamIndex].skills];
-    skills.push({ hero: heroName, s1: null, s2: null });
     teams[teamIndex] = { ...teams[teamIndex], skills };
     setAdventData((prev) => ({
       ...prev,
@@ -1506,260 +1478,197 @@ const AdventDataEditor: React.FC<AdventDataEditorProps> = ({
             </div>
 
             {currentBoss.teams.map((team, teamIndex) => (
-              <div key={teamIndex} className="admin-team-card">
+              <div key={teamIndex} className="admin-team-card-new">
                 <div className="admin-team-card-header">
-                  <h4>
-                    Team {teamIndex + 1}: {team.name}
-                  </h4>
-                  <div style={{ display: "flex", gap: "0.5rem" }}>
-                    <button
-                      type="button"
-                      className="admin-add-btn"
-                      onClick={() =>
-                        setSelectedTeamIndex(
-                          teamIndex === selectedTeamIndex ? -1 : teamIndex
+                  <div className="admin-team-header-left">
+                    <input
+                      type="text"
+                      value={team.name}
+                      onChange={(e) =>
+                        updateTeam(teamIndex, "name", e.target.value)
+                      }
+                      className="admin-team-name-input"
+                      placeholder={`Team ${teamIndex + 1}`}
+                    />
+                    <select
+                      value={team.formationType}
+                      onChange={(e) =>
+                        updateTeam(
+                          teamIndex,
+                          "formationType",
+                          e.target.value as AdventTeam["formationType"]
                         )
                       }
+                      className="admin-formation-select"
                     >
-                      {selectedTeamIndex === teamIndex ? "Hide" : "Edit"}
-                    </button>
-                    <button
-                      type="button"
-                      className="admin-remove-btn"
-                      onClick={() => removeTeam(teamIndex)}
-                    >
-                      × Remove
-                    </button>
+                      <option value="basic">Basic (2F, 3B)</option>
+                      <option value="balanced">Balanced (3F, 2B)</option>
+                      <option value="attack">Attack (1F, 4B)</option>
+                      <option value="protective">Protective (4F, 1B)</option>
+                    </select>
                   </div>
+                  <button
+                    type="button"
+                    className="admin-remove-btn"
+                    onClick={() => removeTeam(teamIndex)}
+                  >
+                    × Remove
+                  </button>
                 </div>
 
-                {selectedTeamIndex === teamIndex && (
+                {true && (
                   <div className="admin-team-form">
-                    <div className="admin-form-group">
-                      <label>Team Name:</label>
-                      <input
-                        type="text"
-                        value={team.name}
-                        onChange={(e) =>
-                          updateTeam(teamIndex, "name", e.target.value)
-                        }
-                        className="admin-input"
-                      />
+                    {/* 5 Hero Slots Grid */}
+                    <div className="admin-hero-slots-grid">
+                      {[0, 1, 2, 3, 4].map((slotIndex) => {
+                        const hero = team.heroes.find((h) => h.position === slotIndex + 1);
+                        const heroIndex = hero ? team.heroes.indexOf(hero) : -1;
+                        const skill = team.skills[heroIndex];
+
+                        return (
+                          <div key={slotIndex} className="admin-hero-slot">
+                            <div className="admin-slot-header">Slot {slotIndex + 1}</div>
+                            <div className="admin-slot-body">
+                              <SearchableHeroSelect
+                                heroes={[...heroes]}
+                                selectedHero={hero?.name || ""}
+                                onSelect={(name) => {
+                                  if (!hero) {
+                                    // Add new hero for Advent - update both heroes and skills atomically
+                                    if (!selectedBoss || !currentBoss) return;
+                                    const teams = [...currentBoss.teams];
+                                    const newHeroes = [...teams[teamIndex].heroes];
+                                    const row = slotIndex === 1 || slotIndex === 3 ? "front" : "back";
+                                    newHeroes.push({ name, position: slotIndex + 1, row });
+                                    // Add matching skill entry
+                                    const newSkills = [...teams[teamIndex].skills];
+                                    newSkills.push({ hero: name, s1: null, s2: null });
+                                    teams[teamIndex] = { ...teams[teamIndex], heroes: newHeroes, skills: newSkills };
+                                    setAdventData((prev) => ({
+                                      ...prev,
+                                      [selectedBoss]: { teams },
+                                    }));
+                                  } else if (heroIndex >= 0) {
+                                    // Update existing hero
+                                    updateHero(teamIndex, heroIndex, "name", name);
+                                    // Update skill hero name
+                                    if (skill) {
+                                      updateSkill(teamIndex, heroIndex, "hero", name);
+                                    }
+                                  }
+                                }}
+                                placeholder="Select hero..."
+                              />
+
+                              {hero && (
+                                <>
+                                  <div className="admin-slot-row-selector">
+                                    <label>
+                                      <input
+                                        type="radio"
+                                        checked={hero.row === "front"}
+                                        onChange={() => updateHero(teamIndex, heroIndex, "row", "front")}
+                                      />
+                                      Front
+                                    </label>
+                                    <label>
+                                      <input
+                                        type="radio"
+                                        checked={hero.row === "back"}
+                                        onChange={() => updateHero(teamIndex, heroIndex, "row", "back")}
+                                      />
+                                      Back
+                                    </label>
+                                  </div>
+
+                                  <div className="admin-slot-skills">
+                                    <div className="admin-skill-input">
+                                      <label>S1:</label>
+                                      <input
+                                        type="number"
+                                        value={skill?.s1 ?? ""}
+                                        onChange={(e) =>
+                                          updateSkill(
+                                            teamIndex,
+                                            heroIndex,
+                                            "s1",
+                                            e.target.value ? parseInt(e.target.value) : null
+                                          )
+                                        }
+                                        className="admin-input-sm"
+                                        placeholder="-"
+                                        min={1}
+                                        max={10}
+                                      />
+                                    </div>
+                                    <div className="admin-skill-input">
+                                      <label>S2:</label>
+                                      <input
+                                        type="number"
+                                        value={skill?.s2 ?? ""}
+                                        onChange={(e) =>
+                                          updateSkill(
+                                            teamIndex,
+                                            heroIndex,
+                                            "s2",
+                                            e.target.value ? parseInt(e.target.value) : null
+                                          )
+                                        }
+                                        className="admin-input-sm"
+                                        placeholder="-"
+                                        min={1}
+                                        max={10}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <button
+                                    type="button"
+                                    className="admin-slot-remove-btn"
+                                    onClick={() => removeHero(teamIndex, heroIndex)}
+                                  >
+                                    × Remove
+                                  </button>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
 
-                    <div className="admin-form-group">
-                      <label>Formation Type:</label>
-                      <select
-                        value={team.formationType}
-                        onChange={(e) =>
-                          updateTeam(
-                            teamIndex,
-                            "formationType",
-                            e.target.value as AdventTeam["formationType"]
-                          )
-                        }
-                        className="admin-select"
-                      >
-                        <option value="basic">Basic</option>
-                        <option value="balanced">Balanced</option>
-                        <option value="attack">Attack</option>
-                        <option value="protective">Protective</option>
-                      </select>
-                    </div>
-
-                    <div className="admin-form-group">
-                      <label>Pet:</label>
-                      <select
-                        value={team.pet}
-                        onChange={(e) =>
-                          updateTeam(teamIndex, "pet", e.target.value)
-                        }
-                        className="admin-select"
-                      >
-                        <option value="">-- Select Pet --</option>
-                        {PETS.map((pet) => (
-                          <option key={pet} value={pet}>
-                            {pet}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="admin-form-group">
-                      <label>Notes:</label>
-                      <textarea
-                        value={team.notes}
-                        onChange={(e) =>
-                          updateTeam(teamIndex, "notes", e.target.value)
-                        }
-                        className="admin-textarea"
-                        rows={3}
-                      />
-                    </div>
-
-                    <div className="admin-heroes-section">
-                      <h5>Heroes</h5>
-                      {team.heroes.map((hero, heroIndex) => (
-                        <div key={heroIndex} className="admin-hero-card">
-                          <div className="admin-form-group">
-                            <label>Hero Name:</label>
-                            <SearchableHeroSelect
-                              heroes={[...heroes]}
-                              selectedHero={hero.name}
-                              onSelect={(name) =>
-                                updateHero(teamIndex, heroIndex, "name", name)
-                              }
-                              placeholder="Select hero..."
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>Position:</label>
-                            <input
-                              type="number"
-                              value={hero.position}
-                              onChange={(e) =>
-                                updateHero(
-                                  teamIndex,
-                                  heroIndex,
-                                  "position",
-                                  parseInt(e.target.value) || 1
-                                )
-                              }
-                              className="admin-input"
-                              min={1}
-                              max={5}
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>Row:</label>
-                            <select
-                              value={hero.row}
-                              onChange={(e) =>
-                                updateHero(
-                                  teamIndex,
-                                  heroIndex,
-                                  "row",
-                                  e.target.value as "front" | "back"
-                                )
-                              }
-                              className="admin-select"
-                            >
-                              <option value="front">Front</option>
-                              <option value="back">Back</option>
-                            </select>
-                          </div>
-                          <button
-                            type="button"
-                            className="admin-remove-btn"
-                            onClick={() => removeHero(teamIndex, heroIndex)}
-                          >
-                            × Remove Hero
-                          </button>
-                        </div>
-                      ))}
-                      <button
-                        type="button"
-                        className="admin-add-btn"
-                        onClick={() => addHero(teamIndex)}
-                      >
-                        + Add Hero
-                      </button>
-                    </div>
-
-                    <div className="admin-skills-section">
-                      <h5>Skills</h5>
-                      {team.skills.map((skill, skillIndex) => (
-                        <div key={skillIndex} className="admin-skill-card">
-                          <div className="admin-form-group">
-                            <label>Hero:</label>
-                            <SearchableHeroSelect
-                              heroes={[...heroes]}
-                              selectedHero={skill.hero}
-                              onSelect={(name) =>
-                                updateSkill(teamIndex, skillIndex, "hero", name)
-                              }
-                              placeholder="Select hero..."
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>S1:</label>
-                            <input
-                              type="number"
-                              value={skill.s1 ?? ""}
-                              onChange={(e) =>
-                                updateSkill(
-                                  teamIndex,
-                                  skillIndex,
-                                  "s1",
-                                  e.target.value
-                                    ? parseInt(e.target.value)
-                                    : null
-                                )
-                              }
-                              className="admin-input"
-                              placeholder="Leave empty for null"
-                              min={1}
-                              max={7}
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>S2:</label>
-                            <input
-                              type="number"
-                              value={skill.s2 ?? ""}
-                              onChange={(e) =>
-                                updateSkill(
-                                  teamIndex,
-                                  skillIndex,
-                                  "s2",
-                                  e.target.value
-                                    ? parseInt(e.target.value)
-                                    : null
-                                )
-                              }
-                              className="admin-input"
-                              placeholder="Leave empty for null"
-                              min={1}
-                              max={7}
-                            />
-                          </div>
-                          <button
-                            type="button"
-                            className="admin-remove-btn"
-                            onClick={() => {
-                              if (!selectedBoss || !currentBoss) return;
-                              const teams = [...currentBoss.teams];
-                              const skills = [...teams[teamIndex].skills];
-                              skills.splice(skillIndex, 1);
-                              teams[teamIndex] = {
-                                ...teams[teamIndex],
-                                skills,
-                              };
-                              setAdventData((prev) => ({
-                                ...prev,
-                                [selectedBoss]: { teams },
-                              }));
-                            }}
-                          >
-                            × Remove Skill
-                          </button>
-                        </div>
-                      ))}
-                      {team.heroes.length > 0 && (
-                        <button
-                          type="button"
-                          className="admin-add-btn"
-                          onClick={() => {
-                            const lastHero =
-                              team.heroes[team.heroes.length - 1];
-                            if (lastHero) {
-                              addSkill(teamIndex, lastHero.name);
-                            }
-                          }}
+                    {/* Pet and Notes */}
+                    <div className="admin-team-footer">
+                      <div className="admin-form-group">
+                        <label>Pet:</label>
+                        <select
+                          value={team.pet}
+                          onChange={(e) =>
+                            updateTeam(teamIndex, "pet", e.target.value)
+                          }
+                          className="admin-select-compact"
                         >
-                          + Add Skill
-                        </button>
-                      )}
+                          <option value="">-- Select Pet --</option>
+                          {PETS.map((pet) => (
+                            <option key={pet} value={pet}>
+                              {pet}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div className="admin-form-group">
+                        <label>Notes:</label>
+                        <textarea
+                          value={team.notes}
+                          onChange={(e) =>
+                            updateTeam(teamIndex, "notes", e.target.value)
+                          }
+                          className="admin-textarea-compact"
+                          rows={2}
+                          placeholder="Team notes..."
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
@@ -1872,18 +1781,6 @@ const GuildWarDataEditor: React.FC<GuildWarDataEditorProps> = ({
     }));
   };
 
-  const addHero = (teamIndex: number) => {
-    if (!selectedCategory || !currentCategory) return;
-    const teams = [...currentCategory.teams];
-    const heroes = [...teams[teamIndex].heroes];
-    heroes.push({ name: "", position: heroes.length + 1, row: "front" });
-    teams[teamIndex] = { ...teams[teamIndex], heroes };
-    setGuildWarData((prev) => ({
-      ...prev,
-      [selectedCategory]: { teams },
-    }));
-  };
-
   const removeHero = (teamIndex: number, heroIndex: number) => {
     if (!selectedCategory || !currentCategory) return;
     const teams = [...currentCategory.teams];
@@ -1912,18 +1809,6 @@ const GuildWarDataEditor: React.FC<GuildWarDataEditorProps> = ({
     const teams = [...currentCategory.teams];
     const skills = [...teams[teamIndex].skills];
     skills[skillIndex] = { ...skills[skillIndex], [field]: value };
-    teams[teamIndex] = { ...teams[teamIndex], skills };
-    setGuildWarData((prev) => ({
-      ...prev,
-      [selectedCategory]: { teams },
-    }));
-  };
-
-  const addSkill = (teamIndex: number, heroName: string) => {
-    if (!selectedCategory || !currentCategory) return;
-    const teams = [...currentCategory.teams];
-    const skills = [...teams[teamIndex].skills];
-    skills.push({ hero: heroName, s1: null, s2: null });
     teams[teamIndex] = { ...teams[teamIndex], skills };
     setGuildWarData((prev) => ({
       ...prev,
@@ -1996,260 +1881,197 @@ const GuildWarDataEditor: React.FC<GuildWarDataEditorProps> = ({
             </div>
 
             {currentCategory.teams.map((team, teamIndex) => (
-              <div key={teamIndex} className="admin-team-card">
+              <div key={teamIndex} className="admin-team-card-new">
                 <div className="admin-team-card-header">
-                  <h4>
-                    Team {teamIndex + 1}: {team.name}
-                  </h4>
-                  <div style={{ display: "flex", gap: "0.5rem" }}>
-                    <button
-                      type="button"
-                      className="admin-add-btn"
-                      onClick={() =>
-                        setSelectedTeamIndex(
-                          teamIndex === selectedTeamIndex ? -1 : teamIndex
+                  <div className="admin-team-header-left">
+                    <input
+                      type="text"
+                      value={team.name}
+                      onChange={(e) =>
+                        updateTeam(teamIndex, "name", e.target.value)
+                      }
+                      className="admin-team-name-input"
+                      placeholder={`Team ${teamIndex + 1}`}
+                    />
+                    <select
+                      value={team.formationType}
+                      onChange={(e) =>
+                        updateTeam(
+                          teamIndex,
+                          "formationType",
+                          e.target.value as GuildWarTeam["formationType"]
                         )
                       }
+                      className="admin-formation-select"
                     >
-                      {selectedTeamIndex === teamIndex ? "Hide" : "Edit"}
-                    </button>
-                    <button
-                      type="button"
-                      className="admin-remove-btn"
-                      onClick={() => removeTeam(teamIndex)}
-                    >
-                      × Remove
-                    </button>
+                      <option value="basic">Basic (2F, 3B)</option>
+                      <option value="balanced">Balanced (3F, 2B)</option>
+                      <option value="attack">Attack (1F, 4B)</option>
+                      <option value="protective">Protective (4F, 1B)</option>
+                    </select>
                   </div>
+                  <button
+                    type="button"
+                    className="admin-remove-btn"
+                    onClick={() => removeTeam(teamIndex)}
+                  >
+                    × Remove
+                  </button>
                 </div>
 
-                {selectedTeamIndex === teamIndex && (
+                {true && (
                   <div className="admin-team-form">
-                    <div className="admin-form-group">
-                      <label>Team Name:</label>
-                      <input
-                        type="text"
-                        value={team.name}
-                        onChange={(e) =>
-                          updateTeam(teamIndex, "name", e.target.value)
-                        }
-                        className="admin-input"
-                      />
+                    {/* 5 Hero Slots Grid */}
+                    <div className="admin-hero-slots-grid">
+                      {[0, 1, 2, 3, 4].map((slotIndex) => {
+                        const hero = team.heroes.find((h) => h.position === slotIndex + 1);
+                        const heroIndex = hero ? team.heroes.indexOf(hero) : -1;
+                        const skill = team.skills[heroIndex];
+
+                        return (
+                          <div key={slotIndex} className="admin-hero-slot">
+                            <div className="admin-slot-header">Slot {slotIndex + 1}</div>
+                            <div className="admin-slot-body">
+                              <SearchableHeroSelect
+                                heroes={[...heroes]}
+                                selectedHero={hero?.name || ""}
+                                onSelect={(name) => {
+                                  if (!hero) {
+                                    // Add new hero for Guild War - update both heroes and skills atomically
+                                    if (!selectedCategory || !currentCategory) return;
+                                    const teams = [...currentCategory.teams];
+                                    const newHeroes = [...teams[teamIndex].heroes];
+                                    const row = slotIndex === 1 || slotIndex === 3 ? "front" : "back";
+                                    newHeroes.push({ name, position: slotIndex + 1, row });
+                                    // Add matching skill entry
+                                    const newSkills = [...teams[teamIndex].skills];
+                                    newSkills.push({ hero: name, s1: null, s2: null });
+                                    teams[teamIndex] = { ...teams[teamIndex], heroes: newHeroes, skills: newSkills };
+                                    setGuildWarData((prev) => ({
+                                      ...prev,
+                                      [selectedCategory]: { teams },
+                                    }));
+                                  } else if (heroIndex >= 0) {
+                                    // Update existing hero
+                                    updateHero(teamIndex, heroIndex, "name", name);
+                                    // Update skill hero name
+                                    if (skill) {
+                                      updateSkill(teamIndex, heroIndex, "hero", name);
+                                    }
+                                  }
+                                }}
+                                placeholder="Select hero..."
+                              />
+
+                              {hero && (
+                                <>
+                                  <div className="admin-slot-row-selector">
+                                    <label>
+                                      <input
+                                        type="radio"
+                                        checked={hero.row === "front"}
+                                        onChange={() => updateHero(teamIndex, heroIndex, "row", "front")}
+                                      />
+                                      Front
+                                    </label>
+                                    <label>
+                                      <input
+                                        type="radio"
+                                        checked={hero.row === "back"}
+                                        onChange={() => updateHero(teamIndex, heroIndex, "row", "back")}
+                                      />
+                                      Back
+                                    </label>
+                                  </div>
+
+                                  <div className="admin-slot-skills">
+                                    <div className="admin-skill-input">
+                                      <label>S1:</label>
+                                      <input
+                                        type="number"
+                                        value={skill?.s1 ?? ""}
+                                        onChange={(e) =>
+                                          updateSkill(
+                                            teamIndex,
+                                            heroIndex,
+                                            "s1",
+                                            e.target.value ? parseInt(e.target.value) : null
+                                          )
+                                        }
+                                        className="admin-input-sm"
+                                        placeholder="-"
+                                        min={1}
+                                        max={10}
+                                      />
+                                    </div>
+                                    <div className="admin-skill-input">
+                                      <label>S2:</label>
+                                      <input
+                                        type="number"
+                                        value={skill?.s2 ?? ""}
+                                        onChange={(e) =>
+                                          updateSkill(
+                                            teamIndex,
+                                            heroIndex,
+                                            "s2",
+                                            e.target.value ? parseInt(e.target.value) : null
+                                          )
+                                        }
+                                        className="admin-input-sm"
+                                        placeholder="-"
+                                        min={1}
+                                        max={10}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <button
+                                    type="button"
+                                    className="admin-slot-remove-btn"
+                                    onClick={() => removeHero(teamIndex, heroIndex)}
+                                  >
+                                    × Remove
+                                  </button>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
 
-                    <div className="admin-form-group">
-                      <label>Formation Type:</label>
-                      <select
-                        value={team.formationType}
-                        onChange={(e) =>
-                          updateTeam(
-                            teamIndex,
-                            "formationType",
-                            e.target.value as GuildWarTeam["formationType"]
-                          )
-                        }
-                        className="admin-select"
-                      >
-                        <option value="basic">Basic</option>
-                        <option value="balanced">Balanced</option>
-                        <option value="attack">Attack</option>
-                        <option value="protective">Protective</option>
-                      </select>
-                    </div>
-
-                    <div className="admin-form-group">
-                      <label>Pet:</label>
-                      <select
-                        value={team.pet}
-                        onChange={(e) =>
-                          updateTeam(teamIndex, "pet", e.target.value)
-                        }
-                        className="admin-select"
-                      >
-                        <option value="">-- Select Pet --</option>
-                        {PETS.map((pet) => (
-                          <option key={pet} value={pet}>
-                            {pet}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="admin-form-group">
-                      <label>Notes:</label>
-                      <textarea
-                        value={team.notes}
-                        onChange={(e) =>
-                          updateTeam(teamIndex, "notes", e.target.value)
-                        }
-                        className="admin-textarea"
-                        rows={3}
-                      />
-                    </div>
-
-                    <div className="admin-heroes-section">
-                      <h5>Heroes</h5>
-                      {team.heroes.map((hero, heroIndex) => (
-                        <div key={heroIndex} className="admin-hero-card">
-                          <div className="admin-form-group">
-                            <label>Hero Name:</label>
-                            <SearchableHeroSelect
-                              heroes={[...heroes]}
-                              selectedHero={hero.name}
-                              onSelect={(name) =>
-                                updateHero(teamIndex, heroIndex, "name", name)
-                              }
-                              placeholder="Select hero..."
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>Position:</label>
-                            <input
-                              type="number"
-                              value={hero.position}
-                              onChange={(e) =>
-                                updateHero(
-                                  teamIndex,
-                                  heroIndex,
-                                  "position",
-                                  parseInt(e.target.value) || 1
-                                )
-                              }
-                              className="admin-input"
-                              min={1}
-                              max={5}
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>Row:</label>
-                            <select
-                              value={hero.row}
-                              onChange={(e) =>
-                                updateHero(
-                                  teamIndex,
-                                  heroIndex,
-                                  "row",
-                                  e.target.value as "front" | "back"
-                                )
-                              }
-                              className="admin-select"
-                            >
-                              <option value="front">Front</option>
-                              <option value="back">Back</option>
-                            </select>
-                          </div>
-                          <button
-                            type="button"
-                            className="admin-remove-btn"
-                            onClick={() => removeHero(teamIndex, heroIndex)}
-                          >
-                            × Remove Hero
-                          </button>
-                        </div>
-                      ))}
-                      <button
-                        type="button"
-                        className="admin-add-btn"
-                        onClick={() => addHero(teamIndex)}
-                      >
-                        + Add Hero
-                      </button>
-                    </div>
-
-                    <div className="admin-skills-section">
-                      <h5>Skills</h5>
-                      {team.skills.map((skill, skillIndex) => (
-                        <div key={skillIndex} className="admin-skill-card">
-                          <div className="admin-form-group">
-                            <label>Hero:</label>
-                            <SearchableHeroSelect
-                              heroes={[...heroes]}
-                              selectedHero={skill.hero}
-                              onSelect={(name) =>
-                                updateSkill(teamIndex, skillIndex, "hero", name)
-                              }
-                              placeholder="Select hero..."
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>S1:</label>
-                            <input
-                              type="number"
-                              value={skill.s1 ?? ""}
-                              onChange={(e) =>
-                                updateSkill(
-                                  teamIndex,
-                                  skillIndex,
-                                  "s1",
-                                  e.target.value
-                                    ? parseInt(e.target.value)
-                                    : null
-                                )
-                              }
-                              className="admin-input"
-                              placeholder="Leave empty for null"
-                              min={1}
-                              max={7}
-                            />
-                          </div>
-                          <div className="admin-form-group">
-                            <label>S2:</label>
-                            <input
-                              type="number"
-                              value={skill.s2 ?? ""}
-                              onChange={(e) =>
-                                updateSkill(
-                                  teamIndex,
-                                  skillIndex,
-                                  "s2",
-                                  e.target.value
-                                    ? parseInt(e.target.value)
-                                    : null
-                                )
-                              }
-                              className="admin-input"
-                              placeholder="Leave empty for null"
-                              min={1}
-                              max={7}
-                            />
-                          </div>
-                          <button
-                            type="button"
-                            className="admin-remove-btn"
-                            onClick={() => {
-                              if (!selectedCategory || !currentCategory) return;
-                              const teams = [...currentCategory.teams];
-                              const skills = [...teams[teamIndex].skills];
-                              skills.splice(skillIndex, 1);
-                              teams[teamIndex] = {
-                                ...teams[teamIndex],
-                                skills,
-                              };
-                              setGuildWarData((prev) => ({
-                                ...prev,
-                                [selectedCategory]: { teams },
-                              }));
-                            }}
-                          >
-                            × Remove Skill
-                          </button>
-                        </div>
-                      ))}
-                      {team.heroes.length > 0 && (
-                        <button
-                          type="button"
-                          className="admin-add-btn"
-                          onClick={() => {
-                            const lastHero =
-                              team.heroes[team.heroes.length - 1];
-                            if (lastHero) {
-                              addSkill(teamIndex, lastHero.name);
-                            }
-                          }}
+                    {/* Pet and Notes */}
+                    <div className="admin-team-footer">
+                      <div className="admin-form-group">
+                        <label>Pet:</label>
+                        <select
+                          value={team.pet}
+                          onChange={(e) =>
+                            updateTeam(teamIndex, "pet", e.target.value)
+                          }
+                          className="admin-select-compact"
                         >
-                          + Add Skill
-                        </button>
-                      )}
+                          <option value="">-- Select Pet --</option>
+                          {PETS.map((pet) => (
+                            <option key={pet} value={pet}>
+                              {pet}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div className="admin-form-group">
+                        <label>Notes:</label>
+                        <textarea
+                          value={team.notes}
+                          onChange={(e) =>
+                            updateTeam(teamIndex, "notes", e.target.value)
+                          }
+                          className="admin-textarea-compact"
+                          rows={2}
+                          placeholder="Team notes..."
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
