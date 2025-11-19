@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useApp } from "../../context/AppContext";
 import { heroes } from "../../lib/constants";
@@ -17,6 +17,20 @@ const HeroGrid: React.FC = () => {
     setSavedScrollPosition,
     setPreviousView,
   } = useApp();
+
+  // Restore scroll position when returning from hero detail page
+  useEffect(() => {
+    // Check sessionStorage for saved scroll position
+    const savedPosition = sessionStorage.getItem('heroGridScrollPosition');
+    if (savedPosition) {
+      const position = parseInt(savedPosition, 10);
+      // Use setTimeout to ensure DOM is fully rendered
+      setTimeout(() => {
+        window.scrollTo(0, position);
+        sessionStorage.removeItem('heroGridScrollPosition');
+      }, 0);
+    }
+  }, []);
 
   const filteredHeroes = useMemo(() => {
     return heroes.filter((hero) => {
@@ -81,9 +95,10 @@ const HeroGrid: React.FC = () => {
   }, [state.allTargets]);
 
   const handleHeroClick = (heroName: string) => {
-    setSavedScrollPosition(
-      window.pageYOffset || document.documentElement.scrollTop
-    );
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    // Save to both sessionStorage and context (for backwards compatibility)
+    sessionStorage.setItem('heroGridScrollPosition', scrollPosition.toString());
+    setSavedScrollPosition(scrollPosition);
     setPreviousView("grid");
     navigate({ to: `/hero-database/${encodeURIComponent(heroName)}` });
   };

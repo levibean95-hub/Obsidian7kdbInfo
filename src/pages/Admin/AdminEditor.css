@@ -360,6 +360,67 @@
     color: var(--text-secondary);
 }
 
+.admin-search-option.add-custom {
+    color: var(--accent-amber);
+    font-weight: 600;
+    font-style: italic;
+    border-top: 1px solid var(--border-color);
+}
+
+.admin-search-option.add-custom:hover {
+    background: rgba(255, 204, 0, 0.15);
+    color: var(--accent-amber);
+}
+
+/* Multi-Select Tags Styles */
+.admin-selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(10, 8, 16, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.admin-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.25), rgba(121, 82, 179, 0.2));
+    border: 1px solid var(--accent-primary);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.admin-tag:hover {
+    background: linear-gradient(145deg, rgba(147, 112, 219, 0.35), rgba(121, 82, 179, 0.3));
+    transform: translateY(-1px);
+}
+
+.admin-tag-remove {
+    background: none;
+    border: none;
+    color: var(--accent-amber);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: all 0.2s ease;
+    font-weight: 700;
+}
+
+.admin-tag-remove:hover {
+    color: #ef4444;
+    transform: scale(1.2);
+}
+
 /* Teams Section Styles */
 .admin-teams-section {
     margin-top: 2rem;

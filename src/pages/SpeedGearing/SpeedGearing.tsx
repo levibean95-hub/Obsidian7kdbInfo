@@ -2,51 +2,8 @@ import React, { useState } from "react";
 import "./SpeedGearing.css";
 
 const SpeedGearing: React.FC = () => {
-  const [selectedPaths, setSelectedPaths] = useState<Record<string, string[]>>({
-    "3liner": [],
-    "4liner": [],
-  });
-
-  const handleDecisionClick = (
-    treeId: string,
-    path: string,
-    isTerminal: boolean
-  ) => {
-    setSelectedPaths((prev) => {
-      const newPaths = { ...prev };
-      const currentPath = newPaths[treeId] || [];
-
-      if (isTerminal) {
-        // Terminal path - just add it
-        newPaths[treeId] = [...currentPath, path];
-      } else {
-        // Non-terminal - add and continue
-        newPaths[treeId] = [...currentPath, path];
-      }
-
-      return newPaths;
-    });
-  };
-
-  const resetTree = (treeId: string) => {
-    setSelectedPaths((prev) => ({
-      ...prev,
-      [treeId]: [],
-    }));
-  };
-
-  const isPathSelected = (treeId: string, path: string): boolean => {
-    return selectedPaths[treeId]?.includes(path) || false;
-  };
-
-  const shouldShowDecision = (treeId: string, requires: string): boolean => {
-    if (!requires) return true;
-    return selectedPaths[treeId]?.includes(requires) || false;
-  };
-
-  const shouldShowOutcome = (treeId: string, outcome: string): boolean => {
-    return selectedPaths[treeId]?.includes(outcome) || false;
-  };
+  const [collapsed3Liner, setCollapsed3Liner] = useState(true);
+  const [collapsed4Liner, setCollapsed4Liner] = useState(true);
 
   return (
     <div className="speed-gearing-view">
@@ -56,420 +13,240 @@ const SpeedGearing: React.FC = () => {
         </div>
 
         <main className="speed-chart-wrapper">
-          <section className="chart-context">
-            <div className="context-card">
-              <p className="context-label">note:</p>
-              <p>
-                Start with 3 and 4 liner base with speed on them. Don't level 3
-                liners to 4 liners in an attempt to get speed as the 4th. Not
-                really worth your time.
+          <section className="instructions-section">
+            <div className="instruction-step">
+              <h2 className="step-title">STEP 1: Get Your Gear</h2>
+              <p className="step-text">
+                Find and save your 3-4 initial sub stat gear with speed on it.
+              </p>
+              <p className="step-note">
+                <strong>Note:</strong> You can optionally level 3-liner gear that doesn't have speed to level 3 to see if you get speed.
+              </p>
+            </div>
+
+            <div className="instruction-step">
+              <h2 className="step-title">STEP 2: Choose Your Path</h2>
+              <p className="step-text">
+                Based on if you started with 3 initial substats or 4 initial substats, choose the next option to see upgrade paths.
               </p>
             </div>
           </section>
 
           <div className="trees-container">
-            {/* 3-Liner Tree */}
-            <section className="flow-diagram">
-              <div className="tree-header">
-                <h2 className="tree-title">3-Liner Tree</h2>
-                <div className="tree-controls">
-                  {selectedPaths["3liner"].length > 0 && (
-                    <button
-                      className="reset-btn"
-                      onClick={() => resetTree("3liner")}
-                    >
-                      Reset
-                    </button>
-                  )}
-                </div>
+            {/* 3-Liner Paths */}
+            <section className="upgrade-section">
+              <div className="section-header" onClick={() => setCollapsed3Liner(!collapsed3Liner)}>
+                <h2 className="section-title">3-Liner Upgrade Paths</h2>
+                <span className="collapse-icon">{collapsed3Liner ? '▼' : '▲'}</span>
               </div>
+              {!collapsed3Liner && <p className="section-subtitle">Starting with 4 Speed</p>}
 
-              <div className="flow-tree" id="tree-3liner">
-                <div className="flow-node flow-start">
-                  <div className="node-content">
-                    <h3 className="node-title">Level 3-liner to level 6</h3>
-                    <p className="node-note">Starts with 4 base speed</p>
+              {!collapsed3Liner && <div className="paths-grid">
+                {/* Path 1: Hit at Level 6 → Hit at Level 9 */}
+                <div className="upgrade-path success-path">
+                  <div className="path-header">Best Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result success">+4 Speed → 8 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 9</div>
+                      <div className="step-result success">+4 Speed → 12 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action success-action">
+                      <strong>✓ Level to 15</strong>
+                      <p>Continue to max</p>
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  className={`decision-point ${
-                    shouldShowDecision("3liner", "") ? "visible" : "hidden"
-                  }`}
-                  data-level="6"
-                >
-                  <p className="decision-prompt">What happened at Level 6?</p>
-                  <div className="decision-options">
-                    <button
-                      className={`decision-btn success ${
-                        isPathSelected("3liner", "6-hit") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("3liner", "6-hit", false)
-                      }
-                    >
-                      <span className="btn-label">Hit +4 speed</span>
-                      <span className="btn-detail">(8 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn danger ${
-                        isPathSelected("3liner", "6-miss") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("3liner", "6-miss", true)
-                      }
-                    >
-                      <span className="btn-label">Miss</span>
-                      <span className="btn-detail">(stays 4)</span>
-                    </button>
+                {/* Path 2: Hit at Level 6 → Miss at Level 9 → Hit at Level 12 */}
+                <div className="upgrade-path caution-path">
+                  <div className="path-header">Acceptable Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result success">+4 Speed → 8 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 9</div>
+                      <div className="step-result caution">Miss → stays 8</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 12</div>
+                      <div className="step-result success">+4 Speed → 12 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action success-action">
+                      <strong>✓ Level to 15</strong>
+                      <p>Finish upgrade</p>
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  className={`decision-point ${
-                    shouldShowDecision("3liner", "6-hit") ? "visible" : "hidden"
-                  }`}
-                  data-level="9"
-                >
-                  <p className="decision-prompt">What happened at Level 9?</p>
-                  <div className="decision-options">
-                    <button
-                      className={`decision-btn success ${
-                        isPathSelected("3liner", "9-hit") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("3liner", "9-hit", true)
-                      }
-                    >
-                      <span className="btn-label">Hit +4 speed</span>
-                      <span className="btn-detail">(12 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn caution ${
-                        isPathSelected("3liner", "9-miss") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("3liner", "9-miss", false)
-                      }
-                    >
-                      <span className="btn-label">Miss</span>
-                      <span className="btn-detail">(stays 8)</span>
-                    </button>
+                {/* Path 3: Hit at Level 6 → Miss at Level 9 → Miss at Level 12 */}
+                <div className="upgrade-path danger-path">
+                  <div className="path-header">Failed Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result success">+4 Speed → 8 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 9</div>
+                      <div className="step-result caution">Miss → stays 8</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 12</div>
+                      <div className="step-result danger">Miss → stays 8</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action danger-action">
+                      <strong>✗ Discard</strong>
+                      <p>Not worth keeping</p>
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  className={`decision-point ${
-                    shouldShowDecision("3liner", "9-miss")
-                      ? "visible"
-                      : "hidden"
-                  }`}
-                  data-level="12"
-                >
-                  <p className="decision-prompt">What happened at Level 12?</p>
-                  <div className="decision-options">
-                    <button
-                      className={`decision-btn success ${
-                        isPathSelected("3liner", "12-hit") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("3liner", "12-hit", true)
-                      }
-                    >
-                      <span className="btn-label">Hit +4 speed</span>
-                      <span className="btn-detail">(12 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn caution ${
-                        isPathSelected("3liner", "12-miss") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("3liner", "12-miss", true)
-                      }
-                    >
-                      <span className="btn-label">Miss</span>
-                      <span className="btn-detail">(stays 8)</span>
-                    </button>
+                {/* Path 4: Miss at Level 6 */}
+                <div className="upgrade-path danger-path">
+                  <div className="path-header">Early Fail</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result danger">Miss → stays 4</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action danger-action">
+                      <strong>✗ Discard</strong>
+                      <p>Stop immediately</p>
+                    </div>
                   </div>
                 </div>
-
-                {/* Terminal Messages */}
-                {shouldShowOutcome("3liner", "6-miss") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="6-miss"
-                  >
-                    <div className="outcome-card danger">
-                      <h4>❌ Throw Away</h4>
-                      <p>
-                        This piece didn't hit speed at Level 6. It's not worth
-                        investing more gold.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {shouldShowOutcome("3liner", "9-hit") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="9-hit"
-                  >
-                    <div className="outcome-card success">
-                      <h4>✓ Level to 15</h4>
-                      <p>
-                        Great! You hit 12 speed by Level 9. Take this piece all
-                        the way to 15.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {shouldShowOutcome("3liner", "12-hit") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="12-hit"
-                  >
-                    <div className="outcome-card success">
-                      <h4>✓ Level to 15</h4>
-                      <p>
-                        You finally hit 12 speed at Level 12. Finish leveling to
-                        15.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {shouldShowOutcome("3liner", "12-miss") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="12-miss"
-                  >
-                    <div className="outcome-card danger">
-                      <h4>❌ Throw Away</h4>
-                      <p>
-                        Still at 8 speed by Level 12. This piece isn't worth
-                        keeping. Recycle it.
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
+              </div>}
             </section>
 
-            {/* 4-Liner Tree */}
-            <section className="flow-diagram">
-              <div className="tree-header">
-                <h2 className="tree-title">4-Liner Tree</h2>
-                <div className="tree-controls">
-                  {selectedPaths["4liner"].length > 0 && (
-                    <button
-                      className="reset-btn"
-                      onClick={() => resetTree("4liner")}
-                    >
-                      Reset
-                    </button>
-                  )}
-                </div>
+            {/* 4-Liner Paths */}
+            <section className="upgrade-section">
+              <div className="section-header" onClick={() => setCollapsed4Liner(!collapsed4Liner)}>
+                <h2 className="section-title">4-Liner Upgrade Paths</h2>
+                <span className="collapse-icon">{collapsed4Liner ? '▼' : '▲'}</span>
               </div>
+              {!collapsed4Liner && <p className="section-subtitle">Starting with 4 Speed</p>}
 
-              <div className="flow-tree" id="tree-4liner">
-                <div className="flow-node flow-start">
-                  <div className="node-content">
-                    <h3 className="node-title">Level 4-liner to level 6</h3>
-                    <p className="node-note">Starts with 4 base speed</p>
+              {!collapsed4Liner && <div className="paths-grid">
+                {/* Path 1: Hit +8 at Level 6 */}
+                <div className="upgrade-path success-path">
+                  <div className="path-header">Perfect Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result success">+8 Speed → 12 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action success-action">
+                      <strong>✓ Level to 15 Immediately</strong>
+                      <p>Jackpot! Max ASAP</p>
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  className={`decision-point ${
-                    shouldShowDecision("4liner", "") ? "visible" : "hidden"
-                  }`}
-                  data-level="6"
-                >
-                  <p className="decision-prompt">What happened at Level 6?</p>
-                  <div className="decision-options">
-                    <button
-                      className={`decision-btn success ${
-                        isPathSelected("4liner", "6-perfect") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "6-perfect", true)
-                      }
-                    >
-                      <span className="btn-label">Hit +8 speed</span>
-                      <span className="btn-detail">(12 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn caution ${
-                        isPathSelected("4liner", "6-partial") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "6-partial", false)
-                      }
-                    >
-                      <span className="btn-label">Hit +4 speed</span>
-                      <span className="btn-detail">(8 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn danger ${
-                        isPathSelected("4liner", "6-miss") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "6-miss", true)
-                      }
-                    >
-                      <span className="btn-label">Miss</span>
-                      <span className="btn-detail">(stays 4)</span>
-                    </button>
+                {/* Path 2: Hit +4 at Level 6 → Hit at Level 9 */}
+                <div className="upgrade-path success-path">
+                  <div className="path-header">Good Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result caution">+4 Speed → 8 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 9</div>
+                      <div className="step-result success">+4 Speed → 12 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action success-action">
+                      <strong>✓ Level to 15</strong>
+                      <p>Continue to max</p>
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  className={`decision-point ${
-                    shouldShowDecision("4liner", "6-partial")
-                      ? "visible"
-                      : "hidden"
-                  }`}
-                  data-level="9"
-                >
-                  <p className="decision-prompt">What happened at Level 9?</p>
-                  <div className="decision-options">
-                    <button
-                      className={`decision-btn success ${
-                        isPathSelected("4liner", "9-hit") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "9-hit", true)
-                      }
-                    >
-                      <span className="btn-label">Hit +4 speed</span>
-                      <span className="btn-detail">(12 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn caution ${
-                        isPathSelected("4liner", "9-miss") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "9-miss", false)
-                      }
-                    >
-                      <span className="btn-label">Miss</span>
-                      <span className="btn-detail">(stays 8)</span>
-                    </button>
+                {/* Path 3: Hit +4 at Level 6 → Miss at Level 9 → Hit at Level 12 */}
+                <div className="upgrade-path caution-path">
+                  <div className="path-header">Acceptable Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result caution">+4 Speed → 8 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 9</div>
+                      <div className="step-result caution">Miss → stays 8</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 12</div>
+                      <div className="step-result success">+4 Speed → 12 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action success-action">
+                      <strong>✓ Level to 15</strong>
+                      <p>Finish upgrade</p>
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  className={`decision-point ${
-                    shouldShowDecision("4liner", "9-miss")
-                      ? "visible"
-                      : "hidden"
-                  }`}
-                  data-level="12"
-                >
-                  <p className="decision-prompt">What happened at Level 12?</p>
-                  <div className="decision-options">
-                    <button
-                      className={`decision-btn success ${
-                        isPathSelected("4liner", "12-hit") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "12-hit", true)
-                      }
-                    >
-                      <span className="btn-label">Hit +4 speed</span>
-                      <span className="btn-detail">(12 total)</span>
-                    </button>
-                    <button
-                      className={`decision-btn danger ${
-                        isPathSelected("4liner", "12-miss") ? "selected" : ""
-                      }`}
-                      onClick={() =>
-                        handleDecisionClick("4liner", "12-miss", true)
-                      }
-                    >
-                      <span className="btn-label">Miss</span>
-                      <span className="btn-detail">(stays 8)</span>
-                    </button>
+                {/* Path 4: Hit +4 at Level 6 → Miss at Level 9 → Miss at Level 12 */}
+                <div className="upgrade-path danger-path">
+                  <div className="path-header">Failed Path</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result caution">+4 Speed → 8 total</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 9</div>
+                      <div className="step-result caution">Miss → stays 8</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="step">
+                      <div className="step-level">Lvl 12</div>
+                      <div className="step-result danger">Miss → stays 8</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action danger-action">
+                      <strong>✗ Discard</strong>
+                      <p>Not worth keeping</p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Terminal Messages */}
-                {shouldShowOutcome("4liner", "6-perfect") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="6-perfect"
-                  >
-                    <div className="outcome-card success">
-                      <h4>✓ Level to 15 Immediately</h4>
-                      <p>
-                        Perfect! You hit 12 speed at Level 6. Take this piece
-                        straight to 15.
-                      </p>
+                {/* Path 5: Miss at Level 6 */}
+                <div className="upgrade-path danger-path">
+                  <div className="path-header">Early Fail</div>
+                  <div className="path-steps">
+                    <div className="step">
+                      <div className="step-level">Lvl 6</div>
+                      <div className="step-result danger">Miss → stays 4</div>
+                    </div>
+                    <div className="arrow">↓</div>
+                    <div className="final-action danger-action">
+                      <strong>✗ Discard</strong>
+                      <p>Stop immediately</p>
                     </div>
                   </div>
-                )}
-
-                {shouldShowOutcome("4liner", "6-miss") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="6-miss"
-                  >
-                    <div className="outcome-card danger">
-                      <h4>❌ Throw Away</h4>
-                      <p>
-                        This piece didn't hit speed at Level 6. It's not worth
-                        investing more gold.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {shouldShowOutcome("4liner", "9-hit") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="9-hit"
-                  >
-                    <div className="outcome-card success">
-                      <h4>✓ Level to 15</h4>
-                      <p>
-                        Great! You hit 12 speed by Level 9. Take this piece all
-                        the way to 15.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {shouldShowOutcome("4liner", "12-hit") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="12-hit"
-                  >
-                    <div className="outcome-card success">
-                      <h4>✓ Level to 15</h4>
-                      <p>
-                        You finally hit 12 speed at Level 12. Finish leveling to
-                        15 and hope for 16+.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {shouldShowOutcome("4liner", "12-miss") && (
-                  <div
-                    className="terminal-message visible"
-                    data-outcome="12-miss"
-                  >
-                    <div className="outcome-card danger">
-                      <h4>❌ Throw Away</h4>
-                      <p>
-                        Still at 8 speed by Level 12. This piece isn't worth
-                        keeping. Recycle it.
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
+                </div>
+              </div>}
             </section>
           </div>
         </main>

@@ -31,20 +31,6 @@
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--accent-amber);
-}
-
-.advent-boss-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    padding: 1rem 0.5rem;
-    border-right: 2px solid rgba(255, 204, 0, 0.4);
-    flex-shrink: 0;
 }
 
 .advent-boss-header h2 {
@@ -119,22 +105,22 @@
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: nowrap;
-    padding: 45px 0.5rem 30px;
-    overflow-x: auto;
-    overflow-y: visible;
+    padding: 50px 0.5rem 50px;
+    width: 100%;
 }
 
 .advent-hero-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.7rem;
+    gap: 0.3rem;
+    padding: 0.5rem;
     background: rgba(10, 8, 16, 0.8);
     border: 2px solid rgba(147, 112, 219, 0.4);
     border-radius: 10px;
-    min-width: 95px;
-    max-width: 110px;
+    min-width: 75px;
+    max-width: 95px;
+    flex: 1;
     cursor: pointer;
     transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
@@ -166,8 +152,8 @@
 }
 
 .advent-hero-portrait {
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     border-radius: 8px;
     overflow: hidden;
     border: 2px solid rgba(147, 112, 219, 0.5);
@@ -189,12 +175,17 @@
 
 .advent-hero-name {
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-primary);
     letter-spacing: 0.02em;
     line-height: 1.2;
     text-align: center;
     width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .advent-skills-container {
@@ -205,33 +196,32 @@
 }
 
 .advent-skill-slot {
-    background: rgba(20, 15, 30, 0.9);
-    border: 1px solid #7ab88a;
+    background: rgba(15, 10, 22, 0.8);
+    border: 2px solid #7ab88a;
     border-radius: 6px;
-    padding: 0.3rem 0.4rem;
-    font-size: 0.8rem;
+    padding: 0.25rem 0.3rem;
+    font-size: 0.65rem;
     font-weight: 700;
     color: #7ab88a;
     text-align: center;
     transition: all 0.2s ease;
-    min-height: 22px;
+    min-height: 20px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .advent-skill-slot.empty {
-    border-style: solid;
     border-color: #cc8585;
     color: #cc8585;
-    opacity: 1;
-    background: rgba(10, 8, 16, 0.5);
 }
 
 .advent-bottom-section {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    align-items: stretch;
 }
 
 .advent-pet-container {
@@ -357,6 +347,30 @@
     padding: 0.5rem;
 }
 
+@media (max-width: 1024px) {
+    .advent-hero-column {
+        min-width: 70px;
+        max-width: 90px;
+        padding: 0.4rem;
+        gap: 0.25rem;
+    }
+
+    .advent-hero-portrait {
+        width: 50px;
+        height: 50px;
+    }
+
+    .advent-hero-name {
+        font-size: 0.65rem;
+    }
+
+    .advent-skill-slot {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.25rem;
+        min-height: 18px;
+    }
+}
+
 @media (max-width: 768px) {
     .advent-boss-section {
         flex-direction: column;
@@ -378,20 +392,19 @@
     }
 
     .advent-heroes-container {
-        gap: 0.5rem;
-        padding: 45px 0.5rem 30px;
+        gap: 0.2rem;
+        padding: 45px 0.2rem 45px;
         flex-wrap: nowrap;
-        justify-content: center;
-        overflow-x: auto;
-        overflow-y: visible;
+        justify-content: space-between;
+        width: 100%;
     }
 
     .advent-hero-column {
-        min-width: 95px;
-        max-width: 110px;
-        padding: 0.7rem;
-        gap: 0.4rem;
-        flex-shrink: 0;
+        min-width: 60px;
+        max-width: 75px;
+        padding: 0.3rem;
+        gap: 0.15rem;
+        flex: 1;
     }
 
     .advent-hero-column.back {
@@ -411,19 +424,25 @@
     }
 
     .advent-hero-portrait {
-        width: 65px;
-        height: 65px;
+        width: 40px;
+        height: 40px;
+        border-width: 1.5px;
     }
 
     .advent-hero-name {
-        font-size: 0.75rem;
-        line-height: 1.2;
+        font-size: 0.55rem;
+        line-height: 1.1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
     .advent-skill-slot {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.4rem;
-        min-height: 22px;
+        font-size: 0.55rem;
+        padding: 0.15rem 0.2rem;
+        min-height: 16px;
     }
 
     .advent-teams-container {
@@ -448,12 +467,12 @@
     }
 
     .advent-pet-icon {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     .advent-pet-label {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .advent-notes-container {
@@ -462,11 +481,11 @@
     }
 
     .advent-notes-title {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .advent-notes-content {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .boss-filter-container {
@@ -477,5 +496,82 @@
     .boss-filter-dropdown {
         width: 100%;
         max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .advent-heroes-container {
+        padding: 40px 0.15rem 40px;
+        gap: 0.15rem;
+    }
+
+    .advent-hero-column {
+        min-width: 55px;
+        max-width: 70px;
+        padding: 0.25rem;
+        gap: 0.1rem;
+    }
+
+    .advent-hero-column.back {
+        transform: translateY(-35px);
+    }
+
+    .advent-hero-column.back:hover {
+        transform: translateY(-35px);
+    }
+
+    .advent-hero-column.front {
+        transform: translateY(35px);
+    }
+
+    .advent-hero-column.front:hover {
+        transform: translateY(35px);
+    }
+
+    .advent-hero-portrait {
+        width: 35px;
+        height: 35px;
+    }
+
+    .advent-hero-name {
+        font-size: 0.5rem;
+        line-height: 1;
+    }
+
+    .advent-skill-slot {
+        font-size: 0.5rem;
+        padding: 0.1rem 0.15rem;
+        min-height: 14px;
+        border-radius: 4px;
+    }
+
+    .advent-pet-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .advent-pet-label {
+        font-size: 0.65rem;
+    }
+
+    .advent-notes-title {
+        font-size: 0.65rem;
+    }
+
+    .advent-notes-content {
+        font-size: 0.75rem;
+    }
+
+    .advent-bottom-section {
+        gap: 0.75rem;
+    }
+
+    .advent-pet-container {
+        padding: 0.5rem;
+        min-width: 80px;
+    }
+
+    .advent-notes-container {
+        padding: 0.5rem;
     }
 }

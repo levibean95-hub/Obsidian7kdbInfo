@@ -187,21 +187,56 @@
 }
 
 @media (max-width: 768px) {
+    .landing-page {
+        padding: 1rem;
+        padding-top: 1.5rem;
+    }
+
+    .landing-header {
+        margin-bottom: 2rem;
+    }
+
     .landing-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .landing-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+
+    .wip-disclaimer {
+        font-size: 0.85rem;
+        padding: 0.75rem 1rem;
     }
 
     .nav-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
     }
 
     .nav-card {
-        padding: 1.5rem;
+        padding: 1rem;
+    }
+
+    .nav-card-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-card-title {
+        font-size: 1rem;
+    }
+
+    .nav-card-desc {
+        font-size: 0.75rem;
+    }
+
+    .badge {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
     }
 }
 

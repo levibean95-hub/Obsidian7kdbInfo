@@ -22,12 +22,13 @@ const HeroDetail: React.FC = () => {
     }
   }, [decodedHeroName, setSelectedHero]);
 
+  // Scroll to top only when the hero changes (not on every render)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [decodedHeroName]);
+
   const handleBack = () => {
-    if (state.previousView === "grid") {
-      navigate({ to: "/hero-database" });
-    } else {
-      navigate({ to: "/hero-database" });
-    }
+    window.history.back();
   };
 
   const validEffects = useMemo(() => {
@@ -55,7 +56,7 @@ const HeroDetail: React.FC = () => {
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            Back to Heroes
+            Back
           </button>
           <h1>Hero not found</h1>
         </div>
@@ -93,7 +94,7 @@ const HeroDetail: React.FC = () => {
               >
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
-              Back to Heroes
+              Back
             </button>
             <h1 className="hero-name-large">{decodedHeroName}</h1>
           </div>

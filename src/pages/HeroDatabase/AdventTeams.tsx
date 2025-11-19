@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useApp } from "../../context/AppContext";
 import { getHeroImagePath, getPetIconPath } from "../../lib/utils";
@@ -11,7 +11,22 @@ const AdventTeams: React.FC = () => {
   const { state } = useApp();
   const [selectedBoss, setSelectedBoss] = useState<string>("all");
 
+  // Restore scroll position when returning from hero detail page
+  useEffect(() => {
+    const savedPosition = sessionStorage.getItem('adventTeamsScrollPosition');
+    if (savedPosition) {
+      const position = parseInt(savedPosition, 10);
+      setTimeout(() => {
+        window.scrollTo(0, position);
+        sessionStorage.removeItem('adventTeamsScrollPosition');
+      }, 0);
+    }
+  }, []);
+
   const handleHeroClick = (heroName: string) => {
+    // Save current scroll position before navigating
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    sessionStorage.setItem('adventTeamsScrollPosition', scrollPosition.toString());
     navigate({ to: `/hero-database/${encodeURIComponent(heroName)}` });
   };
 

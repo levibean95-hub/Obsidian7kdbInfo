@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useApp } from "../../context/AppContext";
 import { getHeroImagePath, getPetIconPath } from "../../lib/utils";
@@ -7,11 +7,24 @@ import type {
   GuildWarHero,
   GuildWarSkill,
 } from "../../lib/types";
+import "../HeroDatabase/AdventTeams.css";
 import "./GuildWarTeams.css";
 
 const GuildWarTeams: React.FC = () => {
   const navigate = useNavigate();
   const { state } = useApp();
+
+  // Restore scroll position when returning from hero detail page
+  useEffect(() => {
+    const savedPosition = sessionStorage.getItem('guildWarTeamsScrollPosition');
+    if (savedPosition) {
+      const position = parseInt(savedPosition, 10);
+      setTimeout(() => {
+        window.scrollTo(0, position);
+        sessionStorage.removeItem('guildWarTeamsScrollPosition');
+      }, 0);
+    }
+  }, []);
 
   const guildWarData = state.guildWarTeamsData?.["Guild War"];
   if (!guildWarData) {
@@ -26,6 +39,9 @@ const GuildWarTeams: React.FC = () => {
   }
 
   const handleHeroClick = (heroName: string) => {
+    // Save current scroll position before navigating
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    sessionStorage.setItem('guildWarTeamsScrollPosition', scrollPosition.toString());
     navigate({ to: `/hero-database/${encodeURIComponent(heroName)}` });
   };
 

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { useApp } from '../../context/AppContext';
 import { getHeroImagePath } from '../../lib/utils';
@@ -14,6 +14,18 @@ interface WishListHero {
 const WishList: React.FC = () => {
     const navigate = useNavigate();
     const { state } = useApp();
+
+    // Restore scroll position when returning from hero detail page
+    useEffect(() => {
+        const savedPosition = sessionStorage.getItem('wishListScrollPosition');
+        if (savedPosition) {
+            const position = parseInt(savedPosition, 10);
+            setTimeout(() => {
+                window.scrollTo(0, position);
+                sessionStorage.removeItem('wishListScrollPosition');
+            }, 0);
+        }
+    }, []);
 
     // Extract wish list data from hero data
     const wishListData = useMemo(() => {
@@ -80,6 +92,9 @@ const WishList: React.FC = () => {
     }, [wishListData]);
 
     const handleHeroClick = (heroName: string) => {
+        // Save current scroll position before navigating
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        sessionStorage.setItem('wishListScrollPosition', scrollPosition.toString());
         navigate({ to: `/hero-database/${encodeURIComponent(heroName)}` });
     };
 

@@ -1466,12 +1466,40 @@
             "Buff Removal"
         ],
         "gear_pve": {
-            "T0": [],
-            "T6": []
+            "T0": [
+                {
+                    "name": "Assassin Physical",
+                    "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
+                    "required_stat_thresholds": "73% crit rate, 270% crit damage",
+                    "sub_stat_priority": "Crit Damage, Crit Rate, All Attack %, Weakness Hit Chance"
+                }
+            ],
+            "T6": [
+                {
+                    "name": "Avenger Physical",
+                    "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
+                    "required_stat_thresholds": "73% crit rate, 210% crit damage",
+                    "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %, Weakness Hit Chance"
+                }
+            ]
         },
         "gear_pvp": {
-            "T0": [],
-            "T6": []
+            "T0": [
+                {
+                    "name": "Assassin Physical",
+                    "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
+                    "required_stat_thresholds": "73% crit rate, 270% crit damage, 40-60 speed",
+                    "sub_stat_priority": "Crit Damage, Crit Rate, All Attack %, Speed"
+                }
+            ],
+            "T6": [
+                {
+                    "name": "Bounty Tracker Physical",
+                    "main_stats": "Crit Rate, Crit Damage, Weakness Hit Chance, All Attack % (armors)",
+                    "required_stat_thresholds": "73% crit rate, 200% crit damage, as much weakness as you can get, 40 speed",
+                    "sub_stat_priority": "Crit Rate, Speed, Crit Damage, Weakness Hit Chance"
+                }
+            ]
         },
         "skill_enhance_priority": "Passive > S1 > S2",
         "tips": "Most OP hero in the game. Good in almost all content. Beyond broken for pushing nightmare, tower, arena, total war, etc."

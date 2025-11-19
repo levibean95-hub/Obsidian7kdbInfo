@@ -15,6 +15,57 @@ import type {
 import { heroes, PETS } from "../../lib/constants";
 import "./AdminEditor.css";
 
+// Gear Set Options (based on available gear set photos)
+const GEAR_SETS = [
+  "Assassin Magic",
+  "Assassin Physical",
+  "Avenger Magic",
+  "Avenger Physical",
+  "Bounty Tracker Physical",
+  "Full Speed",
+  "Gatekeeper Magic",
+  "Gatekeeper Physical",
+  "Guardian Magic",
+  "Guardian Physical",
+  "Orchestrator Magic",
+  "Orchestrator Physical",
+  "Paladin Magic",
+  "Spellweaver Magic",
+  "Spellweaver Physical",
+  "Vanguard Magic",
+  "Vanguard Physical",
+];
+
+// Main Stats Options
+const MAIN_STATS = [
+  "Crit Rate",
+  "Crit Damage",
+  "All Attack %",
+  "Physical Attack %",
+  "Magic Attack %",
+  "Max HP %",
+  "Effect Hit Rate",
+  "Weakness Hit Chance",
+  "Block Rate",
+  "Speed",
+];
+
+// Sub Stats Options
+const SUB_STATS = [
+  "Crit Rate",
+  "Crit Damage",
+  "All Attack %",
+  "Physical Attack %",
+  "Magic Attack %",
+  "Max HP",
+  "Effect Hit Rate",
+  "Weakness Hit Chance",
+  "Block Rate",
+  "Speed",
+  "Damage Reduction",
+  "Lifesteal",
+];
+
 const AdminEditor: React.FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"heroes" | "advent" | "guildwar">(
@@ -185,6 +236,294 @@ const AdminEditor: React.FC = () => {
           )}
         </div>
       </div>
+    </div>
+  );
+};
+
+// Multi-Select Dropdown Component for Stats
+interface MultiSelectDropdownProps {
+  options: string[];
+  value: string; // Comma-separated values
+  onChange: (value: string) => void;
+  placeholder?: string;
+  label?: string;
+}
+
+const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
+  options,
+  value,
+  onChange,
+  placeholder = "Select options...",
+  label,
+}) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Parse comma-separated values
+  const selectedValues = value
+    .split(",")
+    .map((v) => v.trim())
+    .filter((v) => v);
+
+  const filteredOptions = useMemo(() => {
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) return options;
+    return options.filter((opt) => opt.toLowerCase().includes(term));
+  }, [options, searchTerm]);
+
+  const toggleOption = (option: string) => {
+    const isSelected = selectedValues.includes(option);
+    let newValues: string[];
+    if (isSelected) {
+      newValues = selectedValues.filter((v) => v !== option);
+    } else {
+      newValues = [...selectedValues, option];
+    }
+    onChange(newValues.join(", "));
+  };
+
+  const addCustomValue = (customValue: string) => {
+    const trimmedValue = customValue.trim();
+    if (trimmedValue && !selectedValues.includes(trimmedValue)) {
+      const newValues = [...selectedValues, trimmedValue];
+      onChange(newValues.join(", "));
+      setSearchTerm("");
+    }
+  };
+
+  const handleInputFocus = () => {
+    setShowDropdown(true);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchTerm.trim()) {
+      e.preventDefault();
+      addCustomValue(searchTerm);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node) &&
+        inputRef.current &&
+        !inputRef.current.contains(e.target as Node)
+      ) {
+        setShowDropdown(false);
+        setSearchTerm("");
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [showDropdown]);
+
+  return (
+    <div className="admin-searchable-select">
+      <input
+        ref={inputRef}
+        type="text"
+        className="admin-input admin-search-input"
+        placeholder={placeholder}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onFocus={handleInputFocus}
+        onClick={() => setShowDropdown(true)}
+        onKeyDown={handleKeyDown}
+        autoComplete="off"
+      />
+      {selectedValues.length > 0 && (
+        <div className="admin-selected-tags">
+          {selectedValues.map((val) => (
+            <span key={val} className="admin-tag">
+              {val}
+              <button
+                type="button"
+                onClick={() => toggleOption(val)}
+                className="admin-tag-remove"
+              >
+                ×
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+      {showDropdown && (
+        <div
+          ref={dropdownRef}
+          className="admin-search-dropdown"
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          {filteredOptions.length === 0 && searchTerm.trim() ? (
+            <div
+              className="admin-search-option add-custom"
+              onClick={() => addCustomValue(searchTerm)}
+            >
+              + Add "{searchTerm.trim()}"
+            </div>
+          ) : filteredOptions.length === 0 ? (
+            <div className="admin-search-option empty">Type to add custom stat</div>
+          ) : (
+            <>
+              {filteredOptions.map((option) => (
+                <div
+                  key={option}
+                  className={`admin-search-option ${
+                    selectedValues.includes(option) ? "selected" : ""
+                  }`}
+                  onClick={() => toggleOption(option)}
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedValues.includes(option)}
+                    readOnly
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  {option}
+                </div>
+              ))}
+              {searchTerm.trim() && !filteredOptions.includes(searchTerm.trim()) && (
+                <div
+                  className="admin-search-option add-custom"
+                  onClick={() => addCustomValue(searchTerm)}
+                >
+                  + Add "{searchTerm.trim()}"
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Searchable Single Select Component
+interface SearchableSelectProps {
+  options: string[];
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  allowCustom?: boolean;
+}
+
+const SearchableSelect: React.FC<SearchableSelectProps> = ({
+  options,
+  value,
+  onChange,
+  placeholder = "Select...",
+  allowCustom = true,
+}) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const filteredOptions = useMemo(() => {
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) return options;
+    return options.filter((opt) => opt.toLowerCase().includes(term));
+  }, [options, searchTerm]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    if (allowCustom) {
+      onChange(e.target.value);
+    }
+    setShowDropdown(true);
+  };
+
+  const handleInputFocus = () => {
+    setShowDropdown(true);
+  };
+
+  const handleInputBlur = () => {
+    setTimeout(() => {
+      if (!dropdownRef.current?.contains(document.activeElement)) {
+        setShowDropdown(false);
+      }
+    }, 200);
+  };
+
+  const handleOptionClick = (option: string) => {
+    onChange(option);
+    setSearchTerm("");
+    setShowDropdown(false);
+    if (inputRef.current) {
+      inputRef.current.blur();
+    }
+  };
+
+  useEffect(() => {
+    if (value && !searchTerm) {
+      setSearchTerm(value);
+    }
+  }, [value]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node) &&
+        inputRef.current &&
+        !inputRef.current.contains(e.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [showDropdown]);
+
+  return (
+    <div className="admin-searchable-select">
+      <input
+        ref={inputRef}
+        type="text"
+        className="admin-input admin-search-input"
+        placeholder={placeholder}
+        value={searchTerm}
+        onChange={handleInputChange}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        onClick={() => setShowDropdown(true)}
+        autoComplete="off"
+      />
+      {showDropdown && (
+        <div
+          ref={dropdownRef}
+          className="admin-search-dropdown"
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          {filteredOptions.length === 0 ? (
+            <div className="admin-search-option empty">No options found</div>
+          ) : (
+            filteredOptions.map((option) => (
+              <div
+                key={option}
+                className={`admin-search-option ${
+                  option === value ? "selected" : ""
+                }`}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </div>
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -665,38 +1004,25 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </button>
                   <div className="admin-form-group">
                     <label>Gear Set Name:</label>
-                    <input
-                      type="text"
+                    <SearchableSelect
+                      options={GEAR_SETS}
                       value={gear.name}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pve",
-                          "T0",
-                          index,
-                          "name",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pve", "T0", index, "name", value)
                       }
-                      className="admin-input"
-                      placeholder="e.g., Full Speed"
+                      placeholder="Select gear set..."
+                      allowCustom={true}
                     />
                   </div>
                   <div className="admin-form-group">
                     <label>Main Stats:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={MAIN_STATS}
                       value={gear.main_stats}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pve",
-                          "T0",
-                          index,
-                          "main_stats",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pve", "T0", index, "main_stats", value)
                       }
-                      className="admin-input"
-                      placeholder="e.g., Max HP % (weapons), Block Rate (armors)"
+                      placeholder="Select main stats..."
                     />
                   </div>
                   <div className="admin-form-group">
@@ -719,20 +1045,13 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </div>
                   <div className="admin-form-group">
                     <label>Sub Stat Priority:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={SUB_STATS}
                       value={gear.sub_stat_priority}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pve",
-                          "T0",
-                          index,
-                          "sub_stat_priority",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pve", "T0", index, "sub_stat_priority", value)
                       }
-                      className="admin-input"
-                      placeholder="e.g., Block Rate, Max HP"
+                      placeholder="Select sub stats priority..."
                     />
                   </div>
                 </div>
@@ -760,36 +1079,25 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </button>
                   <div className="admin-form-group">
                     <label>Gear Set Name:</label>
-                    <input
-                      type="text"
+                    <SearchableSelect
+                      options={GEAR_SETS}
                       value={gear.name}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pve",
-                          "T6",
-                          index,
-                          "name",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pve", "T6", index, "name", value)
                       }
-                      className="admin-input"
+                      placeholder="Select gear set..."
+                      allowCustom={true}
                     />
                   </div>
                   <div className="admin-form-group">
                     <label>Main Stats:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={MAIN_STATS}
                       value={gear.main_stats}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pve",
-                          "T6",
-                          index,
-                          "main_stats",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pve", "T6", index, "main_stats", value)
                       }
-                      className="admin-input"
+                      placeholder="Select main stats..."
                     />
                   </div>
                   <div className="admin-form-group">
@@ -811,19 +1119,13 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </div>
                   <div className="admin-form-group">
                     <label>Sub Stat Priority:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={SUB_STATS}
                       value={gear.sub_stat_priority}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pve",
-                          "T6",
-                          index,
-                          "sub_stat_priority",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pve", "T6", index, "sub_stat_priority", value)
                       }
-                      className="admin-input"
+                      placeholder="Select sub stats priority..."
                     />
                   </div>
                 </div>
@@ -851,36 +1153,25 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </button>
                   <div className="admin-form-group">
                     <label>Gear Set Name:</label>
-                    <input
-                      type="text"
+                    <SearchableSelect
+                      options={GEAR_SETS}
                       value={gear.name}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pvp",
-                          "T0",
-                          index,
-                          "name",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pvp", "T0", index, "name", value)
                       }
-                      className="admin-input"
+                      placeholder="Select gear set..."
+                      allowCustom={true}
                     />
                   </div>
                   <div className="admin-form-group">
                     <label>Main Stats:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={MAIN_STATS}
                       value={gear.main_stats}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pvp",
-                          "T0",
-                          index,
-                          "main_stats",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pvp", "T0", index, "main_stats", value)
                       }
-                      className="admin-input"
+                      placeholder="Select main stats..."
                     />
                   </div>
                   <div className="admin-form-group">
@@ -902,19 +1193,13 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </div>
                   <div className="admin-form-group">
                     <label>Sub Stat Priority:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={SUB_STATS}
                       value={gear.sub_stat_priority}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pvp",
-                          "T0",
-                          index,
-                          "sub_stat_priority",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pvp", "T0", index, "sub_stat_priority", value)
                       }
-                      className="admin-input"
+                      placeholder="Select sub stats priority..."
                     />
                   </div>
                 </div>
@@ -942,36 +1227,25 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </button>
                   <div className="admin-form-group">
                     <label>Gear Set Name:</label>
-                    <input
-                      type="text"
+                    <SearchableSelect
+                      options={GEAR_SETS}
                       value={gear.name}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pvp",
-                          "T6",
-                          index,
-                          "name",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pvp", "T6", index, "name", value)
                       }
-                      className="admin-input"
+                      placeholder="Select gear set..."
+                      allowCustom={true}
                     />
                   </div>
                   <div className="admin-form-group">
                     <label>Main Stats:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={MAIN_STATS}
                       value={gear.main_stats}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pvp",
-                          "T6",
-                          index,
-                          "main_stats",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pvp", "T6", index, "main_stats", value)
                       }
-                      className="admin-input"
+                      placeholder="Select main stats..."
                     />
                   </div>
                   <div className="admin-form-group">
@@ -993,19 +1267,13 @@ const HeroDataEditor: React.FC<HeroDataEditorProps> = ({
                   </div>
                   <div className="admin-form-group">
                     <label>Sub Stat Priority:</label>
-                    <input
-                      type="text"
+                    <MultiSelectDropdown
+                      options={SUB_STATS}
                       value={gear.sub_stat_priority}
-                      onChange={(e) =>
-                        updateGearSet(
-                          "pvp",
-                          "T6",
-                          index,
-                          "sub_stat_priority",
-                          e.target.value
-                        )
+                      onChange={(value) =>
+                        updateGearSet("pvp", "T6", index, "sub_stat_priority", value)
                       }
-                      className="admin-input"
+                      placeholder="Select sub stats priority..."
                     />
                   </div>
                 </div>
