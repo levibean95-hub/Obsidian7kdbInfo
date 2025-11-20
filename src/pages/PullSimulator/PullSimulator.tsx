@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useApp } from "../../context/AppContext";
 import "./PullSimulator.css";
 
@@ -98,12 +98,52 @@ const HeroSelectorModal: React.FC<HeroSelectorModalProps> = ({
   );
 };
 
+// Cookie utility functions
+const saveWishlistToCookie = (wishlist: WishlistSlots) => {
+  const wishlistJson = JSON.stringify(wishlist);
+  // Set cookie to expire in 1 year
+  const expires = new Date();
+  expires.setFullYear(expires.getFullYear() + 1);
+  document.cookie = `pullSimulatorWishlist=${encodeURIComponent(wishlistJson)}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+};
+
+const loadWishlistFromCookie = (): WishlistSlots | null => {
+  const cookies = document.cookie.split(';');
+  for (let cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'pullSimulatorWishlist') {
+      try {
+        const decoded = decodeURIComponent(value);
+        const parsed = JSON.parse(decoded);
+        // Validate structure
+        if (
+          parsed &&
+          Array.isArray(parsed.lPlus) &&
+          Array.isArray(parsed.l) &&
+          Array.isArray(parsed.rare)
+        ) {
+          return parsed;
+        }
+      } catch (e) {
+        console.error('Failed to parse wishlist cookie:', e);
+        return null;
+      }
+    }
+  }
+  return null;
+};
+
 const PullSimulator: React.FC = () => {
   const { state } = useApp();
-  const [wishlist, setWishlist] = useState<WishlistSlots>({
-    lPlus: [null, null],
-    l: [null, null, null],
-    rare: [null, null, null, null],
+
+  // Load wishlist from cookie on mount, or use default
+  const [wishlist, setWishlist] = useState<WishlistSlots>(() => {
+    const savedWishlist = loadWishlistFromCookie();
+    return savedWishlist || {
+      lPlus: [null, null],
+      l: [null, null, null],
+      rare: [null, null, null, null],
+    };
   });
 
   const [currentPulls, setCurrentPulls] = useState<PullResult[]>([]);
@@ -117,6 +157,11 @@ const PullSimulator: React.FC = () => {
     rarity: "L+" | "L" | "Rare";
     slotIndex: number;
   } | null>(null);
+
+  // Save wishlist to cookie whenever it changes
+  useEffect(() => {
+    saveWishlistToCookie(wishlist);
+  }, [wishlist]);
 
   // Get heroes by rarity from hero data
   const heroesByRarity = useMemo(() => {
@@ -269,7 +314,7 @@ const PullSimulator: React.FC = () => {
 
     if (
       wishlistLegendaryRoll <
-        totalWishlistLegendaryRate / rates.totalLegendaryRate &&
+      totalWishlistLegendaryRate / rates.totalLegendaryRate &&
       (rates.wishlistLPlus.length > 0 || rates.wishlistL.length > 0)
     ) {
       // Randomly choose from wishlist L+ or L
@@ -405,6 +450,53 @@ const PullSimulator: React.FC = () => {
     });
   };
 
+  // Calculate aggregate stats
+  const pullStats = useMemo(() => {
+    const stats = {
+      totalPulls: 0,
+      lPlus: 0,
+      l: 0,
+      rare: 0,
+      threeStar: 0,
+      twoStar: 0,
+      heroCounts: {} as Record<string, { count: number; rarity: string }>,
+    };
+
+    pullHistory.forEach((session) => {
+      session.pulls.forEach((pull) => {
+        stats.totalPulls++;
+
+        // Count by rarity
+        if (pull.rarity === "L+") stats.lPlus++;
+        else if (pull.rarity === "L") stats.l++;
+        else if (pull.rarity === "Rare") stats.rare++;
+        else if (pull.rarity === "3*") stats.threeStar++;
+        else if (pull.rarity === "2*") stats.twoStar++;
+
+        // Count by hero (excluding placeholders if desired, but user asked for "each hero")
+        // We'll exclude placeholders from the visual grid usually, or keep them separate
+        if (pull.heroName !== "2* Placeholder" && pull.heroName !== "3* Placeholder") {
+          if (!stats.heroCounts[pull.heroName]) {
+            stats.heroCounts[pull.heroName] = { count: 0, rarity: pull.rarity };
+          }
+          stats.heroCounts[pull.heroName].count++;
+        }
+      });
+    });
+
+    return stats;
+  }, [pullHistory]);
+
+  const sortedHeroes = useMemo(() => {
+    return Object.entries(pullStats.heroCounts).sort((a, b) => {
+      // Sort by rarity (L+ > L > Rare) then by count (desc)
+      const rarityWeight = { "L+": 3, "L": 2, "Rare": 1, "3*": 0, "2*": 0 };
+      const rarityDiff = rarityWeight[b[1].rarity as keyof typeof rarityWeight] - rarityWeight[a[1].rarity as keyof typeof rarityWeight];
+      if (rarityDiff !== 0) return rarityDiff;
+      return b[1].count - a[1].count;
+    });
+  }, [pullStats]);
+
   return (
     <div className="pull-simulator">
       <div className="pull-simulator-container">
@@ -422,6 +514,7 @@ const PullSimulator: React.FC = () => {
               </p>
 
               {/* L+ Row */}
+              <div className="wishlist-section-label">Legendary+</div>
               <div className="wishlist-row">
                 {wishlist.lPlus.map((hero, index) => (
                   <div
@@ -450,7 +543,7 @@ const PullSimulator: React.FC = () => {
                       </>
                     ) : (
                       <div className="unowned-content">
-                        <span className="unowned-text">Unowned</span>
+                        <span className="unowned-text">L+</span>
                       </div>
                     )}
                   </div>
@@ -458,6 +551,7 @@ const PullSimulator: React.FC = () => {
               </div>
 
               {/* L Row */}
+              <div className="wishlist-section-label">Legendary</div>
               <div className="wishlist-row">
                 {wishlist.l.map((hero, index) => (
                   <div
@@ -484,7 +578,7 @@ const PullSimulator: React.FC = () => {
                       </>
                     ) : (
                       <div className="unowned-content">
-                        <span className="unowned-text">Unowned</span>
+                        <span className="unowned-text">L</span>
                       </div>
                     )}
                   </div>
@@ -492,6 +586,7 @@ const PullSimulator: React.FC = () => {
               </div>
 
               {/* Rare Row */}
+              <div className="wishlist-section-label">Rare</div>
               <div className="wishlist-row">
                 {wishlist.rare.map((hero, index) => (
                   <div
@@ -520,7 +615,7 @@ const PullSimulator: React.FC = () => {
                       </>
                     ) : (
                       <div className="unowned-content">
-                        <span className="unowned-text">Unowned</span>
+                        <span className="unowned-text">Rare</span>
                       </div>
                     )}
                   </div>
@@ -550,43 +645,60 @@ const PullSimulator: React.FC = () => {
             <div className={`pull-results ${currentPulls.length === 0 ? "empty" : ""} ${!showCards ? "hidden" : ""}`} onClick={handleCardClick}>
               {currentPulls.length > 0 && showCards ? (
                 currentPulls.map((pull, index) => (
-              <div
-                key={index}
-                className={`pull-card ${flippedCards[index] ? "flipped" : ""} rarity-${pull.rarity.toLowerCase().replace("+", "plus").replace("*", "star")}`}
-              >
-                <div className="card-inner">
-                  {/* Card back */}
-                  <div className="card-back">
-                    <div className="card-back-content">?</div>
-                  </div>
-
-                  {/* Card front */}
-                  <div className="card-front">
-                    {pull.rarity !== "2*" && pull.rarity !== "3*" ? (
-                      <>
+                  <div
+                    key={index}
+                    className={`pull-card ${flippedCards[index] ? "flipped" : ""} rarity-${pull.rarity.toLowerCase().replace("+", "plus").replace("*", "star")}`}
+                  >
+                    <div className="card-inner">
+                      {/* Flash effect on reveal */}
+                      {flippedCards[index] && (
+                        <div className="reveal-flash"></div>
+                      )}
+                      {/* Card back */}
+                      <div className="card-back">
                         <img
-                          src={`/Hero Portraits/${encodeURIComponent(pull.heroName)}.png`}
-                          alt={pull.heroName}
-                          className="hero-portrait"
-                          onError={(e) => {
-                            e.currentTarget.src = "/placeholder.png";
-                          }}
+                          src={pull.rarity === "2*" || pull.rarity === "3*"
+                            ? "/Cradbacks/CardbackFodder.png"
+                            : "/Cradbacks/CardbackRare.png"
+                          }
+                          alt="Card back"
+                          className="cardback-image"
                         />
-                        <div className="card-info">
-                          <div className="hero-name">{pull.heroName}</div>
-                          <div className="hero-rarity">{pull.rarity}</div>
-                        </div>
-                        {pull.isWishlist && (
-                          <div className="wishlist-badge">★ Wishlist</div>
+                        {(pull.rarity === "L" || pull.rarity === "L+") && (
+                          <div className={`legendary-aura ${pull.rarity === "L+" ? "legendary-plus" : ""}`}></div>
                         )}
-                      </>
-                    ) : (
-                      <div className="placeholder-card">
-                        <div className="placeholder-text">{pull.heroName}</div>
                       </div>
-                    )}
-                  </div>
-                </div>
+
+                      {/* Card front */}
+                      <div className="card-front">
+                        {(pull.rarity === "L" || pull.rarity === "L+") && flippedCards[index] && (
+                          <div className="legendary-glow-outer"></div>
+                        )}
+                        {pull.rarity !== "2*" && pull.rarity !== "3*" ? (
+                          <>
+                            <img
+                              src={`/Hero Portraits/${encodeURIComponent(pull.heroName)}.png`}
+                              alt={pull.heroName}
+                              className="hero-portrait"
+                              onError={(e) => {
+                                e.currentTarget.src = "/placeholder.png";
+                              }}
+                            />
+                            <div className="card-info">
+                              <div className="hero-name">{pull.heroName}</div>
+                              <div className="hero-rarity">{pull.rarity}</div>
+                            </div>
+                            {pull.isWishlist && (
+                              <div className="wishlist-badge">★ Wishlist</div>
+                            )}
+                          </>
+                        ) : (
+                          <div className="placeholder-card">
+                            <div className="placeholder-text">{pull.heroName}</div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -601,46 +713,54 @@ const PullSimulator: React.FC = () => {
         {/* Pull history */}
         {pullHistory.length > 0 && (
           <div className="pull-history">
-            <h2>Pull History ({pullHistory.length * 10} total pulls)</h2>
-            <div className="history-summary">
-              {(() => {
-                const summary = {
-                  "L+": 0,
-                  L: 0,
-                  Rare: 0,
-                  "3*": 0,
-                  "2*": 0,
-                };
-                pullHistory.forEach((session) => {
-                  session.pulls.forEach((pull) => {
-                    summary[pull.rarity]++;
-                  });
-                });
-                return (
-                  <div className="summary-stats">
-                    <div className="stat">
-                      <span className="stat-label">L+:</span>
-                      <span className="stat-value">{summary["L+"]}</span>
+            <div className="history-header">
+              <h2>Pull History</h2>
+              <div className="total-pulls-badge">{pullStats.totalPulls} Total Pulls</div>
+            </div>
+
+            <div className="history-stats-grid">
+              <div className="stat-card l-plus">
+                <span className="stat-label">Legendary+</span>
+                <span className="stat-value">{pullStats.lPlus}</span>
+                <span className="stat-percent">
+                  {((pullStats.lPlus / pullStats.totalPulls) * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className="stat-card l">
+                <span className="stat-label">Legendary</span>
+                <span className="stat-value">{pullStats.l}</span>
+                <span className="stat-percent">
+                  {((pullStats.l / pullStats.totalPulls) * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className="stat-card rare">
+                <span className="stat-label">Rare</span>
+                <span className="stat-value">{pullStats.rare}</span>
+                <span className="stat-percent">
+                  {((pullStats.rare / pullStats.totalPulls) * 100).toFixed(1)}%
+                </span>
+              </div>
+            </div>
+
+            <div className="history-collection">
+              <h3>Collection Log</h3>
+              <div className="collection-grid">
+                {sortedHeroes.map(([name, data]) => (
+                  <div key={name} className={`collection-item rarity-${data.rarity.toLowerCase().replace("+", "plus")}`}>
+                    <div className="collection-img-wrapper">
+                      <img
+                        src={`/Hero Portraits/${encodeURIComponent(name)}.png`}
+                        alt={name}
+                        onError={(e) => {
+                          e.currentTarget.src = "/placeholder.png";
+                        }}
+                      />
+                      <div className="collection-count">x{data.count}</div>
                     </div>
-                    <div className="stat">
-                      <span className="stat-label">L:</span>
-                      <span className="stat-value">{summary.L}</span>
-                    </div>
-                    <div className="stat">
-                      <span className="stat-label">Rare:</span>
-                      <span className="stat-value">{summary.Rare}</span>
-                    </div>
-                    <div className="stat">
-                      <span className="stat-label">3*:</span>
-                      <span className="stat-value">{summary["3*"]}</span>
-                    </div>
-                    <div className="stat">
-                      <span className="stat-label">2*:</span>
-                      <span className="stat-value">{summary["2*"]}</span>
-                    </div>
+                    <div className="collection-name">{name}</div>
                   </div>
-                );
-              })()}
+                ))}
+              </div>
             </div>
           </div>
         )}
