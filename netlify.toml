@@ -33,6 +33,36 @@
   [headers.values]
     Cache-Control = "public, max-age=300"
 
+[[headers]]
+  # Cache image files for 24 hours
+  for = "/Hero Portraits/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, immutable"
+
+[[headers]]
+  # Cache downloaded hero portraits for 24 hours
+  for = "/Downloaded Hero Portraits/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, immutable"
+
+[[headers]]
+  # Cache type icons for 24 hours
+  for = "/Type Icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, immutable"
+
+[[headers]]
+  # Cache gear set photos for 24 hours
+  for = "/Gear Sets Photos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, immutable"
+
+[[headers]]
+  # Cache pet icons for 24 hours
+  for = "/Pet Icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, immutable"
+
 [[redirects]]
   # SPA fallback - redirect all routes to index.html
   from = "/*"

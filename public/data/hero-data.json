@@ -1,2863 +1,2870 @@
 {
-    "Ace": {
-        "name": "Ace",
-        "role": "Support/Debuffs",
-        "primary_content": "Total War, GvG",
-        "target_transcendence": "T0",
-        "wishlist_priority": "Low",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Physical Attack Boost",
-            "Defense Reduction",
-            "Physical Vulnerability",
-            "Incoming Healing Reduction",
-            "Reduced Buff Duration",
-            "Debuff Removal",
-            "Guts"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": "N/A"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "SPEEEEEED",
-                    "sub_stat_priority": "N/A"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "N/A",
-        "tips": "The main reason you use Ace is because of his defense down passive. He is really sticky due to guts and provides good debuffs for your team. Ace's buff removal is powerful in GvG."
-    },
-    "Alice": {
-        "name": "Alice",
-        "role": "Healer",
-        "primary_content": "Arena, Total War, GvG (Situational)",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Medium",
-        "type": "Support",
-        "target_number": "None",
-        "rarity": "L",
-        "effects": [
-            "Defense Boost",
-            "Incoming Healing Boost",
-            "Heal",
-            "Continuous Healing"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Paladin Magic",
-                    "main_stats": "Max HP%",
-                    "required_stat_thresholds": "Max HP",
-                    "sub_stat_priority": ""
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Paladin Magic",
-                    "main_stats": "Max HP%",
-                    "required_stat_thresholds": "Max HP",
-                    "sub_stat_priority": ""
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Max HP% (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "Max HP, Speed",
-                    "sub_stat_priority": ""
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Max HP% (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "Max HP, Speed",
-                    "sub_stat_priority": ""
-                }
-            ]
-        },
-        "skill_enhance_priority": "Not that important overall but the basic attack and passive are both pretty nice",
-        "tips": "Defensive healer. Generally used in tank comp. The defense she gives makes a lot of the tanky heroes a lot stronger, especially Platin."
-    },
-    "Amelia": {
-        "name": "Amelia",
-        "role": "Support, Buffs, Debuffs",
-        "primary_content": "GvG, Arena, Total War",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Medium",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Effect Hit Rate Boost",
-            "Unable to Recover",
-            "Debuff Removal",
-            "Revive"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack % (not that important)",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": ""
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack % (not that important)",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": ""
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack % (not that important)",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": ""
-                },
-                {
-                    "name": "Full Speed",
-                    "main_stats": "All Attack % (not that important)",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": ""
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack % (not that important)",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": ""
-                },
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack % (not that important)",
-                    "required_stat_thresholds": "N/A",
-                    "sub_stat_priority": ""
-                }
-            ]
-        },
-        "skill_enhance_priority": "N/A",
-        "tips": "S1 concussion is very strong when paired with multi hit heroes. Can infinitely cc 3 enemies. Amelia should be squishy, as she provides a large shield and cleanse when dying. Very strong against tank team due to HP alteration and anti-heal. Game changer when paired with Kyle."
-    },
-    "Aquila": {
-        "name": "Aquila",
-        "role": "Support/Tank",
-        "primary_content": "Arena, GvG, Total War (Death comps)",
-        "target_transcendence": "T0-T2",
-        "wishlist_priority": "Low (high if you're a death comp freak)",
-        "type": "Defense",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Effect Resist Reduction",
-            "Death",
-            "Link",
-            "Death Turn Reduction",
-            "Weakness Hit Chance Reduction",
-            "Barrier"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "Max HP % (weapons), Block Rate (armor), All damage reduction (armor)",
-                    "required_stat_thresholds": "Not important but 100% block is good if you can get it",
-                    "sub_stat_priority": "Block rate, Max HP"
-                },
-                {
-                    "name": "Gatekeeper Physical",
-                    "main_stats": "Max HP % (weapons), Block Rate (armor), All damage reduction (armor)",
-                    "required_stat_thresholds": "100% block rate",
-                    "sub_stat_priority": "Block rate, Max HP"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "Max HP % (weapons), Block Rate (armor), All damage reduction (armor)",
-                    "required_stat_thresholds": "SPEED, rest not important but 100% block is good if you can get it",
-                    "sub_stat_priority": "SPEED, Block rate, Max HP"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2",
-        "tips": "Want to stack death with Aquila S2 and Kris S2 then proc it with Aquila S1. Leading with S2 is good cause it gives link."
-    },
-    "Aragon": {
-        "name": "Aragon",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "Do not",
-        "type": "Defense",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Defense-Based Damage",
-            "All Attack Reduction",
-            "Crit Damage Reduction",
-            "Stun",
-            "Reduced Buff Duration",
-            "Heal",
-            "Pierce",
-            "Cooldown Reduction"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder. This guy is garbage",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Ariel": {
-        "name": "Ariel",
-        "role": "Magic",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "[To be filled]",
-        "rarity": "Rare",
-        "effects": [
-            "[To be filled with hero-specific effects]"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Asura": {
-        "name": "Asura",
-        "role": "Magic",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Defense Reduction",
-            "Barrier",
-            "Focus Target"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Ballista": {
-        "name": "Ballista",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "Do not",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Fixed Damage",
-            "Damage Nullification",
-            "Follow-Up Attack",
-            "Pierce"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder",
-        "tips": "Fodder"
-    },
-    "Bane": {
-        "name": "Bane",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Attack Reduction",
-            "Silence",
-            "Immortality"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Bi Dam": {
-        "name": "Bi Dam",
-        "role": "DPS",
-        "primary_content": "Castle Rush, Advent",
-        "target_transcendence": "T2-T6",
-        "wishlist_priority": "Very low",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Physical Damage Boost",
-            "Bleed",
-            "Explosion"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate, All Attack %",
-                    "required_stat_thresholds": "100% crit rate",
-                    "sub_stat_priority": "Attack, Crit Rate, Weakness Hit"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate, All Attack %",
-                    "required_stat_thresholds": "100% crit rate",
-                    "sub_stat_priority": "Attack, Crit Rate, Weakness Hit"
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "N/A",
-        "tips": "Only used in one castle rush and advent. Low priority, only go for him if u get a bunch of random copies for no reason. Stack bleeds to detonate. Bleeds damage are based off of max attack"
-    },
-    "Biscuit": {
-        "name": "Biscuit",
-        "role": "Support",
-        "primary_content": "Raid, Castle Rush, Advent, Nightmare Pushing",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "VERY high",
-        "type": "Support",
-        "target_number": "3 Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Defense-Based Damage",
-            "Weakness Hit Chance Boost",
-            "Quintuple-Target Attack Resistance",
-            "Increase damage to boss targets",
-            "Defense Reduction",
-            "Buff Removal"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Defense (weapons), Block Rate (armors), Damange Reduction (armors)",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Block rate, Defense, HP"
-                },
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate (weapons), Defense % (armors)",
-                    "required_stat_thresholds": "100% crit rate",
-                    "sub_stat_priority": "Crit rate, Crit damage, Defense"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1 > passive > basic attack",
-        "tips": "Amazing for clearing nightmare on 3* when used in physical team with Kyle. Used in almost all PvE content. Need speed sub stats for Ox (so Espanda goes 4th). Can build crit set if you're pushing damage in castle rush or advent."
-    },
-    "Black Rose": {
-        "name": "Black Rose",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Attack Boost",
-            "All Attack Boost",
-            "Petrify Immunity",
-            "Buff Removal",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Catty": {
-        "name": "Catty",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Attack Boost",
-            "Weakness Hit Chance Boost",
-            "Crit Rate Boost",
-            "Physical Vulnerability",
-            "Block Rate Reduction",
-            "Unable to Recover"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Chancellor": {
-        "name": "Chancellor",
-        "role": "Fodder",
-        "primary_content": "GvG",
-        "target_transcendence": "None",
-        "wishlist_priority": "Dont",
-        "type": "Universal",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Defense-Based Damage",
-            "Fixed Damage",
-            "All Attack Reduction",
-            "Defense Reduction",
-            "All Damage Reduction",
-            "Increased Miss Chance",
-            "Buff Removal",
-            "Damage Immunity",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "Can be used in guild war but lets be real this guy is fodder"
-    },
-    "Chloe": {
-        "name": "Chloe",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "All Attack Boost",
-            "Crit Rate Boost",
-            "Unable to Recover",
-            "Shock Immunity",
-            "Buff Removal",
-            "Debuff Removal",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Cleo": {
-        "name": "Cleo",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Magic Attack Boost",
-            "Physical Attack Reduction",
-            "Petrify",
-            "Silence Immunity",
-            "Poison"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Colt": {
-        "name": "Colt",
-        "role": "Support, DPS, Counter CC",
-        "primary_content": "Arena, GvG",
-        "target_transcendence": "T2-T6",
-        "wishlist_priority": "High",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Effect Hit Rate Boost",
-            "All Attack Reduction",
-            "Guts",
-            "Camouflage",
-            "Bomb"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Speed, All Attack %, All Attack, Effect Hit Rate"
-                },
-                {
-                    "name": "Full Speed",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Speed, All Attack %, All Attack, Effect Hit Rate"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "Good in physical and magic comp in Arena. OP when paired with Platin in GvG. Cant be CCd due to camouflage and can counter cc if your whole team gets stunned."
-    },
-    "Daisy": {
-        "name": "Daisy",
-        "role": "Petrify Immunity",
-        "primary_content": "Raid",
-        "target_transcendence": "T0-T2",
-        "wishlist_priority": "Medium",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "L",
-        "effects": [
-            "Max HP-Based Damage",
-            "Magic Attack Boost",
-            "Petrify Immunity",
-            "Buff Removal",
-            "Barrier"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate (weapons), All Attack % (Armor), Damage Taken Reduction (Armor)",
-                    "required_stat_thresholds": "100% Crit Rate, 16% Damage Taken Reduction, 200% Crit Damage",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %, Max HP"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Really hard to find perfect gear for her to clear higher levels of Ox. Gotta find the balance between 1 shotting the ads and being tanky enough to live. Can occasionally be used to counter petrify in any other content (like nightmare 8-30)"
-    },
-    "Dellons": {
-        "name": "Dellons",
-        "role": "DPS, Support",
-        "primary_content": "Total War, Nightmare",
-        "target_transcendence": "T6",
-        "wishlist_priority": "Low",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Physical Damage Boost",
-            "Silence",
-            "Damage Nullification"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate (weapons), All Attack % (Armor)",
-                    "required_stat_thresholds": "100% Crit Rate (18% from T4)",
-                    "sub_stat_priority": "Crit Rate, Crit Damage"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "Required Stat Thresholds: Speed",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Bounty Tracker Physical",
-                    "main_stats": "Crit Rate, Weakness Hit Chance, All Attack % (armors)",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Speed, Weakness Hit Chance, Crit Rate, Crit Damage"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "Dellons is strong but too many units outshine him. Not very high prio. Might be in line for a buff after this next round. Weakness hit is good so he resets his ult. Silence can be nice."
-    },
-    "Eileene": {
-        "name": "Eileene",
-        "role": "CC",
-        "primary_content": "Arena, GvG, Nightmare, Total War",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Medium",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Physical Attack Boost",
-            "Shock",
-            "Revive",
-            "Pierce"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "N/A"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Full Speed",
-                    "main_stats": "Required Stat Thresholds: Speed",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "S2 is really strong. Multi-hit shock. Much stronger when paired with rosie but not necessary. T6 adds 10% x2 chance to hit which is very powerful."
-    },
-    "Elysia": {
-        "name": "Elysia",
-        "role": "Support/Utility",
-        "primary_content": "Arena, Total War, GvG, Nightmare",
-        "target_transcendence": "T0-T2",
-        "wishlist_priority": "High",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Defense Reduction",
-            "Debuff Removal",
-            "Barrier",
-            "Damage Immunity",
-            "Silence",
-            "Buff Duration Reduction",
-            "Increased Miss Chance"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Orchestrator Physical",
-                    "main_stats": "Anything",
-                    "required_stat_thresholds": "100% Effect Resist",
-                    "sub_stat_priority": "Effect Resist"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Orchestrator Physical",
-                    "main_stats": "Anything",
-                    "required_stat_thresholds": "As much speed and effect resist as possible",
-                    "sub_stat_priority": "Speed, Effect Resist"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1, S2, Passive are all good",
-        "tips": "Really broken utility character. Cleanses allies and silences enemies. Extremely sticky, especially when T2 with orchestrator set."
-    },
-    "Espada": {
-        "name": "Espada",
-        "role": "DPS",
-        "primary_content": "Raid",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High",
-        "type": "Magic",
-        "target_number": "Single Enemy",
-        "rarity": "L",
-        "effects": [
-            "Max HP-Based Damage",
-            "Crit Rate Boost",
-            "Magic Damage Boost",
-            "Magic Resistance",
-            "Magic Vulnerability"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Magic",
-                    "main_stats": "Crit Rate (Armor)",
-                    "required_stat_thresholds": "60% Crit Rate, 200% Crit Damage",
-                    "sub_stat_priority": "Crit Damage, Crit Rate, Weakness Hit Chance, All Attack %, All Attack"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "Needs to have the 4th highest speed on your team for Ox"
-    },
-    "Evan": {
-        "name": "Evan",
-        "role": "Defense",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Defense",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Defense-Based Damage",
-            "Defense Boost",
-            "Block Rate Boost",
-            "Stun",
-            "Stun Immunity",
-            "Barrier"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Fai": {
-        "name": "Fai",
-        "role": "Dps, Support, Debuffs",
-        "primary_content": "Arena, Nightmare, Total War, GvG",
-        "target_transcendence": "T0 (T6 goes crazy but lets be real here)",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "L++",
-        "effects": [
-            "Max HP-Based Damage",
-            "Defense Reduction",
-            "Physical Vulnerability",
-            "Burn",
-            "Buff Removal",
-            "Revive",
-            "Barrier",
-            "Execution"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "All Attack %"
-                },
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "N/a",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed, All Attack %"
-                },
-                {
-                    "name": "Bounty Tracker Physical",
-                    "main_stats": "Weakness Hit Chance, All Attack %",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed, Weakness HIt Chance, All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1 > Passive",
-        "tips": "Can use for power up dungeons before u have strong shane/Espada. Passive phys vulnerability + S1 upgrade for defense down is a powerful combo to make your hitters like Kyle go crazy. Weakness hit set is playable because she will more often target low hp targets with her execute. Dont underestimate the burn, it does alot of damage."
-    },
-    "Feng Yan": {
-        "name": "Feng Yan",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Defense Reduction",
-            "Freeze Immunity",
-            "Damage Immunity",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Heavenia": {
-        "name": "Heavenia",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Attack Boost",
-            "Freeze",
-            "Damage Immunity"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Hellenia": {
-        "name": "Hellenia",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Defense-Based Damage",
-            "Defense Boost",
-            "Increased Miss Chance",
-            "Debuff Removal",
-            "Damage Immunity",
-            "Heal",
-            "Taunt"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Hokin": {
-        "name": "Hokin",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Attack Boost",
-            "Physical Damage Boost",
-            "Stun"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Jane": {
-        "name": "Jane",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Poison",
-            "Camouflage"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Jave": {
-        "name": "Jave",
-        "role": "DPS, CC",
-        "primary_content": "Total War",
-        "target_transcendence": "T2-T6",
-        "wishlist_priority": "Very low",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Stun",
-            "Attack Based Defense Boost",
-            "Counter Attack"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Physical",
-                    "main_stats": "All Attack % (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "100% Block, as much attack as possible",
-                    "sub_stat_priority": "Block rate, All Attack %, All Attack, Defense"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "Usable in Total War. Hes not a bad unit but just doesnt see many use cases where he outshines other heroes."
-    },
-    "Jin": {
-        "name": "Jin",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Fixed Damage",
-            "Physical Attack Boost",
-            "Crit Rate Boost",
-            "Stun",
-            "Silence Immunity",
-            "Barrier"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Joker": {
-        "name": "Joker",
-        "role": "Magic",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Crit Damage Boost",
-            "Crit Rate Reduction",
-            "Stun",
-            "Buff Removal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Jupy": {
-        "name": "Jupy",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Crit Rate Boost",
-            "Crit Damage Boost",
-            "Poison",
-            "Camouflage",
-            "Change Skill"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Juri": {
-        "name": "Juri",
-        "role": "Support, DPS, Debuff",
-        "primary_content": "Arena, GvG, Nightmare, Total War, Advent",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "L++",
-        "effects": [
-            "Max HP-Based Damage",
-            "Defense Reduction",
-            "Crowd Control Immunity",
-            "Immortality",
-            "Follow-Up Attack",
-            "Souldeath"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spellweaver Magic",
-                    "main_stats": "Doesnt matter",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2 > Passive",
-        "tips": "Soul death is Op in PvP. Counters phyiscal comp, can also be used IN physical comp. Can be used as DPS in Yeonhee advent 2nd team. Follow up attack is pretty strong with Mercure dot."
-    },
-    "Kagura": {
-        "name": "Kagura",
-        "role": "Support/Debuffs/CC",
-        "primary_content": "GvG, Arena, Total War, Nightmare",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "High",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Crit Damage Boost",
-            "Physical Damage Boost",
-            "Physical Vulnerability",
-            "Incoming Healing Reduction",
-            "Petrify",
-            "Debuff Removal",
-            "Indomitable",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Vanguard Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "All Attack %"
-                },
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed, all attack %"
-                },
-                {
-                    "name": "Assassin Physical",
-                    "main_stats": "All Attack %, Crit Rate (Weapons)",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Speed, Crit Rate, All Attack %, Crit Damage"
-                },
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Speed > All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2",
-        "tips": "Core PvP unit for physical comp. Stickiest unit in the game"
-    },
-    "Karin": {
-        "name": "Karin",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "Only Basic Attack",
-        "rarity": "Rare",
-        "effects": [
-            "Debuff Removal",
-            "Revive",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Karma": {
-        "name": "Karma",
-        "role": "DPS",
-        "primary_content": "Total War, Arena",
-        "target_transcendence": "T6",
-        "wishlist_priority": "Low",
-        "type": "Universal",
-        "target_number": "3 Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Defense-Based Damage",
-            "Defense Boost",
-            "All Damage Boost",
-            "Block Rate Boost",
-            "All Damage Reduction",
-            "Pierce",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Weakness Hit (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "67% Block Rate",
-                    "sub_stat_priority": "Block Rate > Weakness Hit > Crit Rate"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Orchestrator Magic",
-                    "main_stats": "Weakness Hit (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "67% Block Rate",
-                    "sub_stat_priority": "Block Rate > Weakness Hit > Crit Rate"
-                }
-            ]
-        },
-        "skill_enhance_priority": "S2 > Basic Attack",
-        "tips": "Only really usable in full tank comp. Need T6 or he will feel pretty bad, but becomes an absolute menace in an upgraded tank comp. Really meant for whales tbh."
-    },
-    "Karon": {
-        "name": "Karon",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "Only Basic Attack",
-        "rarity": "Rare",
-        "effects": [
-            "Bleed Immunity",
-            "Barrier",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Klahan": {
-        "name": "Klahan",
-        "role": "Fodder",
-        "primary_content": "Being fodder (nightmare farming is ok)",
-        "target_transcendence": "Fodder",
-        "wishlist_priority": "Do not",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Physical Attack Boost",
-            "Physical Damage Boost",
-            "All Damage Reduction",
-            "Damage Immunity",
-            "Heal",
-            "Pierce"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder until buffed",
-        "tips": "Fodder until buffed"
-    },
-    "Knox": {
-        "name": "Knox",
-        "role": "Tank/Death",
-        "primary_content": "Total War, Nightmare",
-        "target_transcendence": "T2",
-        "wishlist_priority": "Do Not",
-        "type": "Defense",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Max HP-Based Damage",
-            "Death Effect Probability Boost",
-            "Effect Resist Reduction",
-            "Death",
-            "Damage Immunity",
-            "Barrier",
-            "Taunt"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "Anything tanky",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Anything tanky"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Main reason to have him is for his passive death chance increase in death comp"
-    },
-    "Kris": {
-        "name": "Kris",
-        "role": "Death",
-        "primary_content": "Total War, Arena, Nightmare",
-        "target_transcendence": "T0-T2",
-        "wishlist_priority": "Very Low",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Death",
-            "Immortality",
-            "Heal",
-            "Cooldown Reset"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "Effect Hit Rate, Defense %, HP %, Block Rate (armors), Damage Reduction (Armors)",
-                    "required_stat_thresholds": "100% Block",
-                    "sub_stat_priority": "Block Rate, Defense %, HP %, Effect Hit"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "Speed",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "HP %, Damage Reduction (armors), Block Rate (armors)",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed, Block Rate, HP %, Defense %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "All are good",
-        "tips": "Death comp is not in a good spot right now. He might be better if it gets buffed, but atm its just for total war or specific nightmare levels."
-    },
-    "Kyle": {
-        "name": "Kyle",
-        "role": "DPS",
-        "primary_content": "Everything...",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High",
-        "type": "Attack",
-        "target_number": "4 Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Crit Rate Boost",
-            "All Damage Nullification",
-            "Eyes of the strong",
-            "Pierce",
-            "Ignore Defense",
-            "Buff Removal"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Assassin Physical",
-                    "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
-                    "required_stat_thresholds": "73% crit rate, 270% crit damage",
-                    "sub_stat_priority": "Crit Damage, Crit Rate, All Attack %, Weakness Hit Chance"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
-                    "required_stat_thresholds": "73% crit rate, 210% crit damage",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %, Weakness Hit Chance"
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Assassin Physical",
-                    "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
-                    "required_stat_thresholds": "73% crit rate, 270% crit damage, 40-60 speed",
-                    "sub_stat_priority": "Crit Damage, Crit Rate, All Attack %, Speed"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Bounty Tracker Physical",
-                    "main_stats": "Crit Rate, Crit Damage, Weakness Hit Chance, All Attack % (armors)",
-                    "required_stat_thresholds": "73% crit rate, 200% crit damage, as much weakness as you can get, 40 speed",
-                    "sub_stat_priority": "Crit Rate, Speed, Crit Damage, Weakness Hit Chance"
-                }
-            ]
-        },
-        "skill_enhance_priority": "Passive > S1 > S2",
-        "tips": "Most OP hero in the game. Good in almost all content. Beyond broken for pushing nightmare, tower, arena, total war, etc."
-    },
-    "Kyrielle": {
-        "name": "Kyrielle",
-        "role": "DPS, Counter CC, CC",
-        "primary_content": "Arena, GvG, Total War, Advent Expedition",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Low",
-        "type": "Magic",
-        "target_number": "Single Enemy",
-        "rarity": "L+",
-        "effects": [
-            "All Damage Nullification",
-            "Guts",
-            "Speed-Based Attack Boost",
-            "Magic Damage Boost",
-            "Pierce",
-            "Paralysis",
-            "Debuff Removal",
-            "Damage Boost"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Magic",
-                    "main_stats": "Effect Hit Rate",
-                    "required_stat_thresholds": "Sub Stat Priority: Effect Hit Rate, Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %",
-                    "sub_stat_priority": "Effect Hit Rate, Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spellweaver Magic",
-                    "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "Sub Stat Priority: Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %",
-                    "sub_stat_priority": "Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %"
-                },
-                {
-                    "name": "Full Speed",
-                    "main_stats": "Full Speed",
-                    "required_stat_thresholds": "Full Speed",
-                    "sub_stat_priority": "Full Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "Skill 2, Basic Attack, Skill 1, Passive",
-        "tips": "Overall not that great of a hero at lower tiers. Once you get her to T2-T6 she becomes a little bit more of a viable PvP unit. T2 gives her single targert Skill 1 a recast on kill and Skill 2 is a AOE Paralysis. The good thing about this unit is at T6 you dont have to worry about queueing any skills in PvP since she becomes immune to CC. This hero also scales all attack with speed making it a good speed stick as well as good CC."
-    },
-    "Lania": {
-        "name": "Lania",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Magic Attack Boost",
-            "Effect Hit Rate Boost",
-            "Freeze",
-            "Freeze Immunity"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Leo": {
-        "name": "Leo",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "All Attack Boost",
-            "Defense Reduction",
-            "All Damage Reduction",
-            "Bleed",
-            "Death Immunity",
-            "Revive",
-            "Life Drain"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Li": {
-        "name": "Li",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Self Max HP-Based Damage",
-            "Stun",
-            "Damage Immunity",
-            "Heal",
-            "Counterattack",
-            "Taunt",
-            "HP Alteration"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Lina": {
-        "name": "Lina",
-        "role": "Healer/Buffer",
-        "primary_content": "Raid, Castle Rush, Nightmare, Total War, Advent",
-        "target_transcendence": "T2-T6",
-        "wishlist_priority": "Very High",
-        "type": "Support",
-        "target_number": "Single Enemy",
-        "rarity": "L",
-        "effects": [
-            "All Damage Boost",
-            "Crit Damage Boost",
-            "Effect Resist Boost",
-            "Defense Reduction",
-            "Barrier",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Paladin Magic",
-                    "main_stats": "Health %",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Health %, Health, Block Rate, Defense"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Health % (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "100% block rate",
-                    "sub_stat_priority": "Block Rate, HP %, HP"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "All",
-        "tips": "Used in almost all content. Really good heals while also buffing your team's damage a ton."
-    },
-    "Lucy": {
-        "name": "Lucy",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "Only Basic Attack",
-        "rarity": "Rare",
-        "effects": [
-            "Defense-Based Damage",
-            "Defense Boost",
-            "Physical Attack Reduction",
-            "Poison Immunity",
-            "Debuff Removal",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "May": {
-        "name": "May",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Damage Boost",
-            "Physical Vulnerability",
-            "Blind",
-            "Bleed",
-            "Burn",
-            "Poison",
-            "Barrier"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Mercure": {
-        "name": "Mercure",
-        "role": "DPS",
-        "primary_content": "Nightmare, Arena, Total War, GvG",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "High",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Effect Resist Reduction",
-            "Incoming Healing Reduction",
-            "Stun",
-            "Blessing",
-            "Barrier",
-            "Magic Reflux"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "None, just go for all attack",
-                    "sub_stat_priority": "All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "Speed, then stack all attack as high as you can",
-                    "sub_stat_priority": "Speed, All Attack %"
-                },
-                {
-                    "name": "Spellweaver Physical",
-                    "main_stats": "All Attack %",
-                    "required_stat_thresholds": "Push for as much speed as possible",
-                    "sub_stat_priority": "Speed, All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "All good but prio passive",
-        "tips": "Really good in most content. Magic reflux spreads a lot faster when u get him T2 and T6, as well as with spellweaver set."
-    },
-    "Miho": {
-        "name": "Miho",
-        "role": "Support, sub-dps",
-        "primary_content": "Castle Rush, Advent",
-        "target_transcendence": "T2",
-        "wishlist_priority": "High",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Weakness Hit Damage Boost",
-            "Magic Vulnerability",
-            "Reduced Buff Duration",
-            "Debuff Removal",
-            "Guts"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate (weapons), All Attack % (armors)",
-                    "required_stat_thresholds": "100% crit rate",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "N/A",
-        "tips": "T2 for the cleanse is really big for certain castle rushes and advent."
-    },
-    "Nia": {
-        "name": "Nia",
-        "role": "Fodder",
-        "primary_content": "Fodder",
-        "target_transcendence": "Fodder",
-        "wishlist_priority": "Do not",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L",
-        "effects": [
-            "Effect Hit Rate Boost",
-            "Shock",
-            "Reduced Buff Duration",
-            "Barrier",
-            "Cooldown Increase"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "None",
-        "tips": "Shes not useless but doesnt really find a place in the meta. Most likely will be phased out entirely after a few more hero releases."
-    },
-    "Noho": {
-        "name": "Noho",
-        "role": "Magic",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Self Max HP-Based Damage",
-            "Magic Attack Boost",
-            "Buff Removal",
-            "Barrier",
-            "HP Alteration"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Orly": {
-        "name": "Orly",
-        "role": "Support",
-        "primary_content": "GvG, Total War",
-        "target_transcendence": "T6",
-        "wishlist_priority": "Low",
-        "type": "Support",
-        "target_number": "All Enemies",
-        "rarity": "L",
-        "effects": [
-            "Crit Rate Boost",
-            "Crit Damage Boost",
-            "Defense Reduction",
-            "Buff Removal",
-            "Debuff Removal",
-            "Damage Nullification",
-            "Continuous Healing"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Orchestrator Magic",
-                    "main_stats": "All Attack % (weapons), Block Rate (armors), Damage Reduction (armors)",
-                    "required_stat_thresholds": "As much speed as possible",
-                    "sub_stat_priority": "Speed, All Attack %, Block Rate, Effect Resist"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1, Basic Attack",
-        "tips": "Solo back liner for mage compositions"
-    },
-    "Pascal": {
-        "name": "Pascal",
-        "role": "DPS",
-        "primary_content": "Raid, Nightmare (niche), Castle Rush, Advent",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High",
-        "type": "Magic",
-        "target_number": "Single Enemy",
-        "rarity": "L",
-        "effects": [
-            "Magic Attack Boost",
-            "Crit Rate Boost",
-            "Crit Damage Boost",
-            "Damage Nullification",
-            "Ignore Defense",
-            "Cooldown Reset"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Magic",
-                    "main_stats": "Crit Rate, Crit Damage, All Attack % (armors)",
-                    "required_stat_thresholds": "100% crit rate, 46% weakness if using Biscuit. Dont need weakness if using Asura",
-                    "sub_stat_priority": "Crit Rate, Weakness Hit Rate (unless Asura), Crit Damage"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Avenger Magic",
-                    "main_stats": "Crit Damage (weapons), All Attack % (armors)",
-                    "required_stat_thresholds": "46% weakness",
-                    "sub_stat_priority": "Weakness Hit Rate, Crit Damage, All Attack %"
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "All except basic attack",
-        "tips": "Really need this unit. His kit is self-explanatory. Skill enhances and transcendence are really important."
-    },
-    "Platin": {
-        "name": "Platin",
-        "role": "Tank",
-        "primary_content": "Arena, GvG, Total War",
-        "target_transcendence": "T2-T6",
-        "wishlist_priority": "High",
-        "type": "Support",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Defense-Based Damage",
-            "Fixed Damage",
-            "All Attack Reduction",
-            "Buff Removal",
-            "Heal",
-            "Damage-Based Healing",
-            "HP Alteration"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Defense % (weapons), Damage Reduction (armors)",
-                    "required_stat_thresholds": "Aim for 42% DR (2 armors and 10% from T4), 65%+ block rate is fine.",
-                    "sub_stat_priority": "Block Rate, Defense %, Health %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "Passive",
-        "tips": "Can play as solo front line with almost any comp in PVP"
-    },
-    "Rachel": {
-        "name": "Rachel",
-        "role": "Debuff Support",
-        "primary_content": "Raid, Castle Rush, Advent Expedition",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Medium",
-        "type": "Universal",
-        "target_number": "3 Enemies (at T6)",
-        "rarity": "L+",
-        "effects": [
-            "Weakness Hit Chance Boost",
-            "All Attack Reduction",
-            "Defense Reduction",
-            "All Damage Reduction",
-            "Physical Vulnerability",
-            "Burn",
-            "Revive"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Physical",
-                    "main_stats": "Weakness Hit (to hit middle target in castle rush), All Attack % (armors)",
-                    "required_stat_thresholds": "73% Weakness Hit",
-                    "sub_stat_priority": "Block Rate, Weakness Hit"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Gatekeeper Physical",
-                    "main_stats": "All Attack %, All Attack % (armors), Block Rate (armors)",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "Block Rate, All Attack %"
-                },
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate, Crit Damage, All Attack % (armors)",
-                    "required_stat_thresholds": "100% Crit Rate, as much crit damage as possible",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, Attack %"
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2, Passive",
-        "tips": "Debuffs can feel OP at times. Pairs very well with Shane for debuff counter"
-    },
-    "Rahkun": {
-        "name": "Rahkun",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Defense",
-        "target_number": "Only Basic Attack",
-        "rarity": "Rare",
-        "effects": [
-            "Defense-Based Damage",
-            "Defense Boost",
-            "Effect Resist Boost",
-            "Physical Resistance",
-            "Taunt"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Rei": {
-        "name": "Rei",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "[To be filled]",
-        "rarity": "Rare",
-        "effects": [
-            "[To be filled with hero-specific effects]"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Rin": {
-        "name": "Rin",
-        "role": "DPS, Debuff",
-        "primary_content": "Arena, Total War, GvG, Nightmare",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Medium",
-        "type": "Magic",
-        "target_number": "4 Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Increased Miss Chance",
-            "Reduced Buff Duration",
-            "Damage Nullification",
-            "Revive",
-            "Barrier",
-            "Cooldown Reset",
-            "Confusion"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate, Weakness Hit, Attack %",
-                    "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage",
-                    "sub_stat_priority": "Crit Rate, Weakness Hit, Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate, Weakness Hit, Attack %",
-                    "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage",
-                    "sub_stat_priority": "Speed, Crit Rate, Weakness Hit, Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "N/A",
-        "tips": "Only source of confusionin the game"
-    },
-    "Rook": {
-        "name": "Rook",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "Do not",
-        "type": "Defense",
-        "target_number": "Single Enemy",
-        "rarity": "L",
-        "effects": [
-            "Self Max HP-Based Damage",
-            "Crit Rate Boost",
-            "Physical Resistance",
-            "Block Rate Boost",
-            "Barrier"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder. This hero is not worth investing in.",
-        "tips": "Fodder. This hero is not worth investing in."
-    },
-    "Rosie": {
-        "name": "Rosie",
-        "role": "Support, Death, Revive",
-        "primary_content": "Total War, GvG, Nightmare",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "All Enemies",
-        "rarity": "L++",
-        "effects": [
-            "Self Max HP-Based Damage",
-            "Effect Probability Boost",
-            "Effect Resist Reduction",
-            "Death",
-            "Reduced Buff Duration",
-            "Damage Immunity",
-            "Guts",
-            "Revive"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Magic",
-                    "main_stats": "Block Rate (armors)",
-                    "required_stat_thresholds": "100% Block Rate",
-                    "sub_stat_priority": "Block Rate"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Full Speed",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2",
-        "tips": "Mainly used in death comp but has some other niche uses"
-    },
-    "Rudy": {
-        "name": "Rudy",
-        "role": "Tank, Support",
-        "primary_content": "Nightmare, Arena, Total War",
-        "target_transcendence": "T6",
-        "wishlist_priority": "Medium",
-        "type": "Defense",
-        "target_number": "Single Enemy",
-        "rarity": "L+",
-        "effects": [
-            "Defense-Based Damage",
-            "Defense Boost",
-            "Damage Resistance",
-            "Stun",
-            "Crowd Control Immunity",
-            "Reduced Buff Duration",
-            "Debuff Removal",
-            "Link"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Orchestrator Physical",
-                    "main_stats": "Defense % (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "100% Block Rate",
-                    "sub_stat_priority": "Block Rate, Defense %, Effect Resist"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Orchestrator Physical",
-                    "main_stats": "Defense % (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "100% Block Rate",
-                    "sub_stat_priority": "Block Rate, Defense %, Effect Resist"
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2, Passive",
-        "tips": "Only go for him if ur building tank comp, which is usually for whales."
-    },
-    "Ruri": {
-        "name": "Ruri",
-        "role": "DPS",
-        "primary_content": "Castle Rush, Advent",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Weakness Hit Chance Boost",
-            "Magic Damage Boost",
-            "Heal",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Magic",
-                    "main_stats": "Crit Rate, Attack % (armors)",
-                    "required_stat_thresholds": "7% weakness (if T2), 46% weakness if not T2, 100% crit rate",
-                    "sub_stat_priority": "Crit Rate, Crit Damange, Attack %, Weakness Hit (if not T2)"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1, S2, Passive",
-        "tips": "Her portrait art, model, and animations are really stupid. Need to buy skin to cover it."
-    },
-    "Sarah": {
-        "name": "Sarah",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "All Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Defense Boost",
-            "Damage Resistance",
-            "Defense Reduction",
-            "All Damage Reduction",
-            "Sleep Immunity",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Sera": {
-        "name": "Sera",
-        "role": "Magic",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Crit Rate Boost",
-            "Reduced Buff Duration"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Shane": {
-        "name": "Shane",
-        "role": "DPS",
-        "primary_content": "Raid, Castle Rush, Advent",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "L",
-        "effects": [
-            "Crit Rate Boost",
-            "Magic Resistance",
-            "Follow-Up Attack"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate, Crit Damage, Attack %",
-                    "required_stat_thresholds": "60% Crit Rate, dump rest into crit damage and weakness hit",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, Weakness Hit, Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1, Passiv",
-        "tips": "Use her skill after applying debuffs (T2 and T6)"
-    },
-    "Sieg": {
-        "name": "Sieg",
-        "role": "DPS, support",
-        "primary_content": "Raid, Castle Rush",
-        "target_transcendence": "T6",
-        "wishlist_priority": "Low",
-        "type": "Universal",
-        "target_number": "Single Enemy",
-        "rarity": "L",
-        "effects": [
-            "Physical Attack Boost",
-            "All Damage Reduction",
-            "Stun Immunity",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Gatekeeper Physical",
-                    "main_stats": "All Attack % (weapons), Block Rate (armors)",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "All Attack %, Block Rate"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate, Weakness Hit, All Attack % (armors)",
-                    "required_stat_thresholds": "19% Weakness Hit Rate, 100% Crit Rate",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, Weakness Hit, Attack %"
-                }
-            ]
-        },
-        "skill_enhance_priority": "N/A",
-        "tips": "Mainly used if u have T6 Biscuit as a 2nd dps for certain fights (dragon and Kris castle rush)"
-    },
-    "Silvesta": {
-        "name": "Silvesta",
-        "role": "DPS",
-        "primary_content": "GvG, Total War, Arena",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very Low",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Reduced Buff Duration",
-            "Blessing",
-            "Guts",
-            "Ignore Defense",
-            "Life Drain"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Weakness Hit, Attack % (armors)",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed, Weakness Hit, Crit Rate, Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S1, Passive",
-        "tips": "Usually paired with Orly in GvG/Total War"
-    },
-    "Snipper": {
-        "name": "Snipper",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Max HP-Based Damage",
-            "Burn"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Soi": {
-        "name": "Soi",
-        "role": "Attack",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Effect Hit Rate Boost",
-            "Bleed",
-            "Reduced Buff Duration"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Spike": {
-        "name": "Spike",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "Do not",
-        "type": "Universal",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Self Max HP-Based Damage",
-            "Effect Hit Rate Boost",
-            "Effect Resist Boost",
-            "Freeze",
-            "Debuff Removal",
-            "Guts",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder. This hero is not worth investing in.",
-        "tips": "Fodder. This hero is not worth investing in."
-    },
-    "Sylvia": {
-        "name": "Sylvia",
-        "role": "Fodder",
-        "primary_content": "None",
-        "target_transcendence": "None",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "Rare",
-        "effects": [
-            "Magic Attack Boost",
-            "Defense Reduction",
-            "Immortality",
-            "Pierce",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "Fodder. This guy is garbage"
-    },
-    "Taka": {
-        "name": "Taka",
-        "role": "DPS",
-        "primary_content": "Castle Rush, Advent",
-        "target_transcendence": "T2-T6",
-        "wishlist_priority": "High",
-        "type": "Attack",
-        "target_number": "3 Enemies",
-        "rarity": "L",
-        "effects": [
-            "Crit Damage Boost",
-            "Physical Vulnerability",
-            "Damage Nullification",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Rate, Attack % (armors)",
-                    "required_stat_thresholds": "100% Crit Rate, 20% Weakness Hit",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, Weakness Hit, Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2, S1, Passive",
-        "tips": "Can replace him with Kyle early on, but he outscales Kyle later for castle rush. U use both on some."
-    },
-    "Teo": {
-        "name": "Teo",
-        "role": "DPS",
-        "primary_content": "Arena, Nightmare, GvG, Total War",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High (N/A if u pull him from welcome banner, which you should)",
-        "type": "Attack",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Physical Attack Boost",
-            "Crit Rate Boost",
-            "Reduced Buff Duration",
-            "Damage Nullification",
-            "Immortality",
-            "Pierce",
-            "Cooldown Reset"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Assassin Physical",
-                    "main_stats": "Crit Rate, Crit Damage, Attack % (armors)",
-                    "required_stat_thresholds": "100% Crit Rate",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Avenger Physical",
-                    "main_stats": "Crit Damage, Attack % (armors)",
-                    "required_stat_thresholds": "Max crit damage",
-                    "sub_stat_priority": "Crit Damage, Attack %"
-                }
-            ]
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Assassin Physical",
-                    "main_stats": "Crit Rate, Crit Damage, Attack % (armors)",
-                    "required_stat_thresholds": "100% Crit Rate",
-                    "sub_stat_priority": "Crit Rate, Crit Damage, Speed, All Attack %"
-                }
-            ],
-            "T6": [
-                {
-                    "name": "Bounty Tracker Physical",
-                    "main_stats": "Weakness Hit, Crit Damage, Attack % (armors)",
-                    "required_stat_thresholds": "100% Weakness Hit, pump rest into crit damage",
-                    "sub_stat_priority": "Weakness Hit, Crit Damage, Speed, Attack %"
-                }
-            ]
-        },
-        "skill_enhance_priority": "S2, S1, Passive",
-        "tips": "AOE pumper. Will carry you through adventure and a lot of nightmare. Gets outshined by Kyle later on but still good to have for farming"
-    },
-    "Vanessa": {
-        "name": "Vanessa",
-        "role": "Support, Buffs, Debuffs",
-        "primary_content": "GvG, Arena, Total War,",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "Very High (High is you are looking for the best utility unit in the game, the higher transcendence the more utility)",
-        "type": "Magic",
-        "target_number": "4 Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Defense Reduction",
-            "Magic Vulnerability",
-            "Petrify",
-            "Buff Removal",
-            "Damage Immunity",
-            "Pierce",
-            "Cooldown Increase"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spell Weaver Magic",
-                    "main_stats": "Effect Hit Rate",
-                    "required_stat_thresholds": "Sub Stat Priority: Speed",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Full Speed",
-                    "main_stats": "Full Speed",
-                    "required_stat_thresholds": "Full Speed",
-                    "sub_stat_priority": "Full Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "Skill 1, Skill 2, Passive (ALL GOOD)",
-        "tips": "Sandstorm sits at (%70-%80) chance to inflict a skill cooldown increase. This is the highest \"CC\" ability in the game and Spellweaver set increases probability to (%80-%90). Skill cooldown increase in PvP is an amazing opener as landing any can mess up the enemies queued skills. This unit is very good for magic team compositions and can even be used in some physical teams since her passive gives (%20-%24) defense down."
-    },
-    "Victoria": {
-        "name": "Victoria",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Magic Attack Boost",
-            "Physical Resistance",
-            "Magic Vulnerability",
-            "Paralysis Immunity",
-            "Heal"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Yeonhee": {
-        "name": "Yeonhee",
-        "role": "DPS, Counter CC, CC",
-        "primary_content": "GvG, Arena, Total War, Nightmare, Advent Expedition, Castle Rush",
-        "target_transcendence": "T0-T6",
-        "wishlist_priority": "High",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "L+",
-        "effects": [
-            "Max HP-Based Damage",
-            "Magic Attack Boost",
-            "Magic Damage Boost",
-            "Sleep",
-            "Damage Nullification",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate, 210%+ crit damage",
-                    "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
-                },
-                {
-                    "name": "Avenger",
-                    "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate",
-                    "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
-                },
-                {
-                    "name": "Bounty Tracker",
-                    "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate",
-                    "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Assassin Magic",
-                    "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate, 210%+ crit damage",
-                    "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
-                },
-                {
-                    "name": "Bounty Tracker",
-                    "main_stats": "Crit Rate, Crit Damage",
-                    "required_stat_thresholds": "100% Crititcal Rate",
-                    "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Crititcal Damage, All Attack %"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "Skill 2, Passive, Skill 1, Basic Attack",
-        "tips": "Yeonhee is a very strong magic user who can be used in lots of places. She needs 100% crit chance to perform well, substat Crit Damage or Weakness Hit is just bonus damage! She does not have that great of skill enchances nothing to chase over, its better to prioritize other hero skill enhances unless you have most of your important ones out of the way."
-    },
-    "Yu Shin": {
-        "name": "Yu Shin",
-        "role": "CC",
-        "primary_content": "GvG, Arena, Total War, Nightmare",
-        "target_transcendence": "T0-T2",
-        "wishlist_priority": "Medium",
-        "type": "Magic",
-        "target_number": "All Enemies",
-        "rarity": "L",
-        "effects": [
-            "Effect Hit Rate Boost",
-            "Effect Resist Reduction",
-            "Incoming Healing Reduction",
-            "Paralysis",
-            "Debuff Removal",
-            "Damage Immunity"
-        ],
-        "gear_pve": {
-            "T0": [
-                {
-                    "name": "Spellweaver Magic",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "None",
-                    "sub_stat_priority": "None"
-                }
-            ],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [
-                {
-                    "name": "Spellweaver Magic",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                },
-                {
-                    "name": "Full Speed",
-                    "main_stats": "N/A",
-                    "required_stat_thresholds": "Speed",
-                    "sub_stat_priority": "Speed"
-                }
-            ],
-            "T6": []
-        },
-        "skill_enhance_priority": "S2, Passive",
-        "tips": "Very good for locking targets down in both PvP and PVE"
-    },
-    "Yui": {
-        "name": "Yui",
-        "role": "Support",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Support",
-        "target_number": "Only Basic Attack",
-        "rarity": "Rare",
-        "effects": [
-            "Physical Damage Boost",
-            "Magic Attack Reduction",
-            "Burn Immunity",
-            "Revive",
-            "Heal",
-            "Continuous Healing"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    },
-    "Yuri": {
-        "name": "Yuri",
-        "role": "Magic",
-        "primary_content": "[To be filled]",
-        "target_transcendence": "T0",
-        "wishlist_priority": "N/A",
-        "type": "Magic",
-        "target_number": "Single Enemy",
-        "rarity": "Rare",
-        "effects": [
-            "Magic Damage Boost",
-            "Burn",
-            "Ignore Defense"
-        ],
-        "gear_pve": {
-            "T0": [],
-            "T6": []
-        },
-        "gear_pvp": {
-            "T0": [],
-            "T6": []
-        },
-        "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
-        "tips": "[To be filled with hero-specific tips and information]"
-    }
+  "Ace": {
+    "name": "Ace",
+    "role": "Support/Debuffs",
+    "primary_content": "Total War, GvG",
+    "target_transcendence": "T0",
+    "wishlist_priority": "Low",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Physical Attack Boost",
+      "Defense Reduction",
+      "Physical Vulnerability",
+      "Incoming Healing Reduction",
+      "Reduced Buff Duration",
+      "Debuff Removal",
+      "Guts"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": "N/A"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "SPEED",
+          "sub_stat_priority": "N/A"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "N/A",
+    "tips": "The main reason you use Ace is because of his defense down passive. He is really sticky due to guts and provides good debuffs for your team. Ace's buff removal is powerful in GvG."
+  },
+  "Alice": {
+    "name": "Alice",
+    "role": "Healer",
+    "primary_content": "Arena, Total War, GvG (Situational)",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Medium",
+    "type": "Support",
+    "target_number": "None",
+    "rarity": "L",
+    "effects": [
+      "Defense Boost",
+      "Incoming Healing Boost",
+      "Heal",
+      "Continuous Healing"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Paladin Magic",
+          "main_stats": "Max HP%",
+          "required_stat_thresholds": "Max HP",
+          "sub_stat_priority": ""
+        }
+      ],
+      "T6": [
+        {
+          "name": "Paladin Magic",
+          "main_stats": "Max HP%",
+          "required_stat_thresholds": "Max HP",
+          "sub_stat_priority": ""
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Max HP% (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "Max HP, Speed",
+          "sub_stat_priority": ""
+        }
+      ],
+      "T6": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Max HP% (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "Max HP, Speed",
+          "sub_stat_priority": ""
+        }
+      ]
+    },
+    "skill_enhance_priority": "Not that important overall but the basic attack and passive are both pretty nice",
+    "tips": "Defensive healer. Generally used in tank comp. The defense she gives makes a lot of the tanky heroes a lot stronger, especially Platin."
+  },
+  "Amelia": {
+    "name": "Amelia",
+    "role": "Support, Buffs, Debuffs",
+    "primary_content": "GvG, Arena, Total War",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Medium",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Effect Hit Rate Boost",
+      "Unable to Recover",
+      "Debuff Removal",
+      "Revive"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack % (not that important)",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": ""
+        }
+      ],
+      "T6": [
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack % (not that important)",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": ""
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack % (not that important)",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": ""
+        },
+        {
+          "name": "Full Speed",
+          "main_stats": "All Attack % (not that important)",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": ""
+        }
+      ],
+      "T6": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack % (not that important)",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": ""
+        },
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack % (not that important)",
+          "required_stat_thresholds": "N/A",
+          "sub_stat_priority": ""
+        }
+      ]
+    },
+    "skill_enhance_priority": "N/A",
+    "tips": "S1 concussion is very strong when paired with multi hit heroes. Can infinitely cc 3 enemies. Amelia should be squishy, as she provides a large shield and cleanse when dying. Very strong against tank team due to HP alteration and anti-heal. Game changer when paired with Kyle."
+  },
+  "Aquila": {
+    "name": "Aquila",
+    "role": "Support/Tank",
+    "primary_content": "Arena, GvG, Total War (Death comps)",
+    "target_transcendence": "T0-T2",
+    "wishlist_priority": "Low (high if you're a death comp freak)",
+    "type": "Defense",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Effect Resist Reduction",
+      "Death",
+      "Link",
+      "Death Turn Reduction",
+      "Weakness Hit Chance Reduction",
+      "Barrier"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "Max HP % (weapons), Block Rate (armor), All damage reduction (armor)",
+          "required_stat_thresholds": "Not important but 100% block is good if you can get it",
+          "sub_stat_priority": "Block rate, Max HP"
+        },
+        {
+          "name": "Gatekeeper Physical",
+          "main_stats": "Max HP % (weapons), Block Rate (armor), All damage reduction (armor)",
+          "required_stat_thresholds": "100% block rate",
+          "sub_stat_priority": "Block rate, Max HP"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "Max HP % (weapons), Block Rate (armor), All damage reduction (armor)",
+          "required_stat_thresholds": "SPEED, rest not important but 100% block is good if you can get it",
+          "sub_stat_priority": "SPEED, Block rate, Max HP"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2",
+    "tips": "Want to stack death with Aquila S2 and Kris S2 then proc it with Aquila S1. Leading with S2 is good cause it gives link."
+  },
+  "Aragon": {
+    "name": "Aragon",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "Do not",
+    "type": "Defense",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Defense-Based Damage",
+      "All Attack Reduction",
+      "Crit Damage Reduction",
+      "Stun",
+      "Reduced Buff Duration",
+      "Heal",
+      "Pierce",
+      "Cooldown Reduction"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder. This guy is garbage",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Ariel": {
+    "name": "Ariel",
+    "role": "Magic",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "[To be filled]",
+    "rarity": "Rare",
+    "effects": [
+      "[To be filled with hero-specific effects]"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Asura": {
+    "name": "Asura",
+    "role": "Magic",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Defense Reduction",
+      "Barrier",
+      "Focus Target"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Ballista": {
+    "name": "Ballista",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "Do not",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Fixed Damage",
+      "Damage Nullification",
+      "Follow-Up Attack",
+      "Pierce"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder",
+    "tips": "Fodder"
+  },
+  "Bane": {
+    "name": "Bane",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Attack Reduction",
+      "Silence",
+      "Immortality"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Bi Dam": {
+    "name": "Bi Dam",
+    "role": "DPS",
+    "primary_content": "Castle Rush, Advent",
+    "target_transcendence": "T2-T6",
+    "wishlist_priority": "Very low",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Physical Damage Boost",
+      "Bleed",
+      "Explosion"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, All Attack %",
+          "required_stat_thresholds": "100% crit rate",
+          "sub_stat_priority": "Attack, Crit Rate, Weakness Hit"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, All Attack %",
+          "required_stat_thresholds": "100% crit rate",
+          "sub_stat_priority": "Attack, Crit Rate, Weakness Hit"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "N/A",
+    "tips": "Only used in one castle rush and advent. Low priority, only go for him if u get a bunch of random copies for no reason. Stack bleeds to detonate. Bleeds damage are based off of max attack"
+  },
+  "Biscuit": {
+    "name": "Biscuit",
+    "role": "Support",
+    "primary_content": "Raid, Castle Rush, Advent, Nightmare Pushing",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "VERY high",
+    "type": "Support",
+    "target_number": "3 Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Defense-Based Damage",
+      "Weakness Hit Chance Boost",
+      "Quintuple-Target Attack Resistance",
+      "Increase damage to boss targets",
+      "Defense Reduction",
+      "Buff Removal"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Defense (weapons), Block Rate (armors), Damage Reduction (armors)",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Block rate, Defense, HP"
+        },
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate (weapons), Defense % (armors)",
+          "required_stat_thresholds": "100% crit rate",
+          "sub_stat_priority": "Crit rate, Crit damage, Defense"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1 > passive > basic attack",
+    "tips": "Amazing for clearing nightmare on 3* when used in physical team with Kyle. Used in almost all PvE content. Need speed sub stats for Ox (so Espada goes 4th). Can build crit set if you're pushing damage in castle rush or advent."
+  },
+  "Black Rose": {
+    "name": "Black Rose",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Attack Boost",
+      "All Attack Boost",
+      "Petrify Immunity",
+      "Buff Removal",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Catty": {
+    "name": "Catty",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Attack Boost",
+      "Weakness Hit Chance Boost",
+      "Crit Rate Boost",
+      "Physical Vulnerability",
+      "Block Rate Reduction",
+      "Unable to Recover"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Chancellor": {
+    "name": "Chancellor",
+    "role": "Fodder",
+    "primary_content": "GvG",
+    "target_transcendence": "None",
+    "wishlist_priority": "Don't",
+    "type": "Universal",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Defense-Based Damage",
+      "Fixed Damage",
+      "All Attack Reduction",
+      "Defense Reduction",
+      "All Damage Reduction",
+      "Increased Miss Chance",
+      "Buff Removal",
+      "Damage Immunity",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "Can be used in guild war but lets be real this guy is fodder"
+  },
+  "Chloe": {
+    "name": "Chloe",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "All Attack Boost",
+      "Crit Rate Boost",
+      "Unable to Recover",
+      "Shock Immunity",
+      "Buff Removal",
+      "Debuff Removal",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Cleo": {
+    "name": "Cleo",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Magic Attack Boost",
+      "Physical Attack Reduction",
+      "Petrify",
+      "Silence Immunity",
+      "Poison"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Colt": {
+    "name": "Colt",
+    "role": "Support, DPS, Counter CC",
+    "primary_content": "Arena, GvG",
+    "target_transcendence": "T2-T6",
+    "wishlist_priority": "High",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Effect Hit Rate Boost",
+      "All Attack Reduction",
+      "Guts",
+      "Camouflage",
+      "Bomb"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Speed, All Attack %, All Attack, Effect Hit Rate"
+        },
+        {
+          "name": "Full Speed",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Speed, All Attack %, All Attack, Effect Hit Rate"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "Good in physical and magic comp in Arena. OP when paired with Platin in GvG. Can't be CCd due to camouflage and can counter cc if your whole team gets stunned."
+  },
+  "Daisy": {
+    "name": "Daisy",
+    "role": "Petrify Immunity",
+    "primary_content": "Raid",
+    "target_transcendence": "T0-T2",
+    "wishlist_priority": "Medium",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "L",
+    "effects": [
+      "Max HP-Based Damage",
+      "Magic Attack Boost",
+      "Petrify Immunity",
+      "Buff Removal",
+      "Barrier"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate (weapons), All Attack % (Armor), Damage Taken Reduction (Armor)",
+          "required_stat_thresholds": "100% Crit Rate, 16% Damage Taken Reduction, 200% Crit Damage",
+          "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %, Max HP"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Really hard to find perfect gear for her to clear higher levels of Ox. Gotta find the balance between 1 shotting the ads and being tanky enough to live. Can occasionally be used to counter petrify in any other content (like nightmare 8-30)"
+  },
+  "Dellons": {
+    "name": "Dellons",
+    "role": "DPS, Support",
+    "primary_content": "Total War, Nightmare",
+    "target_transcendence": "T6",
+    "wishlist_priority": "Low",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Physical Damage Boost",
+      "Silence",
+      "Damage Nullification"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate (weapons), All Attack % (Armor)",
+          "required_stat_thresholds": "100% Crit Rate (18% from T4)",
+          "sub_stat_priority": "Crit Rate, Crit Damage"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "Required Stat Thresholds: Speed",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Bounty Tracker Physical",
+          "main_stats": "Crit Rate, Weakness Hit Chance, All Attack % (armors)",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Speed, Weakness Hit Chance, Crit Rate, Crit Damage"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "Dellons is strong but too many units outshine him. Not very high prio. Might be in line for a buff after this next round. Weakness hit is good so he resets his ult. Silence can be nice."
+  },
+  "Eileene": {
+    "name": "Eileene",
+    "role": "CC",
+    "primary_content": "Arena, GvG, Nightmare, Total War",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Medium",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Physical Attack Boost",
+      "Shock",
+      "Revive",
+      "Pierce"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "N/A"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Full Speed",
+          "main_stats": "Required Stat Thresholds: Speed",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "S2 is really strong. Multi-hit shock. Much stronger when paired with rosie but not necessary. T6 adds 10% x2 chance to hit which is very powerful."
+  },
+  "Elysia": {
+    "name": "Elysia",
+    "role": "Support/Utility",
+    "primary_content": "Arena, Total War, GvG, Nightmare",
+    "target_transcendence": "T0-T2",
+    "wishlist_priority": "High",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Defense Reduction",
+      "Debuff Removal",
+      "Barrier",
+      "Damage Immunity",
+      "Silence",
+      "Buff Duration Reduction",
+      "Increased Miss Chance"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Orchestrator Physical",
+          "main_stats": "Anything",
+          "required_stat_thresholds": "100% Effect Resist",
+          "sub_stat_priority": "Effect Resist"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Orchestrator Physical",
+          "main_stats": "Anything",
+          "required_stat_thresholds": "As much speed and effect resist as possible",
+          "sub_stat_priority": "Speed, Effect Resist"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1, S2, Passive are all good",
+    "tips": "Really broken utility character. Cleanses allies and silences enemies. Extremely sticky, especially when T2 with orchestrator set."
+  },
+  "Espada": {
+    "name": "Espada",
+    "role": "DPS",
+    "primary_content": "Raid",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High",
+    "type": "Magic",
+    "target_number": "Single Enemy",
+    "rarity": "L",
+    "effects": [
+      "Max HP-Based Damage",
+      "Crit Rate Boost",
+      "Magic Damage Boost",
+      "Magic Resistance",
+      "Magic Vulnerability"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Magic",
+          "main_stats": "Crit Rate (Armor)",
+          "required_stat_thresholds": "60% Crit Rate, 200% Crit Damage",
+          "sub_stat_priority": "Crit Damage, Crit Rate, Weakness Hit Chance, All Attack %, All Attack"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "Needs to have the 4th highest speed on your team for Ox"
+  },
+  "Evan": {
+    "name": "Evan",
+    "role": "Defense",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Defense",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Defense-Based Damage",
+      "Defense Boost",
+      "Block Rate Boost",
+      "Stun",
+      "Stun Immunity",
+      "Barrier"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Fai": {
+    "name": "Fai",
+    "role": "Dps, Support, Debuffs",
+    "primary_content": "Arena, Nightmare, Total War, GvG",
+    "target_transcendence": "T0 (T6 goes crazy but lets be real here)",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "L++",
+    "effects": [
+      "Max HP-Based Damage",
+      "Defense Reduction",
+      "Physical Vulnerability",
+      "Burn",
+      "Buff Removal",
+      "Revive",
+      "Barrier",
+      "Execution"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "All Attack %"
+        },
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "N/a",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed, All Attack %"
+        },
+        {
+          "name": "Bounty Tracker Physical",
+          "main_stats": "Weakness Hit Chance, All Attack %",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed, Weakness HIt Chance, All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1 > Passive",
+    "tips": "Can use for power up dungeons before u have strong shane/Espada. Passive phys vulnerability + S1 upgrade for defense down is a powerful combo to make your hitters like Kyle go crazy. Weakness hit set is playable because she will more often target low hp targets with her execute. Dont underestimate the burn, it does alot of damage."
+  },
+  "Feng Yan": {
+    "name": "Feng Yan",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Defense Reduction",
+      "Freeze Immunity",
+      "Damage Immunity",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Heavenia": {
+    "name": "Heavenia",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Attack Boost",
+      "Freeze",
+      "Damage Immunity"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Hellenia": {
+    "name": "Hellenia",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Defense-Based Damage",
+      "Defense Boost",
+      "Increased Miss Chance",
+      "Debuff Removal",
+      "Damage Immunity",
+      "Heal",
+      "Taunt"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Hokin": {
+    "name": "Hokin",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Attack Boost",
+      "Physical Damage Boost",
+      "Stun"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Jane": {
+    "name": "Jane",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Poison",
+      "Camouflage"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Jave": {
+    "name": "Jave",
+    "role": "DPS, CC",
+    "primary_content": "Total War",
+    "target_transcendence": "T2-T6",
+    "wishlist_priority": "Very low",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Stun",
+      "Attack Based Defense Boost",
+      "Counter Attack"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Gatekeeper Physical",
+          "main_stats": "All Attack % (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "100% Block, as much attack as possible",
+          "sub_stat_priority": "Block rate, All Attack %, All Attack, Defense"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "Usable in Total War. He's not a bad unit but just doesnt see many use cases where he outshines other heroes."
+  },
+  "Jin": {
+    "name": "Jin",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Fixed Damage",
+      "Physical Attack Boost",
+      "Crit Rate Boost",
+      "Stun",
+      "Silence Immunity",
+      "Barrier"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Joker": {
+    "name": "Joker",
+    "role": "Magic",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Crit Damage Boost",
+      "Crit Rate Reduction",
+      "Stun",
+      "Buff Removal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Jupy": {
+    "name": "Jupy",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Crit Rate Boost",
+      "Crit Damage Boost",
+      "Poison",
+      "Camouflage",
+      "Change Skill"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Juri": {
+    "name": "Juri",
+    "role": "Support, DPS, Debuff",
+    "primary_content": "Arena, GvG, Nightmare, Total War, Advent",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "L++",
+    "effects": [
+      "Max HP-Based Damage",
+      "Defense Reduction",
+      "Crowd Control Immunity",
+      "Immortality",
+      "Follow-Up Attack",
+      "Souldeath"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spellweaver Magic",
+          "main_stats": "Doesnt matter",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2 > Passive",
+    "tips": "Soul death is Op in PvP. Counters physical comp, can also be used IN physical comp. Can be used as DPS in Yeonhee advent 2nd team. Follow up attack is pretty strong with Mercure dot."
+  },
+  "Kagura": {
+    "name": "Kagura",
+    "role": "Support/Debuffs/CC",
+    "primary_content": "GvG, Arena, Total War, Nightmare",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "High",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Crit Damage Boost",
+      "Physical Damage Boost",
+      "Physical Vulnerability",
+      "Incoming Healing Reduction",
+      "Petrify",
+      "Debuff Removal",
+      "Indomitable",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Vanguard Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "All Attack %"
+        },
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed, all attack %"
+        },
+        {
+          "name": "Assassin Physical",
+          "main_stats": "All Attack %, Crit Rate (Weapons)",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Speed, Crit Rate, All Attack %, Crit Damage"
+        },
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Speed > All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2",
+    "tips": "Core PvP unit for physical comp. Stickiest unit in the game"
+  },
+  "Karin": {
+    "name": "Karin",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "Only Basic Attack",
+    "rarity": "Rare",
+    "effects": [
+      "Debuff Removal",
+      "Revive",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Karma": {
+    "name": "Karma",
+    "role": "DPS",
+    "primary_content": "Total War, Arena",
+    "target_transcendence": "T6",
+    "wishlist_priority": "Low",
+    "type": "Universal",
+    "target_number": "3 Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Defense-Based Damage",
+      "Defense Boost",
+      "All Damage Boost",
+      "Block Rate Boost",
+      "All Damage Reduction",
+      "Pierce",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Weakness Hit (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "67% Block Rate",
+          "sub_stat_priority": "Block Rate > Weakness Hit > Crit Rate"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Orchestrator Magic",
+          "main_stats": "Weakness Hit (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "67% Block Rate",
+          "sub_stat_priority": "Block Rate > Weakness Hit > Crit Rate"
+        }
+      ]
+    },
+    "skill_enhance_priority": "S2 > Basic Attack",
+    "tips": "Only really usable in full tank comp. Need T6 or he will feel pretty bad, but becomes an absolute menace in an upgraded tank comp. Really meant for whales tbh."
+  },
+  "Karon": {
+    "name": "Karon",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "Only Basic Attack",
+    "rarity": "Rare",
+    "effects": [
+      "Bleed Immunity",
+      "Barrier",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Klahan": {
+    "name": "Klahan",
+    "role": "Fodder",
+    "primary_content": "Being fodder (nightmare farming is ok)",
+    "target_transcendence": "Fodder",
+    "wishlist_priority": "Do not",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Physical Attack Boost",
+      "Physical Damage Boost",
+      "All Damage Reduction",
+      "Damage Immunity",
+      "Heal",
+      "Pierce"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder until buffed",
+    "tips": "Fodder until buffed"
+  },
+  "Knox": {
+    "name": "Knox",
+    "role": "Tank/Death",
+    "primary_content": "Total War, Nightmare",
+    "target_transcendence": "T2",
+    "wishlist_priority": "Do Not",
+    "type": "Defense",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Max HP-Based Damage",
+      "Death Effect Probability Boost",
+      "Effect Resist Reduction",
+      "Death",
+      "Damage Immunity",
+      "Barrier",
+      "Taunt"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "Anything tanky",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Anything tanky"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Main reason to have him is for his passive death chance increase in death comp"
+  },
+  "Kris": {
+    "name": "Kris",
+    "role": "Death",
+    "primary_content": "Total War, Arena, Nightmare",
+    "target_transcendence": "T0-T2",
+    "wishlist_priority": "Very Low",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Death",
+      "Immortality",
+      "Heal",
+      "Cooldown Reset"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "Effect Hit Rate, Defense %, HP %, Block Rate (armors), Damage Reduction (Armors)",
+          "required_stat_thresholds": "100% Block",
+          "sub_stat_priority": "Block Rate, Defense %, HP %, Effect Hit"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "Speed",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "HP %, Damage Reduction (armors), Block Rate (armors)",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed, Block Rate, HP %, Defense %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "All are good",
+    "tips": "Death comp is not in a good spot right now. He might be better if it gets buffed, but atm its just for total war or specific nightmare levels."
+  },
+  "Kyle": {
+    "name": "Kyle",
+    "role": "DPS",
+    "primary_content": "Everything...",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High",
+    "type": "Attack",
+    "target_number": "4 Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Crit Rate Boost",
+      "All Damage Nullification",
+      "Eyes of the strong",
+      "Pierce",
+      "Ignore Defense",
+      "Buff Removal"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Assassin Physical",
+          "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
+          "required_stat_thresholds": "73% crit rate, 270% crit damage",
+          "sub_stat_priority": "Crit Damage, Crit Rate, All Attack %, Weakness Hit Chance"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
+          "required_stat_thresholds": "73% crit rate, 210% crit damage",
+          "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %, Weakness Hit Chance"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Assassin Physical",
+          "main_stats": "Crit Damage, Crit Rate, All Attack % (armors)",
+          "required_stat_thresholds": "73% crit rate, 270% crit damage, 40-60 speed",
+          "sub_stat_priority": "Crit Damage, Crit Rate, All Attack %, Speed"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Bounty Tracker Physical",
+          "main_stats": "Crit Rate, Crit Damage, Weakness Hit Chance, All Attack % (armors)",
+          "required_stat_thresholds": "73% crit rate, 200% crit damage, as much weakness as you can get, 40 speed",
+          "sub_stat_priority": "Crit Rate, Speed, Crit Damage, Weakness Hit Chance"
+        }
+      ]
+    },
+    "skill_enhance_priority": "Passive > S1 > S2",
+    "tips": "Most OP hero in the game. Good in almost all content. Beyond broken for pushing nightmare, tower, arena, total war, etc."
+  },
+  "Kyrielle": {
+    "name": "Kyrielle",
+    "role": "DPS, Counter CC, CC",
+    "primary_content": "Arena, GvG, Total War, Advent Expedition",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Low",
+    "type": "Magic",
+    "target_number": "Single Enemy",
+    "rarity": "L+",
+    "effects": [
+      "All Damage Nullification",
+      "Guts",
+      "Speed-Based Attack Boost",
+      "Magic Damage Boost",
+      "Pierce",
+      "Paralysis",
+      "Debuff Removal",
+      "Damage Boost"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Magic",
+          "main_stats": "Effect Hit Rate",
+          "required_stat_thresholds": "Sub Stat Priority: Effect Hit Rate, Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %",
+          "sub_stat_priority": "Effect Hit Rate, Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spellweaver Magic",
+          "main_stats": "Crit Rate, Crit Damage",
+          "required_stat_thresholds": "Sub Stat Priority: Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %",
+          "sub_stat_priority": "Speed, Crit Rate, Crit Damage, Weakness Hit Chance, All Attack %"
+        },
+        {
+          "name": "Full Speed",
+          "main_stats": "Full Speed",
+          "required_stat_thresholds": "Full Speed",
+          "sub_stat_priority": "Full Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "Skill 2, Basic Attack, Skill 1, Passive",
+    "tips": "Overall not that great of a hero at lower tiers. Once you get her to T2-T6 she becomes a little bit more of a viable PvP unit. T2 gives her single target Skill 1 a recast on kill and Skill 2 is a AOE Paralysis. The good thing about this unit is at T6 you dont have to worry about queueing any skills in PvP since she becomes immune to CC. This hero also scales all attack with speed making it a good speed stick as well as good CC."
+  },
+  "Lania": {
+    "name": "Lania",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Magic Attack Boost",
+      "Effect Hit Rate Boost",
+      "Freeze",
+      "Freeze Immunity"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Leo": {
+    "name": "Leo",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "All Attack Boost",
+      "Defense Reduction",
+      "All Damage Reduction",
+      "Bleed",
+      "Death Immunity",
+      "Revive",
+      "Life Drain"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Li": {
+    "name": "Li",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Self Max HP-Based Damage",
+      "Stun",
+      "Damage Immunity",
+      "Heal",
+      "Counterattack",
+      "Taunt",
+      "HP Alteration"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Lina": {
+    "name": "Lina",
+    "role": "Healer/Buffer",
+    "primary_content": "Raid, Castle Rush, Nightmare, Total War, Advent",
+    "target_transcendence": "T2-T6",
+    "wishlist_priority": "Very High",
+    "type": "Support",
+    "target_number": "Single Enemy",
+    "rarity": "L",
+    "effects": [
+      "All Damage Boost",
+      "Crit Damage Boost",
+      "Effect Resist Boost",
+      "Defense Reduction",
+      "Barrier",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Paladin Magic",
+          "main_stats": "Health %",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Health %, Health, Block Rate, Defense"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Health % (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "100% block rate",
+          "sub_stat_priority": "Block Rate, HP %, HP"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "All",
+    "tips": "Used in almost all content. Really good heals while also buffing your team's damage a ton."
+  },
+  "Lucy": {
+    "name": "Lucy",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "Only Basic Attack",
+    "rarity": "Rare",
+    "effects": [
+      "Defense-Based Damage",
+      "Defense Boost",
+      "Physical Attack Reduction",
+      "Poison Immunity",
+      "Debuff Removal",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "May": {
+    "name": "May",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Damage Boost",
+      "Physical Vulnerability",
+      "Blind",
+      "Bleed",
+      "Burn",
+      "Poison",
+      "Barrier"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Mercure": {
+    "name": "Mercure",
+    "role": "DPS",
+    "primary_content": "Nightmare, Arena, Total War, GvG",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "High",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Effect Resist Reduction",
+      "Incoming Healing Reduction",
+      "Stun",
+      "Blessing",
+      "Barrier",
+      "Magic Reflux"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "None, just go for all attack",
+          "sub_stat_priority": "All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "Speed, then stack all attack as high as you can",
+          "sub_stat_priority": "Speed, All Attack %"
+        },
+        {
+          "name": "Spellweaver Physical",
+          "main_stats": "All Attack %",
+          "required_stat_thresholds": "Push for as much speed as possible",
+          "sub_stat_priority": "Speed, All Attack %"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Orchestrator Magic",
+          "main_stats": "All Attack %, Damage Taken Reduction",
+          "required_stat_thresholds": "Really high speed",
+          "sub_stat_priority": "Speed, All Attack %"
+        }
+      ]
+    },
+    "skill_enhance_priority": "All good but prio passive",
+    "tips": "Really good in most content. Magic reflux spreads a lot faster when u get him T2 and T6, as well as with spellweaver set."
+  },
+  "Miho": {
+    "name": "Miho",
+    "role": "Support, sub-dps",
+    "primary_content": "Castle Rush, Advent",
+    "target_transcendence": "T2",
+    "wishlist_priority": "High",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Weakness Hit Damage Boost",
+      "Magic Vulnerability",
+      "Reduced Buff Duration",
+      "Debuff Removal",
+      "Guts"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate (weapons), All Attack % (armors)",
+          "required_stat_thresholds": "100% crit rate",
+          "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "N/A",
+    "tips": "T2 for the cleanse is really big for certain castle rushes and advent."
+  },
+  "Nia": {
+    "name": "Nia",
+    "role": "Fodder",
+    "primary_content": "Fodder",
+    "target_transcendence": "Fodder",
+    "wishlist_priority": "Do not",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L",
+    "effects": [
+      "Effect Hit Rate Boost",
+      "Shock",
+      "Reduced Buff Duration",
+      "Barrier",
+      "Cooldown Increase"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "None",
+    "tips": "Shes not useless but doesnt really find a place in the meta. Most likely will be phased out entirely after a few more hero releases."
+  },
+  "Noho": {
+    "name": "Noho",
+    "role": "Magic",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Self Max HP-Based Damage",
+      "Magic Attack Boost",
+      "Buff Removal",
+      "Barrier",
+      "HP Alteration"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Orly": {
+    "name": "Orly",
+    "role": "Support",
+    "primary_content": "GvG, Total War",
+    "target_transcendence": "T6",
+    "wishlist_priority": "Low",
+    "type": "Support",
+    "target_number": "All Enemies",
+    "rarity": "L",
+    "effects": [
+      "Crit Rate Boost",
+      "Crit Damage Boost",
+      "Defense Reduction",
+      "Buff Removal",
+      "Debuff Removal",
+      "Damage Nullification",
+      "Continuous Healing"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Orchestrator Magic",
+          "main_stats": "All Attack % (weapons), Block Rate (armors), Damage Reduction (armors)",
+          "required_stat_thresholds": "As much speed as possible",
+          "sub_stat_priority": "Speed, All Attack %, Block Rate, Effect Resist"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1, Basic Attack",
+    "tips": "Solo back liner for mage compositions"
+  },
+  "Pascal": {
+    "name": "Pascal",
+    "role": "DPS",
+    "primary_content": "Raid, Nightmare (niche), Castle Rush, Advent",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High",
+    "type": "Magic",
+    "target_number": "Single Enemy",
+    "rarity": "L",
+    "effects": [
+      "Magic Attack Boost",
+      "Crit Rate Boost",
+      "Crit Damage Boost",
+      "Damage Nullification",
+      "Ignore Defense",
+      "Cooldown Reset"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Magic",
+          "main_stats": "Crit Rate, Crit Damage, All Attack % (armors)",
+          "required_stat_thresholds": "100% crit rate, 46% weakness if using Biscuit. Dont need weakness if using Asura",
+          "sub_stat_priority": "Crit Rate, Weakness Hit Rate (unless Asura), Crit Damage"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Avenger Magic",
+          "main_stats": "Crit Damage (weapons), All Attack % (armors)",
+          "required_stat_thresholds": "46% weakness",
+          "sub_stat_priority": "Weakness Hit Rate, Crit Damage, All Attack %"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "All except basic attack",
+    "tips": "Really need this unit. His kit is self-explanatory. Skill enhances and transcendence are really important."
+  },
+  "Platin": {
+    "name": "Platin",
+    "role": "Tank",
+    "primary_content": "Arena, GvG, Total War",
+    "target_transcendence": "T2-T6",
+    "wishlist_priority": "High",
+    "type": "Support",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Defense-Based Damage",
+      "Fixed Damage",
+      "All Attack Reduction",
+      "Buff Removal",
+      "Heal",
+      "Damage-Based Healing",
+      "HP Alteration"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Defense % (weapons), Damage Reduction (armors)",
+          "required_stat_thresholds": "Aim for 42% DR (2 armors and 10% from T4), 65%+ block rate is fine.",
+          "sub_stat_priority": "Block Rate, Defense %, Health %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "Passive",
+    "tips": "Can play as solo front line with almost any comp in PVP"
+  },
+  "Rachel": {
+    "name": "Rachel",
+    "role": "Debuff Support",
+    "primary_content": "Raid, Castle Rush, Advent Expedition",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Medium",
+    "type": "Universal",
+    "target_number": "3 Enemies (at T6)",
+    "rarity": "L+",
+    "effects": [
+      "Weakness Hit Chance Boost",
+      "All Attack Reduction",
+      "Defense Reduction",
+      "All Damage Reduction",
+      "Physical Vulnerability",
+      "Burn",
+      "Revive"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Gatekeeper Physical",
+          "main_stats": "Weakness Hit (to hit middle target in castle rush), All Attack % (armors)",
+          "required_stat_thresholds": "73% Weakness Hit",
+          "sub_stat_priority": "Block Rate, Weakness Hit"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Gatekeeper Physical",
+          "main_stats": "All Attack %, All Attack % (armors), Block Rate (armors)",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "Block Rate, All Attack %"
+        },
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, Crit Damage, All Attack % (armors)",
+          "required_stat_thresholds": "100% Crit Rate, as much crit damage as possible",
+          "sub_stat_priority": "Crit Rate, Crit Damage, Attack %"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2, Passive",
+    "tips": "Debuffs can feel OP at times. Pairs very well with Shane for debuff counter"
+  },
+  "Rahkun": {
+    "name": "Rahkun",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Defense",
+    "target_number": "Only Basic Attack",
+    "rarity": "Rare",
+    "effects": [
+      "Defense-Based Damage",
+      "Defense Boost",
+      "Effect Resist Boost",
+      "Physical Resistance",
+      "Taunt"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Rei": {
+    "name": "Rei",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "[To be filled]",
+    "rarity": "Rare",
+    "effects": [
+      "[To be filled with hero-specific effects]"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Rin": {
+    "name": "Rin",
+    "role": "DPS, Debuff",
+    "primary_content": "Arena, Total War, GvG, Nightmare",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Medium",
+    "type": "Magic",
+    "target_number": "4 Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Increased Miss Chance",
+      "Reduced Buff Duration",
+      "Damage Nullification",
+      "Revive",
+      "Barrier",
+      "Cooldown Reset",
+      "Confusion"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate, Weakness Hit, Attack %",
+          "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage",
+          "sub_stat_priority": "Crit Rate, Weakness Hit, Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate, Weakness Hit, Attack %",
+          "required_stat_thresholds": "67% crit with 3850 Attack is optimal (she gets more crit based on attack), 210% crit damage",
+          "sub_stat_priority": "Speed, Crit Rate, Weakness Hit, Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "N/A",
+    "tips": "Only source of confusion the game. Does a lot of damage if built correctly."
+  },
+  "Rook": {
+    "name": "Rook",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "Do not",
+    "type": "Defense",
+    "target_number": "Single Enemy",
+    "rarity": "L",
+    "effects": [
+      "Self Max HP-Based Damage",
+      "Crit Rate Boost",
+      "Physical Resistance",
+      "Block Rate Boost",
+      "Barrier"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder. This hero is not worth investing in.",
+    "tips": "Fodder. This hero is not worth investing in."
+  },
+  "Rosie": {
+    "name": "Rosie",
+    "role": "Support, Death, Revive",
+    "primary_content": "Total War, GvG, Nightmare",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "All Enemies",
+    "rarity": "L++",
+    "effects": [
+      "Self Max HP-Based Damage",
+      "Effect Probability Boost",
+      "Effect Resist Reduction",
+      "Death",
+      "Reduced Buff Duration",
+      "Damage Immunity",
+      "Guts",
+      "Revive"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Gatekeeper Magic",
+          "main_stats": "Block Rate (armors)",
+          "required_stat_thresholds": "100% Block Rate",
+          "sub_stat_priority": "Block Rate"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Full Speed",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2",
+    "tips": "Mainly used in death comp but has some other niche uses"
+  },
+  "Rudy": {
+    "name": "Rudy",
+    "role": "Tank, Support",
+    "primary_content": "Nightmare, Arena, Total War",
+    "target_transcendence": "T6",
+    "wishlist_priority": "Medium",
+    "type": "Defense",
+    "target_number": "Single Enemy",
+    "rarity": "L+",
+    "effects": [
+      "Defense-Based Damage",
+      "Defense Boost",
+      "Damage Resistance",
+      "Stun",
+      "Crowd Control Immunity",
+      "Reduced Buff Duration",
+      "Debuff Removal",
+      "Link"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Orchestrator Physical",
+          "main_stats": "Defense % (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "100% Block Rate",
+          "sub_stat_priority": "Block Rate, Defense %, Effect Resist"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Orchestrator Physical",
+          "main_stats": "Defense % (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "100% Block Rate",
+          "sub_stat_priority": "Block Rate, Defense %, Effect Resist"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2, Passive",
+    "tips": "Only go for him if ur building tank comp, which is usually for whales."
+  },
+  "Ruri": {
+    "name": "Ruri",
+    "role": "DPS",
+    "primary_content": "Castle Rush, Advent",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Weakness Hit Chance Boost",
+      "Magic Damage Boost",
+      "Heal",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Magic",
+          "main_stats": "Crit Rate, Attack % (armors)",
+          "required_stat_thresholds": "7% weakness (if T2), 46% weakness if not T2, 100% crit rate",
+          "sub_stat_priority": "Crit Rate, Crit Damage, Attack %, Weakness Hit (if not T2)"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1, S2, Passive",
+    "tips": "Her portrait art, model, and animations are really stupid. Need to buy skin to cover it."
+  },
+  "Sarah": {
+    "name": "Sarah",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "All Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Defense Boost",
+      "Damage Resistance",
+      "Defense Reduction",
+      "All Damage Reduction",
+      "Sleep Immunity",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Sera": {
+    "name": "Sera",
+    "role": "Magic",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Crit Rate Boost",
+      "Reduced Buff Duration"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Shane": {
+    "name": "Shane",
+    "role": "DPS",
+    "primary_content": "Raid, Castle Rush, Advent",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "L",
+    "effects": [
+      "Crit Rate Boost",
+      "Magic Resistance",
+      "Follow-Up Attack"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, Crit Damage, Attack %",
+          "required_stat_thresholds": "60% Crit Rate, dump rest into crit damage and weakness hit",
+          "sub_stat_priority": "Crit Rate, Crit Damage, Weakness Hit, Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1, Passive",
+    "tips": "Use her skill after applying debuffs (T2 and T6)"
+  },
+  "Sieg": {
+    "name": "Sieg",
+    "role": "DPS, support",
+    "primary_content": "Raid, Castle Rush",
+    "target_transcendence": "T6",
+    "wishlist_priority": "Low",
+    "type": "Universal",
+    "target_number": "Single Enemy",
+    "rarity": "L",
+    "effects": [
+      "Physical Attack Boost",
+      "All Damage Reduction",
+      "Stun Immunity",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Gatekeeper Physical",
+          "main_stats": "All Attack % (weapons), Block Rate (armors)",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "All Attack %, Block Rate"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, Weakness Hit, All Attack % (armors)",
+          "required_stat_thresholds": "19% Weakness Hit Rate, 100% Crit Rate",
+          "sub_stat_priority": "Crit Rate, Crit Damage, Weakness Hit, Attack %"
+        }
+      ]
+    },
+    "skill_enhance_priority": "N/A",
+    "tips": "Mainly used if u have T6 Biscuit as a 2nd dps for certain fights (dragon and Kris castle rush)"
+  },
+  "Silvesta": {
+    "name": "Silvesta",
+    "role": "DPS",
+    "primary_content": "GvG, Total War, Arena",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very Low",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Reduced Buff Duration",
+      "Blessing",
+      "Guts",
+      "Ignore Defense",
+      "Life Drain"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Weakness Hit, Attack % (armors)",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed, Weakness Hit, Crit Rate, Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S1, Passive",
+    "tips": "Usually paired with Orly in GvG/Total War"
+  },
+  "Snipper": {
+    "name": "Snipper",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Max HP-Based Damage",
+      "Burn"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Soi": {
+    "name": "Soi",
+    "role": "Attack",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Effect Hit Rate Boost",
+      "Bleed",
+      "Reduced Buff Duration"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Spike": {
+    "name": "Spike",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "Do not",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Self Max HP-Based Damage",
+      "Effect Hit Rate Boost",
+      "Effect Resist Boost",
+      "Freeze",
+      "Debuff Removal",
+      "Guts",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "--- TIPS/IMPORTANT INFO ---\nFodder. This hero is not worth investing in.",
+    "tips": "Fodder. This hero is not worth investing in."
+  },
+  "Sylvia": {
+    "name": "Sylvia",
+    "role": "Fodder",
+    "primary_content": "None",
+    "target_transcendence": "None",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "Rare",
+    "effects": [
+      "Magic Attack Boost",
+      "Defense Reduction",
+      "Immortality",
+      "Pierce",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "Fodder. This guy is garbage"
+  },
+  "Taka": {
+    "name": "Taka",
+    "role": "DPS",
+    "primary_content": "Castle Rush, Advent",
+    "target_transcendence": "T2-T6",
+    "wishlist_priority": "High",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "L",
+    "effects": [
+      "Crit Damage Boost",
+      "Physical Vulnerability",
+      "Damage Nullification",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, Attack % (armors)",
+          "required_stat_thresholds": "100% Crit Rate, 20% Weakness Hit",
+          "sub_stat_priority": "Crit Rate, Crit Damage, Weakness Hit, Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2, S1, Passive",
+    "tips": "Can replace him with Kyle early on, but he outscales Kyle later for castle rush. U use both on some."
+  },
+  "Teo": {
+    "name": "Teo",
+    "role": "DPS",
+    "primary_content": "Arena, Nightmare, GvG, Total War",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High (N/A if u pull him from welcome banner, which you should)",
+    "type": "Attack",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Physical Attack Boost",
+      "Crit Rate Boost",
+      "Reduced Buff Duration",
+      "Damage Nullification",
+      "Immortality",
+      "Pierce",
+      "Cooldown Reset"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Assassin Physical",
+          "main_stats": "Crit Rate, Crit Damage, Attack % (armors)",
+          "required_stat_thresholds": "100% Crit Rate",
+          "sub_stat_priority": "Crit Rate, Crit Damage, All Attack %"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Damage, Attack % (armors)",
+          "required_stat_thresholds": "Max crit damage",
+          "sub_stat_priority": "Crit Damage, Attack %"
+        }
+      ]
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Assassin Physical",
+          "main_stats": "Crit Rate, Crit Damage, Attack % (armors)",
+          "required_stat_thresholds": "100% Crit Rate",
+          "sub_stat_priority": "Crit Rate, Crit Damage, Speed, All Attack %"
+        }
+      ],
+      "T6": [
+        {
+          "name": "Bounty Tracker Physical",
+          "main_stats": "Weakness Hit, Crit Damage, Attack % (armors)",
+          "required_stat_thresholds": "100% Weakness Hit, pump rest into crit damage",
+          "sub_stat_priority": "Weakness Hit, Crit Damage, Speed, Attack %"
+        }
+      ]
+    },
+    "skill_enhance_priority": "S2, S1, Passive",
+    "tips": "AOE pumper. Will carry you through adventure and a lot of nightmare. Gets outshined by Kyle later on but still good to have for farming"
+  },
+  "Vanessa": {
+    "name": "Vanessa",
+    "role": "Support, Buffs, Debuffs",
+    "primary_content": "GvG, Arena, Total War,",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "Very High (High is you are looking for the best utility unit in the game, the higher transcendence the more utility)",
+    "type": "Magic",
+    "target_number": "4 Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Defense Reduction",
+      "Magic Vulnerability",
+      "Petrify",
+      "Buff Removal",
+      "Damage Immunity",
+      "Pierce",
+      "Cooldown Increase"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spell Weaver Magic",
+          "main_stats": "Effect Hit Rate",
+          "required_stat_thresholds": "Sub Stat Priority: Speed",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Full Speed",
+          "main_stats": "Full Speed",
+          "required_stat_thresholds": "Full Speed",
+          "sub_stat_priority": "Full Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "Skill 1, Skill 2, Passive (ALL GOOD)",
+    "tips": "Sandstorm sits at (%70-%80) chance to inflict a skill cooldown increase. This is the highest \"CC\" ability in the game and Spellweaver set increases probability to (%80-%90). Skill cooldown increase in PvP is an amazing opener as landing any can mess up the enemies queued skills. This unit is very good for magic team compositions and can even be used in some physical teams since her passive gives (%20-%24) defense down."
+  },
+  "Victoria": {
+    "name": "Victoria",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Magic Attack Boost",
+      "Physical Resistance",
+      "Magic Vulnerability",
+      "Paralysis Immunity",
+      "Heal"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Yeonhee": {
+    "name": "Yeonhee",
+    "role": "DPS, Counter CC, CC",
+    "primary_content": "GvG, Arena, Total War, Nightmare, Advent Expedition, Castle Rush",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "High",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Max HP-Based Damage",
+      "Magic Attack Boost",
+      "Magic Damage Boost",
+      "Sleep",
+      "Damage Nullification",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate, Crit Damage",
+          "required_stat_thresholds": "100% Critical Rate, 210%+ crit damage",
+          "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Critical Damage, All Attack %"
+        },
+        {
+          "name": "Avenger",
+          "main_stats": "Crit Rate, Crit Damage",
+          "required_stat_thresholds": "100% Critical Rate",
+          "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Critical Damage, All Attack %"
+        },
+        {
+          "name": "Bounty Tracker",
+          "main_stats": "Crit Rate, Crit Damage",
+          "required_stat_thresholds": "100% Critical Rate",
+          "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Critical Damage, All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Assassin Magic",
+          "main_stats": "Crit Rate, Crit Damage",
+          "required_stat_thresholds": "100% Critical Rate, 210%+ crit damage",
+          "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Critical Damage, All Attack %"
+        },
+        {
+          "name": "Bounty Tracker",
+          "main_stats": "Crit Rate, Crit Damage",
+          "required_stat_thresholds": "100% Critical Rate",
+          "sub_stat_priority": "Critical Damage, Weakness Hit Rate, Critical Damage, All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "Skill 2, Passive, Skill 1, Basic Attack",
+    "tips": "Yeonhee is a very strong magic user who can be used in lots of places. She needs 100% crit chance to perform well, substat Crit Damage or Weakness Hit is just bonus damage! She does not have that great of skill enchances nothing to chase over, its better to prioritize other hero skill enhances unless you have most of your important ones out of the way."
+  },
+  "Yu Shin": {
+    "name": "Yu Shin",
+    "role": "CC",
+    "primary_content": "GvG, Arena, Total War, Nightmare",
+    "target_transcendence": "T0-T2",
+    "wishlist_priority": "Medium",
+    "type": "Magic",
+    "target_number": "All Enemies",
+    "rarity": "L",
+    "effects": [
+      "Effect Hit Rate Boost",
+      "Effect Resist Reduction",
+      "Incoming Healing Reduction",
+      "Paralysis",
+      "Debuff Removal",
+      "Damage Immunity"
+    ],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Spellweaver Magic",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "None",
+          "sub_stat_priority": "None"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [
+        {
+          "name": "Spellweaver Magic",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        },
+        {
+          "name": "Full Speed",
+          "main_stats": "N/A",
+          "required_stat_thresholds": "Speed",
+          "sub_stat_priority": "Speed"
+        }
+      ],
+      "T6": []
+    },
+    "skill_enhance_priority": "S2, Passive",
+    "tips": "Very good for locking targets down in both PvP and PVE"
+  },
+  "Yui": {
+    "name": "Yui",
+    "role": "Support",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Support",
+    "target_number": "Only Basic Attack",
+    "rarity": "Rare",
+    "effects": [
+      "Physical Damage Boost",
+      "Magic Attack Reduction",
+      "Burn Immunity",
+      "Revive",
+      "Heal",
+      "Continuous Healing"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Yuri": {
+    "name": "Yuri",
+    "role": "Magic",
+    "primary_content": "[To be filled]",
+    "target_transcendence": "T0",
+    "wishlist_priority": "N/A",
+    "type": "Magic",
+    "target_number": "Single Enemy",
+    "rarity": "Rare",
+    "effects": [
+      "Magic Damage Boost",
+      "Burn",
+      "Ignore Defense"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
+    "tips": "[To be filled with hero-specific tips and information]"
+  }
 }
