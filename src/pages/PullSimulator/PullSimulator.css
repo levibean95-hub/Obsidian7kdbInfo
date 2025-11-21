@@ -44,7 +44,6 @@
 .wishlist-sidebar-container {
   flex-shrink: 0;
   width: 360px;
-  /* Increased width to fit 4 items */
 }
 
 .wishlist-container {
@@ -90,7 +89,6 @@
 .wishlist-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* Force 4 columns */
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
@@ -187,7 +185,10 @@
   text-transform: uppercase;
 }
 
-/* Pull Area */
+/* =========================================
+   PULL AREA (REBUILT)
+   ========================================= */
+
 .pull-area-container {
   flex: 1;
   display: flex;
@@ -245,29 +246,23 @@
   filter: grayscale(1);
 }
 
-/* Pull Results */
+/* Pull Results Grid */
 .pull-results {
   position: relative;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 10px 0;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* Removed visual container styles (background, border) */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 280px 280px;
-  /* Fixed row heights to prevent layout shift */
   min-height: 600px;
   height: 600px;
-  max-height: 600px;
   align-items: center;
   justify-items: center;
   gap: 20px 0.75rem;
   transition: opacity 0.2s ease;
-  isolation: isolate;
-  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -277,9 +272,9 @@
 }
 
 .pull-results.empty {
-  grid-template-columns: 1fr;
-  grid-template-rows: 280px 280px;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Pull Placeholder */
@@ -294,97 +289,56 @@
   letter-spacing: 1px;
 }
 
-/* Pull Card */
+/* Card Container */
 .pull-card {
-  aspect-ratio: 3/4;
-  perspective: 1000px;
-  cursor: pointer;
   position: relative;
-  z-index: 1;
   width: 180px;
   height: 240px;
-  /* Fixed dimensions to prevent layout shift */
-  isolation: isolate;
-  transition: opacity 0.2s ease;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  flex-shrink: 0;
-  contain: layout style paint;
+  perspective: 1000px;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .pull-card:hover {
   z-index: 10;
 }
 
-.pull-results.hidden .pull-card {
-  opacity: 0;
-  visibility: hidden;
-}
-
+/* Card Inner - The Flipper */
 .card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  will-change: transform;
-  background: transparent;
 }
 
 .pull-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
-/* Flash effect */
-.reveal-flash {
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  right: -20%;
-  bottom: -20%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, transparent 70%);
-  z-index: 100;
-  pointer-events: none;
-  animation: flash-reveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  mix-blend-mode: overlay;
-}
-
-@keyframes flash-reveal {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.5);
-  }
-
-  20% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(1.5);
-  }
-}
-
+/* Card Faces */
 .card-back,
 .card-front {
   position: absolute;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 16px;
-  box-shadow: none;
+  top: 0;
+  left: 0;
 }
 
+/* Card Back */
 .card-back {
-  background: transparent !important;
+  background: transparent;
   border: 2px solid var(--accent-obsidian);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
+  transform: rotateY(0deg);
+  z-index: 2;
+  /* Back starts on top */
 }
 
 .cardback-image {
@@ -393,90 +347,36 @@
   object-fit: cover;
 }
 
-/* Legendary Aura - Purple haze on card back */
-.legendary-aura {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(138, 43, 226, 0.5) 0%,
-    rgba(75, 0, 130, 0.7) 30%,
-    rgba(25, 0, 51, 0.85) 60%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
-  mix-blend-mode: hard-light;
-  animation: aura-pulse 2.5s ease-in-out infinite;
-}
-
-.legendary-aura.legendary-plus {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(138, 43, 226, 0.6) 0%,
-    rgba(75, 0, 130, 0.8) 25%,
-    rgba(25, 0, 51, 0.95) 50%,
-    rgba(0, 0, 0, 0.98) 100%
-  );
-  animation: aura-pulse 1.8s ease-in-out infinite, aura-swirl 5s linear infinite;
-}
-
-@keyframes aura-pulse {
-  0%, 100% {
-    opacity: 0.85;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes aura-swirl {
-  0% {
-    filter: blur(2px) hue-rotate(0deg);
-  }
-  50% {
-    filter: blur(3px) hue-rotate(10deg);
-  }
-  100% {
-    filter: blur(2px) hue-rotate(0deg);
-  }
-}
-
+/* Card Front */
 .card-front {
-  transform: rotateY(180deg);
-  background: transparent !important;
+  background: transparent;
   border: 2px solid transparent;
-  overflow: visible;
-  will-change: box-shadow;
+  transform: rotateY(180deg);
+  z-index: 1;
 }
 
-/* Rarity Styles */
+/* Rarity Styles (Applied to Card Front) */
 .rarity-lplus .card-front {
   border-color: #ff4500;
   box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
-  transform: rotateY(180deg) translate3d(0, 0, 0);
 }
 
 .rarity-l .card-front {
   border-color: #ffd700;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  transform: rotateY(180deg) translate3d(0, 0, 0);
 }
 
 .rarity-rare .card-front {
   border-color: #3b82f6;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-  transform: rotateY(180deg) translate3d(0, 0, 0);
 }
 
 .rarity-3star .card-front,
 .rarity-2star .card-front {
   border-color: #4b5563;
-  transform: rotateY(180deg) translate3d(0, 0, 0);
 }
 
+/* Card Content */
 .hero-portrait {
   width: 100%;
   height: 100%;
@@ -492,7 +392,6 @@
   padding: 3rem 0.5rem 0.75rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   text-align: center;
-  z-index: 5;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
 }
@@ -527,7 +426,119 @@
   z-index: 10;
 }
 
-/* Pull History */
+/* Effects */
+.reveal-flash {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  right: -20%;
+  bottom: -20%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, transparent 70%);
+  z-index: 100;
+  pointer-events: none;
+  animation: flash-reveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  mix-blend-mode: overlay;
+}
+
+@keyframes flash-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.legendary-aura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%,
+      rgba(138, 43, 226, 0.5) 0%,
+      rgba(75, 0, 130, 0.7) 30%,
+      rgba(25, 0, 51, 0.85) 60%,
+      rgba(0, 0, 0, 0.95) 100%);
+  mix-blend-mode: hard-light;
+  animation: aura-pulse 2.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.legendary-aura.legendary-plus {
+  background: radial-gradient(circle at 50% 50%,
+      rgba(138, 43, 226, 0.6) 0%,
+      rgba(75, 0, 130, 0.8) 25%,
+      rgba(25, 0, 51, 0.95) 50%,
+      rgba(0, 0, 0, 0.98) 100%);
+  animation: aura-pulse 1.8s ease-in-out infinite, aura-swirl 5s linear infinite;
+}
+
+@keyframes aura-pulse {
+
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes aura-swirl {
+  0% {
+    filter: blur(2px) hue-rotate(0deg);
+  }
+
+  50% {
+    filter: blur(3px) hue-rotate(10deg);
+  }
+
+  100% {
+    filter: blur(2px) hue-rotate(0deg);
+  }
+}
+
+.legendary-glow-outer {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  right: -5%;
+  bottom: -5%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 70%);
+  filter: blur(12px);
+  z-index: -1;
+  animation: pulse-glow 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+/* =========================================
+   PULL HISTORY
+   ========================================= */
 .pull-history {
   margin-top: 3rem;
   padding: 2rem;
@@ -682,33 +693,4 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* Legendary Effects */
-.legendary-glow-outer {
-  position: absolute;
-  top: -5%;
-  left: -5%;
-  right: -5%;
-  bottom: -5%;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 70%);
-  filter: blur(12px);
-  z-index: -1;
-  animation: pulse-glow 2s infinite;
-  will-change: opacity, transform;
-  transform: translate3d(0, 0, 0);
-  pointer-events: none;
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
 }

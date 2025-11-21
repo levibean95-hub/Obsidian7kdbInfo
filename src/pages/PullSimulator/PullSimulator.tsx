@@ -358,22 +358,30 @@ const PullSimulator: React.FC = () => {
   const handlePull = () => {
     if (isAnimating || !isWishlistComplete) return;
 
-    // Generate pulls first
+    setIsAnimating(true);
+
+    // Generate pulls
     const pulls: PullResult[] = [];
     for (let i = 0; i < 10; i++) {
       pulls.push(performSinglePull());
     }
 
-    // Hide cards first, then set new pulls
-    setShowCards(false);
-    setFlippedCards(new Array(10).fill(false));
-    setIsAnimating(true);
-
-    // Wait a moment before showing the new cards (face-down)
-    setTimeout(() => {
+    // If this is the first pull, show cards immediately
+    if (currentPulls.length === 0) {
       setCurrentPulls(pulls);
       setShowCards(true);
-    }, 50);
+      setFlippedCards(new Array(10).fill(false));
+      // Keep isAnimating true so user can click to reveal
+    } else {
+      // If re-pulling, flip cards back first
+      setFlippedCards(new Array(10).fill(false));
+
+      // Wait for flip animation to complete before swapping data
+      setTimeout(() => {
+        setCurrentPulls(pulls);
+        // Keep isAnimating true so user can click to reveal
+      }, 600);
+    }
 
     // Add to history
     const newSession: PullSession = {
