@@ -12,6 +12,7 @@ interface PullResult {
   heroName: string;
   rarity: "L+" | "L" | "Rare" | "3*" | "2*";
   isWishlist: boolean;
+  pityAfterReveal?: number; // The pity value to set after this card is revealed
 }
 
 interface PullSession {
@@ -83,7 +84,9 @@ const HeroSelectorModal: React.FC<HeroSelectorModalProps> = ({
               onClick={() => handleSelect(hero)}
             >
               <img
-                src={`/Downloaded Hero Portraits/${encodeURIComponent(hero)}.png`}
+                src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                  hero
+                )}.png`}
                 alt={hero}
                 onError={(e) => {
                   e.currentTarget.src = "/placeholder.png";
@@ -104,14 +107,16 @@ const saveWishlistToCookie = (wishlist: WishlistSlots) => {
   // Set cookie to expire in 1 year
   const expires = new Date();
   expires.setFullYear(expires.getFullYear() + 1);
-  document.cookie = `pullSimulatorWishlist=${encodeURIComponent(wishlistJson)}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+  document.cookie = `pullSimulatorWishlist=${encodeURIComponent(
+    wishlistJson
+  )}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
 };
 
 const loadWishlistFromCookie = (): WishlistSlots | null => {
-  const cookies = document.cookie.split(';');
-  for (let cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    if (name === 'pullSimulatorWishlist') {
+  const cookies = document.cookie.split(";");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split("=");
+    if (name === "pullSimulatorWishlist") {
       try {
         const decoded = decodeURIComponent(value);
         const parsed = JSON.parse(decoded);
@@ -124,13 +129,58 @@ const loadWishlistFromCookie = (): WishlistSlots | null => {
         ) {
           return parsed;
         }
-      } catch (e) {
-        console.error('Failed to parse wishlist cookie:', e);
+      } catch {
+        console.error("Failed to parse wishlist cookie");
         return null;
       }
     }
   }
   return null;
+};
+
+const savePityCounterToCookie = (pityCounter: number) => {
+  const expires = new Date();
+  expires.setFullYear(expires.getFullYear() + 1);
+  document.cookie = `pullSimulatorPity=${pityCounter}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+};
+
+const loadPityCounterFromCookie = (): number => {
+  const cookies = document.cookie.split(";");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split("=");
+    if (name === "pullSimulatorPity") {
+      const parsed = parseInt(value, 10);
+      return isNaN(parsed) ? 0 : parsed;
+    }
+  }
+  return 0;
+};
+
+const savePullHistoryToCookie = (history: PullSession[]) => {
+  const expires = new Date();
+  expires.setFullYear(expires.getFullYear() + 1);
+  const historyJson = JSON.stringify(history);
+  document.cookie = `pullSimulatorHistory=${encodeURIComponent(
+    historyJson
+  )}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+};
+
+const loadPullHistoryFromCookie = (): PullSession[] => {
+  const cookies = document.cookie.split(";");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split("=");
+    if (name === "pullSimulatorHistory") {
+      try {
+        const decoded = decodeURIComponent(value);
+        const parsed = JSON.parse(decoded);
+        return parsed;
+      } catch {
+        console.error("Failed to parse pull history cookie");
+        return [];
+      }
+    }
+  }
+  return [];
 };
 
 const PullSimulator: React.FC = () => {
@@ -139,19 +189,27 @@ const PullSimulator: React.FC = () => {
   // Load wishlist from cookie on mount, or use default
   const [wishlist, setWishlist] = useState<WishlistSlots>(() => {
     const savedWishlist = loadWishlistFromCookie();
-    return savedWishlist || {
-      lPlus: [null, null],
-      l: [null, null, null],
-      rare: [null, null, null, null],
-    };
+    return (
+      savedWishlist || {
+        lPlus: [null, null],
+        l: [null, null, null],
+        rare: [null, null, null, null],
+      }
+    );
   });
 
   const [currentPulls, setCurrentPulls] = useState<PullResult[]>([]);
-  const [pullHistory, setPullHistory] = useState<PullSession[]>([]);
+  const [pullHistory, setPullHistory] = useState<PullSession[]>(() =>
+    loadPullHistoryFromCookie()
+  );
   const [flippedCards, setFlippedCards] = useState<boolean[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [showWishlist, setShowWishlist] = useState(true);
   const [showCards, setShowCards] = useState(false);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [pityCounter, setPityCounter] = useState<number>(() =>
+    loadPityCounterFromCookie()
+  );
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [selectorModal, setSelectorModal] = useState<{
     isOpen: boolean;
     rarity: "L+" | "L" | "Rare";
@@ -162,6 +220,16 @@ const PullSimulator: React.FC = () => {
   useEffect(() => {
     saveWishlistToCookie(wishlist);
   }, [wishlist]);
+
+  // Save pity counter to cookie whenever it changes
+  useEffect(() => {
+    savePityCounterToCookie(pityCounter);
+  }, [pityCounter]);
+
+  // Save pull history to cookie whenever it changes
+  useEffect(() => {
+    savePullHistoryToCookie(pullHistory);
+  }, [pullHistory]);
 
   // Get heroes by rarity from hero data
   const heroesByRarity = useMemo(() => {
@@ -249,32 +317,116 @@ const PullSimulator: React.FC = () => {
     };
   }, [wishlist, heroesByRarity]);
 
-  // Perform a single pull
-  const performSinglePull = (): PullResult => {
-    const rand = Math.random();
+  // Perform a single pull with pity system
+  const performSinglePull = (
+    currentPity: number
+  ): { result: PullResult; newPity: number } => {
     const rates = calculatePullRates;
+
+    // Pity system logic - guaranteed L/L+ at 100 and 200
+
+    // 1. Hard Pity (200 pulls): 100% L/L+ and 100% wishlist
+    if (currentPity >= 199) {
+      const allWishlistLegendary = [...rates.wishlistLPlus, ...rates.wishlistL];
+      const randomIndex = Math.floor(
+        Math.random() * allWishlistLegendary.length
+      );
+      const heroName = allWishlistLegendary[randomIndex];
+      const rarity = rates.wishlistLPlus.includes(heroName) ? "L+" : "L";
+      return {
+        result: {
+          heroName,
+          rarity,
+          isWishlist: true,
+          pityAfterReveal: 0, // Reset pity when revealed
+        },
+        newPity: 0, // Reset pity
+      };
+    }
+
+    // 2. Soft Pity (100th pull): Guaranteed L/L+, 50/50 Chance for Wishlist
+    if (currentPity === 99) {
+      const isWishlistPull = Math.random() < 0.5;
+
+      if (
+        isWishlistPull &&
+        (rates.wishlistLPlus.length > 0 || rates.wishlistL.length > 0)
+      ) {
+        const allWishlistLegendary = [
+          ...rates.wishlistLPlus,
+          ...rates.wishlistL,
+        ];
+        const randomIndex = Math.floor(
+          Math.random() * allWishlistLegendary.length
+        );
+        const heroName = allWishlistLegendary[randomIndex];
+        const rarity = rates.wishlistLPlus.includes(heroName) ? "L+" : "L";
+        return {
+          result: {
+            heroName,
+            rarity,
+            isWishlist: true,
+            pityAfterReveal: 0, // Reset pity when revealed
+          },
+          newPity: 0, // Reset pity
+        };
+      } else {
+        // Non-Wishlist legendary at natural 100 pity
+        const nonWishlistLPlus = heroesByRarity.lPlus.filter(
+          (h) => !rates.wishlistLPlus.includes(h)
+        );
+        const nonWishlistL = heroesByRarity.l.filter(
+          (h) => !rates.wishlistL.includes(h)
+        );
+        const allNonWishlistLegendary = [...nonWishlistLPlus, ...nonWishlistL];
+        const randomIndex = Math.floor(
+          Math.random() * allNonWishlistLegendary.length
+        );
+        const heroName = allNonWishlistLegendary[randomIndex];
+        const rarity = nonWishlistLPlus.includes(heroName) ? "L+" : "L";
+        return {
+          result: {
+            heroName,
+            rarity,
+            isWishlist: false,
+            pityAfterReveal: 100, // Set to 100
+          },
+          newPity: 100, // Set to 100
+        };
+      }
+    }
+
+    // 3. Normal pull logic
+    const rand = Math.random();
 
     // 2* placeholder (45%)
     if (rand < rates.twoStar) {
       return {
-        heroName: "2* Placeholder",
-        rarity: "2*",
-        isWishlist: false,
+        result: {
+          heroName: "2* Placeholder",
+          rarity: "2*",
+          isWishlist: false,
+          pityAfterReveal: currentPity + 1, // Increment pity when revealed
+        },
+        newPity: currentPity + 1, // Increment pity
       };
     }
 
     // 3* placeholder (40%, cumulative 85%)
     if (rand < rates.twoStar + rates.threeStar) {
       return {
-        heroName: "3* Placeholder",
-        rarity: "3*",
-        isWishlist: false,
+        result: {
+          heroName: "3* Placeholder",
+          rarity: "3*",
+          isWishlist: false,
+          pityAfterReveal: currentPity + 1, // Increment pity when revealed
+        },
+        newPity: currentPity + 1, // Increment pity
       };
     }
 
     // Rare (14%, cumulative 99%)
     if (rand < rates.twoStar + rates.threeStar + rates.totalRareRate) {
-      // Check if wishlist rare
       const wishlistRareRoll = Math.random();
       const totalWishlistRareRate =
         rates.wishlistRare.length * rates.rareWishlistRate;
@@ -287,70 +439,113 @@ const PullSimulator: React.FC = () => {
           Math.random() * rates.wishlistRare.length
         );
         return {
-          heroName: rates.wishlistRare[randomIndex],
-          rarity: "Rare",
-          isWishlist: true,
+          result: {
+            heroName: rates.wishlistRare[randomIndex],
+            rarity: "Rare",
+            isWishlist: true,
+            pityAfterReveal: currentPity + 1, // Increment pity when revealed
+          },
+          newPity: currentPity + 1, // Rares don't affect pity, just increment
         };
       } else {
-        // Non-wishlist rare
         const nonWishlistRares = heroesByRarity.rare.filter(
           (h) => !rates.wishlistRare.includes(h)
         );
         const randomIndex = Math.floor(Math.random() * nonWishlistRares.length);
         return {
-          heroName: nonWishlistRares[randomIndex],
-          rarity: "Rare",
-          isWishlist: false,
+          result: {
+            heroName: nonWishlistRares[randomIndex],
+            rarity: "Rare",
+            isWishlist: false,
+            pityAfterReveal: currentPity + 1, // Increment pity when revealed
+          },
+          newPity: currentPity + 1, // Rares don't affect pity, just increment
         };
       }
     }
 
     // L/L+ (1%, cumulative 100%)
-    // Check if wishlist legendary
-    const wishlistLegendaryRoll = Math.random();
-    const totalWishlistLegendaryRate =
-      (rates.wishlistLPlus.length + rates.wishlistL.length) *
-      rates.legendaryWishlistRate;
+    // If we are here, it's a legendary pull based on standard rates
 
-    if (
-      wishlistLegendaryRoll <
-      totalWishlistLegendaryRate / rates.totalLegendaryRate &&
-      (rates.wishlistLPlus.length > 0 || rates.wishlistL.length > 0)
-    ) {
-      // Randomly choose from wishlist L+ or L
-      const allWishlistLegendary = [
-        ...rates.wishlistLPlus,
-        ...rates.wishlistL,
-      ];
+    // Check if we are in the "Guaranteed Wishlist" zone (Pity > 100, not AT 100)
+    // Being AT 100 means you were just bumped there, not that you've done 100+ pulls
+    if (currentPity > 100) {
+      // Guaranteed Wishlist (you're past 100 without getting a wishlist legendary)
+      const allWishlistLegendary = [...rates.wishlistLPlus, ...rates.wishlistL];
       const randomIndex = Math.floor(
         Math.random() * allWishlistLegendary.length
       );
       const heroName = allWishlistLegendary[randomIndex];
       const rarity = rates.wishlistLPlus.includes(heroName) ? "L+" : "L";
       return {
-        heroName,
-        rarity,
-        isWishlist: true,
+        result: {
+          heroName,
+          rarity,
+          isWishlist: true,
+          pityAfterReveal: 0, // Reset pity when revealed
+        },
+        newPity: 0, // Reset pity
       };
     } else {
-      // Non-wishlist legendary
-      const nonWishlistLPlus = heroesByRarity.lPlus.filter(
-        (h) => !rates.wishlistLPlus.includes(h)
-      );
-      const nonWishlistL = heroesByRarity.l.filter(
-        (h) => !rates.wishlistL.includes(h)
-      );
-      const allNonWishlistLegendary = [...nonWishlistLPlus, ...nonWishlistL];
-      const randomIndex = Math.floor(
-        Math.random() * allNonWishlistLegendary.length
-      );
-      const heroName = allNonWishlistLegendary[randomIndex];
-      const rarity = nonWishlistLPlus.includes(heroName) ? "L+" : "L";
-      return {
-        heroName,
-        rarity,
-        isWishlist: false,
-      };
+      // Standard Wishlist vs Non-Wishlist Chance
+      // We need to check if the 'rand' falls into the Wishlist portion of the 1%
+
+      const baseRate = rates.twoStar + rates.threeStar + rates.totalRareRate; // ~0.99
+      const totalWishlistLegendaryRate =
+        (rates.wishlistLPlus.length + rates.wishlistL.length) *
+        rates.legendaryWishlistRate;
+      const wishlistThreshold = baseRate + totalWishlistLegendaryRate;
+
+      if (
+        rand < wishlistThreshold &&
+        (rates.wishlistLPlus.length > 0 || rates.wishlistL.length > 0)
+      ) {
+        // Wishlist legendary - Reset pity to 0
+        const allWishlistLegendary = [
+          ...rates.wishlistLPlus,
+          ...rates.wishlistL,
+        ];
+        const randomIndex = Math.floor(
+          Math.random() * allWishlistLegendary.length
+        );
+        const heroName = allWishlistLegendary[randomIndex];
+        const rarity = rates.wishlistLPlus.includes(heroName) ? "L+" : "L";
+        return {
+          result: {
+            heroName,
+            rarity,
+            isWishlist: true,
+            pityAfterReveal: 0, // Reset pity when revealed
+          },
+          newPity: 0, // Reset pity
+        };
+      } else {
+        // Non-wishlist legendary
+        const nonWishlistLPlus = heroesByRarity.lPlus.filter(
+          (h) => !rates.wishlistLPlus.includes(h)
+        );
+        const nonWishlistL = heroesByRarity.l.filter(
+          (h) => !rates.wishlistL.includes(h)
+        );
+        const allNonWishlistLegendary = [...nonWishlistLPlus, ...nonWishlistL];
+        const randomIndex = Math.floor(
+          Math.random() * allNonWishlistLegendary.length
+        );
+        const heroName = allNonWishlistLegendary[randomIndex];
+        const rarity = nonWishlistLPlus.includes(heroName) ? "L+" : "L";
+
+        // If pity is below 100, set to 100 (Bump)
+        // Otherwise increment normally
+        return {
+          result: {
+            heroName,
+            rarity,
+            isWishlist: false,
+            pityAfterReveal: currentPity < 100 ? 100 : currentPity + 1,
+          },
+          newPity: currentPity < 100 ? 100 : currentPity + 1,
+        };
+      }
     }
   };
 
@@ -360,65 +555,154 @@ const PullSimulator: React.FC = () => {
 
     setIsAnimating(true);
 
-    // Generate pulls
+    // Generate pulls with pity system
     const pulls: PullResult[] = [];
+    let currentPityValue = pityCounter;
+
     for (let i = 0; i < 10; i++) {
-      pulls.push(performSinglePull());
+      const { result, newPity } = performSinglePull(currentPityValue);
+      pulls.push(result);
+      currentPityValue = newPity;
     }
+
+    // Store the session to add to history later (after cards are revealed)
+    const newSession: PullSession = {
+      id: Date.now(),
+      pulls,
+    };
 
     // If this is the first pull, show cards immediately
     if (currentPulls.length === 0) {
       setCurrentPulls(pulls);
       setShowCards(true);
       setFlippedCards(new Array(10).fill(false));
-      // Keep isAnimating true so user can click to reveal
     } else {
-      // If re-pulling, flip cards back first
+      // If re-pulling, hide cards first, then swap data and show new cards
+      setShowCards(false);
       setFlippedCards(new Array(10).fill(false));
 
-      // Wait for flip animation to complete before swapping data
+      // Wait a brief moment, then swap data and show new cards
       setTimeout(() => {
         setCurrentPulls(pulls);
-        // Keep isAnimating true so user can click to reveal
-      }, 600);
+        setTimeout(() => {
+          setShowCards(true);
+        }, 50);
+      }, 100);
     }
 
-    // Add to history
-    const newSession: PullSession = {
-      id: Date.now(),
-      pulls,
-    };
-    setPullHistory((prev) => [...prev, newSession]);
+    // Store the pending session to add after reveal
+    (
+      window as Window & { __pendingPullSession?: PullSession }
+    ).__pendingPullSession = newSession;
   };
 
   // Handle card flip - left to right, row by row
   const handleCardClick = () => {
-    if (!isAnimating || flippedCards.some((f) => f)) return;
+    if (!isAnimating) return;
+
+    const windowWithTimeouts = window as Window & {
+      __flipTimeouts?: number[];
+      __pendingPullSession?: PullSession;
+    };
+
+    // If already flipping and user clicks again, flip all remaining cards instantly
+    if (isFlipping) {
+      // Flip all remaining cards immediately
+      setFlippedCards(new Array(10).fill(true));
+
+      // Clear any pending timeouts
+      if (windowWithTimeouts.__flipTimeouts) {
+        windowWithTimeouts.__flipTimeouts.forEach((timeout: number) =>
+          clearTimeout(timeout)
+        );
+        windowWithTimeouts.__flipTimeouts = [];
+      }
+
+      // Update pity to the final value (last card's pity)
+      const lastCard = currentPulls[currentPulls.length - 1];
+      if (lastCard?.pityAfterReveal !== undefined) {
+        setPityCounter(lastCard.pityAfterReveal);
+      }
+
+      // End animation immediately
+      setTimeout(() => {
+        setIsAnimating(false);
+        setIsFlipping(false);
+
+        // Add to history
+        const pendingSession = windowWithTimeouts.__pendingPullSession;
+        if (pendingSession) {
+          setPullHistory((prev) => [...prev, pendingSession]);
+          windowWithTimeouts.__pendingPullSession = undefined;
+        }
+      }, 100);
+
+      return;
+    }
+
+    // If all cards are already flipped, do nothing
+    if (flippedCards.every((f) => f)) return;
+
+    setIsFlipping(true);
 
     // Simple left-to-right order: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-    let delay = 0;
+    const baseDelay = 200;
+    const legendaryDelay = 1000; // Extra pause time for legendary cards
+    let currentDelay = 0;
+    const timeouts: number[] = [];
 
     for (let i = 0; i < 10; i++) {
-      setTimeout(() => {
+      const isLegendary =
+        currentPulls[i] &&
+        (currentPulls[i].rarity === "L" || currentPulls[i].rarity === "L+");
+
+      const timeout = window.setTimeout(() => {
         setFlippedCards((prev) => {
           const updated = [...prev];
           updated[i] = true;
           return updated;
         });
-      }, delay);
-      delay += 200; // 200ms between each flip
+
+        // Update pity counter when this card is revealed
+        if (currentPulls[i]?.pityAfterReveal !== undefined) {
+          setPityCounter(currentPulls[i].pityAfterReveal!);
+        }
+      }, currentDelay);
+
+      timeouts.push(timeout);
+
+      // Calculate delay for NEXT card
+      currentDelay += baseDelay;
+      if (isLegendary) {
+        currentDelay += legendaryDelay;
+      }
     }
 
-    setTimeout(() => {
+    // Store timeouts so they can be cleared if user speeds up
+    windowWithTimeouts.__flipTimeouts = timeouts;
+
+    const finalTimeout = window.setTimeout(() => {
       setIsAnimating(false);
-    }, delay + 500);
+      setIsFlipping(false);
+      windowWithTimeouts.__flipTimeouts = [];
+
+      // Add to history AFTER all cards have been revealed
+      const pendingSession = windowWithTimeouts.__pendingPullSession;
+      if (pendingSession) {
+        setPullHistory((prev) => [...prev, pendingSession]);
+        windowWithTimeouts.__pendingPullSession = undefined;
+      }
+    }, currentDelay + 500);
+
+    timeouts.push(finalTimeout);
   };
 
   const handleWishlistSlotClick = (
     category: "lPlus" | "l" | "rare",
     index: number
   ) => {
-    const rarity = category === "lPlus" ? "L+" : category === "l" ? "L" : "Rare";
+    const rarity =
+      category === "lPlus" ? "L+" : category === "l" ? "L" : "Rare";
     setSelectorModal({
       isOpen: true,
       rarity,
@@ -433,8 +717,8 @@ const PullSimulator: React.FC = () => {
       selectorModal.rarity === "L+"
         ? "lPlus"
         : selectorModal.rarity === "L"
-          ? "l"
-          : "rare";
+        ? "l"
+        : "rare";
 
     setWishlist((prev) => {
       const newWishlist = { ...prev };
@@ -456,6 +740,31 @@ const PullSimulator: React.FC = () => {
       newWishlist[category][index] = null;
       return newWishlist;
     });
+  };
+
+  const handleResetAll = () => {
+    // Clear all state
+    setWishlist({
+      lPlus: [null, null],
+      l: [null, null, null],
+      rare: [null, null, null, null],
+    });
+    setPityCounter(0);
+    setCurrentPulls([]);
+    setPullHistory([]);
+    setFlippedCards([]);
+    setShowCards(false);
+
+    // Clear cookies
+    document.cookie =
+      "pullSimulatorWishlist=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "pullSimulatorPity=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "pullSimulatorHistory=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    // Close modal
+    setShowResetConfirm(false);
   };
 
   // Calculate aggregate stats
@@ -483,7 +792,10 @@ const PullSimulator: React.FC = () => {
 
         // Count by hero (excluding placeholders if desired, but user asked for "each hero")
         // We'll exclude placeholders from the visual grid usually, or keep them separate
-        if (pull.heroName !== "2* Placeholder" && pull.heroName !== "3* Placeholder") {
+        if (
+          pull.heroName !== "2* Placeholder" &&
+          pull.heroName !== "3* Placeholder"
+        ) {
           if (!stats.heroCounts[pull.heroName]) {
             stats.heroCounts[pull.heroName] = { count: 0, rarity: pull.rarity };
           }
@@ -498,8 +810,10 @@ const PullSimulator: React.FC = () => {
   const sortedHeroes = useMemo(() => {
     return Object.entries(pullStats.heroCounts).sort((a, b) => {
       // Sort by rarity (L+ > L > Rare) then by count (desc)
-      const rarityWeight = { "L+": 3, "L": 2, "Rare": 1, "3*": 0, "2*": 0 };
-      const rarityDiff = rarityWeight[b[1].rarity as keyof typeof rarityWeight] - rarityWeight[a[1].rarity as keyof typeof rarityWeight];
+      const rarityWeight = { "L+": 3, L: 2, Rare: 1, "3*": 0, "2*": 0 };
+      const rarityDiff =
+        rarityWeight[b[1].rarity as keyof typeof rarityWeight] -
+        rarityWeight[a[1].rarity as keyof typeof rarityWeight];
       if (rarityDiff !== 0) return rarityDiff;
       return b[1].count - a[1].count;
     });
@@ -508,7 +822,29 @@ const PullSimulator: React.FC = () => {
   return (
     <div className="pull-simulator">
       <div className="pull-simulator-container">
-        <h1 className="page-title">Pull Simulator</h1>
+        <div className="header-with-reset">
+          <h1 className="page-title">Pull Simulator</h1>
+          <button
+            className="reset-button"
+            onClick={() => setShowResetConfirm(true)}
+            title="Reset all data"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+              <path d="M21 3v5h-5" />
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+              <path d="M3 21v-5h5" />
+            </svg>
+            Reset All
+          </button>
+        </div>
 
         <div className="pull-simulator-layout">
           {/* Wishlist Sidebar */}
@@ -533,7 +869,9 @@ const PullSimulator: React.FC = () => {
                     {hero ? (
                       <>
                         <img
-                          src={`/Downloaded Hero Portraits/${encodeURIComponent(hero)}.png`}
+                          src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                            hero
+                          )}.png`}
                           alt={hero}
                           className="wishlist-hero-img"
                           onError={(e) => {
@@ -570,7 +908,9 @@ const PullSimulator: React.FC = () => {
                     {hero ? (
                       <>
                         <img
-                          src={`/Downloaded Hero Portraits/${encodeURIComponent(hero)}.png`}
+                          src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                            hero
+                          )}.png`}
                           alt={hero}
                           className="wishlist-hero-img"
                           onError={(e) => {
@@ -579,7 +919,9 @@ const PullSimulator: React.FC = () => {
                         />
                         <button
                           className="wishlist-remove"
-                          onClick={(e) => handleRemoveFromWishlist("l", index, e)}
+                          onClick={(e) =>
+                            handleRemoveFromWishlist("l", index, e)
+                          }
                         >
                           ×
                         </button>
@@ -605,7 +947,9 @@ const PullSimulator: React.FC = () => {
                     {hero ? (
                       <>
                         <img
-                          src={`/Downloaded Hero Portraits/${encodeURIComponent(hero)}.png`}
+                          src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                            hero
+                          )}.png`}
                           alt={hero}
                           className="wishlist-hero-img"
                           onError={(e) => {
@@ -634,6 +978,19 @@ const PullSimulator: React.FC = () => {
 
           {/* Pull Area */}
           <div className="pull-area-container">
+            {/* Pity Counter UI */}
+            <div className="pity-counter-container">
+              <div className="pity-bar-wrapper">
+                <div
+                  className="pity-bar-fill"
+                  style={{ width: `${(pityCounter / 200) * 100}%` }}
+                />
+                <div className="pity-threshold pity-threshold-100" />
+                <div className="pity-threshold pity-threshold-200" />
+                <span className="pity-count-label">{pityCounter} / 200</span>
+              </div>
+            </div>
+
             {/* Pull Button */}
             <button
               className="pull-button"
@@ -650,12 +1007,22 @@ const PullSimulator: React.FC = () => {
             </button>
 
             {/* Pull Results - Always show container to prevent layout shift */}
-            <div className={`pull-results ${currentPulls.length === 0 ? "empty" : ""} ${!showCards ? "hidden" : ""}`} onClick={handleCardClick}>
-              {currentPulls.length > 0 && showCards ? (
+            <div
+              className={`pull-results ${
+                currentPulls.length === 0 ? "empty" : ""
+              }`}
+              onClick={handleCardClick}
+            >
+              {currentPulls.length > 0 ? (
                 currentPulls.map((pull, index) => (
                   <div
                     key={index}
-                    className={`pull-card ${flippedCards[index] ? "flipped" : ""} rarity-${pull.rarity.toLowerCase().replace("+", "plus").replace("*", "star")}`}
+                    className={`pull-card ${
+                      flippedCards[index] ? "flipped" : ""
+                    } ${!showCards ? "hidden" : ""} pull-rarity-${pull.rarity
+                      .toLowerCase()
+                      .replace("+", "plus")
+                      .replace("*", "star")}`}
                   >
                     <div className="card-inner">
                       {/* Flash effect on reveal */}
@@ -665,36 +1032,46 @@ const PullSimulator: React.FC = () => {
                       {/* Card back */}
                       <div className="card-back">
                         <img
-                          src={pull.rarity === "2*" || pull.rarity === "3*"
-                            ? "/Cradbacks/CardbackFodder.png"
-                            : "/Cradbacks/CardbackRare.png"
+                          src={
+                            pull.rarity === "2*" || pull.rarity === "3*"
+                              ? "/Cradbacks/CardbackFodder.png"
+                              : "/Cradbacks/CardbackRare.png"
                           }
                           alt="Card back"
                           className="cardback-image"
                         />
                         {(pull.rarity === "L" || pull.rarity === "L+") && (
-                          <div className={`legendary-aura ${pull.rarity === "L+" ? "legendary-plus" : ""}`}></div>
+                          <div
+                            className={`legendary-aura ${
+                              pull.rarity === "L+" ? "legendary-plus" : ""
+                            }`}
+                          ></div>
                         )}
                       </div>
 
                       {/* Card front */}
                       <div className="card-front">
-                        {(pull.rarity === "L" || pull.rarity === "L+") && flippedCards[index] && (
-                          <div className="legendary-glow-outer"></div>
-                        )}
+                        {(pull.rarity === "L" || pull.rarity === "L+") &&
+                          flippedCards[index] && (
+                            <div className="legendary-glow-outer"></div>
+                          )}
                         {pull.rarity !== "2*" && pull.rarity !== "3*" ? (
                           <>
                             <img
-                              src={`/Hero Portraits/${encodeURIComponent(pull.heroName)}.png`}
+                              src={`/Hero Portraits/${encodeURIComponent(
+                                pull.heroName
+                              )}.png`}
                               alt={pull.heroName}
                               className="hero-portrait"
                               onError={(e) => {
                                 e.currentTarget.src = "/placeholder.png";
                               }}
                             />
+                            <div className="pull-rarity-badge">
+                              {pull.rarity}
+                            </div>
                             <div className="card-info">
                               <div className="hero-name">{pull.heroName}</div>
-                              <div className="hero-rarity">{pull.rarity}</div>
                             </div>
                             {pull.isWishlist && (
                               <div className="wishlist-badge">★ Wishlist</div>
@@ -702,7 +1079,9 @@ const PullSimulator: React.FC = () => {
                           </>
                         ) : (
                           <div className="placeholder-card">
-                            <div className="placeholder-text">{pull.heroName}</div>
+                            <div className="placeholder-text">
+                              {pull.heroName}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -723,7 +1102,9 @@ const PullSimulator: React.FC = () => {
           <div className="pull-history">
             <div className="history-header">
               <h2>Pull History</h2>
-              <div className="total-pulls-badge">{pullStats.totalPulls} Total Pulls</div>
+              <div className="total-pulls-badge">
+                {pullStats.totalPulls} Total Pulls
+              </div>
             </div>
 
             <div className="history-stats-grid">
@@ -754,7 +1135,12 @@ const PullSimulator: React.FC = () => {
               <h3>Collection Log</h3>
               <div className="collection-grid">
                 {sortedHeroes.map(([name, data]) => (
-                  <div key={name} className={`collection-item rarity-${data.rarity.toLowerCase().replace("+", "plus")}`}>
+                  <div
+                    key={name}
+                    className={`collection-item rarity-${data.rarity
+                      .toLowerCase()
+                      .replace("+", "plus")}`}
+                  >
                     <div className="collection-img-wrapper">
                       <img
                         src={`/Hero Portraits/${encodeURIComponent(name)}.png`}
@@ -764,6 +1150,7 @@ const PullSimulator: React.FC = () => {
                         }}
                       />
                       <div className="collection-count">x{data.count}</div>
+                      <div className="collection-rarity">{data.rarity}</div>
                     </div>
                     <div className="collection-name">{name}</div>
                   </div>
@@ -785,11 +1172,58 @@ const PullSimulator: React.FC = () => {
             selectorModal.rarity === "L+"
               ? heroesByRarity.lPlus
               : selectorModal.rarity === "L"
-                ? heroesByRarity.l
-                : heroesByRarity.rare
+              ? heroesByRarity.l
+              : heroesByRarity.rare
           }
           currentWishlist={allWishlistHeroes}
         />
+      )}
+
+      {/* Reset Confirmation Modal */}
+      {showResetConfirm && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowResetConfirm(false)}
+        >
+          <div
+            className="modal-content reset-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <h2>Reset All Data?</h2>
+              <button
+                className="modal-close"
+                onClick={() => setShowResetConfirm(false)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="reset-modal-body">
+              <div className="warning-icon">⚠️</div>
+              <p className="warning-text">This will permanently delete:</p>
+              <ul className="reset-list">
+                <li>Your wishlist selections</li>
+                <li>Pity counter progress ({pityCounter} pulls)</li>
+                <li>All pull history and collection log</li>
+                <li>Current pull results</li>
+              </ul>
+              <p className="warning-subtext">This action cannot be undone!</p>
+            </div>
+
+            <div className="reset-modal-actions">
+              <button
+                className="cancel-button"
+                onClick={() => setShowResetConfirm(false)}
+              >
+                Cancel
+              </button>
+              <button className="confirm-reset-button" onClick={handleResetAll}>
+                Yes, Reset Everything
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
