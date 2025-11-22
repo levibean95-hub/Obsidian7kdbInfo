@@ -1888,7 +1888,7 @@
     "wishlist_priority": "Low",
     "type": "Support",
     "target_number": "All Enemies",
-    "rarity": "L",
+    "rarity": "L+",
     "effects": [
       "Crit Rate Boost",
       "Crit Damage Boost",

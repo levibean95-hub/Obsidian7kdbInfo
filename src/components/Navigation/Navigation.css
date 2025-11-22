@@ -69,6 +69,7 @@
     white-space: nowrap;
     flex-shrink: 0;
     min-width: min-content;
+    /* margin-right removed to allow centering */
 }
 
 .nav-link {
@@ -201,7 +202,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
     .global-nav {
         display: block;
         padding: 0;
