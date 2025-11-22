@@ -215,6 +215,7 @@ const PullSimulator: React.FC = () => {
     rarity: "L+" | "L" | "Rare";
     slotIndex: number;
   } | null>(null);
+  const [isWishlistCollapsed, setIsWishlistCollapsed] = useState(false);
 
   // Save wishlist to cookie whenever it changes
   useEffect(() => {
@@ -822,162 +823,183 @@ const PullSimulator: React.FC = () => {
   return (
     <div className="pull-simulator">
       <div className="pull-simulator-container">
-        <div className="header-with-reset">
-          <h1 className="page-title">Pull Simulator</h1>
-          <button
-            className="reset-button"
-            onClick={() => setShowResetConfirm(true)}
-            title="Reset all data"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-              <path d="M21 3v5h-5" />
-              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-              <path d="M3 21v-5h5" />
-            </svg>
-            Reset All
-          </button>
-        </div>
-
         <div className="pull-simulator-layout">
           {/* Wishlist Sidebar */}
           <div className="wishlist-sidebar-container">
             <div className="wishlist-container">
-              <h2 className="wishlist-title">Wishlist</h2>
-              <p className="wishlist-subtitle">
-                {isWishlistComplete
-                  ? "Wishlist Complete! Ready to pull."
-                  : "Fill all slots to unlock pulling"}
-              </p>
-
-              {/* L+ Row */}
-              <div className="wishlist-section-label">Legendary+</div>
-              <div className="wishlist-row">
-                {wishlist.lPlus.map((hero, index) => (
-                  <div
-                    key={`lplus-${index}`}
-                    className={`wishlist-card ${hero ? "owned" : "unowned"}`}
-                    onClick={() => handleWishlistSlotClick("lPlus", index)}
+              <div className="wishlist-header-mobile">
+                <h2 className="wishlist-title">Wishlist</h2>
+                <button
+                  className={`wishlist-toggle-mobile ${
+                    isWishlistCollapsed ? "collapsed" : ""
+                  }`}
+                  onClick={() => setIsWishlistCollapsed(!isWishlistCollapsed)}
+                  aria-label="Toggle wishlist"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
                   >
-                    {hero ? (
-                      <>
-                        <img
-                          src={`/Downloaded Hero Portraits/${encodeURIComponent(
-                            hero
-                          )}.png`}
-                          alt={hero}
-                          className="wishlist-hero-img"
-                          onError={(e) => {
-                            e.currentTarget.src = "/placeholder.png";
-                          }}
-                        />
-                        <button
-                          className="wishlist-remove"
-                          onClick={(e) =>
-                            handleRemoveFromWishlist("lPlus", index, e)
-                          }
-                        >
-                          ×
-                        </button>
-                      </>
-                    ) : (
-                      <div className="unowned-content">
-                        <span className="unowned-text">L+</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
               </div>
+              <div
+                className={`wishlist-content ${
+                  isWishlistCollapsed ? "collapsed" : ""
+                }`}
+              >
+                {/* L+ Row */}
+                <div className="wishlist-section-label">Legendary+</div>
+                <div className="wishlist-row">
+                  {wishlist.lPlus.map((hero, index) => (
+                    <div
+                      key={`lplus-${index}`}
+                      className={`wishlist-card ${hero ? "owned" : "unowned"}`}
+                      onClick={() => handleWishlistSlotClick("lPlus", index)}
+                    >
+                      {hero ? (
+                        <>
+                          <img
+                            src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                              hero
+                            )}.png`}
+                            alt={hero}
+                            className="wishlist-hero-img"
+                            onError={(e) => {
+                              e.currentTarget.src = "/placeholder.png";
+                            }}
+                          />
+                          <button
+                            className="wishlist-remove"
+                            onClick={(e) =>
+                              handleRemoveFromWishlist("lPlus", index, e)
+                            }
+                          >
+                            ×
+                          </button>
+                        </>
+                      ) : (
+                        <div className="unowned-content">
+                          <span className="unowned-text">L+</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
 
-              {/* L Row */}
-              <div className="wishlist-section-label">Legendary</div>
-              <div className="wishlist-row">
-                {wishlist.l.map((hero, index) => (
-                  <div
-                    key={`l-${index}`}
-                    className={`wishlist-card ${hero ? "owned" : "unowned"}`}
-                    onClick={() => handleWishlistSlotClick("l", index)}
-                  >
-                    {hero ? (
-                      <>
-                        <img
-                          src={`/Downloaded Hero Portraits/${encodeURIComponent(
-                            hero
-                          )}.png`}
-                          alt={hero}
-                          className="wishlist-hero-img"
-                          onError={(e) => {
-                            e.currentTarget.src = "/placeholder.png";
-                          }}
-                        />
-                        <button
-                          className="wishlist-remove"
-                          onClick={(e) =>
-                            handleRemoveFromWishlist("l", index, e)
-                          }
-                        >
-                          ×
-                        </button>
-                      </>
-                    ) : (
-                      <div className="unowned-content">
-                        <span className="unowned-text">L</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                {/* L Row */}
+                <div className="wishlist-section-label">Legendary</div>
+                <div className="wishlist-row">
+                  {wishlist.l.map((hero, index) => (
+                    <div
+                      key={`l-${index}`}
+                      className={`wishlist-card ${hero ? "owned" : "unowned"}`}
+                      onClick={() => handleWishlistSlotClick("l", index)}
+                    >
+                      {hero ? (
+                        <>
+                          <img
+                            src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                              hero
+                            )}.png`}
+                            alt={hero}
+                            className="wishlist-hero-img"
+                            onError={(e) => {
+                              e.currentTarget.src = "/placeholder.png";
+                            }}
+                          />
+                          <button
+                            className="wishlist-remove"
+                            onClick={(e) =>
+                              handleRemoveFromWishlist("l", index, e)
+                            }
+                          >
+                            ×
+                          </button>
+                        </>
+                      ) : (
+                        <div className="unowned-content">
+                          <span className="unowned-text">L</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
 
-              {/* Rare Row */}
-              <div className="wishlist-section-label">Rare</div>
-              <div className="wishlist-row">
-                {wishlist.rare.map((hero, index) => (
-                  <div
-                    key={`rare-${index}`}
-                    className={`wishlist-card ${hero ? "owned" : "unowned"}`}
-                    onClick={() => handleWishlistSlotClick("rare", index)}
-                  >
-                    {hero ? (
-                      <>
-                        <img
-                          src={`/Downloaded Hero Portraits/${encodeURIComponent(
-                            hero
-                          )}.png`}
-                          alt={hero}
-                          className="wishlist-hero-img"
-                          onError={(e) => {
-                            e.currentTarget.src = "/placeholder.png";
-                          }}
-                        />
-                        <button
-                          className="wishlist-remove"
-                          onClick={(e) =>
-                            handleRemoveFromWishlist("rare", index, e)
-                          }
-                        >
-                          ×
-                        </button>
-                      </>
-                    ) : (
-                      <div className="unowned-content">
-                        <span className="unowned-text">Rare</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                {/* Rare Row */}
+                <div className="wishlist-section-label">Rare</div>
+                <div className="wishlist-row">
+                  {wishlist.rare.map((hero, index) => (
+                    <div
+                      key={`rare-${index}`}
+                      className={`wishlist-card ${hero ? "owned" : "unowned"}`}
+                      onClick={() => handleWishlistSlotClick("rare", index)}
+                    >
+                      {hero ? (
+                        <>
+                          <img
+                            src={`/Downloaded Hero Portraits/${encodeURIComponent(
+                              hero
+                            )}.png`}
+                            alt={hero}
+                            className="wishlist-hero-img"
+                            onError={(e) => {
+                              e.currentTarget.src = "/placeholder.png";
+                            }}
+                          />
+                          <button
+                            className="wishlist-remove"
+                            onClick={(e) =>
+                              handleRemoveFromWishlist("rare", index, e)
+                            }
+                          >
+                            ×
+                          </button>
+                        </>
+                      ) : (
+                        <div className="unowned-content">
+                          <span className="unowned-text">Rare</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* Pull Area */}
           <div className="pull-area-container">
+            {/* Header with Title and Reset */}
+            <div className="pull-area-header">
+              <h1 className="page-title">Pull Simulator</h1>
+              <button
+                className="reset-button"
+                onClick={() => setShowResetConfirm(true)}
+                title="Reset all data"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                  <path d="M21 3v5h-5" />
+                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+                  <path d="M3 21v-5h5" />
+                </svg>
+                Reset All
+              </button>
+            </div>
+
             {/* Pity Counter UI */}
             <div className="pity-counter-container">
               <div className="pity-bar-wrapper">
@@ -1074,7 +1096,10 @@ const PullSimulator: React.FC = () => {
                               <div className="hero-name">{pull.heroName}</div>
                             </div>
                             {pull.isWishlist && (
-                              <div className="wishlist-badge">★ Wishlist</div>
+                              <div className="wishlist-badge">
+                                <span className="wishlist-star">★</span>
+                                <span className="wishlist-text">Wishlist</span>
+                              </div>
                             )}
                           </>
                         ) : (
