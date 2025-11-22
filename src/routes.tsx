@@ -12,6 +12,7 @@ import TeamBuilder from "./pages/HeroDatabase/TeamBuilder";
 import GuildWarTeams from "./pages/GuildWarTeams/GuildWarTeams";
 import SpeedGearing from "./pages/SpeedGearing/SpeedGearing";
 import WishList from "./pages/WishList/WishList";
+import PullSimulator from "./pages/PullSimulator/PullSimulator";
 import AdminEditor from "./pages/Admin/AdminEditor";
 import NotFound from "./pages/NotFound/NotFound";
 import Navigation from "./components/Navigation/Navigation";
@@ -82,6 +83,13 @@ const wishListRoute = createRoute({
   component: WishList,
 });
 
+// Pull Simulator route
+const pullSimulatorRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/pull-simulator",
+  component: PullSimulator,
+});
+
 // Admin Editor route (local only)
 const adminRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -113,6 +121,7 @@ const routeTree = rootRoute.addChildren([
   guildWarTeamsRoute,
   speedGearingRoute,
   wishListRoute,
+  pullSimulatorRoute,
   adminRoute,
   notFoundRoute,
   catchAllRoute,

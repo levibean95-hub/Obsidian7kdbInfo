@@ -182,6 +182,26 @@ const Navigation: React.FC = () => {
               <span>Team Builder</span>
               <span className="new-badge">New</span>
             </Link>
+            <Link
+              to="/pull-simulator"
+              className={`nav-link nav-link-external ${isActive("/pull-simulator") ? "active" : ""
+                }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M12 8v8M8 12h8"></path>
+              </svg>
+              <span>Pull Simulator</span>
+              <span className="new-badge">New</span>
+            </Link>
           </div>
         </div>
       </nav>
@@ -317,6 +337,26 @@ const Navigation: React.FC = () => {
             <path d="M12 5v14M5 12h14" />
           </svg>
           <span>Team Builder</span>
+          <span className="new-badge">New</span>
+        </Link>
+        <Link
+          to="/pull-simulator"
+          className={`nav-link nav-link-external ${isActive("/pull-simulator") ? "active" : ""
+            }`}
+          onClick={() => setMenuOpen(false)}
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M12 8v8M8 12h8"></path>
+          </svg>
+          <span>Pull Simulator</span>
           <span className="new-badge">New</span>
         </Link>
       </div>
