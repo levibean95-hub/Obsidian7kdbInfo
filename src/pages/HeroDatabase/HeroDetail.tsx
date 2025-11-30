@@ -3,7 +3,6 @@ import { useParams } from "@tanstack/react-router";
 import { useApp } from "../../context/AppContext";
 import { getHeroImagePath, getTypeIconPath } from "../../lib/utils";
 import { HERO_PORTRAIT_FALLBACK } from "../../lib/constants";
-import { isT6DifferentFromT0 } from "../../lib/gear-builder";
 import GearCard from "../../components/HeroDetail/GearCard";
 import "./HeroDetail.css";
 
@@ -67,15 +66,6 @@ const HeroDetail: React.FC = () => {
   const rarityClass = heroData.rarity
     ? `rarity-${heroData.rarity.toLowerCase().replace(/\+/g, "plus")}`
     : "rarity-unknown";
-
-  const showT6PvE =
-    heroData.gear_pve?.T6 &&
-    heroData.gear_pve.T6.length > 0 &&
-    isT6DifferentFromT0(heroData.gear_pve.T0 || [], heroData.gear_pve.T6);
-  const showT6PvP =
-    heroData.gear_pvp?.T6 &&
-    heroData.gear_pvp.T6.length > 0 &&
-    isT6DifferentFromT0(heroData.gear_pvp.T0 || [], heroData.gear_pvp.T6);
 
   return (
     <div className="hero-detail-view">
@@ -228,17 +218,20 @@ const HeroDetail: React.FC = () => {
             {/* Gear PvE Section */}
             <div className="hero-section">
               <h2>Gear PvE</h2>
-              {heroData.gear_pve?.T0 && heroData.gear_pve.T0.length > 0 ? (
+              {(heroData.gear_pve?.T0 && heroData.gear_pve.T0.length > 0) ||
+               (heroData.gear_pve?.T6 && heroData.gear_pve.T6.length > 0) ? (
                 <>
-                  <div className="tier-section">
-                    <h3 className="tier-section-title">Gear T0</h3>
-                    <div className="gear-cards-grid">
-                      {heroData.gear_pve.T0.map((gear, index) => (
-                        <GearCard key={index} gear={gear} />
-                      ))}
+                  {heroData.gear_pve?.T0 && heroData.gear_pve.T0.length > 0 && (
+                    <div className="tier-section">
+                      <h3 className="tier-section-title">Gear T0</h3>
+                      <div className="gear-cards-grid">
+                        {heroData.gear_pve.T0.map((gear, index) => (
+                          <GearCard key={index} gear={gear} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  {showT6PvE && (
+                  )}
+                  {heroData.gear_pve?.T6 && heroData.gear_pve.T6.length > 0 && (
                     <div className="tier-section">
                       <h3 className="tier-section-title">Gear T6</h3>
                       <div className="gear-cards-grid">
@@ -259,17 +252,20 @@ const HeroDetail: React.FC = () => {
             {/* Gear PvP Section */}
             <div className="hero-section">
               <h2>Gear PvP</h2>
-              {heroData.gear_pvp?.T0 && heroData.gear_pvp.T0.length > 0 ? (
+              {(heroData.gear_pvp?.T0 && heroData.gear_pvp.T0.length > 0) ||
+               (heroData.gear_pvp?.T6 && heroData.gear_pvp.T6.length > 0) ? (
                 <>
-                  <div className="tier-section">
-                    <h3 className="tier-section-title">Gear T0</h3>
-                    <div className="gear-cards-grid">
-                      {heroData.gear_pvp.T0.map((gear, index) => (
-                        <GearCard key={index} gear={gear} />
-                      ))}
+                  {heroData.gear_pvp?.T0 && heroData.gear_pvp.T0.length > 0 && (
+                    <div className="tier-section">
+                      <h3 className="tier-section-title">Gear T0</h3>
+                      <div className="gear-cards-grid">
+                        {heroData.gear_pvp.T0.map((gear, index) => (
+                          <GearCard key={index} gear={gear} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  {showT6PvP && (
+                  )}
+                  {heroData.gear_pvp?.T6 && heroData.gear_pvp.T6.length > 0 && (
                     <div className="tier-section">
                       <h3 className="tier-section-title">Gear T6</h3>
                       <div className="gear-cards-grid">

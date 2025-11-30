@@ -119,16 +119,15 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 6px;
-    min-width: 36px;
-    min-height: 24px;
+    padding: 6px 12px;
+    min-width: 40px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 0 12px 0 14px;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     z-index: 10;
@@ -138,6 +137,37 @@
         -2px 2px 4px rgba(0, 0, 0, 0.3);
     border-left: 1.5px solid;
     border-bottom: 1.5px solid;
+}
+
+/* Rarity Colors for Hero Detail */
+.hero-portrait-card .rarity-lplusplus {
+    background: linear-gradient(135deg, rgba(255, 150, 230, 0.9), rgba(180, 200, 255, 0.9));
+    color: #1a0f2e;
+    border-color: rgba(255, 180, 240, 0.6);
+}
+
+.hero-portrait-card .rarity-lplus {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 170, 0, 0.9));
+    color: #1a0f00;
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+.hero-portrait-card .rarity-l {
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.9), rgba(184, 134, 11, 0.9));
+    color: #ffffff;
+    border-color: rgba(218, 165, 32, 0.6);
+}
+
+.hero-portrait-card .rarity-rare {
+    background: linear-gradient(135deg, rgba(147, 112, 219, 0.9), rgba(106, 90, 205, 0.9));
+    color: #ffffff;
+    border-color: rgba(147, 112, 219, 0.6);
+}
+
+.hero-portrait-card .rarity-unknown {
+    background: rgba(100, 100, 100, 0.8);
+    color: #fff;
+    border-color: rgba(100, 100, 100, 0.5);
 }
 
 .hero-portrait-card .type-icon-badge {

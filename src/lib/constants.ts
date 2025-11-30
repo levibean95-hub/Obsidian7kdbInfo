@@ -27,9 +27,11 @@ export const heroes = [
     'Rachel',
     'Rin',
     'Rudy',
+    'Ryan',
     'Silvesta',
     'Spike',
     'Teo',
+    'Trude',
     'Vanessa',
     'Yeonhee',
     // L Tier

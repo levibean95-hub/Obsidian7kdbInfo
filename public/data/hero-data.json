@@ -2866,5 +2866,69 @@
     },
     "skill_enhance_priority": "[To be filled with skill enhancement priorities]",
     "tips": "[To be filled with hero-specific tips and information]"
+  },
+  "Ryan": {
+    "name": "Ryan",
+    "role": "DPS, Support",
+    "primary_content": "Castle Rush, Advent Expedition",
+    "target_transcendence": "T0-T6",
+    "wishlist_priority": "N/A",
+    "type": "Attack",
+    "target_number": "3 Enemies",
+    "rarity": "L+",
+    "effects": [],
+    "gear_pve": {
+      "T0": [
+        {
+          "name": "Avenger Physical",
+          "main_stats": "Crit Rate, Weakness Hit Chance, All Attack %",
+          "required_stat_thresholds": "100% weakness hit (factor in biscuit if u have her T6), 100% crit rate",
+          "sub_stat_priority": "Weakness Hit Chance, Crit Damage, Crit Rate, All Attack %"
+        }
+      ],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": []
+    },
+    "skill_enhance_priority": "All",
+    "tips": "Necessary unit for achieving high scores in castle rush and advent. Serves as both dps and support. S2 hits insanely hard."
+  },
+  "Trude": {
+    "name": "Trude",
+    "role": "DPS Carry/Tank",
+    "primary_content": "Arena, Total War, GvG",
+    "target_transcendence": "T6",
+    "wishlist_priority": "High",
+    "type": "Universal",
+    "target_number": "All Enemies",
+    "rarity": "L+",
+    "effects": [
+      "Crowd Control Immunity",
+      "Block Rate Boost",
+      "Revive",
+      "Barrier",
+      "Crit Damage Boost",
+      "Pain Endurance",
+      "Crit Rate Boost"
+    ],
+    "gear_pve": {
+      "T0": [],
+      "T6": []
+    },
+    "gear_pvp": {
+      "T0": [],
+      "T6": [
+        {
+          "name": "Bounty Tracker Physical",
+          "main_stats": "Weakness Hit Chance, Crit Damage, Damage Taken Reduction",
+          "required_stat_thresholds": "High crit damage, weakness hit, as much speed as possible",
+          "sub_stat_priority": "Speed, Weakness Hit Chance, Crit Damage"
+        }
+      ]
+    },
+    "skill_enhance_priority": "Passive, S1, S2",
+    "tips": "Need T6 with good gear or shes a prop. Atm only really used in PVP"
   }
 }

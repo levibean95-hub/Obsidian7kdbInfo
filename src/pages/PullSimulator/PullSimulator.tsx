@@ -1080,9 +1080,9 @@ const PullSimulator: React.FC = () => {
                         {pull.rarity !== "2*" && pull.rarity !== "3*" ? (
                           <>
                             <img
-                              src={`/Hero Portraits/${encodeURIComponent(
+                              src={`/Hero_Cards/${encodeURIComponent(
                                 pull.heroName
-                              )}.png`}
+                              )}.jpg`}
                               alt={pull.heroName}
                               className="hero-portrait"
                               onError={(e) => {
@@ -1168,7 +1168,7 @@ const PullSimulator: React.FC = () => {
                   >
                     <div className="collection-img-wrapper">
                       <img
-                        src={`/Hero Portraits/${encodeURIComponent(name)}.png`}
+                        src={`/Hero_Cards/${encodeURIComponent(name)}.jpg`}
                         alt={name}
                         onError={(e) => {
                           e.currentTarget.src = "/placeholder.png";
